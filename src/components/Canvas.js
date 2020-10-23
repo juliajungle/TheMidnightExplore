@@ -6,13 +6,8 @@ const StyledCanvas = styled.canvas`
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.8;
-  background-color: #ab8feff5;
-  border-radius: 40px;
-  border: 25px solid #0c0c17;
   width: 360px;
   height: 260px;
-  box-shadow: inset 0px 0px 20px 0px #fff;
 `;
 
 const Canvas = () => {
