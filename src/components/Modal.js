@@ -5,13 +5,13 @@ import { Button, ChannelButton, ChannelButtonContainer } from "./Button";
 import { Loading } from "./Loading";
 
 const StyledModal = styled.div`
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed;
+  z-index: 1;
   left: 28%;
   top: 20%;
   width: 410px;
   height: 320px;
-  overflow: auto; /* Enable scroll if needed */
+  overflow: auto;
   background-color: black;
   border-radius: 5%;
   box-shadow: -1px 0px 18px 3px #d31e91;
@@ -22,7 +22,6 @@ const StyledImage = styled.img`
   position: absolute;
   top: 130px;
   left: 160px;
-  // width: 40px;
   height: auto;
   border-radius: 7px;
   box-shadow: -2px 1px 20px 7px #5b4c6b5e;

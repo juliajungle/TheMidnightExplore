@@ -11,3 +11,12 @@ export const getRectCoords = (width) => {
   const coordinates = { topX, topY, bottomX, bottomY };
   return coordinates;
 };
+
+export const getHintCoords = (width) => {
+  const height = width * 0.5625;
+  const x = width * 0.29;
+  const y = height * 0.47;
+
+  const coordinates = { x, y };
+  return coordinates;
+};

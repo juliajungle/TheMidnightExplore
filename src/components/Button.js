@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+// TODO: make generic Button component or styles
+
 const StyledButton = styled.button`
   border-radius: 10%;
   width: 20px;
@@ -8,7 +10,6 @@ const StyledButton = styled.button`
   position: absolute;
   bottom: 10px;
   left: 340px;
-  background-color: red;
   background: url(./button.jpg);
   background-size: contain;
   cursor: pointer;
