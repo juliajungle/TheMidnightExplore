@@ -64,3 +64,14 @@ export const ChannelButtonContainer = ({ children }) => {
     <StyledChannelButtonContainer>{children}</StyledChannelButtonContainer>
   );
 };
+
+const StyledChatRoomButton = styled.a`
+  position: absolute;
+  top: 237px;
+  left: 228px;
+  font-size: 7px;
+`;
+
+export const ChatRoomButton = ({ children }) => {
+  return <StyledChatRoomButton>{children}</StyledChatRoomButton>;
+};

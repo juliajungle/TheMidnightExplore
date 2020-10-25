@@ -23,10 +23,14 @@ const StyledOverlay = styled.div`
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hint, setHint] = useState(false);
+  const [currentItem, setItem] = useState();
 
   const [ref, { x, y, width, height }] = useDimensions();
 
   const handleClick = (e) => {
+    console.log(e.target.alt);
+    const currentItem = e.target.alt;
+    setItem(currentItem);
     setIsOpen(!isOpen);
   };
 
@@ -43,7 +47,7 @@ const App = () => {
       <Image />
       {isOpen && <StyledOverlay />}
       <ImageMap handleClick={handleClick} x={x} y={y} width={width} />
-      <Modal isOpen={isOpen} handleClick={handleClick} />
+      <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
       <HintButton handleClick={showHint}>Show hint</HintButton>
     </StyledApp>
   );

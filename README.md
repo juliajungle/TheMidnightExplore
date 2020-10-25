@@ -15,6 +15,8 @@ Also uses:
 - Canvas
 - Image map
 
+To get started run `npm install`
+
 # Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
