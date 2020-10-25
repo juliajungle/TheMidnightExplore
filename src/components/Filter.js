@@ -1,46 +1,84 @@
 import React from "react";
 import styled from "styled-components";
+
+import { MAP_AREAS } from "../const";
 import { getHintCoords } from "../utils/coordinatesCalc";
 
 const StyledFilter = styled.svg`
   position: absolute;
 `;
 
-export const Filter = ({ width, height }) => {
-  const { x, y } = getHintCoords(width, height);
-  const adjustedY = y + 10;
-  return (
-    <StyledFilter width={width} height="100%" version="1.1" xmlns="">
-      <filter id="Hint">
-        <feGaussianBlur stdDeviation="0.5" result="blur" />
-
-        <feSpecularLighting
-          result="spec"
-          in="blur"
-          specularConstant="1"
-          specularExponent="30"
-          lighting-color="#c21a95"
-        >
-          <feSpotLight
-            x={x}
-            y={adjustedY}
-            z="500"
-            limitingConeAngle="7"
-            pointsAtX={x}
-            pointsAtY={adjustedY}
-            pointsAtZ="0"
-          />
-        </feSpecularLighting>
-
+const renderComposites = () => {
+  return MAP_AREAS.map((item, index) => {
+    console.log("composites", { index });
+    if (index > 0) {
+      return (
         <feComposite
-          in="SourceGraphic"
-          in2="spec"
+          in={`spec${index - 1}`}
+          in2={`spec${index}`}
+          result="hints"
           operator="arithmetic"
           k1="0"
           k2="1"
           k3="1"
           k4="0"
         />
+      );
+    }
+  });
+};
+
+const renderSpotLights = (width) => {
+  return MAP_AREAS.map((area, index) => {
+    console.log({ index });
+    const { x, y } = getHintCoords(width, area);
+    const adjustedY = y + 10;
+    const id = `spec${index}`;
+    console.log(x, adjustedY);
+    // get coords
+    // set name for each item
+    return (
+      <feSpecularLighting
+        result={id}
+        in="blur"
+        specularConstant="1"
+        specularExponent="30"
+        lightingColor="#c21a95"
+        key={x}
+      >
+        <feSpotLight
+          x={x}
+          y={adjustedY}
+          z="500"
+          limitingConeAngle="7"
+          pointsAtX={x}
+          pointsAtY={adjustedY}
+          pointsAtZ="0"
+        />
+      </feSpecularLighting>
+    );
+  });
+};
+
+export const Filter = ({ width }) => {
+  const spotLights = renderSpotLights(width);
+  const composites = renderComposites();
+
+  return (
+    <StyledFilter width={width} height="100%" version="1.1" xmlns="">
+      <filter id="Hint">
+        <feGaussianBlur stdDeviation="0.5" result="blur" />
+        {spotLights}
+        <feComposite
+          in="SourceGraphic"
+          in2="spec0"
+          operator="arithmetic"
+          k1="0"
+          k2="1"
+          k3="1"
+          k4="0"
+        />
+        {composites}
       </filter>
 
       <defs>

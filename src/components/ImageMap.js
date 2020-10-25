@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { getRectCoords } from "../utils/coordinatesCalc";
+import { MAP_AREAS } from "../const";
+import { getItemCoords } from "../utils/coordinatesCalc";
 
 const StyledImage = styled.div`
   img {
@@ -19,17 +20,18 @@ export const Image = () => {
 };
 
 export const ImageMap = ({ handleClick, width }) => {
-  const { topX, topY, bottomX, bottomY } = getRectCoords(width);
-
-  return (
-    <map name="monsters">
+  const areas = MAP_AREAS.map((area) => {
+    const { topX, topY, bottomX, bottomY } = getItemCoords(width, area);
+    return (
       <area
         onClick={handleClick}
         shape="rect"
         coords={`${topX}, ${topY}, ${bottomX} , ${bottomY}`}
-        alt="TV"
+        alt={area}
         href="#"
       />
-    </map>
-  );
+    );
+  });
+
+  return <map name="monsters">{areas}</map>;
 };

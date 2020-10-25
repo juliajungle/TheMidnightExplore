@@ -1,21 +1,41 @@
-// 800, 450 = coords="210,200,260,250"
-export const getRectCoords = (width) => {
-  // tv: topX: 26.25%, topY: 44.44%, bottomX: 32.5%, 55.55%
+const itemConfig = {
+  tv: {
+    xRatio: 0.29,
+    yRatio: 0.47,
+    topXRatio: 0.2625,
+    topYRatio: 0.4444,
+    bottomXRatio: 0.325,
+    bottomYRatio: 0.5555,
+  },
+  monitor: {
+    xRatio: 0.43,
+    yRatio: 0.5,
+    topXRatio: 0.4,
+    topYRatio: 0.4444,
+    bottomXRatio: 0.46,
+    bottomYRatio: 0.56,
+  },
+};
 
-  const height = width * 0.5625;
-  const topX = width * 0.2625;
-  const topY = height * 0.4444;
-  const bottomX = width * 0.325;
-  const bottomY = height * 0.55555;
+const HEIGHT_RATIO = 0.5625;
+
+export const getItemCoords = (width, item) => {
+  const { topXRatio, topYRatio, bottomXRatio, bottomYRatio } = itemConfig[item];
+  const height = width * HEIGHT_RATIO;
+  const topX = width * topXRatio;
+  const topY = height * topYRatio;
+  const bottomX = width * bottomXRatio;
+  const bottomY = height * bottomYRatio;
 
   const coordinates = { topX, topY, bottomX, bottomY };
   return coordinates;
 };
 
-export const getHintCoords = (width) => {
-  const height = width * 0.5625;
-  const x = width * 0.29;
-  const y = height * 0.47;
+export const getHintCoords = (width, item) => {
+  const height = width * HEIGHT_RATIO;
+  const { xRatio, yRatio } = itemConfig[item];
+  const x = width * xRatio;
+  const y = height * yRatio;
 
   const coordinates = { x, y };
   return coordinates;
