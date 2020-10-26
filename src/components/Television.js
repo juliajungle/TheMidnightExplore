@@ -7,11 +7,9 @@ import { Loading } from "./Loading";
 const StyledImage = styled.img`
   position: absolute;
   top: 130px;
-  left: 160px;
+  left: 130px;
   height: auto;
-  border-radius: 7px;
-  box-shadow: -2px 1px 20px 7px #5b4c6b5e;
-  opacity: 0.6;
+  width: 100px;
 
   @keyframes horror {
     0% {
@@ -20,7 +18,7 @@ const StyledImage = styled.img`
 
     100% {
       width: 300px;
-      top: 80px;
+      top: 100px;
       left: 30px;
     }
   }
@@ -71,7 +69,7 @@ export const Television = ({ handleClick }) => {
                 rel="noopener noreferrer"
               >
                 {" "}
-                <StyledImage alt="Horror Show" src="horror.jpg" />
+                <StyledImage alt="Horror Show" src="horror.png" />
               </a>
             )}
 
