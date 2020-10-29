@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Question } from "./Question";
+import { AIButton } from "../Buttons";
 
 const StyledParagraph = styled.p`
   font-family: "courier";
@@ -9,7 +10,6 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledQuestion = styled.div`
-  width: 100%;
   margin: 10px;
 `;
 
@@ -17,6 +17,13 @@ const StyledLink = styled.a`
   color: #226deb;
 
   text-decoration: none;
+`;
+
+const StyledDiv = styled.div`
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  right: 10px;
 `;
 
 export const AISteps = ({
@@ -47,7 +54,7 @@ export const AISteps = ({
           <StyledParagraph>
             Can you guess which of these he predicted to be true by 2029?
           </StyledParagraph>
-          <button onClick={startQuestions}>Start</button>
+          <AIButton handleClick={startQuestions} text="START" />
         </div>
       )}
       {step > 0 && step <= questionsLength && (
@@ -63,7 +70,10 @@ export const AISteps = ({
           <StyledParagraph>
             Not bad. Your score is {score}/{questionsLength}
           </StyledParagraph>
-          <button onClick={handleReset}>Try again?</button>
+          <StyledDiv>
+            {" "}
+            <AIButton handleClick={handleReset} text="Try again" />
+          </StyledDiv>
         </div>
       )}
       {score === questionsLength && (
@@ -74,7 +84,11 @@ export const AISteps = ({
           </StyledParagraph>
           <StyledParagraph>
             You might be interested in some further{" "}
-            <StyledLink href="https://www.amazon.co.uk/Ray-Kurzweil/e/B001ILHHDS%3Fref=dbs_a_mng_rwt_scns_share">
+            <StyledLink
+              href="https://www.amazon.co.uk/Ray-Kurzweil/e/B001ILHHDS%3Fref=dbs_a_mng_rwt_scns_share"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               reading
             </StyledLink>
             .

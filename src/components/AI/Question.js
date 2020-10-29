@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { predictions } from "../../data/questions";
+import { AISubmit } from "../Buttons";
 
 const StyledParagraph = styled.p`
   font-family: "courier";
+  font-size: 14px;
 `;
 
 const StyledSpan = styled.span`
   font-family: "courier";
+  font-size: 14px;
   display: inline-block;
   vertical-align: middle;
   margin-top: 10px;
@@ -23,34 +26,12 @@ const StyledForm = styled.form`
 
 const StyledWrapper = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  //   flex-wrap: wrap;
-  //   align-content: flex-start;
-  //   width: 100%;
 `;
 
 const StyledLabel = styled.label`
-  //   background: #0e0f25;
-  //   padding: 5px;
-  //   border-radius: 5px;
-  //   color: #ff5edb;
-  //   font-family: "courier";
-  //   cursor: pointer;
-  //   height: 20px;
-  //   width: 50px;
-  //   margin-left: 40px;
-  //   :hover {
-  //     box-shadow: #ed57cd -1px 2px 7px 4px;
-  //   }
-  //   :active {
-  //     color: #0e0f25;
-  //     background: #ff5edb;
-  //     box-shadow: none;
-  //   }
-
   position: relative;
   display: inline-block;
+  margin-top: 10px;
   width: 70px;
   height: 34px;
 `;
@@ -59,46 +40,19 @@ const StyledInput = styled.input`
   left: -100vw;
 
   :checked + .slider {
-    background-color: #2196f3;
+    background-color: #aa1389;
   }
 
   :focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px #aa1389;
   }
 
   :checked + .slider:before {
     transform: translateX(36px);
-    // content: "true";
   }
   :checked + .slider:after {
-    // transform: translateX(36px);
     content: "true";
     margin-left: 4px;
-    // color: #2196f3;
-  }
-`;
-
-const StyledQuestion = styled.div`
-  width: 100%;
-  margin: 10px;
-`;
-
-const StlyedSubmit = styled.input`
-  display: block;
-  height: 23px;
-  width: 65px;
-  align-self: flex-end;
-  margin-right: 20px;
-  background-color: black;
-  color: white;
-  border: 1px solid transparent;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-  :hover {
-    background-color: white;
-    color: black;
-    border-color: black;
   }
 `;
 
@@ -146,7 +100,9 @@ export const Question = ({ step, nextClick, checked, onChange }) => {
       <StyledForm onSubmit={(e) => nextClick(e, checked, answer)}>
         <StyledWrapper>
           <div>
-            <StyledSpan>Toggle true/false --></StyledSpan>
+            <StyledSpan>
+              Do you think this was one of his predictions for 2029?
+            </StyledSpan>
             <StyledLabel for="toggle">
               {" "}
               {checked.toString()}
@@ -161,7 +117,7 @@ export const Question = ({ step, nextClick, checked, onChange }) => {
             </StyledLabel>
           </div>
 
-          <StlyedSubmit type="submit" value="NEXT >" />
+          <AISubmit type="submit" text="NEXT >" />
         </StyledWrapper>
       </StyledForm>
     </div>
