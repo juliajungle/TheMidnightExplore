@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // Icon by Kit of Parts
-export const HintSVG = () => {
+const HintSVG = () => {
   return (
     <svg
       fill="#c21a95"

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import useDimensions from "react-use-dimensions";
 import { ImageMap, Image } from "./components/ImageMap";
 import { Modal } from "./components/Modal";
-import { Filter } from "./components/Filter";
-import { HintButton } from "./components/Hint";
+import { HintFilter } from "./components/Hint/HintFilter";
+import { HintButton } from "./components/Hint/HintButton";
 
 const StyledApp = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <StyledApp ref={ref}>
-      {hint && <Filter width={width} height={height} />}
+      {hint && <HintFilter width={width} height={height} />}
       <Image />
       {isOpen && <StyledOverlay />}
       <ImageMap handleClick={handleClick} x={x} y={y} width={width} />

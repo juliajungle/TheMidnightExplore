@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MAP_AREAS } from "../const";
-import { getHintCoords } from "../utils/coordinatesCalc";
+import { MAP_AREAS } from "../../const";
+import { getHintCoords } from "../../utils/coordinatesCalc";
 
 const StyledFilter = styled.svg`
   position: absolute;
@@ -10,13 +10,13 @@ const StyledFilter = styled.svg`
 
 const renderComposites = () => {
   return MAP_AREAS.map((item, index) => {
-    console.log("composites", { index });
     if (index > 0) {
       return (
         <feComposite
-          in={`spec${index - 1}`}
+          in={`hint${index - 1}`}
+          // in="SourceGraphic"
           in2={`spec${index}`}
-          result="hints"
+          result={`hint${index}`}
           operator="arithmetic"
           k1="0"
           k2="1"
@@ -30,13 +30,9 @@ const renderComposites = () => {
 
 const renderSpotLights = (width) => {
   return MAP_AREAS.map((area, index) => {
-    console.log({ index });
     const { x, y } = getHintCoords(width, area);
     const adjustedY = y + 10;
     const id = `spec${index}`;
-    console.log(x, adjustedY);
-    // get coords
-    // set name for each item
     return (
       <feSpecularLighting
         result={id}
@@ -60,7 +56,7 @@ const renderSpotLights = (width) => {
   });
 };
 
-export const Filter = ({ width }) => {
+export const HintFilter = ({ width }) => {
   const spotLights = renderSpotLights(width);
   const composites = renderComposites();
 

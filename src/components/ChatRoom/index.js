@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { Button, ChatRoomButton } from "./Button";
+import { Button, ChatRoomButton } from "../Buttons";
 
 const StyledWrapper = styled.div`
   z-index: -100;
@@ -31,6 +31,17 @@ const StyledChatRoomLink = styled.a`
   padding: 0 3px;
 `;
 
+const StyledTechLink = styled.a`
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+  font-size: 8px;
+  color: #535252;
+  text-decoration: none;
+  border: solid #323131 1px;
+  padding: 0 3px;
+`;
+
 export const ChatRoom = ({ handleClick }) => {
   return (
     <div>
@@ -44,6 +55,13 @@ export const ChatRoom = ({ handleClick }) => {
       >
         {`Send >`}
       </StyledChatRoomLink>
+      <StyledTechLink
+        href="http://183010165.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {`Comtek`}
+      </StyledTechLink>
       <Button handleClick={handleClick}></Button>
     </div>
   );

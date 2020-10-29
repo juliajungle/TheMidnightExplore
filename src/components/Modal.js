@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { ChatRoom } from "./ChatRoom";
+import { ChatRoom } from "./ChatRoom/index";
 
-import { Television } from "./Television";
+import { Television } from "./Television/index";
+import { AI } from "./AI/index";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -28,6 +29,8 @@ export const Modal = ({ isOpen, handleClick, item }) => {
           {item === "monitor" && (
             <ChatRoom handleClick={handleClick}></ChatRoom>
           )}
+          {/* {item === "pizza" && <Pizza handleClick={handleClick} />} */}
+          {item === "ai" && <AI handleClick={handleClick} />}
         </StyledModal>
       )}
     </div>

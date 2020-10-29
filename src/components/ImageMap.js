@@ -21,6 +21,7 @@ export const Image = () => {
 
 export const ImageMap = ({ handleClick, width }) => {
   const areas = MAP_AREAS.map((area) => {
+    console.log(area);
     const { topX, topY, bottomX, bottomY } = getItemCoords(width, area);
     return (
       <area

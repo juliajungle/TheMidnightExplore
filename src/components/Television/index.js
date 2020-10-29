@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Canvas from "./Canvas";
-import { Button, ChannelButton, ChannelButtonContainer } from "./Button";
+import { Button, ChannelButton, ChannelButtonContainer } from "../Buttons";
 import { Loading } from "./Loading";
 
 const StyledImage = styled.img`

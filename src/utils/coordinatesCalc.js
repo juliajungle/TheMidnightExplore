@@ -15,6 +15,14 @@ const itemConfig = {
     bottomXRatio: 0.46,
     bottomYRatio: 0.56,
   },
+  ai: {
+    xRatio: 0.57,
+    yRatio: 0.4,
+    topXRatio: 0.55,
+    topYRatio: 0.36,
+    bottomXRatio: 0.58,
+    bottomYRatio: 0.45,
+  },
 };
 
 const HEIGHT_RATIO = 0.5625;

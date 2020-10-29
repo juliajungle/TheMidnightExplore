@@ -1,1 +1,1 @@
-export const MAP_AREAS = ["tv", "monitor"];
+export const MAP_AREAS = ["tv", "monitor", "ai"];
