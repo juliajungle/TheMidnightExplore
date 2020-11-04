@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import { Button, ChatRoomButton } from "../Buttons";
+import { MonitorButton } from "../Buttons";
 
 const StyledWrapper = styled.div`
   z-index: -100;
   position: absolute;
-  top: -22px;
-  left: -15px;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
   border-radius: 40px;
   border: 40px solid black;
-  width: 360px;
-  height: 262px;
+  height: 250px;
 `;
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 264px;
+  height: 240px;
   border-radius: 7px;
 `;
 
@@ -62,7 +62,7 @@ export const ChatRoom = ({ handleClick }) => {
       >
         {`Comtek`}
       </StyledTechLink>
-      <Button handleClick={handleClick}></Button>
+      <MonitorButton handleClick={handleClick}></MonitorButton>
     </div>
   );
 };

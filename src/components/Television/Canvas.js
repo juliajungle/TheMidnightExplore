@@ -7,7 +7,7 @@ const StyledCanvas = styled.canvas`
   top: 0;
   left: 0;
   width: 360px;
-  height: 260px;
+  height: 250px;
 `;
 
 const Canvas = () => {

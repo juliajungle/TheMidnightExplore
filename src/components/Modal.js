@@ -12,7 +12,7 @@ const StyledModal = styled.div`
   top: 20%;
   width: 410px;
   height: 320px;
-  overflow: auto;
+  // overflow: auto;
   background-color: black;
   border-radius: 5%;
   box-shadow: -1px 0px 18px 3px #d31e91;
@@ -29,7 +29,6 @@ export const Modal = ({ isOpen, handleClick, item }) => {
           {item === "monitor" && (
             <ChatRoom handleClick={handleClick}></ChatRoom>
           )}
-          {/* {item === "pizza" && <Pizza handleClick={handleClick} />} */}
           {item === "ai" && <AI handleClick={handleClick} />}
         </StyledModal>
       )}

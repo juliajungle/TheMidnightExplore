@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Canvas from "./Canvas";
-import { Button, ChannelButton, ChannelButtonContainer } from "../Buttons";
+import { TVButton, ChannelButton, ChannelButtonContainer } from "../Buttons";
 import { Loading } from "./Loading";
 
 const StyledImage = styled.img`
@@ -34,14 +34,14 @@ const StyledIframe = styled.iframe`
 const StyledWrapper = styled.div`
   z-index: -100;
   position: absolute;
-  top: -5px;
+  top: 0;
   left: 0;
   opacity: 0.8;
   background-color: #ab8feff5;
   border-radius: 40px;
   border: 25px solid black;
   width: 360px;
-  height: 260px;
+  height: 250px;
   box-shadow: inset 0px 0px 20px 0px #fff;
 `;
 
@@ -72,7 +72,6 @@ export const Television = ({ handleClick }) => {
                 <StyledImage alt="Horror Show" src="horror.png" />
               </a>
             )}
-
             <Canvas />
           </div>
         )}
@@ -92,7 +91,7 @@ export const Television = ({ handleClick }) => {
         <ChannelButton handleClick={changeChannel} text={1}></ChannelButton>
         <ChannelButton handleClick={changeChannel} text={2}></ChannelButton>
       </ChannelButtonContainer>
-      <Button handleClick={handleClick}></Button>
+      <TVButton handleClick={handleClick}></TVButton>
     </div>
   );
 };

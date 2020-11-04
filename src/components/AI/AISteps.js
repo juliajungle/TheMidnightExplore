@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Question } from "./Question";
@@ -54,7 +54,9 @@ export const AISteps = ({
           <StyledParagraph>
             Can you guess which of these he predicted to be true by 2029?
           </StyledParagraph>
-          <AIButton handleClick={startQuestions} text="START" />
+          <StyledDiv>
+            <AIButton handleClick={startQuestions} text="START" />
+          </StyledDiv>
         </div>
       )}
       {step > 0 && step <= questionsLength && (

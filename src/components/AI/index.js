@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { Button, ChatRoomButton } from "../Buttons";
+import { CloseButton } from "../Buttons";
 import { predictions } from "../../data/questions";
-import { Question } from "./Question";
 import { AISteps } from "./AISteps";
 
 const StyledWrapper = styled.div`
   z-index: -100;
   position: absolute;
-  top: -22px;
-  left: -15px;
-  border-radius: 40px;
-  border: 40px solid black;
-  width: 360px;
-  height: 262px;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  border: 20px solid black;
+  border-radius: 30px;
   background-color: white;
+  height: 320px;
+  width: 410px;
 `;
 
-const StyledParagraph = styled.p`
-  font-family: "courier";
-  font-size: 14px;
+const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 10px;
+  top: -20px;
+  right: -20px;
 `;
 
 export const AI = ({ handleClick }) => {
@@ -32,21 +34,17 @@ export const AI = ({ handleClick }) => {
 
   const onChange = (value) => {
     setChecked(value);
-    console.log(">>>", value);
   };
   const startQuestions = (e) => {
     e.preventDefault();
     setStep(step + 1);
-    console.log("startQuestions>>>", step);
   };
 
   const nextClick = (e, value, answer) => {
     e.preventDefault();
     setStep(step + 1);
-    console.log("nextClick>>>", value, answer, score);
     setChecked(false);
     if (answer === value) {
-      console.log("add to score");
       setScore(score + 1);
     }
   };
@@ -54,7 +52,6 @@ export const AI = ({ handleClick }) => {
   const handleReset = () => {
     setScore(0);
     setStep(1);
-    console.log("handleReset", { step }, { score });
   };
 
   return (
@@ -71,8 +68,10 @@ export const AI = ({ handleClick }) => {
           onChange={onChange}
         ></AISteps>
       </StyledWrapper>
-
-      <Button handleClick={handleClick}></Button>
+      <ButtonContainer>
+        {" "}
+        <CloseButton icon="close.svg" handleClick={handleClick} />
+      </ButtonContainer>
     </div>
   );
 };

@@ -3,24 +3,124 @@ import styled from "styled-components";
 
 // TODO: make generic Button component or styles
 
+const pink = "#c21a95";
+const darkPink = "#4f1840";
+
 const StyledButton = styled.button`
+  box-sizing: border-box;
   border-radius: 10%;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+
+  :hover {
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+  }
+`;
+
+const StyledSVGButton = styled.button`
+  box-sizing: border-box;
+  border-radius: 10%;
+  height: 30px;
+  background-color: black;
+  border: 1px solid ${pink};
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+
+  :hover {
+    border: 1px solid black;
+    background-color: white;
+  }
+`;
+
+const StyledIconButton = styled.button`
   width: 20px;
   height: 20px;
+  box-sizing: border-box;
+  border-radius: 10%;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: ${(props) => props.icon || 0}px;
+  :hover {
+    box-shadow: none !important;
+    transition: All 250ms ease;
+  }
+`;
+
+const StyledTVButton = styled.button`
+  border-radius: 10%;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 6px;
+  left: 340px;
+  background: url(./button.jpg);
+  background-size: contain;
+  cursor: pointer;
+`;
+
+const StyledMonitorButton = styled.button`
+  border-radius: 5%;
+  width: 20px;
+  height: 20px;
+  border: 2px grey solid;
   position: absolute;
   bottom: 10px;
   left: 340px;
   background: url(./button.jpg);
   background-size: contain;
   cursor: pointer;
-  :active {
-    box-shadow: none !important;
-    transition: All 250ms ease;
-  }
 `;
 
-export const Button = ({ handleClick }) => {
-  return <StyledButton onClick={handleClick}></StyledButton>;
+const CloseSVG = ({ fillColor }) => (
+  <svg
+    id="Close"
+    version="1.1"
+    width="28px"
+    height="28px"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon
+      fill={fillColor}
+      points="77.6,21.1 49.6,49.2 21.5,21.1 19.6,23 47.6,51.1 19.6,79.2 21.5,81.1 49.6,53 77.6,81.1 79.6,79.2   51.5,51.1 79.6,23 "
+    />
+  </svg>
+);
+
+export const Button = ({ handleClick, children }) => {
+  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
+};
+
+export const CloseButton = ({ handleClick }) => {
+  return (
+    <StyledSVGButton onClick={handleClick}>
+      <CloseSVG fillColor={pink} />
+    </StyledSVGButton>
+  );
+};
+
+// pass icon in here
+export const IconButton = ({ handleClick, children, icon }) => {
+  return (
+    <StyledIconButton icon={icon} onClick={handleClick}>
+      {children}
+    </StyledIconButton>
+  );
+};
+
+export const MonitorButton = ({ handleClick }) => {
+  return <StyledMonitorButton onClick={handleClick}></StyledMonitorButton>;
+};
+
+export const TVButton = ({ handleClick }) => {
+  return <StyledTVButton onClick={handleClick}></StyledTVButton>;
 };
 
 const StyledChannelButton = styled.button`
@@ -108,11 +208,9 @@ const StyledAIButton = styled.button`
 `;
 
 export const AISubmit = ({ text }) => {
-  console.log(text);
   return <StyledSubmit type="submit" value={text} />;
 };
 
 export const AIButton = ({ handleClick, text }) => {
-  console.log("AIButton", text);
   return <StyledAIButton onClick={handleClick}>{text}</StyledAIButton>;
 };
