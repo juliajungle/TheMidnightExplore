@@ -1,10 +1,8 @@
 # The Midnight Point and Click
 
-This project is in the style of a point click game. The user can click on items in The Midnight artwork.
+This project is sort of in the style of a point click game. The main inspiration came from the ARG and the way it brought the _Midnightverse_ alive.
 
-THis is just the beginning and so far this project includes just one item in the Monsters artwork.
-
-## Project details
+## Tech details
 
 This app was built in React (see below for more about Create React App).
 
@@ -14,8 +12,9 @@ Also uses:
 - React Hooks
 - Canvas
 - Image map
+- SVG light filters
 
-To get started run `npm install`
+As per usual, to get started run `npm install`
 
 # Create React App
 
