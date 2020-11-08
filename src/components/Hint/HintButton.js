@@ -35,6 +35,7 @@ const StyledHintButton = styled.button`
   border-radius: 10%;
   background-color: white;
   box-shadow: #aa1389 0px 0px 7px 5px;
+  cursor: pointer;
   :focus {
     outline: none;
     border: none;

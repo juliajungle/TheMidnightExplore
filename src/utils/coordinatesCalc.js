@@ -1,27 +1,53 @@
 const itemConfig = {
-  tv: {
-    xRatio: 0.29,
-    yRatio: 0.47,
-    topXRatio: 0.2625,
-    topYRatio: 0.4444,
-    bottomXRatio: 0.325,
-    bottomYRatio: 0.5555,
+  bedroom1: {
+    tv: {},
+    monitor: {},
+    ai: {
+      xRatio: 0.29,
+      yRatio: 0.47,
+      topXRatio: 0.2625,
+      topYRatio: 0.4444,
+      bottomXRatio: 0.325,
+      bottomYRatio: 0.5555,
+    },
   },
-  monitor: {
-    xRatio: 0.43,
-    yRatio: 0.5,
-    topXRatio: 0.4,
-    topYRatio: 0.4444,
-    bottomXRatio: 0.46,
-    bottomYRatio: 0.56,
+  bedroom2: {
+    tv: {},
+    monitor: {},
+    ai: {
+      xRatio: 0.12,
+      yRatio: 0.23,
+      topXRatio: 0.1,
+      topYRatio: 0.15,
+      bottomXRatio: 0.15,
+      bottomYRatio: 0.32,
+    },
   },
-  ai: {
-    xRatio: 0.57,
-    yRatio: 0.4,
-    topXRatio: 0.55,
-    topYRatio: 0.36,
-    bottomXRatio: 0.58,
-    bottomYRatio: 0.45,
+  bedroom3: {
+    tv: {
+      xRatio: 0.29,
+      yRatio: 0.47,
+      topXRatio: 0.2625,
+      topYRatio: 0.4444,
+      bottomXRatio: 0.325,
+      bottomYRatio: 0.5555,
+    },
+    monitor: {
+      xRatio: 0.43,
+      yRatio: 0.5,
+      topXRatio: 0.4,
+      topYRatio: 0.4444,
+      bottomXRatio: 0.46,
+      bottomYRatio: 0.56,
+    },
+    ai: {
+      xRatio: 0.57,
+      yRatio: 0.4,
+      topXRatio: 0.55,
+      topYRatio: 0.36,
+      bottomXRatio: 0.58,
+      bottomYRatio: 0.45,
+    },
   },
 };
 
@@ -48,8 +74,10 @@ const navigationConfig = {
 
 const HEIGHT_RATIO = 0.5625;
 
-export const getItemCoords = (width, item) => {
-  const { topXRatio, topYRatio, bottomXRatio, bottomYRatio } = itemConfig[item];
+export const getItemCoords = (width, item, imageName) => {
+  const { topXRatio, topYRatio, bottomXRatio, bottomYRatio } = itemConfig[
+    imageName
+  ][item];
   const height = width * HEIGHT_RATIO;
   const topX = width * topXRatio;
   const topY = height * topYRatio;
@@ -60,9 +88,9 @@ export const getItemCoords = (width, item) => {
   return coordinates;
 };
 
-export const getHintCoords = (width, item) => {
+export const getHintCoords = (width, item, imageName) => {
   const height = width * HEIGHT_RATIO;
-  const { xRatio, yRatio } = itemConfig[item];
+  const { xRatio, yRatio } = itemConfig[imageName][item];
   const x = width * xRatio;
   const y = height * yRatio;
 
@@ -85,6 +113,6 @@ export const getNavigationCoords = (width, area) => {
   const backY = height * backYRatio;
 
   const coordinates = { forwardX, forwardY, backX, backY };
-  console.log(coordinates);
+
   return coordinates;
 };

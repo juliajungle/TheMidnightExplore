@@ -53,9 +53,13 @@ export const BedroomImage = ({ imageName }) => {
   );
 };
 
-export const ImageMap = ({ handleClick, width }) => {
-  const areas = MAP_AREAS.map((area) => {
-    const { topX, topY, bottomX, bottomY } = getItemCoords(width, area);
+export const ImageMap = ({ handleClick, width, imageName }) => {
+  const areas = MAP_AREAS[imageName].map((area) => {
+    const { topX, topY, bottomX, bottomY } = getItemCoords(
+      width,
+      area,
+      imageName
+    );
     return (
       <area
         onClick={handleClick}

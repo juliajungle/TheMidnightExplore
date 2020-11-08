@@ -87,8 +87,10 @@ export const Television = ({ handleClick }) => {
             type="text/html"
             width="360"
             height="260"
-            src="https://www.youtube.com/embed/Xzex-nN2yM0"
+            src="https://www.youtube.com/embed/Xzex-nN2yM0?autoplay=1"
             frameborder="0"
+            allow="autoplay"
+            autoplay="1"
           ></StyledIframe>
         )}
       </StyledWrapper>

@@ -82,7 +82,13 @@ export const Bedroom = () => {
       )}
       <BedroomImage imageName={`bedroom${area}`} />
       {isOpen && <StyledOverlay />}
-      <ImageMap handleClick={handleClick} x={x} y={y} width={width} />
+      <ImageMap
+        handleClick={handleClick}
+        x={x}
+        y={y}
+        width={width}
+        imageName={`bedroom${area}`}
+      />
       <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
       {!isLoading && (
         <div>
