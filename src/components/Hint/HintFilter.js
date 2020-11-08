@@ -6,6 +6,7 @@ import { getHintCoords } from "../../utils/coordinatesCalc";
 
 const StyledFilter = styled.svg`
   position: absolute;
+  z-index: 100;
 `;
 
 const renderComposites = () => {
@@ -56,7 +57,7 @@ const renderSpotLights = (width) => {
   });
 };
 
-export const HintFilter = ({ width }) => {
+export const HintFilter = ({ width, imageName }) => {
   const spotLights = renderSpotLights(width);
   const composites = renderComposites();
 
@@ -84,7 +85,7 @@ export const HintFilter = ({ width }) => {
           height="100%"
           width={width}
         >
-          <image x="0" y="0" width="100%" href="background.png" />
+          <image x="0" y="0" width="100%" href={`${imageName}.png`} />
         </pattern>
       </defs>
 

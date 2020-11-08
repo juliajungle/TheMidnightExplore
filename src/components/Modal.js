@@ -20,7 +20,6 @@ const StyledModal = styled.div`
 `;
 
 export const Modal = ({ isOpen, handleClick, item }) => {
-  console.log(item);
   return (
     <div>
       {isOpen && (

@@ -28,7 +28,11 @@ const StyledImage = styled.img`
 `;
 
 const StyledIframe = styled.iframe`
+  position: absolute;
+  top: -2px;
+  left: -2px;
   border-radius: 5%;
+  border-color: transparent;
 `;
 
 const StyledWrapper = styled.div`
@@ -40,8 +44,9 @@ const StyledWrapper = styled.div`
   background-color: #ab8feff5;
   border-radius: 40px;
   border: 25px solid black;
-  width: 360px;
-  height: 250px;
+  box-sizing: border-box;
+  width: 410px;
+  height: 310px;
   box-shadow: inset 0px 0px 20px 0px #fff;
 `;
 
@@ -54,7 +59,7 @@ export const Television = ({ handleClick }) => {
 
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   };
 
   return (

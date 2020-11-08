@@ -25,6 +25,27 @@ const itemConfig = {
   },
 };
 
+const navigationConfig = {
+  bedroom1: {
+    forwardXRatio: 0.78,
+    forwardYRatio: 0.76,
+    backXRatio: 0.97,
+    backYRatio: 0.4444,
+  },
+  bedroom2: {
+    forwardXRatio: 0.97,
+    forwardYRatio: 0.8,
+    backXRatio: 0.05,
+    backYRatio: 0.5,
+  },
+  bedroom3: {
+    forwardXRatio: 0.35,
+    forwardYRatio: 0.47,
+    backXRatio: 0.58,
+    backYRatio: 0.85,
+  },
+};
+
 const HEIGHT_RATIO = 0.5625;
 
 export const getItemCoords = (width, item) => {
@@ -46,5 +67,24 @@ export const getHintCoords = (width, item) => {
   const y = height * yRatio;
 
   const coordinates = { x, y };
+  return coordinates;
+};
+
+export const getNavigationCoords = (width, area) => {
+  const height = width * HEIGHT_RATIO;
+  const {
+    forwardXRatio,
+    forwardYRatio,
+    backXRatio,
+    backYRatio,
+  } = navigationConfig[area];
+
+  const forwardX = width * forwardXRatio;
+  const forwardY = height * forwardYRatio;
+  const backX = width * backXRatio;
+  const backY = height * backYRatio;
+
+  const coordinates = { forwardX, forwardY, backX, backY };
+  console.log(coordinates);
   return coordinates;
 };

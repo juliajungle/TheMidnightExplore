@@ -9,6 +9,13 @@ const StyledParagraph = styled.p`
   font-size: 14px;
 `;
 
+const StyledList = styled.ul`
+  font-family: "courier";
+  font-size: 14px;
+  padding-left: 0;
+  list-style-position: inside;
+`;
+
 const StyledQuestion = styled.div`
   margin: 10px;
 `;
@@ -43,16 +50,22 @@ export const AISteps = ({
           {" "}
           <StyledParagraph>
             American author, inventor and futurist Raymond Kurzweil famously
-            makes (often correct) predictions about AI.
+            makes (and often correctly) predictions about AI.
           </StyledParagraph>
+          <StyledList>
+            These are some predictions from The Age of Spiritual Machines (1990)
+            for 2009:{" "}
+            <li>
+              "Computer displays built into eyeglasses for augmented reality are
+              used"
+            </li>
+            <li>
+              "Militaries rely heavily on armed unmanned airborne devices"
+            </li>
+          </StyledList>
           <StyledParagraph>
-            As some examples in The Age of Spiritual Machines (1999) he
-            predicted the following: "Computer displays built into eyeglasses
-            for augmented reality are used" "Militaries rely heavily on armed
-            unmanned airborne devices"
-          </StyledParagraph>
-          <StyledParagraph>
-            Can you guess which of these he predicted to be true by 2029?
+            Can you guess which of the following he predicted to be true by
+            2029?
           </StyledParagraph>
           <StyledDiv>
             <AIButton handleClick={startQuestions} text="START" />
@@ -74,7 +87,7 @@ export const AISteps = ({
           </StyledParagraph>
           <StyledDiv>
             {" "}
-            <AIButton handleClick={handleReset} text="Try again" />
+            <AIButton handleClick={handleReset} text="TRY AGAIN" />
           </StyledDiv>
         </div>
       )}

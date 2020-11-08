@@ -1,55 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import useDimensions from "react-use-dimensions";
-import { ImageMap, Image } from "./components/ImageMap";
-import { Modal } from "./components/Modal";
-import { HintFilter } from "./components/Hint/HintFilter";
-import { HintButton } from "./components/Hint/HintButton";
+import { Bedroom } from "./Bedroom";
 
 const StyledApp = styled.div`
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%; // transform: scale(1.5);
+  overflow: hidden;
 `;
 
-const StyledOverlay = styled.div`
-  display: block;
-  position: absolute;
+const StyledImage = styled.img`
   width: 100%;
-  height: 100%;
-  background: black;
-  opacity: 0.7;
-  top: 0;
+  @keyframes intro {
+    0% {
+      transform: scale(1);
+    }
+
+    80% {
+      opacity: 1;
+    }
+
+    90% {
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: scale(6) translate(-130px, -100px);
+      opacity: 0;
+    }
+  }
+
+  animation: intro 10s ease-in;
+  animation-fill-mode: forwards;
 `;
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [hint, setHint] = useState(false);
-  const [currentItem, setItem] = useState();
+  const [isLoading, setLoading] = useState(true);
 
-  const [ref, { x, y, width, height }] = useDimensions();
-
-  const handleClick = (e) => {
-    console.log(e.target.alt);
-    const currentItem = e.target.alt;
-    setItem(currentItem);
-    setIsOpen(!isOpen);
-  };
-
-  const showHint = () => {
-    setHint(true);
+  useEffect(() => {
     setTimeout(() => {
-      setHint(false);
-    }, 500);
-  };
+      setLoading(false);
+    }, 11000);
+  }, []);
 
   return (
-    <StyledApp ref={ref}>
-      {hint && <HintFilter width={width} height={height} />}
-      <Image />
-      {isOpen && <StyledOverlay />}
-      <ImageMap handleClick={handleClick} x={x} y={y} width={width} />
-      <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
-      <HintButton handleClick={showHint}>Show hint</HintButton>
-    </StyledApp>
+    <div>
+      {isLoading && (
+        <StyledApp>
+          <StyledImage src="sunset.png"></StyledImage>
+        </StyledApp>
+      )}
+      {!isLoading && <Bedroom />}
+    </div>
   );
 };
 

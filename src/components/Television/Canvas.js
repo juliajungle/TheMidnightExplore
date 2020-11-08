@@ -7,7 +7,7 @@ const StyledCanvas = styled.canvas`
   top: 0;
   left: 0;
   width: 360px;
-  height: 250px;
+  height: 260px;
 `;
 
 const Canvas = () => {
@@ -15,7 +15,7 @@ const Canvas = () => {
     const { width, height } = ctx.canvas;
     //  The imageData object is filled with transparent black pixels.
     const imageData = ctx.createImageData(width, height);
-
+    console.log(imageData);
     // Change the pixel colours
     for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 90 * Math.random(); // R value
