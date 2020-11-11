@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import useDimensions from "react-use-dimensions";
-import { ImageMap, BedroomImage } from "./components/ImageMap";
+import { ImageMap, BedroomImage, MobileImageMap } from "./components/ImageMap";
 import { Modal } from "./components/Modal";
 import { HintFilter } from "./components/Hint/HintFilter";
-import { HintButton, NavigationButton } from "./components/Hint/HintButton";
+import { HintButton } from "./components/Buttons/HintButton";
+import { NavigationButton } from "./components/Buttons/NavigationButton";
 import { getNavigationCoords } from "./utils/coordinatesCalc";
+import { MobileApp } from "./MobileApp";
 
 const StyledApp = styled.div`
   // background-color: rgba(0, 0, 0, 0.8);
@@ -26,8 +28,9 @@ export const Bedroom = () => {
   const [hint, setHint] = useState(false);
   const [currentItem, setItem] = useState();
   const [area, setArea] = useState(1);
-
   const [isLoading, setLoading] = useState(true);
+  const [isMobile, setMobile] = useState(false);
+  // const [width, setWidth] = useState("100%");
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,7 +38,9 @@ export const Bedroom = () => {
     }, 5000);
   }, []);
 
+  // get size of screen
   const [ref, { x, y, width, height }] = useDimensions();
+  console.log({ width }, { height });
 
   const handleClick = (e) => {
     const currentItem = e.target.alt;
@@ -66,46 +71,62 @@ export const Bedroom = () => {
     }
   };
 
+  // this needs to change on mobile
   const { forwardX, forwardY, backX, backY } = getNavigationCoords(
     width,
     `bedroom${area}`
   );
 
+  const showMobile = () => {
+    setMobile(true);
+  };
+
+  const ShowMobileVersion = () => {
+    return <button onClick={showMobile}>Click me</button>;
+  };
+
   return (
     <StyledApp ref={ref}>
-      {hint && (
-        <HintFilter
-          width={width}
-          height={height}
-          imageName={`bedroom${area}`}
-        />
-      )}
-      <BedroomImage imageName={`bedroom${area}`} />
-      {isOpen && <StyledOverlay />}
-      <ImageMap
-        handleClick={handleClick}
-        x={x}
-        y={y}
-        width={width}
-        imageName={`bedroom${area}`}
-      />
-      <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
-      {!isLoading && (
+      {!isMobile && (
         <div>
-          {" "}
-          <HintButton handleClick={showHint}>Show hint</HintButton>
-          <NavigationButton
-            handleClick={goBack}
-            x={backX}
-            y={backY}
-          ></NavigationButton>
-          <NavigationButton
-            handleClick={goForward}
-            x={forwardX}
-            y={forwardY}
-          ></NavigationButton>
+          <ImageMap
+            handleClick={handleClick}
+            x={x}
+            y={y}
+            width={width}
+            imageName={`bedroom${area}`}
+          />
+          {hint && (
+            <HintFilter
+              width={width}
+              height={height}
+              imageName={`bedroom${area}`}
+            />
+          )}
+          <BedroomImage imageName={`bedroom${area}`} />
+          {isOpen && <StyledOverlay />}
+
+          <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
+          {!isLoading && (
+            <div>
+              {" "}
+              <HintButton handleClick={showHint}>Show hint</HintButton>
+              <NavigationButton
+                handleClick={goBack}
+                x={backX}
+                y={backY}
+              ></NavigationButton>
+              <NavigationButton
+                handleClick={goForward}
+                x={forwardX}
+                y={forwardY}
+              ></NavigationButton>
+              <ShowMobileVersion />
+            </div>
+          )}
         </div>
       )}
+      {isMobile && <MobileApp />}
     </StyledApp>
   );
 };

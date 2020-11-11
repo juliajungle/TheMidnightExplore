@@ -5,7 +5,7 @@ import { MAP_AREAS } from "../const";
 import { getItemCoords } from "../utils/coordinatesCalc";
 
 const StyledImage = styled.img`
-  width: 100%;
+  width: ${(props) => props.width};
   height: auto;
 
   opacity: 0;
@@ -41,19 +41,41 @@ const StyledImage = styled.img`
   animation-fill-mode: forwards;
 `;
 
-export const BedroomImage = ({ imageName }) => {
+export const BedroomImage = ({ imageName, width }) => {
   return (
     <div>
       <StyledImage
         src={`${imageName}.png`}
         alt="Monsters wallpaper"
         useMap="#monsters"
+        width={() => (width ? `${width}px` : "100%")}
       />
     </div>
   );
 };
 
 export const ImageMap = ({ handleClick, width, imageName }) => {
+  const areas = MAP_AREAS[imageName].map((area) => {
+    const { topX, topY, bottomX, bottomY } = getItemCoords(
+      width,
+      area,
+      imageName
+    );
+    return (
+      <area
+        onClick={handleClick}
+        shape="rect"
+        coords={`${topX}, ${topY}, ${bottomX} , ${bottomY}`}
+        alt={area}
+        href="#"
+      />
+    );
+  });
+
+  return <map name="monsters">{areas}</map>;
+};
+
+export const MobileImageMap = ({ handleClick, width, imageName }) => {
   const areas = MAP_AREAS[imageName].map((area) => {
     const { topX, topY, bottomX, bottomY } = getItemCoords(
       width,
