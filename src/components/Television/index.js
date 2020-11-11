@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Canvas from "./Canvas";
-import { TVButton, ChannelButton, ChannelButtonContainer } from "../Buttons";
+import {
+  TVButton,
+  ChannelButton,
+  ChannelButtonContainer,
+  TVButtonContainer,
+} from "../Buttons/Buttons";
 import { Loading } from "./Loading";
 
 const StyledImage = styled.img`
@@ -98,7 +103,9 @@ export const Television = ({ handleClick }) => {
         <ChannelButton handleClick={changeChannel} text={1}></ChannelButton>
         <ChannelButton handleClick={changeChannel} text={2}></ChannelButton>
       </ChannelButtonContainer>
-      <TVButton handleClick={handleClick}></TVButton>
+      <TVButtonContainer>
+        <TVButton handleClick={handleClick} />
+      </TVButtonContainer>
     </div>
   );
 };

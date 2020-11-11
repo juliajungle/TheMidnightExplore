@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { CloseButton } from "../Buttons";
+import { CloseButton } from "../Buttons/Buttons";
 import { predictions } from "../../data/questions";
 import { AISteps } from "./AISteps";
 

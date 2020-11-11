@@ -47,7 +47,7 @@ const renderSpotLights = (width, imageName) => {
           x={x}
           y={adjustedY}
           z="500"
-          limitingConeAngle="5"
+          limitingConeAngle="7"
           pointsAtX={x}
           pointsAtY={adjustedY}
           pointsAtZ="0"

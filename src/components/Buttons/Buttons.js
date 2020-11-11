@@ -1,37 +1,26 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // TODO: make generic Button component or styles
 
 const pink = "#c21a95";
 const darkPink = "#4f1840";
+const darkGrey = "#333233";
+const lightGrey = "#c4c4c4";
 
-const StyledButton = styled.button`
+const StyledButton = css`
   box-sizing: border-box;
   border-radius: 10%;
-  color: black;
-  background-color: white;
-  border: 1px solid black;
   cursor: pointer;
   font-size: 18px;
   padding: 0;
-
-  :hover {
-    color: white;
-    background-color: black;
-    border: 1px solid white;
-  }
 `;
 
 const StyledSVGButton = styled.button`
-  box-sizing: border-box;
-  border-radius: 10%;
+  ${StyledButton}
   height: 30px;
   background-color: black;
   border: 1px solid ${pink};
-  cursor: pointer;
-  font-size: 18px;
-  padding: 0;
 
   :hover {
     border: 1px solid black;
@@ -39,43 +28,34 @@ const StyledSVGButton = styled.button`
   }
 `;
 
-const StyledIconButton = styled.button`
-  width: 20px;
-  height: 20px;
-  box-sizing: border-box;
-  border-radius: 10%;
-  border: 1px solid transparent;
-  cursor: pointer;
-  background: ${(props) => props.icon || 0}px;
-  :hover {
-    box-shadow: none !important;
-    transition: All 250ms ease;
-  }
-`;
-
 const StyledTVButton = styled.button`
-  border-radius: 10%;
+  ${StyledButton}
   width: 25px;
   height: 25px;
-  position: absolute;
-  bottom: 6px;
-  left: 340px;
   background: url(./button.jpg);
   background-size: contain;
-  cursor: pointer;
+`;
+
+const StyledTVButtonContainer = styled.div`
+  position: absolute;
+  bottom: 3px;
+  left: 340px;
 `;
 
 const StyledMonitorButton = styled.button`
+  ${StyledButton}
   border-radius: 5%;
   width: 20px;
   height: 20px;
   border: 2px grey solid;
+  background: url(./button.jpg);
+  background-size: contain;
+`;
+
+const StyledMonitorButtonContainer = styled.div`
   position: absolute;
   bottom: 10px;
   left: 340px;
-  background: url(./button.jpg);
-  background-size: contain;
-  cursor: pointer;
 `;
 
 const CloseSVG = ({ fillColor }) => (
@@ -94,10 +74,6 @@ const CloseSVG = ({ fillColor }) => (
   </svg>
 );
 
-export const Button = ({ handleClick, children }) => {
-  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
-};
-
 export const CloseButton = ({ handleClick }) => {
   return (
     <StyledSVGButton onClick={handleClick}>
@@ -106,34 +82,34 @@ export const CloseButton = ({ handleClick }) => {
   );
 };
 
-// pass icon in here
-export const IconButton = ({ handleClick, children, icon }) => {
-  return (
-    <StyledIconButton icon={icon} onClick={handleClick}>
-      {children}
-    </StyledIconButton>
-  );
-};
-
 export const MonitorButton = ({ handleClick }) => {
   return <StyledMonitorButton onClick={handleClick}></StyledMonitorButton>;
+};
+
+export const MonitorButtonContainer = ({ children }) => {
+  return (
+    <StyledMonitorButtonContainer>{children}</StyledMonitorButtonContainer>
+  );
 };
 
 export const TVButton = ({ handleClick }) => {
   return <StyledTVButton onClick={handleClick}></StyledTVButton>;
 };
 
+export const TVButtonContainer = ({ children }) => {
+  return <StyledTVButtonContainer>{children}</StyledTVButtonContainer>;
+};
+
 const StyledChannelButton = styled.button`
-  border-radius: 10%;
+  ${StyledButton}
   width: 30px;
   height: 20px;
-  background-color: #333233;
-  cursor: pointer;
-  box-shadow: 0px 2px 0px #c4c4c4;
+  background-color: ${darkGrey};
+  box-shadow: 0px 2px 0px ${lightGrey};
   display: inline-block;
   margin-right: 10px;
-  bottom: 10px;
   color: white;
+  font-size: 8px;
   :active {
     bottom: 8px;
     box-shadow: none !important;
@@ -176,23 +152,23 @@ export const ChatRoomButton = ({ children }) => {
   return <StyledChatRoomButton>{children}</StyledChatRoomButton>;
 };
 
-const AIStyles = `
-display: block;
-height: 23px;
-width: auto;
-align-self: flex-end;
-margin-right: 20px;
-background-color: black;
-color: white;
-border: 1px solid transparent;
-cursor: pointer;
-border-radius: 5px;
-margin-top: 20px;
-:hover {
-  background-color: white;
-  color: black;
-  border-color: black;
-}
+const AIStyles = css`
+  display: block;
+  height: 23px;
+  width: auto;
+  align-self: flex-end;
+  margin-right: 20px;
+  background-color: black;
+  color: white;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  :hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+  }
 `;
 
 const StyledSubmit = styled.input`

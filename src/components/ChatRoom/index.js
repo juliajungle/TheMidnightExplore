@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MonitorButton } from "../Buttons";
+import { MonitorButton, MonitorButtonContainer } from "../Buttons/Buttons";
 
 const StyledWrapper = styled.div`
   z-index: -100;
@@ -22,9 +22,9 @@ const StyledImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 239px;
-  left: 238px;
-  font-size: 8px;
+  top: 241px;
+  left: 233px;
+  font-size: 7px;
   color: #535252;
   text-decoration: none;
   border: solid #323131 1px;
@@ -62,7 +62,10 @@ export const ChatRoom = ({ handleClick }) => {
       >
         {`Comtek`}
       </StyledTechLink>
-      <MonitorButton handleClick={handleClick}></MonitorButton>
+      <MonitorButtonContainer>
+        {" "}
+        <MonitorButton handleClick={handleClick}></MonitorButton>
+      </MonitorButtonContainer>
     </div>
   );
 };

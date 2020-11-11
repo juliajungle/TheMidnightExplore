@@ -24,7 +24,7 @@ const StyledImage = styled.img`
     }
 
     100% {
-      transform: scale(6) translate(-130px, -100px);
+      transform: scale(6) translate(-12%, -10%);
       opacity: 0;
     }
   }

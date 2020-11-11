@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Question } from "./Question";
-import { AIButton } from "../Buttons";
+import { AIButton } from "../Buttons/Buttons";
 
 const StyledParagraph = styled.p`
   font-family: "courier";
@@ -11,7 +11,7 @@ const StyledParagraph = styled.p`
 
 const StyledList = styled.ul`
   font-family: "courier";
-  font-size: 14px;
+  font-size: 12px;
   padding-left: 0;
   list-style-position: inside;
 `;
@@ -50,18 +50,16 @@ export const AISteps = ({
           {" "}
           <StyledParagraph>
             American author, inventor and futurist Raymond Kurzweil famously
-            makes (and often correctly) predictions about AI.
+            made (and often correctly) predictions about AI.
           </StyledParagraph>
           <StyledList>
             These are some predictions from The Age of Spiritual Machines (1990)
             for 2009:{" "}
             <li>
-              "Computer displays built into eyeglasses for augmented reality are
-              used"
+              Computer displays built into eyeglasses for augmented reality are
+              used
             </li>
-            <li>
-              "Militaries rely heavily on armed unmanned airborne devices"
-            </li>
+            <li>Militaries rely heavily on armed unmanned airborne devices</li>
           </StyledList>
           <StyledParagraph>
             Can you guess which of the following he predicted to be true by
