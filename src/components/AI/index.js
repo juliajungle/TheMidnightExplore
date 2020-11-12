@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
   border-radius: 30px;
   background-color: white;
   height: 320px;
-  width: 410px;
+  // width: 410px;
 `;
 
 const ButtonContainer = styled.div`

@@ -19,12 +19,12 @@ const StyledButton = css`
 const StyledSVGButton = styled.button`
   ${StyledButton}
   height: 30px;
-  background-color: black;
+  background-color: white;
   border: 1px solid ${pink};
 
   :hover {
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid white;
+    background-color: black;
   }
 `;
 

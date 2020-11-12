@@ -19,7 +19,7 @@ const StyledNavigationButton = styled.button`
     border: none;
   }
   :active {
-    box-shadow: none;
+    // box-shadow: none;
   }
   :hover {
     opacity: 1;

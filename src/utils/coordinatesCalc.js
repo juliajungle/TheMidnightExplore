@@ -10,8 +10,17 @@ const itemConfig = {
       bottomXRatio: 0.325,
       bottomYRatio: 0.5555,
     },
+    noticeboard: {},
   },
   bedroom2: {
+    noticeboard: {
+      xRatio: 0.05,
+      yRatio: 0.5,
+      topXRatio: 0.02,
+      topYRatio: 0.42,
+      bottomXRatio: 0.28,
+      bottomYRatio: 0.65,
+    },
     tv: {},
     monitor: {},
     ai: {
@@ -48,6 +57,7 @@ const itemConfig = {
       bottomXRatio: 0.58,
       bottomYRatio: 0.45,
     },
+    noticeboard: {},
   },
 };
 

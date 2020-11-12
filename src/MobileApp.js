@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import useDimensions from "react-use-dimensions";
-import { ImageMap, BedroomImage, MobileImageMap } from "./components/ImageMap";
-import { Modal } from "./components/Modal";
-import { HintFilter } from "./components/Hint/HintFilter";
-import { HintButton } from "./components/Buttons/HintButton";
+import { BedroomImage, MobileImageMap } from "./components/ImageMap";
+import { MobileModal } from "./components/Modal";
 import { NavigationButton } from "./components/Buttons/NavigationButton";
 import { getNavigationCoords } from "./utils/coordinatesCalc";
 
+// TODO: Add a hint button that moves the user to the area where there is something?
+// Could use a randomiser to show one or show each one in sequence?
 const StyledOverlay = styled.div`
   display: block;
   position: absolute;
@@ -51,24 +51,28 @@ export const MobileApp = () => {
 
   // this needs to change on mobile
   const { forwardX, forwardY, backX, backY } = getNavigationCoords(
-    1920,
+    1000,
     `bedroom${area}`
   );
 
   return (
     <div ref={ref}>
-      <BedroomImage imageName={`bedroom${area}`} width="1920" />
+      <BedroomImage imageName={`bedroom${area}`} width="1000" />
       {isOpen && <StyledOverlay />}
 
       <MobileImageMap
         handleClick={handleClick}
         x={x}
         y={y}
-        width="1920"
+        width="1000"
         imageName={`bedroom${area}`}
       />
 
-      <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
+      <MobileModal
+        isOpen={isOpen}
+        handleClick={handleClick}
+        item={currentItem}
+      />
 
       <NavigationButton
         handleClick={goBack}

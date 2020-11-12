@@ -106,7 +106,12 @@ export const Bedroom = () => {
           <BedroomImage imageName={`bedroom${area}`} />
           {isOpen && <StyledOverlay />}
 
-          <Modal isOpen={isOpen} handleClick={handleClick} item={currentItem} />
+          <Modal
+            isOpen={isOpen}
+            handleClick={handleClick}
+            item={currentItem}
+            width="410px"
+          />
           {!isLoading && (
             <div>
               {" "}
