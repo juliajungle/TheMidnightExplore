@@ -16,3 +16,11 @@ export const ANIMATION_CONFIG = {
 };
 
 export const ENV = "dev";
+
+export const COLORS = {
+  pink: "#c21a95",
+  darkPink: "#4f1840",
+  lightPink: "#f165cb",
+  darkGrey: "#333233",
+  lightGrey: "#c4c4c4",
+};

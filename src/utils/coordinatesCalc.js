@@ -115,8 +115,8 @@ export const getHintCoords = (width, item, imageName) => {
   return coordinates;
 };
 
-export const getNavigationCoords = (width, area) => {
-  const height = width * HEIGHT_RATIO;
+export const getNavigationCoords = (width, zoomWidth, area) => {
+  const height = zoomWidth ? zoomWidth * HEIGHT_RATIO : width * HEIGHT_RATIO;
   const {
     forwardXRatio,
     forwardYRatio,
@@ -124,9 +124,11 @@ export const getNavigationCoords = (width, area) => {
     backYRatio,
   } = navigationConfig[area];
 
-  const forwardX = width * forwardXRatio;
+  const forwardX = zoomWidth
+    ? zoomWidth * forwardXRatio
+    : width * forwardXRatio;
   const forwardY = height * forwardYRatio;
-  const backX = width * backXRatio;
+  const backX = zoomWidth ? zoomWidth * backXRatio : width * backXRatio;
   const backY = height * backYRatio;
 
   const coordinates = { forwardX, forwardY, backX, backY };

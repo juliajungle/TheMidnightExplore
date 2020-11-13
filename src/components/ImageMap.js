@@ -75,24 +75,3 @@ export const ImageMap = ({ handleClick, width, imageName }) => {
 
   return <map name="monsters">{areas}</map>;
 };
-
-export const MobileImageMap = ({ handleClick, width, imageName }) => {
-  const areas = MAP_AREAS[imageName].map((area) => {
-    const { topX, topY, bottomX, bottomY } = getItemCoords(
-      width,
-      area,
-      imageName
-    );
-    return (
-      <area
-        onClick={handleClick}
-        shape="rect"
-        coords={`${topX}, ${topY}, ${bottomX} , ${bottomY}`}
-        alt={area}
-        href="#"
-      />
-    );
-  });
-
-  return <map name="monsters">{areas}</map>;
-};

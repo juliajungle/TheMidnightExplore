@@ -6,8 +6,8 @@ const HintSVG = () => {
   return (
     <svg
       fill="#c21a95"
-      width="30px"
-      height="30px"
+      width="20px"
+      height="20px"
       id="Outlined"
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ const HintSVG = () => {
 };
 
 const StyledHintButton = styled.button`
-  position: absolute;
+  position: fixed;
   top: 14px;
   right: 14px;
   border-radius: 10%;
