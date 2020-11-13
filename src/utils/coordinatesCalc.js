@@ -14,7 +14,7 @@ const itemConfig = {
   },
   bedroom2: {
     noticeboard: {
-      xRatio: 0.05,
+      xRatio: 0.15,
       yRatio: 0.5,
       topXRatio: 0.02,
       topYRatio: 0.42,
@@ -33,8 +33,16 @@ const itemConfig = {
     },
   },
   bedroom3: {
+    noticeboard: {
+      xRatio: 0.55,
+      yRatio: 0.53,
+      topXRatio: 0.53,
+      topYRatio: 0.5,
+      bottomXRatio: 0.615,
+      bottomYRatio: 0.6,
+    },
     tv: {
-      xRatio: 0.29,
+      xRatio: 0.28,
       yRatio: 0.47,
       topXRatio: 0.2625,
       topYRatio: 0.4444,
@@ -42,22 +50,21 @@ const itemConfig = {
       bottomYRatio: 0.5555,
     },
     monitor: {
-      xRatio: 0.43,
-      yRatio: 0.5,
+      xRatio: 0.42,
+      yRatio: 0.49,
       topXRatio: 0.4,
       topYRatio: 0.4444,
       bottomXRatio: 0.46,
       bottomYRatio: 0.56,
     },
     ai: {
-      xRatio: 0.57,
+      xRatio: 0.54,
       yRatio: 0.4,
       topXRatio: 0.55,
       topYRatio: 0.36,
       bottomXRatio: 0.58,
       bottomYRatio: 0.45,
     },
-    noticeboard: {},
   },
 };
 

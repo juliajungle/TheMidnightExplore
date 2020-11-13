@@ -3,10 +3,10 @@ import styled from "styled-components";
 import useDimensions from "react-use-dimensions";
 import { ImageMap, BedroomImage, MobileImageMap } from "./components/ImageMap";
 import { Modal } from "./components/Modal";
-import { HintFilter } from "./components/Hint/HintFilter";
 import { HintButton } from "./components/Buttons/HintButton";
 import { NavigationButton } from "./components/Buttons/NavigationButton";
 import { getNavigationCoords } from "./utils/coordinatesCalc";
+import { Hint } from "./components/Hint/Hint";
 import { MobileApp } from "./MobileApp";
 
 const StyledApp = styled.div`
@@ -23,24 +23,22 @@ const StyledOverlay = styled.div`
   top: 0;
 `;
 
-export const Bedroom = () => {
+export const Bedroom = ({ loadingTime, animationTime }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hint, setHint] = useState(false);
   const [currentItem, setItem] = useState();
   const [area, setArea] = useState(1);
   const [isLoading, setLoading] = useState(true);
   const [isMobile, setMobile] = useState(false);
-  // const [width, setWidth] = useState("100%");
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, loadingTime);
   }, []);
 
   // get size of screen
   const [ref, { x, y, width, height }] = useDimensions();
-  console.log({ width }, { height });
 
   const handleClick = (e) => {
     const currentItem = e.target.alt;
@@ -52,7 +50,7 @@ export const Bedroom = () => {
     setHint(true);
     setTimeout(() => {
       setHint(false);
-    }, 500);
+    }, 2000);
   };
 
   const goForward = () => {
@@ -97,13 +95,12 @@ export const Bedroom = () => {
             imageName={`bedroom${area}`}
           />
           {hint && (
-            <HintFilter
-              width={width}
-              height={height}
-              imageName={`bedroom${area}`}
-            />
+            <Hint width={width} height={height} imageName={`bedroom${area}`} />
           )}
-          <BedroomImage imageName={`bedroom${area}`} />
+          <BedroomImage
+            imageName={`bedroom${area}`}
+            animationTime={animationTime}
+          />
           {isOpen && <StyledOverlay />}
 
           <Modal

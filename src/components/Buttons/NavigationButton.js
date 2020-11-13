@@ -14,13 +14,7 @@ const StyledNavigationButton = styled.button`
   box-shadow: #aa1389 0px 0px 7px 3px;
   cursor: pointer;
   opacity: 0.3;
-  :focus {
-    outline: none;
-    border: none;
-  }
-  :active {
-    // box-shadow: none;
-  }
+
   :hover {
     opacity: 1;
   }

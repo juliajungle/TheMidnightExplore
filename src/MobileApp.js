@@ -25,7 +25,6 @@ export const MobileApp = () => {
 
   // get size of screen
   const [ref, { x, y, width, height }] = useDimensions();
-  console.log({ width }, { height });
 
   const handleClick = (e) => {
     const currentItem = e.target.alt;

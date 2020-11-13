@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Bedroom } from "./Bedroom";
+import { ANIMATION_CONFIG, ENV } from "./const";
 
 const StyledApp = styled.div`
   width: 100%;
@@ -29,27 +30,30 @@ const StyledImage = styled.img`
     }
   }
 
-  animation: intro 10s ease-in;
+  animation: intro ${(props) => props.time}s ease-in;
   animation-fill-mode: forwards;
 `;
 
 const App = () => {
   const [isLoading, setLoading] = useState(true);
+  const { loadingTime, introImage } = ANIMATION_CONFIG[ENV];
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 11000);
+    }, `${loadingTime}`);
   }, []);
 
   return (
     <div>
       {isLoading && (
         <StyledApp>
-          <StyledImage src="sunset.png"></StyledImage>
+          <StyledImage time={introImage} src="sunset.png"></StyledImage>
         </StyledApp>
       )}
-      {!isLoading && <Bedroom />}
+      {!isLoading && (
+        <Bedroom loadingTime={loadingTime} animationTime={introImage} />
+      )}
     </div>
   );
 };

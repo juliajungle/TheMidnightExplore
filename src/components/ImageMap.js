@@ -37,11 +37,11 @@ const StyledImage = styled.img`
     }
   }
 
-  animation: greyscale 6s ease-out;
+  animation: greyscale ${(props) => props.animationTime}s ease-out;
   animation-fill-mode: forwards;
 `;
 
-export const BedroomImage = ({ imageName, width }) => {
+export const BedroomImage = ({ imageName, width, animationTime }) => {
   return (
     <div>
       <StyledImage
@@ -49,6 +49,7 @@ export const BedroomImage = ({ imageName, width }) => {
         alt="Monsters wallpaper"
         useMap="#monsters"
         width={() => (width ? `${width}px` : "100%")}
+        animationTime={animationTime}
       />
     </div>
   );
