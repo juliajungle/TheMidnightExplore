@@ -7,7 +7,7 @@ const StyledLoading = styled.div`
   background-image: url(/download.jpeg);
   background-size: cover;
   background-position: center;
-  width: 360px;
+  width: 100%;
   height: 260px;
   z-index: -100;
   position: absolute;

@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   border-radius: 20px;
   border: 10px solid black;
   height: 280px;
-  width: 410px;
+  width: 100%;
 `;
 
 const StyledImage = styled.img`
@@ -61,7 +61,7 @@ const StyledIframe = styled.iframe`
 const StyledButton = styled.button`
   position: absolute;
   bottom: 32px;
-  left: 233px;
+  left: 59%;
   font-size: 7px;
   color: #535252;
 

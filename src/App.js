@@ -5,7 +5,7 @@ import { ANIMATION_CONFIG, ENV } from "./const";
 
 const StyledApp = styled.div`
   width: 100%;
-  height: 100%; // transform: scale(1.5);
+  height: 100%;
   overflow: hidden;
 `;
 

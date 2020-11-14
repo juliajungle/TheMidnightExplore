@@ -22,8 +22,8 @@ const StyledImage = styled.img`
 
 const StyledPhotoBooth = styled.img`
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 7%;
+  left: 4%;
   width: 75px;
   transform: rotate(5deg);
 `;
@@ -53,8 +53,8 @@ const PhotoBooth = () => {
 
 const PolaroidBorder = styled.div`
   position: absolute;
-  top: 49px;
-  left: 180px;
+  top: 8%;
+  left: 39%;
   width: 75px;
   height: 90px;
   border: solid white 4px;
@@ -89,8 +89,8 @@ const Polaroid = () => {
 
 const StyledPosterWrapper = styled.div`
   position: absolute;
-  top: 106px;
-  left: 281px;
+  top: 40%;
+  left: 70%;
   width: 111px;
   div {
     position: absolute;
@@ -121,8 +121,8 @@ const Poster = () => {
 
 const StyledNoteWrapper = styled.div`
   position: absolute;
-  top: 201px;
-  left: 104px;
+  top: 62%;
+  left: 26%;
   width: 135px;
   div {
     position: absolute;
@@ -155,8 +155,8 @@ const Note = () => {
 const ButtonContainer = styled.div`
   position: absolute;
   bottom: 10px;
-  top: -15px;
-  right: -15px;
+  top: -5px;
+  right: -5px;
 `;
 
 const StyledPin = styled.div`

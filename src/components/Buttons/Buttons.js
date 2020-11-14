@@ -1,8 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-// TODO: make generic Button component or styles
-
 const pink = "#c21a95";
 const darkPink = "#4f1840";
 const darkGrey = "#333233";
@@ -39,7 +37,7 @@ const StyledTVButton = styled.button`
 const StyledTVButtonContainer = styled.div`
   position: absolute;
   bottom: 3px;
-  left: 340px;
+  left: 82%;
 `;
 
 const StyledMonitorButton = styled.button`
@@ -55,7 +53,7 @@ const StyledMonitorButton = styled.button`
 const StyledMonitorButtonContainer = styled.div`
   position: absolute;
   bottom: 10px;
-  left: 340px;
+  left: 90%;
 `;
 
 const CloseSVG = ({ fillColor }) => (
@@ -132,7 +130,7 @@ export const ChannelButton = ({ handleClick, text }) => {
 const StyledChannelButtonContainer = styled.div`
   position: absolute;
   bottom: 10px;
-  left: 240px;
+  left: 55%;
 `;
 
 export const ChannelButtonContainer = ({ children }) => {

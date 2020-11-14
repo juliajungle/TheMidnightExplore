@@ -12,7 +12,7 @@ import { Loading } from "./Loading";
 const StyledImage = styled.img`
   position: absolute;
   top: 130px;
-  left: 130px;
+  left: 30%;
   height: auto;
   width: 100px;
 
@@ -22,9 +22,9 @@ const StyledImage = styled.img`
     }
 
     100% {
-      width: 300px;
+      width: 90%;
       top: 100px;
-      left: 30px;
+      left: 5%;
     }
   }
 
@@ -36,6 +36,7 @@ const StyledIframe = styled.iframe`
   position: absolute;
   top: -2px;
   left: -2px;
+  width: 100%;
   border-radius: 5%;
   border-color: transparent;
 `;
@@ -50,7 +51,8 @@ const StyledWrapper = styled.div`
   border-radius: 40px;
   border: 25px solid black;
   box-sizing: border-box;
-  width: 410px;
+  // width: 410px;
+  width: 100%;
   height: 310px;
   box-shadow: inset 0px 0px 20px 0px #fff;
 `;
@@ -90,7 +92,7 @@ export const Television = ({ handleClick }) => {
           <StyledIframe
             id="ytplayer"
             type="text/html"
-            width="360"
+            // width="100%"
             height="260"
             src="https://www.youtube.com/embed/Xzex-nN2yM0?autoplay=1"
             frameborder="0"

@@ -10,7 +10,8 @@ import { getNavigationCoords } from "./utils/coordinatesCalc";
 import { Hint } from "./components/Hint/Hint";
 
 const StyledApp = styled.div`
-  // background-color: rgba(0, 0, 0, 0.8);
+  overflow: ${(props) => (props.isOpen ? "hidden" : "auto")};
+  height: ${(props) => (props.isOpen ? "100vh" : "auto")};
 `;
 
 const StyledOverlay = styled.div`
@@ -83,7 +84,7 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
   );
 
   const zoomIn = () => {
-    setZoomWidth("1000");
+    setZoomWidth(Math.min(1920, width * 1.5));
     setZoomed(true);
   };
 
@@ -93,7 +94,7 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
   };
 
   return (
-    <StyledApp ref={ref}>
+    <StyledApp ref={ref} isOpen={isOpen}>
       <ImageMap
         handleClick={handleClick}
         width={zoomWidth || width}
@@ -109,7 +110,7 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
       <BedroomImage
         imageName={`bedroom${area}`}
         animationTime={animationTime}
-        width={zoomWidth}
+        width={zoomWidth || width}
       />
       {isOpen && <StyledOverlay />}
 
@@ -117,7 +118,7 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
         isOpen={isOpen}
         handleClick={handleClick}
         item={currentItem}
-        width="410px"
+        width={width}
       />
       {!isLoading && (
         <div>
