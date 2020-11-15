@@ -10,7 +10,7 @@ import { getNavigationCoords } from "./utils/coordinatesCalc";
 import { Hint } from "./components/Hint/Hint";
 
 const StyledApp = styled.div`
-  overflow: ${(props) => (props.isOpen ? "hidden" : "auto")};
+  overflow: ${(props) => (props.isOpen ? "hidden" : "initial")};
   height: ${(props) => (props.isOpen ? "100vh" : "auto")};
 `;
 
