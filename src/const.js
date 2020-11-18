@@ -1,17 +1,21 @@
 export const MAP_AREAS = {
-  bedroom1: [],
+  bedroom3: ["playlister", "tubetop"],
   bedroom2: ["ai", "noticeboard"],
-  bedroom3: ["tv", "monitor", "ai", "noticeboard"],
+  bedroom1: ["tv", "monitor", "ai", "noticeboard"],
 };
 
 export const ANIMATION_CONFIG = {
   dev: {
     introImage: 0,
-    loadingTime: 0,
+    introImageLoading: 0,
+    roomLoadingTime: 0,
+    roomAnimation: 0,
   },
   prod: {
     introImage: 10,
-    loadingTime: 11000,
+    introImageLoading: 11000,
+    roomLoadingTime: 28500,
+    roomAnimation: 28.8,
   },
 };
 

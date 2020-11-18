@@ -5,8 +5,6 @@ import { ChatRoom } from "./ChatRoom/index";
 import { Television } from "./Television/index";
 import { AI } from "./AI/index";
 import { NoticeBoard } from "./NoticeBoard/Board";
-import { Playlister } from "./Playlister/Playlister";
-import { TubeTop } from "./TubeTop/TubeTop";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -14,16 +12,15 @@ const StyledModal = styled.div`
   left: ${(props) => Math.max(10, props.width / 2 - 205)}px;
   top: 15%;
   width: ${(props) => Math.min(410, props.width)}px;
-  height: 320px;
+  // height: 320px;
   // overflow: auto;
-  background-color: black;
+  // background-color: black;
   border-radius: 5%;
-  box-shadow: -1px 0px 18px 3px #d31e91;
+  // box-shadow: -1px 0px 18px 3px #d31e91;
   display: block;
 `;
 
 export const Modal = ({ isOpen, handleClick, item, width }) => {
-  console.log(item);
   return (
     <div>
       {isOpen && (
@@ -34,8 +31,6 @@ export const Modal = ({ isOpen, handleClick, item, width }) => {
           )}
           {item === "ai" && <AI handleClick={handleClick} />}
           {item === "noticeboard" && <NoticeBoard handleClick={handleClick} />}
-          {item === "playlister" && <Playlister handleClick={handleClick} />}
-          {item === "tubetop" && <TubeTop handleClick={handleClick} />}
         </StyledModal>
       )}
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../const";
 
 // Icon by Kit of Parts
 const HintSVG = () => {
@@ -30,6 +31,15 @@ const StyledHintButton = styled.button`
   background-color: white;
   box-shadow: #aa1389 0px 0px 7px 5px;
   cursor: pointer;
+  border: none;
+  opacity: 0.8;
+
+  color: ${(props) => props.backgroundColor};
+
+  :hover {
+    color: ${(props) => props.hoverColor};
+    opacity: 1;
+  }
   :focus {
     outline: none;
     border: none;
@@ -41,7 +51,11 @@ const StyledHintButton = styled.button`
 
 export const HintButton = ({ handleClick }) => {
   return (
-    <StyledHintButton onClick={handleClick}>
+    <StyledHintButton
+      onClick={handleClick}
+      hoverColor={COLORS.lightPink}
+      backgroundColor={COLORS.pink}
+    >
       <HintSVG />
     </StyledHintButton>
   );

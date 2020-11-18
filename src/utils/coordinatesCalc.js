@@ -1,16 +1,25 @@
 const itemConfig = {
-  bedroom1: {
+  bedroom3: {
     tv: {},
     monitor: {},
-    ai: {
-      xRatio: 0.29,
-      yRatio: 0.47,
-      topXRatio: 0.2625,
-      topYRatio: 0.4444,
-      bottomXRatio: 0.325,
-      bottomYRatio: 0.5555,
-    },
+    ai: {},
     noticeboard: {},
+    playlister: {
+      xRatio: 0.15,
+      yRatio: 0.5,
+      topXRatio: 0.02,
+      topYRatio: 0.42,
+      bottomXRatio: 0.28,
+      bottomYRatio: 0.65,
+    },
+    tubetop: {
+      xRatio: 0.25,
+      yRatio: 0.45,
+      topXRatio: 0.2,
+      topYRatio: 0.42,
+      bottomXRatio: 0.58,
+      bottomYRatio: 0.65,
+    },
   },
   bedroom2: {
     noticeboard: {
@@ -21,6 +30,7 @@ const itemConfig = {
       bottomXRatio: 0.28,
       bottomYRatio: 0.65,
     },
+    playlister: {},
     tv: {},
     monitor: {},
     ai: {
@@ -32,7 +42,7 @@ const itemConfig = {
       bottomYRatio: 0.32,
     },
   },
-  bedroom3: {
+  bedroom1: {
     noticeboard: {
       xRatio: 0.55,
       yRatio: 0.53,
@@ -65,27 +75,28 @@ const itemConfig = {
       bottomXRatio: 0.58,
       bottomYRatio: 0.45,
     },
+    playlister: {},
   },
 };
 
 const navigationConfig = {
-  bedroom1: {
-    forwardXRatio: 0.78,
-    forwardYRatio: 0.76,
-    backXRatio: 0.97,
-    backYRatio: 0.4444,
+  bedroom3: {
+    backXRatio: 0.78,
+    backYRatio: 0.76,
+    forwardXRatio: 0.97,
+    forwardYRatio: 0.4444,
   },
   bedroom2: {
-    forwardXRatio: 0.97,
-    forwardYRatio: 0.8,
-    backXRatio: 0.05,
-    backYRatio: 0.5,
+    backXRatio: 0.97,
+    backYRatio: 0.8,
+    forwardXRatio: 0.05,
+    forwardYRatio: 0.5,
   },
-  bedroom3: {
-    forwardXRatio: 0.35,
-    forwardYRatio: 0.47,
-    backXRatio: 0.58,
-    backYRatio: 0.85,
+  bedroom1: {
+    backXRatio: 0.35,
+    backYRatio: 0.47,
+    forwardXRatio: 0.58,
+    forwardYRatio: 0.85,
   },
 };
 

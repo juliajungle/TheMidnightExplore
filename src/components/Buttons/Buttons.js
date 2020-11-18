@@ -36,15 +36,15 @@ const StyledTVButton = styled.button`
 
 const StyledTVButtonContainer = styled.div`
   position: absolute;
-  bottom: 3px;
-  left: 82%;
+  top: 307px;
+  left: 312px;
 `;
 
 const StyledMonitorButton = styled.button`
   ${StyledButton}
   border-radius: 5%;
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   border: 2px grey solid;
   background: url(./button.jpg);
   background-size: contain;
@@ -52,8 +52,8 @@ const StyledMonitorButton = styled.button`
 
 const StyledMonitorButtonContainer = styled.div`
   position: absolute;
-  bottom: 10px;
-  left: 90%;
+  bottom: 24px;
+  left: 84%;
 `;
 
 const CloseSVG = ({ fillColor }) => (

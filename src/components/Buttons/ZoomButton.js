@@ -8,6 +8,7 @@ const StyledZoomButton = styled.button`
   color: ${(props) => props.backgroundColor};
   box-sizing: border-box;
   border-radius: 10%;
+  width: 25px;
   cursor: pointer;
   font-size: 18px;
   background-color: white;

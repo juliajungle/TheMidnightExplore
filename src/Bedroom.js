@@ -30,6 +30,11 @@ const StyledZoomWrapper = styled.div`
   top: 12px;
 `;
 
+const StyledImage = styled.img`
+  width: ${(props) => props.cssWidth};
+  height: auto;
+`;
+
 export const Bedroom = ({ loadingTime, animationTime }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hint, setHint] = useState(false);
@@ -41,6 +46,7 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
+      document.cookie = "test cookie";
     }, loadingTime);
   }, []);
 
@@ -95,11 +101,16 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
 
   return (
     <StyledApp ref={ref} isOpen={isOpen}>
-      <ImageMap
-        handleClick={handleClick}
-        width={zoomWidth || width}
-        imageName={`bedroom${area}`}
-      />
+      {isLoading && (
+        <StyledImage width={zoomWidth || width} src="clip2.gif"></StyledImage>
+      )}
+      {!isLoading && (
+        <ImageMap
+          handleClick={handleClick}
+          width={zoomWidth || width}
+          imageName={`bedroom${area}`}
+        />
+      )}
       {hint && (
         <Hint
           width={zoomWidth || width}
@@ -107,11 +118,13 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
           imageName={`bedroom${area}`}
         />
       )}
+
       <BedroomImage
         imageName={`bedroom${area}`}
         animationTime={animationTime}
         width={zoomWidth || width}
       />
+
       {isOpen && <StyledOverlay />}
 
       <Modal

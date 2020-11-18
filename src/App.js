@@ -36,12 +36,17 @@ const StyledImage = styled.img`
 
 const App = () => {
   const [isLoading, setLoading] = useState(true);
-  const { loadingTime, introImage } = ANIMATION_CONFIG[ENV];
+  const {
+    roomLoadingTime,
+    introImage,
+    introImageLoading,
+    roomAnimation,
+  } = ANIMATION_CONFIG[ENV];
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, `${loadingTime}`);
+    }, `${introImageLoading}`);
   }, []);
 
   return (
@@ -51,8 +56,12 @@ const App = () => {
           <StyledImage time={introImage} src="sunset.png"></StyledImage>
         </StyledApp>
       )}
+
       {!isLoading && (
-        <Bedroom loadingTime={loadingTime} animationTime={introImage} />
+        // <video width="400" controls autoplay>
+        //   <source src="bedroom.mov" type="video/mp4" />
+        // </video>
+        <Bedroom loadingTime={roomLoadingTime} animationTime={roomAnimation} />
       )}
     </div>
   );

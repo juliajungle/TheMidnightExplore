@@ -3,20 +3,30 @@ import styled from "styled-components";
 
 const StyledNavigationButton = styled.button`
   position: absolute;
-  background: ${(props) => props.icon || 0}px;
   top: ${(props) => props.y}px;
   left: ${(props) => props.x}px;
   width: 10px;
   height: 10px;
   padding: 0;
   border-radius: 100%;
+  border-style: solid;
   background-color: transparent;
   box-shadow: #aa1389 0px 0px 7px 3px;
   cursor: pointer;
   opacity: 0.3;
+  border-color: white;
 
   :hover {
     opacity: 1;
+    border-style: solid;
+  }
+
+  :active {
+    outline: none;
+  }
+
+  :focus {
+    outline: none;
   }
 
   @keyframes blinker {
@@ -28,10 +38,11 @@ const StyledNavigationButton = styled.button`
 `;
 
 export const NavigationButton = ({ handleClick, x, y }) => {
+  console.log(x, y);
   return (
     <StyledNavigationButton
-      x={x}
-      y={y}
+      x={x ? x : 0}
+      y={y ? y : 0}
       onClick={handleClick}
     ></StyledNavigationButton>
   );
