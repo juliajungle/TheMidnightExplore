@@ -28,32 +28,53 @@ const StyledSVGButton = styled.button`
 
 const StyledTVButton = styled.button`
   ${StyledButton}
-  width: 25px;
-  height: 25px;
-  background: url(./button.jpg);
+  background: url(power-light.png);
+  background-repeat: no-repeat;
+  background-position: 8px center;
   background-size: contain;
+  border-radius: 33%;
+  padding: 0;
+  width: 34px;
+  height: 17px;
+  background-color: #1a1a1a;
+  box-shadow: -1px 6px 0px #000000;
+  border-color: transparent;
+  :focus {
+    outline: none;
+  }
 `;
 
 const StyledTVButtonContainer = styled.div`
   position: absolute;
-  top: 307px;
+  bottom: 19px;
   left: 312px;
 `;
 
 const StyledMonitorButton = styled.button`
   ${StyledButton}
-  border-radius: 5%;
-  width: 23px;
-  height: 23px;
-  border: 2px grey solid;
-  background: url(./button.jpg);
+  width: 25px;
+  height: 20px;
+  border: 2px #46414c solid;
+  background: url(power-light.png);
+  border-radius: 40%;
   background-size: contain;
+  background-color: #46414c;
+  box-shadow: #232327 0px 2px 2px 0px;
+  background-repeat: no-repeat;
+  background-position: 3px center;
+
+  :hover {
+    box-shadow: none; // #8c8997 0px 2px 3px 2px;
+  }
 `;
 
 const StyledMonitorButtonContainer = styled.div`
   position: absolute;
   bottom: 24px;
   left: 84%;
+  :hover {
+    bottom: 23px;
+  }
 `;
 
 const CloseSVG = ({ fillColor }) => (
@@ -99,17 +120,26 @@ export const TVButtonContainer = ({ children }) => {
 };
 
 const StyledChannelButton = styled.button`
-  ${StyledButton}
+  // ${StyledButton}
+  position: absolute;
+  left: ${(props) => props.position || 0};
+  box-sizing: border-box;
+  border-radius: 33%;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
   width: 30px;
-  height: 20px;
-  background-color: ${darkGrey};
-  box-shadow: 0px 2px 0px ${lightGrey};
+  height: 13px;
+  background-color: #1a1a1a;
+  box-shadow: -1px 6px 0px #000000;
   display: inline-block;
   margin-right: 10px;
   color: white;
   font-size: 8px;
+  border-color: transparent;
+
   :active {
-    bottom: 8px;
+    bottom: -15px;
     box-shadow: none !important;
     transition: All 250ms ease;
   }
@@ -119,9 +149,9 @@ const StyledChannelButton = styled.button`
   }
 `;
 
-export const ChannelButton = ({ handleClick, text }) => {
+export const ChannelButton = ({ handleClick, text, position }) => {
   return (
-    <StyledChannelButton onClick={() => handleClick(text)}>
+    <StyledChannelButton position={position} onClick={() => handleClick(text)}>
       {text}
     </StyledChannelButton>
   );
@@ -129,7 +159,7 @@ export const ChannelButton = ({ handleClick, text }) => {
 
 const StyledChannelButtonContainer = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: 35px;
   left: 55%;
 `;
 

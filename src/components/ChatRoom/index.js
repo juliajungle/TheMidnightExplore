@@ -33,16 +33,16 @@ const StyledMonitorImage = styled.img`
 `;
 
 const StyledTechLink = styled.a`
-position: relative;
-    bottom: 35px;
-    left: 21px;
-    font-size: 7px;
-    color: #deddde;
-    -webkit-text-decoration: none;
-    text-decoration: none;
-    padding: 0 3px;
-    margin-left: 8px;
-}
+  position: relative;
+  bottom: 38px;
+  left: 21px;
+  font-size: 4px;
+
+  color: #deddde;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 0 3px;
+  margin-left: 8px;
 `;
 
 const StyledPlanetImage = styled.img`
@@ -89,13 +89,18 @@ const StyledButton = styled.button`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 307px;
+  top: 306px;
   left: 313px;
-  font-size: 6px;
+  font-size: 5px;
   color: #535252;
   text-decoration: none;
-  border: solid #8c8997 1px;
+  border: solid #9e9e9e 1px;
   padding: 0 3px;
+  box-shadow: #9e9e9e 0px 1px 0px 0px;
+  :hover {
+    box-shadow: none;
+    top: 307px;
+  }
 `;
 
 export const ChatRoom = ({ handleClick }) => {

@@ -4,10 +4,11 @@ import styled from "styled-components";
 const StyledCanvas = styled.canvas`
   z-index: -100;
   position: absolute;
-  top: 0;
-  left: 0;
+
+  top: -5px;
+  left: 1px;
   width: 100%;
-  height: 260px;
+  height: 319px;
 `;
 
 const Canvas = () => {

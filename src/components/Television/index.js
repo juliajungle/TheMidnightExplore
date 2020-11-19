@@ -12,7 +12,7 @@ import { Loading } from "./Loading";
 const StyledImage = styled.img`
   position: absolute;
   top: 130px;
-  left: 30%;
+  left: 40%;
   height: auto;
   width: 100px;
 
@@ -22,9 +22,9 @@ const StyledImage = styled.img`
     }
 
     100% {
-      width: 90%;
-      top: 100px;
-      left: 5%;
+      width: 80%;
+      top: 125px;
+      left: 12%;
     }
   }
 
@@ -32,29 +32,40 @@ const StyledImage = styled.img`
   animation-fill-mode: forwards;
 `;
 
+const StyledLink = styled.a`
+  width: 100%;
+`;
+
 const StyledIframe = styled.iframe`
   position: absolute;
   top: -2px;
-  left: -2px;
-  width: 100%;
+  left: 0;
+  width: 367px;
   border-radius: 5%;
-  border-color: transparent;
+  border-color: #333;
+  height: 308px;
+  border-width: 5px;
 `;
 
 const StyledWrapper = styled.div`
   z-index: -100;
   position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.8;
+  top: 36px;
+  left: 20px;
   background-color: #ab8feff5;
-  border-radius: 40px;
-  border: 25px solid black;
+  border-radius: 5%;
   box-sizing: border-box;
-  // width: 410px;
-  width: 100%;
-  height: 310px;
+  width: 90%;
+  height: 309px;
   box-shadow: inset 0px 0px 20px 0px #fff;
+`;
+
+const StyledTVWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  background-image: url(tv.png);
+  background-position: center;
 `;
 
 export const Television = ({ handleClick }) => {
@@ -70,19 +81,18 @@ export const Television = ({ handleClick }) => {
   };
 
   return (
-    <div>
+    <StyledTVWrapper>
       <StyledWrapper>
         {channel === 1 && (
           <div>
             {!isLoading && (
-              <a
+              <StyledLink
                 href="https://store-uk.themidnightofficial.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {" "}
                 <StyledImage alt="Horror Show" src="horror.png" />
-              </a>
+              </StyledLink>
             )}
             <Canvas />
           </div>
@@ -93,7 +103,7 @@ export const Television = ({ handleClick }) => {
             id="ytplayer"
             type="text/html"
             // width="100%"
-            height="260"
+            height="308"
             src="https://www.youtube.com/embed/Xzex-nN2yM0?autoplay=1"
             frameborder="0"
             allow="autoplay"
@@ -103,11 +113,15 @@ export const Television = ({ handleClick }) => {
       </StyledWrapper>
       <ChannelButtonContainer>
         <ChannelButton handleClick={changeChannel} text={1}></ChannelButton>
-        <ChannelButton handleClick={changeChannel} text={2}></ChannelButton>
+        <ChannelButton
+          handleClick={changeChannel}
+          position="40px"
+          text={2}
+        ></ChannelButton>
       </ChannelButtonContainer>
       <TVButtonContainer>
         <TVButton handleClick={handleClick} />
       </TVButtonContainer>
-    </div>
+    </StyledTVWrapper>
   );
 };

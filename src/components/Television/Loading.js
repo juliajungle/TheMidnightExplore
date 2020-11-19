@@ -8,7 +8,7 @@ const StyledLoading = styled.div`
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 260px;
+  height: 308px;
   z-index: -100;
   position: absolute;
   opacity: 0.5;
