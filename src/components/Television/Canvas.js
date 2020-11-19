@@ -2,16 +2,17 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const StyledCanvas = styled.canvas`
-  z-index: -100;
-  position: absolute;
+  // z-index: -100;
+  // position: absolute;
 
-  top: -5px;
-  left: 1px;
+  // top: -5px;
+  // left: 1px;
   width: 100%;
-  height: 319px;
+  // height: 319px;
+  height: ${(props) => `${Math.min(309, props.responsiveWidth * 0.68)}px`};
 `;
 
-const Canvas = () => {
+const Canvas = ({ width }) => {
   const drawNoise = (ctx) => {
     const { width, height } = ctx.canvas;
     //  The imageData object is filled with transparent black pixels.
@@ -47,7 +48,7 @@ const Canvas = () => {
     };
   }, []);
 
-  return <StyledCanvas ref={canvasRef} />;
+  return <StyledCanvas ref={canvasRef} responsiveWidth={width} />;
 };
 
 export default Canvas;

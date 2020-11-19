@@ -46,8 +46,8 @@ const StyledTVButton = styled.button`
 
 const StyledTVButtonContainer = styled.div`
   position: absolute;
-  bottom: 19px;
-  left: 312px;
+  bottom: 5%;
+  left: 73%;
 `;
 
 const StyledMonitorButton = styled.button`
@@ -70,10 +70,10 @@ const StyledMonitorButton = styled.button`
 
 const StyledMonitorButtonContainer = styled.div`
   position: absolute;
-  bottom: 24px;
-  left: 84%;
+  bottom: 9%;
+  left: 52%;
   :hover {
-    bottom: 23px;
+    bottom: 8%;
   }
 `;
 
@@ -159,8 +159,8 @@ export const ChannelButton = ({ handleClick, text, position }) => {
 
 const StyledChannelButtonContainer = styled.div`
   position: absolute;
-  bottom: 35px;
-  left: 55%;
+  bottom: 9%;
+  left: 48%;
 `;
 
 export const ChannelButtonContainer = ({ children }) => {

@@ -40,35 +40,40 @@ const StyledIframe = styled.iframe`
   position: absolute;
   top: -2px;
   left: 0;
-  width: 367px;
+  width: 100%;
   border-radius: 5%;
   border-color: #333;
-  height: 308px;
+  height: ${(props) => `${Math.min(286, props.responsiveWidth * 0.68)}px`};
+  // height: 308px;
   border-width: 5px;
 `;
 
 const StyledWrapper = styled.div`
   z-index: -100;
   position: absolute;
-  top: 36px;
-  left: 20px;
+  top: 10%;
+  left: 8%;
   background-color: #ab8feff5;
   border-radius: 5%;
   box-sizing: border-box;
-  width: 90%;
-  height: 309px;
+  width: 83%;
+
+  // height: 309px;
+  height: ${(props) => `${Math.min(288, props.width * 0.68)}px`};
   box-shadow: inset 0px 0px 20px 0px #fff;
 `;
 
 const StyledTVWrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: 400px;
+  height: ${(props) => `${Math.min(380, props.width * 0.9)}px`};
   background-image: url(tv.png);
   background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
-export const Television = ({ handleClick }) => {
+export const Television = ({ handleClick, width }) => {
   const [channel, setChannel] = useState(1);
   const [isLoading, setLoading] = useState(false);
   const changeChannel = (value) => {
@@ -76,13 +81,13 @@ export const Television = ({ handleClick }) => {
     setLoading(true);
 
     setTimeout(() => {
-      setLoading(false);
+      // setLoading(false);
     }, 1000);
   };
 
   return (
-    <StyledTVWrapper>
-      <StyledWrapper>
+    <StyledTVWrapper width={width}>
+      <StyledWrapper width={width}>
         {channel === 1 && (
           <div>
             {!isLoading && (
@@ -94,10 +99,10 @@ export const Television = ({ handleClick }) => {
                 <StyledImage alt="Horror Show" src="horror.png" />
               </StyledLink>
             )}
-            <Canvas />
+            <Canvas width={width} />
           </div>
         )}
-        {isLoading && <Loading />}
+        {isLoading && <Loading width={width} />}
         {channel === 2 && (
           <StyledIframe
             id="ytplayer"
@@ -108,6 +113,7 @@ export const Television = ({ handleClick }) => {
             frameborder="0"
             allow="autoplay"
             autoplay="1"
+            responsiveWidth={width}
           ></StyledIframe>
         )}
       </StyledWrapper>

@@ -25,7 +25,9 @@ export const Modal = ({ isOpen, handleClick, item, width }) => {
     <div>
       {isOpen && (
         <StyledModal width={width}>
-          {item === "tv" && <Television handleClick={handleClick} />}
+          {item === "tv" && (
+            <Television width={width} handleClick={handleClick} />
+          )}
           {item === "monitor" && (
             <ChatRoom handleClick={handleClick}></ChatRoom>
           )}
