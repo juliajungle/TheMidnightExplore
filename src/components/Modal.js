@@ -9,9 +9,9 @@ import { NoticeBoard } from "./NoticeBoard/Board";
 const StyledModal = styled.div`
   position: fixed;
   z-index: 1;
-  left: ${(props) => Math.max(10, props.width / 2 - 205)}px;
+  left: ${(props) => Math.max(10, props.responsiveWidth / 2 - 205)}px;
   top: 15%;
-  width: ${(props) => Math.min(410, props.width)}px;
+  width: ${(props) => Math.min(410, props.responsiveWidth)}px;
   // height: 320px;
   // overflow: auto;
   // background-color: black;
@@ -24,12 +24,12 @@ export const Modal = ({ isOpen, handleClick, item, width }) => {
   return (
     <div>
       {isOpen && (
-        <StyledModal width={width}>
+        <StyledModal responsiveWidth={width}>
           {item === "tv" && (
             <Television width={width} handleClick={handleClick} />
           )}
           {item === "monitor" && (
-            <ChatRoom handleClick={handleClick}></ChatRoom>
+            <ChatRoom width={width} handleClick={handleClick}></ChatRoom>
           )}
           {item === "ai" && <AI handleClick={handleClick} />}
           {item === "noticeboard" && <NoticeBoard handleClick={handleClick} />}

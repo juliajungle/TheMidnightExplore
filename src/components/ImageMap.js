@@ -5,6 +5,7 @@ import { MAP_AREAS } from "../const";
 import { getItemCoords } from "../utils/coordinatesCalc";
 
 const StyledImage = styled.img`
+  position: absolute;
   width: ${(props) => props.cssWidth};
   height: auto;
 
@@ -37,7 +38,7 @@ const StyledImage = styled.img`
       visibility: hidden;
     }
 
-    99% {
+    90% {
       opacity: 0;
       visibility: hidden;
     }
@@ -54,18 +55,14 @@ const StyledImage = styled.img`
 `;
 
 export const BedroomImage = ({ imageName, width, animationTime }) => {
-  // console.log(width ? `${width}` : "100%");
   return (
-    <div>
-      <StyledImage
-        src={imageName === "bedroom1" ? "test2.gif" : `${imageName}.png`}
-        // src="test2.gif"
-        alt="Monsters wallpaper"
-        useMap="#monsters"
-        cssWidth={() => (width ? `${width}px` : "100%")}
-        animationTime={animationTime}
-      />
-    </div>
+    <StyledImage
+      src={imageName === "bedroom1" ? "monsters.gif" : `${imageName}.png`}
+      alt="Monsters wallpaper"
+      useMap="#monsters"
+      cssWidth={() => (width ? `${width}px` : "100%")}
+      animationTime={animationTime}
+    />
   );
 };
 

@@ -18,10 +18,13 @@ const StyledWrapper = styled.div`
 const StyledImage = styled.img`
   border-radius: 7px;
   position: absolute;
+  height: ${(props) => `${Math.min(280, props.responsiveWidth * 0.7)}px`};
+  // height: 280px;
+  z-index: -100;
   top: 5%;
   left: 4%;
-  width: 94%;
-  height: 316px;
+  // width: 92%;
+  width: ${(props) => `${Math.min(322, props.responsiveWidth * 0.9)}px`};
 `;
 
 const StyledMonitorImage = styled.img`
@@ -33,13 +36,12 @@ const StyledMonitorImage = styled.img`
 `;
 
 const StyledTechLink = styled.a`
-  position: relative;
-  bottom: 38px;
-  left: 21px;
+  position: absolute;
+  bottom: 19px;
+  left: 10%;
   font-size: 4px;
 
   color: #deddde;
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 0 3px;
   margin-left: 8px;
@@ -89,8 +91,8 @@ const StyledButton = styled.button`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 306px;
-  left: 313px;
+  top: 270px;
+  left: 70%;
   font-size: 5px;
   color: #535252;
   text-decoration: none;
@@ -99,11 +101,22 @@ const StyledChatRoomLink = styled.a`
   box-shadow: #9e9e9e 0px 1px 0px 0px;
   :hover {
     box-shadow: none;
-    top: 307px;
+    top: 271px;
   }
 `;
 
-export const ChatRoom = ({ handleClick }) => {
+const StyledDesktopWrapper = styled.div`
+  position: absolute;
+  width: 350px;
+  height: ${(props) => `${Math.min(345, props.responsiveWidth * 0.9)}px`};
+  background-image: url(monitor.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 18px 5px #d31e91;
+`;
+
+export const ChatRoom = ({ handleClick, width }) => {
   // const [showIframe, setIframe] = useState(true);
 
   // const handleIframe = () => {
@@ -111,15 +124,15 @@ export const ChatRoom = ({ handleClick }) => {
   // };
 
   return (
-    <div>
-      <StyledWrapper>
-        <div>
-          <StyledMonitorImage src="monitor.png" />
-          <StyledImage src="desktop.png" />
-          {/* <StyledButton onClick={handleIframe}>Send</StyledButton> */}
-        </div>
+    <StyledDesktopWrapper responsiveWidth={width}>
+      {/* <StyledWrapper> */}
+      {/* <div> */}
+      {/* <StyledMonitorImage src="monitor.png" /> */}
+      <StyledImage responsiveWidth={width} src="desktop.png" />
+      {/* <StyledButton onClick={handleIframe}>Send</StyledButton> */}
+      {/* </div> */}
 
-        {/* {showIframe && (
+      {/* {showIframe && (
           <StyledIframeWrapper>
             <StyledMonitorImage src="monitor.png" />
             <StyledIframe
@@ -130,7 +143,7 @@ export const ChatRoom = ({ handleClick }) => {
             ></StyledIframe>
           </StyledIframeWrapper>
         )} */}
-      </StyledWrapper>
+      {/* </StyledWrapper> */}
       <StyledChatRoomLink
         href="http://183010165.com/"
         target="_blank"
@@ -151,6 +164,6 @@ export const ChatRoom = ({ handleClick }) => {
         {" "}
         <MonitorButton handleClick={handleClick}></MonitorButton>
       </MonitorButtonContainer>
-    </div>
+    </StyledDesktopWrapper>
   );
 };

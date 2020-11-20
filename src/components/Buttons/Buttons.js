@@ -70,10 +70,10 @@ const StyledMonitorButton = styled.button`
 
 const StyledMonitorButtonContainer = styled.div`
   position: absolute;
-  bottom: 9%;
-  left: 52%;
+  bottom: 3%;
+  left: 75%;
   :hover {
-    bottom: 8%;
+    bottom: 2%;
   }
 `;
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useCookies } from "react-cookie";
 import styled from "styled-components";
 import useDimensions from "react-use-dimensions";
 import { ImageMap, BedroomImage } from "./components/ImageMap";
@@ -35,6 +36,36 @@ const StyledImage = styled.img`
   height: auto;
 `;
 
+const StyledVideo = styled.video`
+  width: 100%;
+`;
+
+const MuteButton = styled.button`
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-image: ${(props) =>
+    props.muted ? `url(mute.png)` : `url(speaker.png)`};
+  background-position: center;
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  :focus {
+    outline: none;
+    border: none;
+  }
+
+  :hover {
+    background-image: ${(props) =>
+      props.muted ? `url(mute-pink.png)` : `url(speaker-pink.png)`};
+  }
+`;
+
 export const Bedroom = ({ loadingTime, animationTime }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hint, setHint] = useState(false);
@@ -42,12 +73,22 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
   const [area, setArea] = useState(1);
   const [isLoading, setLoading] = useState(true);
   const [isZoomed, setZoomed] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [cookies, setCookie] = useCookies(["themidnight"]);
 
   useEffect(() => {
-    setTimeout(() => {
+    const videoPlayed = cookies["video_played"];
+    console.log({ videoPlayed });
+    if (videoPlayed) {
       setLoading(false);
-      document.cookie = "test cookie";
-    }, loadingTime);
+    } else {
+      console.log("????");
+      setTimeout(() => {
+        setLoading(false);
+        // setCookie("themidnight", "played");
+        setCookie("video_played", "true", { path: "/" });
+      }, loadingTime);
+    }
   }, []);
 
   // get size of screen
@@ -99,10 +140,20 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
     setZoomed(false);
   };
 
+  const video = useRef();
+
+  const unMuteVideo = () => {
+    setMuted(!muted);
+  };
+
   return (
     <StyledApp ref={ref} isOpen={isOpen}>
+      {isLoading && <MuteButton muted={muted} onClick={unMuteVideo} />}
       {isLoading && (
-        <StyledImage width={zoomWidth || width} src="clip2.gif"></StyledImage>
+        <video ref={video} playsInline autoPlay muted={muted} width="100%">
+          <source src="bedroom.mov" type="video/mp4" />
+        </video>
+        // <StyledImage width={zoomWidth || width} src="clip2.gif"></StyledImage>
       )}
       {!isLoading && (
         <ImageMap
@@ -121,11 +172,9 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
 
       <BedroomImage
         imageName={`bedroom${area}`}
-        animationTime={animationTime}
+        animationTime={cookies["video_played"] ? 1 : animationTime}
         width={zoomWidth || width}
       />
-
-      {isOpen && <StyledOverlay />}
 
       <Modal
         isOpen={isOpen}
@@ -133,6 +182,7 @@ export const Bedroom = ({ loadingTime, animationTime }) => {
         item={currentItem}
         width={width}
       />
+      {isOpen && <StyledOverlay />}
       {!isLoading && (
         <div>
           {" "}

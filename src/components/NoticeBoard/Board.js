@@ -12,6 +12,7 @@ const StyledWrapper = styled.div`
   border-radius: 10px;
   border: 5px solid white;
   height: 320px;
+  box-shadow: 0px 0px 18px 5px #d31e91;
 `;
 
 const StyledImage = styled.img`
