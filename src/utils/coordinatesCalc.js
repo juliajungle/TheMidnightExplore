@@ -4,22 +4,7 @@ const itemConfig = {
     monitor: {},
     ai: {},
     noticeboard: {},
-    playlister: {
-      xRatio: 0.15,
-      yRatio: 0.5,
-      topXRatio: 0.02,
-      topYRatio: 0.42,
-      bottomXRatio: 0.28,
-      bottomYRatio: 0.65,
-    },
-    tubetop: {
-      xRatio: 0.25,
-      yRatio: 0.45,
-      topXRatio: 0.2,
-      topYRatio: 0.42,
-      bottomXRatio: 0.58,
-      bottomYRatio: 0.65,
-    },
+    game: {},
   },
   bedroom2: {
     noticeboard: {
@@ -30,7 +15,7 @@ const itemConfig = {
       bottomXRatio: 0.28,
       bottomYRatio: 0.65,
     },
-    playlister: {},
+    game: {},
     tv: {},
     monitor: {},
     ai: {
@@ -75,7 +60,14 @@ const itemConfig = {
       bottomXRatio: 0.58,
       bottomYRatio: 0.45,
     },
-    playlister: {},
+    game: {
+      xRatio: 0.38,
+      yRatio: 0.57,
+      topXRatio: 0.2625,
+      topYRatio: 0.6444,
+      bottomXRatio: 0.325,
+      bottomYRatio: 0.8555,
+    },
   },
 };
 

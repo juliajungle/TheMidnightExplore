@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { CloseButton } from "../Buttons/Buttons";
+import { CloseButton } from "../Shared/ModalButtons";
 import { predictions } from "../../data/questions";
 import { AISteps } from "./AISteps";
 
@@ -70,7 +70,7 @@ export const AI = ({ handleClick }) => {
       </StyledWrapper>
       <ButtonContainer>
         {" "}
-        <CloseButton icon="close.svg" handleClick={handleClick} />
+        <CloseButton handleClick={handleClick} />
       </ButtonContainer>
     </div>
   );

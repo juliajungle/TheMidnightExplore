@@ -1,7 +1,7 @@
 export const MAP_AREAS = {
-  bedroom3: ["playlister", "tubetop"],
+  bedroom3: [],
   bedroom2: ["ai", "noticeboard"],
-  bedroom1: ["tv", "monitor", "ai", "noticeboard"],
+  bedroom1: ["tv", "monitor", "ai", "noticeboard", "game"],
 };
 
 export const ANIMATION_CONFIG = {
@@ -12,14 +12,14 @@ export const ANIMATION_CONFIG = {
     roomAnimation: 0,
   },
   prod: {
-    introImage: 10,
-    introImageLoading: 11000,
+    introImage: 0, //10,
+    introImageLoading: 0, //11000,
     roomLoadingTime: 28500,
     roomAnimation: 28.8,
   },
 };
 
-export const ENV = "dev";
+export const ENV = "prod";
 
 export const COLORS = {
   pink: "#c21a95",

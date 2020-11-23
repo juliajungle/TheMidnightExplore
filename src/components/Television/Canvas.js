@@ -2,14 +2,8 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const StyledCanvas = styled.canvas`
-  // z-index: -100;
-  // position: absolute;
-
-  // top: -5px;
-  // left: 1px;
   width: 100%;
-  // height: 319px;
-  height: ${(props) => `${Math.min(309, props.responsiveWidth * 0.68)}px`};
+  height: ${(props) => `${Math.min(276, props.responsiveWidth * 0.66)}px`};
 `;
 
 const Canvas = ({ width }) => {
@@ -33,12 +27,10 @@ const Canvas = ({ width }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    let frameCount = 0;
     let animationFrameId;
-
     const render = () => {
-      frameCount++;
-      drawNoise(context, frameCount);
+      drawNoise(context);
+
       animationFrameId = window.requestAnimationFrame(render);
     };
     render();

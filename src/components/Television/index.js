@@ -6,8 +6,10 @@ import {
   ChannelButton,
   ChannelButtonContainer,
   TVButtonContainer,
-} from "../Buttons/Buttons";
+} from "../Shared/ModalButtons";
 import { Loading } from "./Loading";
+import tv from "../../images/tv.png";
+import horror from "../../images/horror.png";
 
 const StyledImage = styled.img`
   position: absolute;
@@ -32,24 +34,18 @@ const StyledImage = styled.img`
   animation-fill-mode: forwards;
 `;
 
-const StyledLink = styled.a`
-  width: 100%;
-`;
-
 const StyledIframe = styled.iframe`
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 0;
   width: 100%;
-  border-radius: 5%;
+  border-radius: 3%;
   border-color: #333;
-  height: ${(props) => `${Math.min(286, props.responsiveWidth * 0.68)}px`};
-  // height: 308px;
-  border-width: 5px;
+  height: ${(props) => `${Math.min(275, props.responsiveWidth * 0.655)}px`};
+  border-width: 0;
 `;
 
 const StyledWrapper = styled.div`
-  z-index: -100;
   position: absolute;
   top: 10%;
   left: 8%;
@@ -57,17 +53,20 @@ const StyledWrapper = styled.div`
   border-radius: 5%;
   box-sizing: border-box;
   width: 83%;
-
-  // height: 309px;
-  height: ${(props) => `${Math.min(288, props.width * 0.68)}px`};
+  height: ${(props) => `${Math.min(285, props.width * 0.68)}px`};
   box-shadow: inset 0px 0px 20px 0px #fff;
+
+  border-color: #333;
+  border-style: solid;
+  border-width: 5px;
 `;
 
 const StyledTVWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: ${(props) => `${Math.min(380, props.width * 0.9)}px`};
-  background-image: url(tv.png);
+  background-image: url(${tv});
+  background-color: black;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -82,7 +81,7 @@ export const Television = ({ handleClick, width }) => {
     setLoading(true);
 
     setTimeout(() => {
-      // setLoading(false);
+      setLoading(false);
     }, 1000);
   };
 
@@ -92,13 +91,13 @@ export const Television = ({ handleClick, width }) => {
         {channel === 1 && (
           <div>
             {!isLoading && (
-              <StyledLink
+              <a
                 href="https://store-uk.themidnightofficial.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <StyledImage alt="Horror Show" src="horror.png" />
-              </StyledLink>
+                <StyledImage alt="Horror Show" src={horror} />
+              </a>
             )}
             <Canvas width={width} />
           </div>
@@ -108,7 +107,6 @@ export const Television = ({ handleClick, width }) => {
           <StyledIframe
             id="ytplayer"
             type="text/html"
-            // width="100%"
             height="308"
             src="https://www.youtube.com/embed/Xzex-nN2yM0?autoplay=1"
             frameborder="0"

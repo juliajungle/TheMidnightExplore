@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Postit } from "./Postit";
-import { CloseButton } from "../Buttons/Buttons";
+import { CloseButton } from "../Shared/ModalButtons";
+import noticeBoard from "../../images/noticeboard.jpg";
+import photobooth from "../../images/photobooth.png";
+import poster from "../../images/poster.png";
+import endlessSummer from "../../images/endlesssummer.png";
+import whitney from "../../images/whitney.jpg";
 
 const StyledWrapper = styled.div`
   z-index: -100;
@@ -45,7 +49,7 @@ const PhotoBooth = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <StyledPhotoBooth src="photobooth.png" />
+        <StyledPhotoBooth src={photobooth} />
       </a>
       <Pin className="pin" />
     </StyledPhotoBoothWrapper>
@@ -82,7 +86,7 @@ const Polaroid = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <StyledPolaroid src="whitney.jpg" />
+        <StyledPolaroid src={whitney} />
       </a>
     </PolaroidBorder>
   );
@@ -113,7 +117,7 @@ const Poster = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <StyledPoster src="poster.png" />
+        <StyledPoster src={poster} />
       </a>
       <Pin className="pin" />
     </StyledPosterWrapper>
@@ -146,7 +150,7 @@ const Note = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <StyledNote src="endlesssummer.png" />
+        <StyledNote src={endlessSummer} />
       </a>
       <Pin className="pin" />
     </StyledNoteWrapper>
@@ -176,8 +180,7 @@ export const NoticeBoard = ({ handleClick }) => {
   return (
     <div>
       <StyledWrapper>
-        <StyledImage src="noticeboard.jpg" />
-        {/* <Postit /> */}
+        <StyledImage src={noticeBoard} />
         <PhotoBooth />
         <Polaroid />
         <Poster />
@@ -185,7 +188,7 @@ export const NoticeBoard = ({ handleClick }) => {
       </StyledWrapper>
 
       <ButtonContainer>
-        <CloseButton icon="close.svg" handleClick={handleClick} />
+        <CloseButton handleClick={handleClick} />
       </ButtonContainer>
     </div>
   );

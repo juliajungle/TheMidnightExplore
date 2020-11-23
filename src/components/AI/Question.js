@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { predictions } from "../../data/questions";
-import { AISubmit } from "../Buttons/Buttons";
+import { AISubmit } from "./AIButtons";
 
 const StyledParagraph = styled.p`
   font-family: "courier";

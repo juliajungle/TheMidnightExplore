@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 import { MAP_AREAS } from "../const";
 import { getItemCoords } from "../utils/coordinatesCalc";
+import bedroom2 from "../images/bedroom2.png";
+import bedroom3 from "../images/bedroom3.png";
+import monsters from "../images/monsters.gif";
 
 const StyledImage = styled.img`
   position: absolute;
@@ -54,10 +57,20 @@ const StyledImage = styled.img`
   animation-fill-mode: forwards;
 `;
 
+const getBedroomImage = (imageName) => {
+  if (imageName === "bedroom2") {
+    return bedroom2;
+  } else if (imageName === "bedroom3") {
+    return bedroom3;
+  } else {
+    return monsters;
+  }
+};
+
 export const BedroomImage = ({ imageName, width, animationTime }) => {
   return (
     <StyledImage
-      src={imageName === "bedroom1" ? "monsters.gif" : `${imageName}.png`}
+      src={getBedroomImage(imageName)}
       alt="Monsters wallpaper"
       useMap="#monsters"
       cssWidth={() => (width ? `${width}px` : "100%")}

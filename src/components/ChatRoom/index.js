@@ -1,38 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import { MonitorButton, MonitorButtonContainer } from "../Buttons/Buttons";
-
-const StyledWrapper = styled.div`
-  z-index: -100;
-  position: relative;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  border-radius: 20px;
-  // border: 10px solid black;
-  height: 404px;
-  width: 100%;
-`;
+import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
+import desktop from "../../images/desktop.png";
+import planet from "../../images/planet.png";
+import monitor from "../../images/monitor.png";
 
 const StyledImage = styled.img`
   border-radius: 7px;
   position: absolute;
   height: ${(props) => `${Math.min(280, props.responsiveWidth * 0.7)}px`};
-  // height: 280px;
   z-index: -100;
   top: 5%;
   left: 4%;
-  // width: 92%;
   width: ${(props) => `${Math.min(322, props.responsiveWidth * 0.9)}px`};
-`;
-
-const StyledMonitorImage = styled.img`
-  position: absolute;
-  width: 100%;
-  border: solid 4px #514c57;
-  border-radius: 10px;
-  box-shadow: -1px 0px 18px 3px #d31e91;
 `;
 
 const StyledTechLink = styled.a`
@@ -53,45 +34,9 @@ const StyledPlanetImage = styled.img`
   left: -20px;
 `;
 
-const StyledIframeWrapper = styled.div`
-  position: relative;
-  max-height: 100%;
-  overflow: auto;
-  border-radius: 10px;
-`;
-
-const StyledIframe = styled.iframe`
-  width: 100%;
-  height: 1000px;
-  border-radius: 7px;
-  overflow: scroll;
-  border: 0;
-  width: 95%;
-  height: 1000px;
-  border-radius: 7px;
-  overflow: scroll;
-  border: 4px #504f58 solid;
-  /* left: 19px; */
-  margin-left: 11px;
-  margin-top: 24px;
-`;
-
-const StyledButton = styled.button`
-  position: absolute;
-  bottom: 32px;
-  left: 59%;
-  font-size: 7px;
-  color: #535252;
-
-  text-decoration: none;
-  border: solid #323131 1px;
-  padding: 0 3px;
-  cursor: pointer;
-`;
-
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 270px;
+  top: 75%;
   left: 70%;
   font-size: 5px;
   color: #535252;
@@ -106,44 +51,21 @@ const StyledChatRoomLink = styled.a`
 `;
 
 const StyledDesktopWrapper = styled.div`
-  position: absolute;
   width: 350px;
   height: ${(props) => `${Math.min(345, props.responsiveWidth * 0.9)}px`};
-  background-image: url(monitor.png);
+  background-image: url(${monitor});
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   box-shadow: 0px 0px 18px 5px #d31e91;
+  border-radius: 5%;
 `;
 
 export const ChatRoom = ({ handleClick, width }) => {
-  // const [showIframe, setIframe] = useState(true);
-
-  // const handleIframe = () => {
-  //   setIframe(true);
-  // };
-
   return (
     <StyledDesktopWrapper responsiveWidth={width}>
-      {/* <StyledWrapper> */}
-      {/* <div> */}
-      {/* <StyledMonitorImage src="monitor.png" /> */}
-      <StyledImage responsiveWidth={width} src="desktop.png" />
-      {/* <StyledButton onClick={handleIframe}>Send</StyledButton> */}
-      {/* </div> */}
+      {/* <StyledImage responsiveWidth={width} src={desktop} /> */}
 
-      {/* {showIframe && (
-          <StyledIframeWrapper>
-            <StyledMonitorImage src="monitor.png" />
-            <StyledIframe
-              src="http://183010165.com/"
-              title="Chat with lost boy"
-              width="100%"
-              height="1000px"
-            ></StyledIframe>
-          </StyledIframeWrapper>
-        )} */}
-      {/* </StyledWrapper> */}
       <StyledChatRoomLink
         href="http://183010165.com/"
         target="_blank"
@@ -156,7 +78,7 @@ export const ChatRoom = ({ handleClick, width }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <StyledPlanetImage src="planet.png" width="20" height="20" />
+        <StyledPlanetImage src={planet} width="20" height="20" />
         {`COMTEK`}
       </StyledTechLink>
 

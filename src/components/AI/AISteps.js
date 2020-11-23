@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Question } from "./Question";
-import { AIButton } from "../Buttons/Buttons";
+import { AIButton } from "./AIButtons";
 
 const StyledParagraph = styled.p`
   font-family: "courier";

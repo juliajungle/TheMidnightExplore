@@ -1,16 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
-const pink = "#c21a95";
-const darkPink = "#4f1840";
-const darkGrey = "#333233";
-const lightGrey = "#c4c4c4";
+import power from "../../images/power-light.png";
+import { COLORS } from "../../const";
 
 const StyledButton = css`
   box-sizing: border-box;
-  border-radius: 10%;
   cursor: pointer;
-  font-size: 18px;
   padding: 0;
 `;
 
@@ -18,7 +13,8 @@ const StyledSVGButton = styled.button`
   ${StyledButton}
   height: 30px;
   background-color: white;
-  border: 1px solid ${pink};
+  border: 1px solid ${COLORS.pink};
+  border-radius: 10%;
 
   :hover {
     border: 1px solid white;
@@ -28,12 +24,11 @@ const StyledSVGButton = styled.button`
 
 const StyledTVButton = styled.button`
   ${StyledButton}
-  background: url(power-light.png);
+  background: url(${power});
   background-repeat: no-repeat;
   background-position: 8px center;
   background-size: contain;
   border-radius: 33%;
-  padding: 0;
   width: 34px;
   height: 17px;
   background-color: #1a1a1a;
@@ -42,39 +37,15 @@ const StyledTVButton = styled.button`
   :focus {
     outline: none;
   }
+  :hover {
+    box-shadow: -1px 1px 0px #000000;
+  }
 `;
 
 const StyledTVButtonContainer = styled.div`
   position: absolute;
   bottom: 5%;
   left: 73%;
-`;
-
-const StyledMonitorButton = styled.button`
-  ${StyledButton}
-  width: 25px;
-  height: 20px;
-  border: 2px #46414c solid;
-  background: url(power-light.png);
-  border-radius: 40%;
-  background-size: contain;
-  background-color: #46414c;
-  box-shadow: #232327 0px 2px 2px 0px;
-  background-repeat: no-repeat;
-  background-position: 3px center;
-
-  :hover {
-    box-shadow: none; // #8c8997 0px 2px 3px 2px;
-  }
-`;
-
-const StyledMonitorButtonContainer = styled.div`
-  position: absolute;
-  bottom: 3%;
-  left: 75%;
-  :hover {
-    bottom: 2%;
-  }
 `;
 
 const CloseSVG = ({ fillColor }) => (
@@ -96,18 +67,8 @@ const CloseSVG = ({ fillColor }) => (
 export const CloseButton = ({ handleClick }) => {
   return (
     <StyledSVGButton onClick={handleClick}>
-      <CloseSVG fillColor={pink} />
+      <CloseSVG fillColor={COLORS.pink} />
     </StyledSVGButton>
-  );
-};
-
-export const MonitorButton = ({ handleClick }) => {
-  return <StyledMonitorButton onClick={handleClick}></StyledMonitorButton>;
-};
-
-export const MonitorButtonContainer = ({ children }) => {
-  return (
-    <StyledMonitorButtonContainer>{children}</StyledMonitorButtonContainer>
   );
 };
 
@@ -120,7 +81,6 @@ export const TVButtonContainer = ({ children }) => {
 };
 
 const StyledChannelButton = styled.button`
-  // ${StyledButton}
   position: absolute;
   left: ${(props) => props.position || 0};
   box-sizing: border-box;
@@ -178,43 +138,4 @@ const StyledChatRoomButton = styled.a`
 
 export const ChatRoomButton = ({ children }) => {
   return <StyledChatRoomButton>{children}</StyledChatRoomButton>;
-};
-
-const AIStyles = css`
-  display: block;
-  height: 23px;
-  width: auto;
-  align-self: flex-end;
-  margin-right: 20px;
-  background-color: black;
-  color: white;
-  border: 1px solid transparent;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-  :hover {
-    background-color: white;
-    color: black;
-    border-color: black;
-  }
-`;
-
-const StyledSubmit = styled.input`
-  ${AIStyles}
-  margin: auto;
-  margin-right: 20px;
-`;
-
-const StyledAIButton = styled.button`
-  ${AIStyles}
-  margin: auto;
-  margin-right: 0;
-`;
-
-export const AISubmit = ({ text }) => {
-  return <StyledSubmit type="submit" value={text} />;
-};
-
-export const AIButton = ({ handleClick, text }) => {
-  return <StyledAIButton onClick={handleClick}>{text}</StyledAIButton>;
 };
