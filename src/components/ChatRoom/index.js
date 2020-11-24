@@ -64,7 +64,7 @@ const StyledDesktopWrapper = styled.div`
 export const ChatRoom = ({ handleClick, width }) => {
   return (
     <StyledDesktopWrapper responsiveWidth={width}>
-      {/* <StyledImage responsiveWidth={width} src={desktop} /> */}
+      <StyledImage responsiveWidth={width} src={desktop} />
 
       <StyledChatRoomLink
         href="http://183010165.com/"

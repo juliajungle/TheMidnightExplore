@@ -1,103 +1,35 @@
 import React, { useEffect, useState, useRef } from "react";
-import styled from "styled-components";
 import { drawGrid } from "./draw";
-import robot from "../../images/robot.png";
-import robotBackward from "../../images/robot-backward.png";
-import robotLeft from "../../images/robot-left.png";
-import robotRight from "../../images/robot-right.png";
-
-const StyledImage = styled.img`
-  z-index: 100;
-`;
-
-const StyledWrapper = styled.div`
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: auto;
-  .hidden {
-    display: none;
-  }
-`;
-
-const StyledCanvas = styled.canvas`
-  position: absolute;
-  background-color: black;
-  top: 10%;
-  width: 263px;
-  border: black solid 10px;
-  :focus {
-    outline: none;
-  }
-`;
-
-const StyledStart = styled.div`
-  position: absolute;
-  z-index: 1;
-  color: white;
-  top: 35%;
-  left: 12%;
-  background-color: black;
-  padding: 20px;
-  width: 165px;
-  border: 2px solid #a53479;
-  text-align: center;
-
-  span {
-    font-family: "Press Start 2P";
-    text-shadow: #fc0 1px 0 10px;
-  }
-`;
-
-const StyledEnd = styled.div`
-  position: absolute;
-  z-index: 1;
-  color: white;
-  top: 38%;
-  left: 12%;
-  background-color: black;
-  padding: 20px;
-  width: 180px;
-
-  border: 2px solid #a53479;
-
-  span {
-    font-family: "Press Start 2P";
-    text-shadow: #fc0 1px 0 10px;
-  }
-`;
-
-const StyledButton = styled.button`
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-family: "Press Start 2P";
-  text-shadow: #fc0 1px 0 10px;
-  animation: blinker 1s linear infinite;
-  :focus {
-    outline: none;
-  }
-  :active {
-    outline: none;
-  }
-
-  @keyframes blinker {
-    50% {
-      opacity: 0;
-    }
-  }
-`;
+import imageRight from "../../images/tim-right.png";
+import imageForward from "../../images/tim-forward.png";
+import imageBack from "../../images/tim-back.png";
+import imageLeft from "../../images/tim-left.png";
+import tylerRight from "../../images/tyler-right.png";
+import tylerForward from "../../images/tyler-forward.png";
+import tylerBack from "../../images/tyler-back.png";
+import tylerLeft from "../../images/tyler-left.png";
+import {
+  StyledImage,
+  StyledWrapper,
+  StyledCanvas,
+  StyledEnd,
+  StyledStart,
+  StyledButton,
+  MonsterSprite,
+  RescueSprite,
+} from "./styles";
 
 export const GameCanvas = () => {
   const [xPosition, setxPosition] = useState(10);
   const [yPosition, setyPosition] = useState(263); //useState(58);
   const [facingDirection, setFacingDirection] = useState("SOUTH");
-  const [gameStart, setStartVisible] = useState(true);
+  const [gameStart, setGameStart] = useState(true);
   const [giftX, setGiftX] = useState(10);
   const [giftY, setGiftY] = useState(78);
   const [collision, setCollision] = useState(false);
   const [gameWon, setGameWon] = useState(false);
-  let animationFrameId;
+  const [playerName, setPlayerName] = useState("Tim");
+
   const canvasRef = useRef(null);
   const image = useRef();
   const reset = useRef();
@@ -105,42 +37,51 @@ export const GameCanvas = () => {
   const imageright = useRef();
   const imageleft = useRef();
   const imageback = useRef();
+  const tylerRightRef = useRef();
+  const tylerLeftRef = useRef();
+  const tylerBackRef = useRef();
+  const tylerForwardRef = useRef();
+  const playerTim = useRef();
+  const playerTyler = useRef();
   let floorPaths = [];
 
-  const getRobotImage = (facing) => {
+  const getPlayerImage = (facing) => {
     switch (facing) {
       case "NORTH":
-        return imageback.current;
+        return playerName === "Tim" ? imageback.current : tylerBackRef.current;
       case "SOUTH":
-        return image.current;
+        return playerName === "Tim" ? image.current : tylerForwardRef.current;
       case "EAST":
-        return imageright.current;
+        return playerName === "Tim"
+          ? imageright.current
+          : tylerRightRef.current;
       case "WEST":
-        return imageleft.current;
+        return playerName === "Tim" ? imageleft.current : tylerLeftRef.current;
       default:
         return imageback.current;
     }
   };
 
-  const drawRobot = (ctx) => {
-    const img = getRobotImage(facingDirection);
+  const drawPlayer = (ctx) => {
+    const img = getPlayerImage(facingDirection);
     ctx.drawImage(img, xPosition, yPosition, 15, 30);
   };
 
   const isFloor = (x, y, context) => {
     return (
       floorPaths.filter((path, index) => {
-        return context.isPointInPath(path, x + 10, y + 30);
+        return context.isPointInPath(path, x + 5, y + 30);
       }).length > 0
     );
   };
 
   const isLadder = (x, y) => {
-    // ladder 1
+    console.log(x, y);
     const isLadder1 = x >= 192 && x <= 210 && y >= 189 && y <= 238;
     const isLadder2 = x >= 59 && x <= 157 && y >= 134 && y <= 182;
     const isLadder3 = x >= 192 && x <= 210 && y >= 68 && y <= 117;
     const isLadder4 = x >= 140 && x <= 153 && y >= 12 && y <= 66;
+    // ladder 1
     return isLadder1 || isLadder2 || isLadder3 || isLadder4;
   };
 
@@ -155,11 +96,13 @@ export const GameCanvas = () => {
   function drawBall(ctx) {
     const ball = new Path2D();
     ctx.beginPath();
-    ball.arc(giftX, giftY, 5, 0, Math.PI * 2);
-    ctx.fillStyle = "#0095DD";
+    ball.arc(giftX, giftY, 7, 0, Math.PI * 2);
+    ctx.fillStyle = "#d31e91";
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = "white";
     ctx.fill(ball);
     ctx.closePath();
-
+    ctx.shadowBlur = 0;
     if (ctx.isPointInPath(ball, xPosition, yPosition + 20)) {
       setCollision(true);
     }
@@ -204,6 +147,7 @@ export const GameCanvas = () => {
 
   const animate = () => {
     let frameCount = 0;
+    let animationFrameId;
 
     const render = () => {
       frameCount++;
@@ -231,7 +175,7 @@ export const GameCanvas = () => {
     ctx.fillStyle = "rgb(0,0,0)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     floorPaths = drawGrid(ctx);
-    drawRobot(ctx);
+    drawPlayer(ctx);
     drawBall(ctx);
   };
 
@@ -248,7 +192,7 @@ export const GameCanvas = () => {
   const jump = () => {
     let frameCount = 0;
     const frame = () => {
-      if (frameCount > 50) {
+      if (frameCount > 60) {
         clearInterval(id);
       } else {
         frameCount++;
@@ -256,11 +200,11 @@ export const GameCanvas = () => {
       }
     };
 
-    let id = setInterval(frame, 10);
+    let id = setInterval(frame, 1);
   };
 
   const move = (e) => {
-    setStartVisible(false);
+    // setGameStart(false);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     if (e.code === "Space") {
@@ -296,7 +240,9 @@ export const GameCanvas = () => {
       }
     }
     if (e.key === "ArrowUp") {
+      console.log("up");
       if (isLadder(xPosition, yPosition - 2)) {
+        console.log("move up");
         setyPosition(yPosition - 2);
         setFacingDirection("NORTH");
       }
@@ -335,9 +281,36 @@ export const GameCanvas = () => {
     setFacingDirection("SOUTH");
   };
 
+  const stop = () => {
+    setFacingDirection("SOUTH");
+  };
+
+  const choosePlayer = (e) => {
+    console.log(e.key);
+
+    if (e.key === "ArrowRight") {
+      // playerTyler.current.focus();
+      // set player
+      setPlayerName("Tyler");
+    } else if (e.key === "ArrowLeft") {
+      // playerTim.current.focus();
+      setPlayerName("Tim");
+    } else if (e.key === "Enter") {
+      startGame();
+    }
+  };
+  const startGame = (e) => {
+    const canvas = canvasRef.current;
+    console.log(e);
+    canvas.onkeydown = move;
+
+    setGameStart(false);
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.onkeydown = move;
+    canvas.onkeyup = stop;
     // canvas.focus();
     if (!collision) {
       drawCanvas();
@@ -347,9 +320,11 @@ export const GameCanvas = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.onkeydown = move;
     canvas.focus();
+    canvas.onkeydown = choosePlayer;
+
     let stopAnimation;
+
     if (!gameStart) {
       stopAnimation = animate();
     }
@@ -364,6 +339,10 @@ export const GameCanvas = () => {
     const ctx = canvas.getContext("2d");
     const resetButton = reset.current;
     const resetWin = resetRef.current;
+
+    if (!gameWon) {
+      canvas.focus();
+    }
 
     if (collision && resetButton) {
       resetButton.focus();
@@ -384,7 +363,28 @@ export const GameCanvas = () => {
     <StyledWrapper>
       {gameStart && (
         <StyledStart>
-          <span>PRESS ANY KEY TO START</span>
+          <span>CHOOSE YOUR CHARACTER TO START</span>
+          <div>
+            <StyledButton
+              ref={playerTim}
+              onClick={startGame}
+              showFocused={() =>
+                `${playerName === "Tim" ? "2px solid #32a1ce" : "none"}`
+              }
+            >
+              <img src={imageForward} />
+            </StyledButton>
+
+            <StyledButton
+              ref={playerTyler}
+              onClick={startGame}
+              showFocused={() =>
+                `${playerName === "Tyler" ? "2px solid #32a1ce" : "none"}`
+              }
+            >
+              <img src={tylerForward} />
+            </StyledButton>
+          </div>
         </StyledStart>
       )}
       {collision && (
@@ -405,10 +405,20 @@ export const GameCanvas = () => {
       )}
 
       <StyledCanvas tabIndex="0" ref={canvasRef} width={300} height={300} />
-      <StyledImage ref={image} src={robot} className="hidden" />
-      <StyledImage ref={imageback} src={robotBackward} className="hidden" />
-      <StyledImage ref={imageleft} src={robotLeft} className="hidden" />
-      <StyledImage ref={imageright} src={robotRight} className="hidden" />
+      <StyledImage ref={image} src={imageForward} className="hidden" />
+      <StyledImage ref={imageback} src={imageBack} className="hidden" />
+      <StyledImage ref={imageleft} src={imageLeft} className="hidden" />
+      <StyledImage ref={imageright} src={imageRight} className="hidden" />
+      <StyledImage
+        ref={tylerForwardRef}
+        src={tylerForward}
+        className="hidden"
+      />
+      <StyledImage ref={tylerBackRef} src={tylerBack} className="hidden" />
+      <StyledImage ref={tylerLeftRef} src={tylerLeft} className="hidden" />
+      <StyledImage ref={tylerRightRef} src={tylerRight} className="hidden" />
+      <MonsterSprite />
+      <RescueSprite player={playerName} />
     </StyledWrapper>
   );
 };
