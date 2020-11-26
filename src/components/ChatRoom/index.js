@@ -13,7 +13,8 @@ const StyledImage = styled.img`
   z-index: -100;
   top: 5%;
   left: 4%;
-  width: ${(props) => `${Math.min(322, props.responsiveWidth * 0.9)}px`};
+  width: ${(props) => `${Math.min(322, props.responsiveWidth * 0.85)}px`};
+  margin-left: 18px;
 `;
 
 const StyledTechLink = styled.a`
@@ -36,8 +37,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 75%;
-  left: 70%;
+  top: ${(props) => `${Math.min(270, props.responsiveWidth * 0.68)}px`};
+  left: ${(props) => `${Math.min(282, props.responsiveWidth * 0.73)}px`};
   font-size: 5px;
   color: #535252;
   text-decoration: none;
@@ -46,12 +47,13 @@ const StyledChatRoomLink = styled.a`
   box-shadow: #9e9e9e 0px 1px 0px 0px;
   :hover {
     box-shadow: none;
-    top: 271px;
+    top: ${(props) =>
+      `${Math.min(270 + 1, props.responsiveWidth * 0.68 + 1)}px`};
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
-  width: 350px;
+  width: ${(props) => `${Math.min(350, props.responsiveWidth * 0.9)}px`};
   height: ${(props) => `${Math.min(345, props.responsiveWidth * 0.9)}px`};
   background-image: url(${monitor});
   background-position: center;
@@ -59,6 +61,7 @@ const StyledDesktopWrapper = styled.div`
   background-repeat: no-repeat;
   box-shadow: 0px 0px 18px 5px #d31e91;
   border-radius: 5%;
+  margin-left: 18px;
 `;
 
 export const ChatRoom = ({ handleClick, width }) => {
@@ -70,6 +73,7 @@ export const ChatRoom = ({ handleClick, width }) => {
         href="http://183010165.com/"
         target="_blank"
         rel="noopener noreferrer"
+        responsiveWidth={width}
       >
         {`Send >`}
       </StyledChatRoomLink>

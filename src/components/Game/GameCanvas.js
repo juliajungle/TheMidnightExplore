@@ -17,6 +17,10 @@ import {
   StyledButton,
   MonsterSprite,
   RescueSprite,
+  Winner,
+  StyledTitle,
+  StyledParagraph,
+  PlayerButton,
 } from "./styles";
 
 export const GameCanvas = () => {
@@ -76,11 +80,10 @@ export const GameCanvas = () => {
   };
 
   const isLadder = (x, y) => {
-    console.log(x, y);
     const isLadder1 = x >= 192 && x <= 210 && y >= 189 && y <= 238;
     const isLadder2 = x >= 59 && x <= 157 && y >= 134 && y <= 182;
     const isLadder3 = x >= 192 && x <= 210 && y >= 68 && y <= 117;
-    const isLadder4 = x >= 140 && x <= 153 && y >= 12 && y <= 66;
+    const isLadder4 = x >= 138 && x <= 153 && y >= 12 && y <= 67;
     // ladder 1
     return isLadder1 || isLadder2 || isLadder3 || isLadder4;
   };
@@ -94,12 +97,25 @@ export const GameCanvas = () => {
   };
 
   function drawBall(ctx) {
+    const gradient = ctx.createRadialGradient(
+      giftX,
+      giftY,
+      0.5,
+      giftX,
+      giftY,
+      7
+    );
+    gradient.addColorStop(0, "white");
+    gradient.addColorStop(1, "#fa068a");
+
     const ball = new Path2D();
     ctx.beginPath();
+    // ctx.arc(giftX, giftY, 7, 0, 2 * Math.PI);
     ball.arc(giftX, giftY, 7, 0, Math.PI * 2);
-    ctx.fillStyle = "#d31e91";
-    ctx.shadowBlur = 5;
-    ctx.shadowColor = "white";
+    // ctx.fillStyle = "#fa068a";
+    ctx.fillStyle = gradient;
+    // ctx.shadowBlur = 2;
+    // ctx.shadowColor = "white";
     ctx.fill(ball);
     ctx.closePath();
     ctx.shadowBlur = 0;
@@ -172,7 +188,7 @@ export const GameCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 320, 320);
-    ctx.fillStyle = "rgb(0,0,0)";
+    ctx.fillStyle = "#050505f0";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     floorPaths = drawGrid(ctx);
     drawPlayer(ctx);
@@ -240,9 +256,7 @@ export const GameCanvas = () => {
       }
     }
     if (e.key === "ArrowUp") {
-      console.log("up");
       if (isLadder(xPosition, yPosition - 2)) {
-        console.log("move up");
         setyPosition(yPosition - 2);
         setFacingDirection("NORTH");
       }
@@ -286,14 +300,10 @@ export const GameCanvas = () => {
   };
 
   const choosePlayer = (e) => {
-    console.log(e.key);
-
     if (e.key === "ArrowRight") {
-      // playerTyler.current.focus();
       // set player
       setPlayerName("Tyler");
     } else if (e.key === "ArrowLeft") {
-      // playerTim.current.focus();
       setPlayerName("Tim");
     } else if (e.key === "Enter") {
       startGame();
@@ -301,7 +311,6 @@ export const GameCanvas = () => {
   };
   const startGame = (e) => {
     const canvas = canvasRef.current;
-    console.log(e);
     canvas.onkeydown = move;
 
     setGameStart(false);
@@ -311,8 +320,7 @@ export const GameCanvas = () => {
     const canvas = canvasRef.current;
     canvas.onkeydown = move;
     canvas.onkeyup = stop;
-    // canvas.focus();
-    if (!collision) {
+    if (!collision && !gameWon) {
       drawCanvas();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -332,7 +340,7 @@ export const GameCanvas = () => {
       if (stopAnimation) stopAnimation();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameStart, collision]);
+  }, [gameStart, collision, gameWon]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -353,6 +361,7 @@ export const GameCanvas = () => {
 
     if (collision || gameWon) {
       ctx.clearRect(0, 0, 320, 320);
+      ctx.fillStyle = "rgb(0,0,0)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       // eslint-disable-next-line react-hooks/exhaustive-deps
       floorPaths = drawGrid(ctx);
@@ -363,19 +372,20 @@ export const GameCanvas = () => {
     <StyledWrapper>
       {gameStart && (
         <StyledStart>
-          <span>CHOOSE YOUR CHARACTER TO START</span>
+          <StyledTitle>THE MIDNIGHT</StyledTitle>
+          <StyledParagraph>SELECT YOUR PLAYER TO START</StyledParagraph>
           <div>
-            <StyledButton
+            <PlayerButton
               ref={playerTim}
               onClick={startGame}
               showFocused={() =>
-                `${playerName === "Tim" ? "2px solid #32a1ce" : "none"}`
+                `${playerName === "Tim" ? "2px solid #fa0835" : "none"}`
               }
             >
               <img src={imageForward} />
-            </StyledButton>
+            </PlayerButton>
 
-            <StyledButton
+            <PlayerButton
               ref={playerTyler}
               onClick={startGame}
               showFocused={() =>
@@ -383,13 +393,13 @@ export const GameCanvas = () => {
               }
             >
               <img src={tylerForward} />
-            </StyledButton>
+            </PlayerButton>
           </div>
         </StyledStart>
       )}
       {collision && (
         <StyledEnd>
-          <span>GAME OVER!</span>
+          <StyledParagraph>GAME OVER!</StyledParagraph>
           <StyledButton ref={reset} onClick={restart}>
             {`>`}Play again
           </StyledButton>
@@ -397,7 +407,7 @@ export const GameCanvas = () => {
       )}
       {gameWon && (
         <StyledEnd>
-          <span>YOU WIN!</span>
+          <StyledParagraph>YOU WIN!</StyledParagraph>
           <StyledButton ref={resetRef} onClick={restart}>
             {`>`} Play again
           </StyledButton>
@@ -418,7 +428,16 @@ export const GameCanvas = () => {
       <StyledImage ref={tylerLeftRef} src={tylerLeft} className="hidden" />
       <StyledImage ref={tylerRightRef} src={tylerRight} className="hidden" />
       <MonsterSprite />
-      <RescueSprite player={playerName} />
+      {!gameWon && <RescueSprite player={playerName} />}
+      {gameWon && (
+        <div>
+          <Winner player={playerName} position="170" />
+          <Winner
+            player={playerName === "Tim" ? "Tyler" : "Tim"}
+            position="130"
+          />
+        </div>
+      )}
     </StyledWrapper>
   );
 };
