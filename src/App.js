@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useCookies } from "react-cookie";
 import styled from "styled-components";
+import "./App.css";
 import useDimensions from "react-use-dimensions";
 import { ImageMap, BedroomImage } from "./components/ImageMap";
 import { Modal } from "./components/Modal";
