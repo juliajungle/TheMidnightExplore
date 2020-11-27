@@ -37,8 +37,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: ${(props) => `${Math.min(270, props.responsiveWidth * 0.68)}px`};
-  left: ${(props) => `${Math.min(282, props.responsiveWidth * 0.73)}px`};
+  top: ${(props) => `${Math.min(274, props.responsiveWidth * 0.685)}px`};
+  left: ${(props) => `${Math.min(211, props.responsiveWidth * 0.56)}px`};
   font-size: 5px;
   color: #535252;
   text-decoration: none;
@@ -48,7 +48,7 @@ const StyledChatRoomLink = styled.a`
   :hover {
     box-shadow: none;
     top: ${(props) =>
-      `${Math.min(270 + 1, props.responsiveWidth * 0.68 + 1)}px`};
+      `${Math.min(274 + 1, props.responsiveWidth * 0.685 + 1)}px`};
   }
 `;
 
@@ -59,16 +59,26 @@ const StyledDesktopWrapper = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  box-shadow: 0px 0px 18px 5px #d31e91;
-  border-radius: 5%;
+  border-radius: 1%;
   margin-left: 18px;
+`;
+
+const StyledShopLink = styled.a`
+  position: absolute;
+  top: 70px;
+  left: 157px;
+  padding: 52px 95px;
 `;
 
 export const ChatRoom = ({ handleClick, width }) => {
   return (
     <StyledDesktopWrapper responsiveWidth={width}>
       <StyledImage responsiveWidth={width} src={desktop} />
-
+      <StyledShopLink
+        href="https://merch.ambientinks.com/collections/themidnight"
+        target="_blank"
+        rel="noopener noreferrer"
+      />
       <StyledChatRoomLink
         href="http://183010165.com/"
         target="_blank"

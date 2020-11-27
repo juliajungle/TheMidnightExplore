@@ -13,7 +13,7 @@ import speaker from "./images/speaker.png";
 import speakerPink from "./images/speaker-pink.png";
 import mute from "./images/mute.png";
 import mutePink from "./images/mute-pink.png";
-import { ANIMATION_CONFIG, ENV } from "./const";
+import { ANIMATION_CONFIG, ENV, COLORS } from "./const";
 import movie from "./images/bedroom.mov";
 
 const { roomLoadingTime, roomAnimation } = ANIMATION_CONFIG[ENV];
@@ -23,8 +23,8 @@ const StyledOverlay = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: black;
-  opacity: 0.7;
+  background: ${COLORS.darkPink};
+  opacity: 0.2;
   top: 0;
 `;
 
@@ -93,6 +93,13 @@ export const App = () => {
     setIsOpen(!isOpen);
     document.body.style.overflow = "hidden";
   };
+
+  // cont handleClick = (e) => {
+  //   const currentItem = e.target.alt;
+  //   if(currentItem === "skateboard") {
+
+  //   }
+  // }
 
   const closeModal = (e) => {
     setIsOpen(!isOpen);

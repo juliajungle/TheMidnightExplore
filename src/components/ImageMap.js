@@ -67,6 +67,11 @@ const getBedroomImage = (imageName) => {
   }
 };
 
+const StyledArea = styled.area`
+  cursor: pointer;
+  display: block;
+`;
+
 export const BedroomImage = ({ imageName, width, animationTime }) => {
   return (
     <StyledImage
@@ -79,7 +84,7 @@ export const BedroomImage = ({ imageName, width, animationTime }) => {
   );
 };
 
-export const ImageMap = ({ handleClick, width, imageName }) => {
+export const ImageMap = ({ handleClick, width, imageName, link }) => {
   const areas = MAP_AREAS[imageName].map((area) => {
     const { topX, topY, bottomX, bottomY } = getItemCoords(
       width,
@@ -87,13 +92,13 @@ export const ImageMap = ({ handleClick, width, imageName }) => {
       imageName
     );
     return (
-      <area
+      <StyledArea
         key={area}
         onClick={handleClick}
         shape="rect"
         coords={`${topX}, ${topY}, ${bottomX} , ${bottomY}`}
         alt={area}
-        href="#"
+        href={link}
       />
     );
   });

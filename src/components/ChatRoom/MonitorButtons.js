@@ -3,12 +3,12 @@ import styled from "styled-components";
 import power from "../../images/power-light.png";
 
 const StyledMonitorButton = styled.button`
-  width: 25px;
+  width: 20px;
   height: 20px;
   border: 2px #46414c solid;
   background: url(${power});
-  border-radius: 40%;
-  background-size: contain;
+  border-radius: 100%;
+  background-size: 11px;
   background-color: ##514c57;
   box-shadow: #232327 0px 3px 3px 0px;
   background-repeat: no-repeat;

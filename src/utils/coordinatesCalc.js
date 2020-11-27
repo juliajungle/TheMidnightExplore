@@ -61,12 +61,12 @@ const itemConfig = {
       bottomYRatio: 0.45,
     },
     game: {
-      xRatio: 0.38,
-      yRatio: 0.57,
-      topXRatio: 0.2625,
-      topYRatio: 0.6444,
-      bottomXRatio: 0.325,
-      bottomYRatio: 0.8555,
+      xRatio: 0.3,
+      yRatio: 0.6,
+      topXRatio: 0.28,
+      topYRatio: 0.75,
+      bottomXRatio: 0.38,
+      bottomYRatio: 0.8,
     },
   },
 };

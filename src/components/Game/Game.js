@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  box-shadow: 0px 0px 18px 5px #d31e91;
+  borer-radius: 1%;
 `;
 
 export const Game = ({ handleClick, width }) => {
