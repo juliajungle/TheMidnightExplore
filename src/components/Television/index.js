@@ -49,7 +49,7 @@ const StyledWrapper = styled.div`
   position: absolute;
   top: 10%;
   left: 8%;
-  background-color: #ab8feff5;
+  background-color: #8b9ee0;
   border-radius: 5%;
   box-sizing: border-box;
   width: 83%;
@@ -70,7 +70,7 @@ const StyledTVWrapper = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  box-shadow: 0px 0px 18px 5px #d31e91;
+  border-radius: 1%;
 `;
 
 export const Television = ({ handleClick, width }) => {
