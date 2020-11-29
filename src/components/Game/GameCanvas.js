@@ -1,13 +1,38 @@
 import React, { useEffect, useState, useRef } from "react";
 import { drawGrid } from "./draw";
-import imageRight from "../../images/tim-right.png";
-import imageForward from "../../images/tim-forward.png";
-import imageBack from "../../images/tim-back.png";
-import imageLeft from "../../images/tim-left.png";
-import tylerRight from "../../images/tyler-right.png";
-import tylerForward from "../../images/tyler-forward.png";
-import tylerBack from "../../images/tyler-back.png";
-import tylerLeft from "../../images/tyler-left.png";
+
+import tylerRight from "./images/tyler-right.png";
+import tylerRight2 from "./images/tyler-right2.png";
+import tylerRightStill from "./images/tyler-right-still.png";
+
+import timRight from "./images/tim-right.png";
+import timRight2 from "./images/tim-right2.png";
+import timRightStill from "./images/tim-right-still.png";
+
+import tylerForward from "./images/tyler-forward.png";
+import tylerForwardWaiting from "./images/tyler-forward.png";
+import tylerForwardShrug from "./images/tyler-forward-shrug.png";
+
+import timForward from "./images/tim-forward.png";
+import timForwardWaiting from "./images/tim-forward.png";
+import timForwardShrug from "./images/tim-forward-shrug.png";
+
+import tylerBack from "./images/tyler-back.png";
+import tylerClimb from "./images/tyler-climb.png";
+import tylerClimb2 from "./images/tyler-climb2.png";
+
+import timBack from "./images/tim-back.png";
+import timClimb from "./images/tim-climb.png";
+import timClimb2 from "./images/tim-climb2.png";
+
+import tylerLeft from "./images/tyler-left.png";
+import tylerLeft2 from "./images/tyler-left2.png";
+import tylerLeftStill from "./images/tyler-left-still.png";
+
+import timLeft from "./images/tim-left.png";
+import timLeft2 from "./images/tim-left2.png";
+import timLeftStill from "./images/tim-left-still.png";
+
 import {
   StyledImage,
   StyledWrapper,
@@ -24,6 +49,9 @@ import {
 } from "./styles";
 
 export const GameCanvas = () => {
+  const tylerForwardWaitingRef = useRef();
+  const timForwardWaitingRef = useRef();
+
   const [xPosition, setxPosition] = useState(10);
   const [yPosition, setyPosition] = useState(263); //useState(58);
   const [facingDirection, setFacingDirection] = useState("SOUTH");
@@ -33,42 +61,72 @@ export const GameCanvas = () => {
   const [collision, setCollision] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [playerName, setPlayerName] = useState("Tim");
+  const [startAnimation, setStartAnimation] = useState(false);
+  const [playerImageRight, setPlayerImageRight] = useState();
+  const [playerImageLeft, setPlayerImageLeft] = useState();
+  const [playerImageBack, setPlayerImageBack] = useState();
+  const [playerImageForward, setPlayerImageForward] = useState(
+    tylerForwardWaitingRef.current
+  );
 
   const canvasRef = useRef(null);
-  const image = useRef();
   const reset = useRef();
   const resetRef = useRef();
-  const imageright = useRef();
-  const imageleft = useRef();
-  const imageback = useRef();
+
   const tylerRightRef = useRef();
+  const tylerRight2Ref = useRef();
+  const tylerRightStillRef = useRef();
+
+  const timRightRef = useRef();
+  const timRight2Ref = useRef();
+  const timRightStillRef = useRef();
+
   const tylerLeftRef = useRef();
+  const tylerLeft2Ref = useRef();
+  const tylerLeftStillRef = useRef();
+
+  const timLeftRef = useRef();
+  const timLeft2Ref = useRef();
+  const timLeftStillRef = useRef();
+
   const tylerBackRef = useRef();
-  const tylerForwardRef = useRef();
+  const tylerClimbRef = useRef();
+  const tylerClimb2Ref = useRef();
+
+  const timBackRef = useRef();
+  const timClimbRef = useRef();
+  const timClimb2Ref = useRef();
+  // const tylerForwardWaitingRef = useRef();
+  const tylerForwardShrugRef = useRef();
+  const timForwardShrugRef = useRef();
+
   const playerTim = useRef();
   const playerTyler = useRef();
+
   let floorPaths = [];
+  // let animationTurn = 5;
 
   const getPlayerImage = (facing) => {
     switch (facing) {
       case "NORTH":
-        return playerName === "Tim" ? imageback.current : tylerBackRef.current;
+        return playerImageBack;
       case "SOUTH":
-        return playerName === "Tim" ? image.current : tylerForwardRef.current;
+        return playerImageForward;
       case "EAST":
-        return playerName === "Tim"
-          ? imageright.current
-          : tylerRightRef.current;
+        return playerImageRight;
       case "WEST":
-        return playerName === "Tim" ? imageleft.current : tylerLeftRef.current;
+        return playerImageLeft;
       default:
-        return imageback.current;
+        return playerImageForward;
     }
   };
 
   const drawPlayer = (ctx) => {
     const img = getPlayerImage(facingDirection);
-    ctx.drawImage(img, xPosition, yPosition, 15, 30);
+
+    if (img) {
+      ctx.drawImage(img, xPosition, yPosition, 22, 33);
+    }
   };
 
   const isFloor = (x, y, context) => {
@@ -110,12 +168,8 @@ export const GameCanvas = () => {
 
     const ball = new Path2D();
     ctx.beginPath();
-    // ctx.arc(giftX, giftY, 7, 0, 2 * Math.PI);
     ball.arc(giftX, giftY, 7, 0, Math.PI * 2);
-    // ctx.fillStyle = "#fa068a";
     ctx.fillStyle = gradient;
-    // ctx.shadowBlur = 2;
-    // ctx.shadowColor = "white";
     ctx.fill(ball);
     ctx.closePath();
     ctx.shadowBlur = 0;
@@ -123,8 +177,71 @@ export const GameCanvas = () => {
       setCollision(true);
     }
   }
-
+  let playerCount = 0;
   const animateBall = (frameCount) => {
+    if (frameCount % 7 === 0) {
+      playerCount++;
+    }
+    // 1, 2, 3, 4, 5, 6, 7, 8,9
+
+    if (playerCount % 17 === 0) {
+      setPlayerImageForward(() =>
+        playerName === "Tim"
+          ? timForwardShrugRef.current
+          : tylerForwardShrugRef.current
+      );
+    }
+
+    if (playerCount % 4 === 0) {
+      setPlayerImageForward(() =>
+        playerName === "Tim"
+          ? timForwardWaitingRef.current
+          : tylerForwardWaitingRef.current
+      );
+      setPlayerImageRight(() =>
+        playerName === "Tim" ? timRightRef.current : tylerRightRef.current
+      );
+      setPlayerImageLeft(() =>
+        playerName === "Tim" ? timLeftRef.current : tylerLeftRef.current
+      );
+      setPlayerImageBack(() =>
+        playerName === "Tim" ? timClimbRef.current : tylerClimbRef.current
+      );
+    } else if (playerCount % 3 === 0) {
+      setPlayerImageRight(() =>
+        playerName === "Tim"
+          ? timRightStillRef.current
+          : tylerRightStillRef.current
+      );
+      setPlayerImageLeft(() =>
+        playerName === "Tim"
+          ? timLeftStillRef.current
+          : tylerLeftStillRef.current
+      );
+    } else if (playerCount % 2 === 0) {
+      setPlayerImageRight(() =>
+        playerName === "Tim" ? timRight2Ref.current : tylerRight2Ref.current
+      );
+      setPlayerImageLeft(() =>
+        playerName === "Tim" ? timLeft2Ref.current : tylerLeft2Ref.current
+      );
+
+      setPlayerImageBack(() =>
+        playerName === "Tim" ? timClimb2Ref.current : tylerClimb2Ref.current
+      );
+    } else {
+      setPlayerImageRight(() =>
+        playerName === "Tim"
+          ? timRightStillRef.current
+          : tylerRightStillRef.current
+      );
+      setPlayerImageLeft(() =>
+        playerName === "Tim"
+          ? timLeftStillRef.current
+          : tylerLeftStillRef.current
+      );
+    }
+
     // move along floor 4
     if (frameCount < 300) {
       setGiftX(giftX + frameCount * 0.93); // 280 = 300 * 0.93
@@ -161,9 +278,9 @@ export const GameCanvas = () => {
     }
   };
 
+  const requestRef = React.useRef();
   const animate = () => {
     let frameCount = 0;
-    let animationFrameId;
 
     const render = () => {
       frameCount++;
@@ -173,14 +290,14 @@ export const GameCanvas = () => {
       }
 
       animateBall(frameCount);
-      animationFrameId = window.requestAnimationFrame(render);
-      window.cancelAnimationFrame(animationFrameId - 1);
+      requestRef.current = window.requestAnimationFrame(render);
+      window.cancelAnimationFrame(requestRef.current - 1);
     };
 
     render();
 
     return () => {
-      window.cancelAnimationFrame(animationFrameId);
+      window.cancelAnimationFrame(requestRef.current);
     };
   };
 
@@ -220,7 +337,6 @@ export const GameCanvas = () => {
   };
 
   const move = (e) => {
-    // setGameStart(false);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     if (e.code === "Space") {
@@ -252,7 +368,7 @@ export const GameCanvas = () => {
     if (e.key === "ArrowDown") {
       if (isLadder(xPosition, yPosition + 2)) {
         setyPosition(yPosition + 2);
-        setFacingDirection("SOUTH");
+        setFacingDirection("NORTH");
       }
     }
     if (e.key === "ArrowUp") {
@@ -293,9 +409,18 @@ export const GameCanvas = () => {
     setCollision(false);
     setGameWon(false);
     setFacingDirection("SOUTH");
+    setStartAnimation(true);
+  };
+
+  const resetPositions = () => {
+    setxPosition(10);
+    setyPosition(263);
+    setGiftX(10);
+    setGiftY(78);
   };
 
   const stop = () => {
+    // show sprite
     setFacingDirection("SOUTH");
   };
 
@@ -312,14 +437,16 @@ export const GameCanvas = () => {
   const startGame = (e) => {
     const canvas = canvasRef.current;
     canvas.onkeydown = move;
-
+    canvas.onkeyup = stop;
     setGameStart(false);
+    setStartAnimation(true);
   };
 
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.onkeydown = move;
     canvas.onkeyup = stop;
+
     if (!collision && !gameWon) {
       drawCanvas();
     }
@@ -330,17 +457,29 @@ export const GameCanvas = () => {
     const canvas = canvasRef.current;
     canvas.focus();
     canvas.onkeydown = choosePlayer;
-
-    let stopAnimation;
-
+    let stopAnimationFunction;
     if (!gameStart) {
-      stopAnimation = animate();
+      canvas.onkeydown = move;
+      canvas.onkeyup = stop;
+
+      if (startAnimation) {
+        setStartAnimation(false);
+        stopAnimationFunction = animate();
+      }
+
+      if (collision || gameWon) {
+        resetPositions();
+        window.cancelAnimationFrame(requestRef.current);
+        if (stopAnimationFunction) stopAnimationFunction(requestRef.current);
+      }
     }
     return () => {
-      if (stopAnimation) stopAnimation();
+      if (collision || gameWon) {
+        if (stopAnimationFunction) stopAnimationFunction();
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameStart, collision, gameWon]);
+  }, [gameStart, collision, gameWon, startAnimation]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -382,7 +521,7 @@ export const GameCanvas = () => {
                 `${playerName === "Tim" ? "2px solid #fa0835" : "none"}`
               }
             >
-              <img src={imageForward} />
+              <img src={timForward} />
             </PlayerButton>
 
             <PlayerButton
@@ -415,18 +554,67 @@ export const GameCanvas = () => {
       )}
 
       <StyledCanvas tabIndex="0" ref={canvasRef} width={300} height={300} />
-      <StyledImage ref={image} src={imageForward} className="hidden" />
-      <StyledImage ref={imageback} src={imageBack} className="hidden" />
-      <StyledImage ref={imageleft} src={imageLeft} className="hidden" />
-      <StyledImage ref={imageright} src={imageRight} className="hidden" />
+
       <StyledImage
-        ref={tylerForwardRef}
-        src={tylerForward}
+        ref={tylerForwardWaitingRef}
+        src={tylerForwardWaiting}
         className="hidden"
       />
+      <StyledImage
+        ref={tylerForwardShrugRef}
+        src={tylerForwardShrug}
+        className="hidden"
+      />
+      <StyledImage
+        ref={timForwardWaitingRef}
+        src={timForwardWaiting}
+        className="hidden"
+      />
+      <StyledImage
+        ref={timForwardShrugRef}
+        src={timForwardShrug}
+        className="hidden"
+      />
+
       <StyledImage ref={tylerBackRef} src={tylerBack} className="hidden" />
+      <StyledImage ref={tylerClimbRef} src={tylerClimb} className="hidden" />
+      <StyledImage ref={tylerClimb2Ref} src={tylerClimb2} className="hidden" />
+
+      <StyledImage ref={timBackRef} src={timBack} className="hidden" />
+      <StyledImage ref={timClimbRef} src={timClimb} className="hidden" />
+      <StyledImage ref={timClimb2Ref} src={timClimb2} className="hidden" />
+
       <StyledImage ref={tylerLeftRef} src={tylerLeft} className="hidden" />
+      <StyledImage ref={tylerLeft2Ref} src={tylerLeft2} className="hidden" />
+      <StyledImage
+        ref={tylerLeftStillRef}
+        src={tylerLeftStill}
+        className="hidden"
+      />
+
+      <StyledImage ref={timLeftRef} src={timLeft} className="hidden" />
+      <StyledImage ref={timLeft2Ref} src={timLeft2} className="hidden" />
+      <StyledImage
+        ref={timLeftStillRef}
+        src={timLeftStill}
+        className="hidden"
+      />
+
       <StyledImage ref={tylerRightRef} src={tylerRight} className="hidden" />
+      <StyledImage ref={tylerRight2Ref} src={tylerRight2} className="hidden" />
+      <StyledImage
+        ref={tylerRightStillRef}
+        src={tylerRightStill}
+        className="hidden"
+      />
+
+      <StyledImage ref={timRightRef} src={timRight} className="hidden" />
+      <StyledImage ref={timRight2Ref} src={timRight2} className="hidden" />
+      <StyledImage
+        ref={timRightStillRef}
+        src={timRightStill}
+        className="hidden"
+      />
       <MonsterSprite />
       {!gameWon && <RescueSprite player={playerName} />}
       {gameWon && (

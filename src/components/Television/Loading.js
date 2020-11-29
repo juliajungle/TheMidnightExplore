@@ -11,9 +11,14 @@ const StyledLoading = styled.div`
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: ${(props) => `${Math.min(276, props.width * 0.68)}px`};
+  height: 306px;
   opacity: 0.5;
   border-radius: 4%;
+
+  @media (max-width: 500px) {
+    width: 312px;
+    height: 260px;
+  }
 `;
 export const Loading = ({ width }) => {
   console.log("loading", width);

@@ -9,12 +9,11 @@ import monitor from "../../images/monitor.png";
 const StyledImage = styled.img`
   border-radius: 7px;
   position: absolute;
-  height: ${(props) => `${Math.min(280, props.responsiveWidth * 0.7)}px`};
+  height: 280px;
   z-index: -100;
   top: 5%;
   left: 4%;
-  width: ${(props) => `${Math.min(322, props.responsiveWidth * 0.85)}px`};
-  margin-left: 18px;
+  width: 322px;
 `;
 
 const StyledTechLink = styled.a`
@@ -37,8 +36,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: ${(props) => `${Math.min(274, props.responsiveWidth * 0.685)}px`};
-  left: ${(props) => `${Math.min(211, props.responsiveWidth * 0.56)}px`};
+  top: 274px;
+  left: 190px;
   font-size: 5px;
   color: #535252;
   text-decoration: none;
@@ -47,20 +46,24 @@ const StyledChatRoomLink = styled.a`
   box-shadow: #9e9e9e 0px 1px 0px 0px;
   :hover {
     box-shadow: none;
-    top: ${(props) =>
-      `${Math.min(274 + 1, props.responsiveWidth * 0.685 + 1)}px`};
+    top: 274px;
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
-  width: ${(props) => `${Math.min(350, props.responsiveWidth * 0.9)}px`};
-  height: ${(props) => `${Math.min(345, props.responsiveWidth * 0.9)}px`};
+  position: absolute;
+  left: 10px;
+  width: 350px;
+  height: 345px;
   background-image: url(${monitor});
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1%;
-  margin-left: 18px;
+  left: 45px;
+  @media (max-width: 500px) {
+    left: 12px;
+  }
 `;
 
 const StyledShopLink = styled.a`

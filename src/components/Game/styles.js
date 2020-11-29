@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import monstersprite8bit from "../../images/monstersprite.png";
-import imageForward from "../../images/tim-sprite.png";
-import tylerForward from "../../images/tyler-sprite.png";
+import monstersprite8bit from "./images/monstersprite.png";
+import timForward from "./images/tim-sprite.png";
+import tylerForward from "./images/tyler-sprite.png";
 export const StyledImage = styled.img`
   z-index: 100;
 `;
@@ -14,16 +14,27 @@ export const StyledWrapper = styled.div`
   .hidden {
     display: none;
   }
+
+  @media (max-width: 500px) {
+    width: 285px;
+    height: 285px;
+  }
 `;
 
 export const StyledCanvas = styled.canvas`
-  position: absolute;
+  position: relative;
   background-color: black;
-  top: 10%;
-  width: 263px;
+  top: 15%;
+  width: 272px;
   border: black solid 10px;
   :focus {
     outline: none;
+  }
+
+  @media (max-width: 500px) {
+    top: 12%;
+    width: 232px;
+    padding-left: 15px;
   }
 `;
 
@@ -35,9 +46,13 @@ export const StyledStart = styled.div`
   background-color: black;
   padding: 20px;
   width: 249px;
-  height: 226px;
+  height: 249px;
   border: 2px solid #fa068a;
   text-align: center;
+  @media (max-width: 500px) {
+    width: 239px;
+    height: 207px;
+  }
 `;
 
 export const StyledEnd = styled.div`
@@ -54,8 +69,12 @@ export const StyledEnd = styled.div`
 
   span {
     font-family: "Press Start 2P";
-    // text-shadow: #fc0 1px 0 10px;
     text-shadow: #f7f6f2 1px 0 10px;
+  }
+
+  @media (max-width: 500px) {
+    left: 6%;
+    width: 203px;
   }
 `;
 
@@ -91,7 +110,6 @@ export const PlayerButton = styled.button`
   border: ${(props) => props.showFocused};
   color: white;
   font-family: "Press Start 2P";
-  // text-shadow: #fc0 1px 0 10px;
   text-shadow: #f7f6f2 1px 0 10px;
   animation: blinker 1s linear infinite;
   margin-top: 20px;
@@ -115,7 +133,7 @@ export const PlayerButton = styled.button`
 `;
 export const MonsterSprite = styled.div`
   position: absolute;
-  top: 86px;
+  top: 102px;
   left: 16px;
   background-image: url(${monstersprite8bit});
   background-size: 30px;
@@ -137,14 +155,18 @@ export const MonsterSprite = styled.div`
       background-position: 0 30px;
     }
   }
+  @media (max-width: 500px) {
+    top: 81px;
+    left: 28px;
+  }
 `;
 
 export const RescueSprite = styled.div`
   position: absolute;
-  top: 46px;
+  top: 64px;
   left: 170px;
   background-image:  ${(props) =>
-    props.player === "Tyler" ? `url(${imageForward})` : `url(${tylerForward})`};
+    props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};
   }
   background-size: 20px;
   width: 20px;
@@ -165,20 +187,30 @@ export const RescueSprite = styled.div`
       background-position: 0 -30px;
     }
   }
+  @media (max-width: 500px) {
+    top: 48px;
+    left: 148px;
+  }
+
 `;
 
 export const Winner = styled.div`
   position: absolute;
-  top: 46px;
-  left: ${(props) => `${props.position}px`}; //170px;
+  top: 64px;
+  left: ${(props) => props.position}px;
   background-image:  ${(props) =>
-    props.player === "Tyler" ? `url(${imageForward})` : `url(${tylerForward})`};
+    props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};
   }
   background-size: 20px;
   width: 20px;
   height: 30px;
   background-repeat: no-repeat;
   background-position: 0 -30px;
+
+  @media (max-width: 500px) {
+    top: 48px;
+    left: ${(props) => props.position - 20}px;
+  }
 `;
 
 export const StyledTitle = styled.p`

@@ -39,10 +39,13 @@ const StyledIframe = styled.iframe`
   top: 0;
   left: 0;
   width: 100%;
-  border-radius: 3%;
-  border-color: #333;
-  height: ${(props) => `${Math.min(275, props.responsiveWidth * 0.655)}px`};
-  border-width: 0;
+  height: 308px;
+  border: none;
+
+  @media (max-width: 500px) {
+    width: 312px;
+    height: 256px;
+  }
 `;
 
 const StyledWrapper = styled.div`
@@ -52,25 +55,31 @@ const StyledWrapper = styled.div`
   background-color: #8b9ee0;
   border-radius: 5%;
   box-sizing: border-box;
-  width: 83%;
-  height: ${(props) => `${Math.min(285, props.width * 0.68)}px`};
+  width: 370px;
+  height: 302px;
   box-shadow: inset 0px 0px 20px 0px #fff;
 
-  border-color: #333;
-  border-style: solid;
-  border-width: 5px;
+  @media (max-width: 500px) {
+    width: 312px;
+    height: 256px;
+  }
 `;
 
 const StyledTVWrapper = styled.div`
   position: absolute;
-  width: 100%;
-  height: ${(props) => `${Math.min(380, props.width * 0.9)}px`};
+  width: 440px;
+  height: 400px;
   background-image: url(${tv});
   background-color: black;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1%;
+
+  @media (max-width: 500px) {
+    width: 375px;
+    height: 341px;
+  }
 `;
 
 export const Television = ({ handleClick, width }) => {

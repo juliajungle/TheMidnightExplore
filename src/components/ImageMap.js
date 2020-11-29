@@ -5,56 +5,13 @@ import { MAP_AREAS } from "../const";
 import { getItemCoords } from "../utils/coordinatesCalc";
 import bedroom2 from "../images/bedroom2.png";
 import bedroom3 from "../images/bedroom3.png";
-import monsters from "../images/monsters.gif";
+import bedroom1 from "../images/pixel.png"; // transparent image to cover video for map
 
 const StyledImage = styled.img`
   position: absolute;
   width: ${(props) => props.cssWidth};
-  height: auto;
-
-  opacity: 0;
-  visibility: hidden;
-
-  @keyframes greyscale {
-    0% {
-      opacity: 0;
-      visibility: hidden;
-      // filter: grayscale(1);
-    }
-
-    20% {
-      // opacity: 0.4;
-      // filter: grayscale(1);
-      visibility: hidden;
-    }
-
-    40% {
-      // opacity: 0.8;
-      // filter: grayscale(1);
-      visibility: hidden;
-    }
-
-    50% {
-      // opacity: 1;
-      // filter: grayscale(1);
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    90% {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    100% {
-      // filter: grayscale(0);
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-
-  animation: greyscale ${(props) => props.animationTime}s linear;
-  animation-fill-mode: forwards;
+  // width: auto;
+  height: ${(props) => props.cssHeight}px;
 `;
 
 const getBedroomImage = (imageName) => {
@@ -62,8 +19,8 @@ const getBedroomImage = (imageName) => {
     return bedroom2;
   } else if (imageName === "bedroom3") {
     return bedroom3;
-  } else {
-    return monsters;
+  } else if (imageName === "bedroom1") {
+    return bedroom1;
   }
 };
 
@@ -72,14 +29,14 @@ const StyledArea = styled.area`
   display: block;
 `;
 
-export const BedroomImage = ({ imageName, width, animationTime }) => {
+export const BedroomImage = ({ imageName, width }) => {
   return (
     <StyledImage
       src={getBedroomImage(imageName)}
       alt="Monsters wallpaper"
       useMap="#monsters"
       cssWidth={() => (width ? `${width}px` : "100%")}
-      animationTime={animationTime}
+      cssHeight={width * 0.5625}
     />
   );
 };

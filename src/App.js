@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useCookies } from "react-cookie";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 import useDimensions from "react-use-dimensions";
@@ -14,10 +13,7 @@ import speaker from "./images/speaker.png";
 import speakerPink from "./images/speaker-pink.png";
 import mute from "./images/mute.png";
 import mutePink from "./images/mute-pink.png";
-import { ANIMATION_CONFIG, ENV, COLORS } from "./const";
-import movie from "./images/bedroom.mov";
-
-const { roomLoadingTime, roomAnimation } = ANIMATION_CONFIG[ENV];
+import { COLORS } from "./const";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -27,6 +23,7 @@ const StyledOverlay = styled.div`
   background: ${COLORS.darkPink};
   opacity: 0.2;
   top: 0;
+  left: 0;
 `;
 
 const StyledZoomWrapper = styled.div`
@@ -36,12 +33,12 @@ const StyledZoomWrapper = styled.div`
 `;
 
 const MuteButton = styled.button`
-  position: absolute;
+  position: fixed;
   z-index: 100;
-  top: 10px;
+  top: ${(props) => props.yPosition}px;
   right: 10px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-image: ${(props) =>
     props.muted ? `url(${mute})` : `url(${speaker})`};
   background-position: center;
@@ -61,46 +58,38 @@ const MuteButton = styled.button`
   }
 `;
 
+const StyledVideo = styled.video`
+  position: absolute;
+  width: ${(props) => props.cssWidth}px;
+`;
+
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hint, setHint] = useState(false);
   const [currentItem, setItem] = useState();
   const [area, setArea] = useState(1);
-  const [isLoading, setLoading] = useState(true);
   const [isZoomed, setZoomed] = useState(false);
   const [muted, setMuted] = useState(true);
-  const [cookies, setCookie] = useCookies(["themidnight"]);
+  const [modalWidth, setModalWidth] = useState(440);
+  const [modalHeight, setModalHeight] = useState(400);
 
-  useEffect(() => {
-    const videoPlayed = cookies["video_played"];
-    if (videoPlayed) {
-      setLoading(false);
-    } else {
-      setTimeout(() => {
-        setLoading(false);
-        setCookie("video_played", "true", { path: "/" });
-      }, roomLoadingTime);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // get size of screen - should this be updated\/
   const [ref, { width, height }] = useDimensions();
   const [zoomWidth, setZoomWidth] = useState(width);
 
+  useEffect(() => {
+    // get size of screen - should this be updated\/
+    console.log({ width });
+    if (width < 500) {
+      setModalWidth(350);
+      setModalHeight(315);
+    }
+  }, [width]);
   const openModal = (e) => {
     const currentItem = e.target.alt;
     setItem(currentItem);
     setIsOpen(!isOpen);
     document.body.style.overflow = "hidden";
   };
-
-  // cont handleClick = (e) => {
-  //   const currentItem = e.target.alt;
-  //   if(currentItem === "skateboard") {
-
-  //   }
-  // }
 
   const closeModal = (e) => {
     setIsOpen(!isOpen);
@@ -146,27 +135,33 @@ export const App = () => {
     setZoomed(false);
   };
 
-  const video = useRef();
-
   const unMuteVideo = () => {
     setMuted(!muted);
   };
 
   return (
     <div ref={ref}>
-      {isLoading && <MuteButton muted={muted} onClick={unMuteVideo} />}
-      {isLoading && (
-        <video ref={video} playsInline autoPlay muted={muted} width="100%">
-          <source src={movie} type="video/mp4" />
-        </video>
-      )}
-      {!isLoading && (
-        <ImageMap
-          handleClick={openModal}
-          width={zoomWidth || width}
-          imageName={`bedroom${area}`}
-        />
-      )}
+      <MuteButton
+        muted={muted}
+        onClick={unMuteVideo}
+        yPosition={width * 0.57 - 30}
+      />
+      <StyledVideo
+        playsInline
+        autoPlay
+        loop
+        muted={muted}
+        cssWidth={zoomWidth || width}
+      >
+        <source src="./monsters-video.mp4" type="video/mp4" />
+      </StyledVideo>
+
+      <ImageMap
+        handleClick={openModal}
+        width={zoomWidth || width}
+        imageName={`bedroom${area}`}
+      />
+
       {hint && (
         <Hint
           width={zoomWidth || width}
@@ -175,40 +170,33 @@ export const App = () => {
         />
       )}
 
-      <BedroomImage
-        imageName={`bedroom${area}`}
-        animationTime={cookies["video_played"] ? 1 : roomAnimation}
-        width={zoomWidth || width}
-      />
+      <BedroomImage imageName={`bedroom${area}`} width={zoomWidth || width} />
 
       <Modal
         isOpen={isOpen}
         openModal={openModal}
         closeModal={closeModal}
         item={currentItem}
-        width={width}
+        width={modalWidth}
+        height={modalHeight}
       />
       {isOpen && <StyledOverlay onClick={closeModal} />}
-      {!isLoading && (
-        <div>
-          {" "}
-          <HintButton handleClick={showHint}>Show hint</HintButton>
-          <NavigationButton
-            handleClick={goBack}
-            x={backX}
-            y={backY}
-          ></NavigationButton>
-          <NavigationButton
-            handleClick={goForward}
-            x={forwardX}
-            y={forwardY}
-          ></NavigationButton>
-          <StyledZoomWrapper>
-            <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
-            <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
-          </StyledZoomWrapper>
-        </div>
-      )}
+
+      <HintButton handleClick={showHint}>Show hint</HintButton>
+      <NavigationButton
+        handleClick={goBack}
+        x={backX}
+        y={backY}
+      ></NavigationButton>
+      <NavigationButton
+        handleClick={goForward}
+        x={forwardX}
+        y={forwardY}
+      ></NavigationButton>
+      <StyledZoomWrapper>
+        <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
+        <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
+      </StyledZoomWrapper>
     </div>
   );
 };

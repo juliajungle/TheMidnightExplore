@@ -3,7 +3,12 @@ import styled from "styled-components";
 
 const StyledCanvas = styled.canvas`
   width: 100%;
-  height: ${(props) => `${Math.min(276, props.responsiveWidth * 0.66)}px`};
+  height: 302px;
+  border-radius: 5%;
+  @media (max-width: 500px) {
+    width: 312px;
+    height: 256px;
+  }
 `;
 
 const Canvas = ({ width }) => {

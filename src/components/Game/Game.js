@@ -5,19 +5,24 @@ import { TVButton, TVButtonContainer } from "../Shared/ModalButtons";
 import tv from "../../images/tv.png";
 
 const StyledWrapper = styled.div`
+  position: absolute;
   width: 100%;
-  height: ${(props) => `${Math.min(380, props.responsiveWidth * 0.9)}px`};
+  height: 400px;
   background-image: url(${tv});
   background-color: black;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  borer-radius: 1%;
+  border-radius: 1%;
+
+  @media (max-width: 500px) {
+    height: 341px;
+  }
 `;
 
-export const Game = ({ handleClick, width }) => {
+export const Game = ({ handleClick }) => {
   return (
-    <StyledWrapper responsiveWidth={width}>
+    <StyledWrapper>
       <GameCanvas />
       <TVButtonContainer>
         <TVButton handleClick={handleClick} />
