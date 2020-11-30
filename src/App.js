@@ -53,7 +53,8 @@ const MuteButton = styled.button`
   }
 
   :hover {
-    background-image: ${(props) =>
+    transform: scale(1.5);
+    //  background-image: ${(props) =>
       props.muted ? `url(${mutePink})` : `url(${speakerPink})`};
   }
 `;

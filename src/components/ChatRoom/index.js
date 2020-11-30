@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
+import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.png";
 import planet from "../../images/planet.png";
 import monitor from "../../images/monitor.png";
 
 const StyledImage = styled.img`
-  border-radius: 7px;
+  border-radius: 9px;
   position: absolute;
-  height: 280px;
+  height: 266px;
   z-index: -100;
-  top: 5%;
-  left: 4%;
-  width: 322px;
+  top: 18px;
+  left: 41px;
+  width: 297px;
+  background-color: black;
 `;
 
 const StyledTechLink = styled.a`
@@ -36,8 +38,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 274px;
-  left: 190px;
+  top: 262px;
+  left: 201px;
   font-size: 5px;
   color: #535252;
   text-decoration: none;
@@ -46,15 +48,16 @@ const StyledChatRoomLink = styled.a`
   box-shadow: #9e9e9e 0px 1px 0px 0px;
   :hover {
     box-shadow: none;
-    top: 274px;
+    top: 263px;
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
   left: 10px;
-  width: 350px;
+  width: 380px;
   height: 345px;
+  // background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
   background-size: contain;
@@ -73,23 +76,46 @@ const StyledShopLink = styled.a`
   padding: 52px 95px;
 `;
 
+const StyledChatbotButton = styled.button`
+  position: absolute;
+  top: 70px;
+  left: 66px;
+  padding: 32px 41px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
 export const ChatRoom = ({ handleClick, width }) => {
+  const [showChatbot, setShowChatbot] = useState(false);
+
+  const openChatbot = () => {
+    setShowChatbot(true);
+  };
+
   return (
     <StyledDesktopWrapper responsiveWidth={width}>
-      <StyledImage responsiveWidth={width} src={desktop} />
-      <StyledShopLink
-        href="https://merch.ambientinks.com/collections/themidnight"
-        target="_blank"
-        rel="noopener noreferrer"
-      />
-      <StyledChatRoomLink
-        href="http://183010165.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        responsiveWidth={width}
-      >
-        {`Send >`}
-      </StyledChatRoomLink>
+      {showChatbot && <MyChatbot />}
+
+      {!showChatbot && (
+        <div>
+          <StyledImage responsiveWidth={width} src={desktop} />
+          <StyledShopLink
+            href="https://merch.ambientinks.com/collections/themidnight"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <StyledChatbotButton onClick={openChatbot} />
+          <StyledChatRoomLink
+            href="http://183010165.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            responsiveWidth={width}
+          >
+            {`Send >`}
+          </StyledChatRoomLink>
+        </div>
+      )}
       <StyledTechLink
         href="http://183010165.com/"
         target="_blank"
@@ -98,7 +124,6 @@ export const ChatRoom = ({ handleClick, width }) => {
         <StyledPlanetImage src={planet} width="20" height="20" />
         {`COMTEK`}
       </StyledTechLink>
-
       <MonitorButtonContainer>
         {" "}
         <MonitorButton handleClick={handleClick}></MonitorButton>
