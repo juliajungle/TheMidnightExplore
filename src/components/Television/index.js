@@ -41,6 +41,7 @@ const StyledIframe = styled.iframe`
   width: 100%;
   height: 308px;
   border: none;
+  border-radius: 5px;
 
   @media (max-width: 500px) {
     width: 312px;
@@ -51,11 +52,11 @@ const StyledIframe = styled.iframe`
 const StyledWrapper = styled.div`
   position: absolute;
   top: 10%;
-  left: 8%;
+  left: 9%;
   background-color: #8b9ee0;
-  border-radius: 5%;
+  border-radius: 5px;
   box-sizing: border-box;
-  width: 370px;
+  width: 361px;
   height: 302px;
   box-shadow: inset 0px 0px 20px 0px #fff;
 

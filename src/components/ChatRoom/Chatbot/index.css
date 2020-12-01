@@ -1,84 +1,15 @@
-/* form {
-  background-color: black;
-  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
-  width: 300px;
-  height: 100px;
-  color: white;
-  border: white solid 1px;
-  padding: 5px;
-  margin: auto;
-  font: 1.3rem Inconsolata, monospace;
-  text-shadow: 0 0 5px #c8c8c8;
-} */
-/* 
-label {
-  text-align: left;
-  display: block;
-}
-
-input {
-  background-color: transparent;
-  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
-  border: none;
-  color: white;
-  display: block;
-  font: 1.3rem Inconsolata, monospace;
-  top: 0;
-  position: absolute;
-  left: -1000px;
-}
-
-input:focus {
-  outline: none;
-}
-
-button {
-  visibility: hidden;
-}
-
-.form-wrapper {
-  flex-grow: 1;
-}
-
-body {
-  background: black;
-}
-
-span {
-  color: yellow;
-  font-family: monospace;
-}
-
-.blinker {
-  opacity: 1;
-  margin-bottom: -2px;
-  height: 15px;
-  margin-left: -5px;
-  border-left: 7px solid yellow;
-  animation: blinker 0.9s steps(2, start) infinite;
-}
-
-@keyframes blinker {
-  to {
-    visibility: hidden;
-  }
-} */
-
 .lostboy {
   font-family: "VT323";
   text-shadow: #f7f6f2 1px 0 10px;
   font-size: 12px;
   background-color: black;
   background-image: radial-gradient(#1b5bff, black 120%);
-  /* height: 260px;
-  margin-left: 44px;
-  margin-top: 20px;
-  width: 293px; */
-  border-radius: 5%;
+  border-radius: 5px;
   position: absolute;
   left: 43px;
   top: 21px;
   width: 295px;
+  height: 260px;
 }
 
 .lostboy:after {
@@ -96,4 +27,8 @@ span {
   );
   width: 295px;
   height: 261px;
+}
+
+.lostboy input:disabled {
+  color: transparent;
 }

@@ -37,8 +37,8 @@ const MuteButton = styled.button`
   z-index: 100;
   top: ${(props) => props.yPosition}px;
   right: 10px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-image: ${(props) =>
     props.muted ? `url(${mute})` : `url(${speaker})`};
   background-position: center;
@@ -53,7 +53,7 @@ const MuteButton = styled.button`
   }
 
   :hover {
-    transform: scale(1.5);
+    transform: scale(1.3);
     //  background-image: ${(props) =>
       props.muted ? `url(${mutePink})` : `url(${speakerPink})`};
   }

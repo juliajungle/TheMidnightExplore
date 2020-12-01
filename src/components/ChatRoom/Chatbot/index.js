@@ -98,19 +98,27 @@ const bubbleStyle = {
   boxShadow: "none",
 };
 
+const contentStyle = {
+  height: "200px",
+};
+
 export const MyChatbot = () => {
   return (
     <ThemeProvider theme={theme}>
       <ChatBot
         inputStyle={inputStyle}
-        height="320px"
-        width="390px"
+        contentStyle={contentStyle}
+        height="260px"
+        width="295px"
         steps={steps}
         hideHeader={true}
         className="lostboy"
         hideBotAvatar={true}
         hideUserAvatar={true}
         bubbleStyle={bubbleStyle}
+        botDelay="500"
+        hideSubmitButton={true}
+        placeholder=""
       />
     </ThemeProvider>
   );

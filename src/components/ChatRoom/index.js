@@ -8,7 +8,7 @@ import planet from "../../images/planet.png";
 import monitor from "../../images/monitor.png";
 
 const StyledImage = styled.img`
-  border-radius: 9px;
+  border-radius: 5px;
   position: absolute;
   height: 266px;
   z-index: -100;
@@ -54,10 +54,10 @@ const StyledChatRoomLink = styled.a`
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
-  left: 10px;
+  z-index: -1;
   width: 380px;
   height: 345px;
-  // background-color: #4e4954;
+  background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
   background-size: contain;
@@ -66,6 +66,22 @@ const StyledDesktopWrapper = styled.div`
   left: 45px;
   @media (max-width: 500px) {
     left: 12px;
+  }
+
+  :after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 18px;
+    left: 41px;
+    height: 266px;
+    width: 297px;
+    background: repeating-linear-gradient(
+      #00000012,
+      #00000012 1px,
+      transparent 1px,
+      transparent 2px
+    );
   }
 `;
 

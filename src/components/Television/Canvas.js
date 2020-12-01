@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledCanvas = styled.canvas`
   width: 100%;
   height: 302px;
-  border-radius: 5%;
+  border-radius: 5px;
   @media (max-width: 500px) {
     width: 312px;
     height: 256px;
