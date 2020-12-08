@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
+import MutedContext from "./Context/MutedContext";
 import "./App.css";
 import useDimensions from "react-use-dimensions";
 import { ImageMap, BedroomImage } from "./components/ImageMap";
@@ -153,77 +154,79 @@ export const App = () => {
     setZoomed(false);
   };
 
-  const unMuteVideo = () => {
+  const toggleMuted = () => {
     setMuted(!muted);
   };
 
   return (
-    <div ref={ref}>
-      <MuteButton
-        muted={muted}
-        onClick={unMuteVideo}
-        yPosition={width * 0.57 - 30}
-      />
-      <StyledVideo
-        playsInline
-        autoPlay
-        loop
-        muted={muted}
-        // height={height}
-        cssWidth={zoomWidth || width}
-      >
-        <source src="./monsters-video.mp4" type="video/mp4" />
-        <img
-          src={bedroom1}
-          title="Your browser does not support the <video> tag"
-        ></img>
-      </StyledVideo>
+    <MutedContext.Provider value={{ muted, toggleMuted }}>
+      <div ref={ref}>
+        <MuteButton
+          muted={muted}
+          onClick={toggleMuted}
+          yPosition={width * 0.57 - 30}
+        />
+        <StyledVideo
+          playsInline
+          autoPlay
+          loop
+          muted={muted}
+          // height={height}
+          cssWidth={zoomWidth || width}
+        >
+          <source src="./monsters-video.mp4" type="video/mp4" />
+          <img
+            src={bedroom1}
+            title="Your browser does not support the <video> tag"
+          ></img>
+        </StyledVideo>
 
-      <ImageMap
-        handleClick={openModal}
-        width={zoomWidth || width}
-        // height={height}
-        imageName={`bedroom${area}`}
-      />
-
-      {hint && (
-        <Hint
+        <ImageMap
+          handleClick={openModal}
           width={zoomWidth || width}
-          height={height}
+          // height={height}
           imageName={`bedroom${area}`}
         />
-      )}
 
-      <BedroomImage imageName={`bedroom${area}`} width={zoomWidth || width} />
+        {hint && (
+          <Hint
+            width={zoomWidth || width}
+            height={height}
+            imageName={`bedroom${area}`}
+          />
+        )}
 
-      <Modal
-        isOpen={isOpen}
-        openModal={openModal}
-        closeModal={closeModal}
-        item={currentItem}
-        width={modalWidth}
-        height={modalHeight}
-        switchModalContent={switchModalContent}
-        channelChoice={modalOptions}
-      />
-      {isOpen && <StyledOverlay onClick={closeModal} />}
+        <BedroomImage imageName={`bedroom${area}`} width={zoomWidth || width} />
 
-      <HintButton handleClick={showHint}>Show hint</HintButton>
-      <NavigationButton
-        handleClick={goBack}
-        x={backX}
-        y={backY}
-      ></NavigationButton>
-      <NavigationButton
-        handleClick={goForward}
-        x={forwardX}
-        y={forwardY}
-      ></NavigationButton>
-      <StyledZoomWrapper>
-        <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
-        <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
-      </StyledZoomWrapper>
-    </div>
+        <Modal
+          isOpen={isOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+          item={currentItem}
+          width={modalWidth}
+          height={modalHeight}
+          switchModalContent={switchModalContent}
+          channelChoice={modalOptions}
+        />
+        {isOpen && <StyledOverlay onClick={closeModal} />}
+
+        <HintButton handleClick={showHint}>Show hint</HintButton>
+        <NavigationButton
+          handleClick={goBack}
+          x={backX}
+          y={backY}
+        ></NavigationButton>
+        <NavigationButton
+          handleClick={goForward}
+          x={forwardX}
+          y={forwardY}
+        ></NavigationButton>
+        <StyledZoomWrapper>
+          <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
+          <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
+        </StyledZoomWrapper>
+      </div>
+    </MutedContext.Provider>
   );
 };
 

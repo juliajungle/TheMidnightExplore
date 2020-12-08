@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
+import MutedContext from "../../Context/MutedContext";
 import Canvas from "./Canvas";
 import {
   TVButton,
@@ -84,9 +85,17 @@ const StyledTVWrapper = styled.div`
 `;
 
 export const Television = ({ handleClick, width, channelChoice = 1 }) => {
+  const { muted, toggleMuted } = useContext(MutedContext);
+
   const [channel, setChannel] = useState(channelChoice);
+  const [audioMuted] = useState(muted);
   const [isLoading, setLoading] = useState(true);
   const changeChannel = (value) => {
+    // mute video if channel is YT
+    if (value === 2 && !audioMuted) {
+      toggleMuted();
+    }
+
     setChannel(value);
     setLoading(true);
 
@@ -96,10 +105,22 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
   };
 
   useEffect(() => {
+    if (channel === 2 && !audioMuted) {
+      toggleMuted();
+    }
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      // unmute video if it mute state changed using tv
+      if (!audioMuted && muted) {
+        toggleMuted();
+      }
+    };
+  }, [muted]);
 
   return (
     <StyledTVWrapper width={width}>
