@@ -13,16 +13,14 @@ const StyledWrapper = styled.div`
   top: 0;
   left: 0;
   box-sizing: border-box;
-  border-radius: 10px;
-  border: 5px solid white;
-  height: 320px;
-  box-shadow: 0px 0px 18px 5px #d31e91;
+  height: 315px;
+  outline: #ec9e6a 10px solid;
+  outline-style: ridge;
 `;
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 311px;
-  border-radius: 7px;
+  height: 315px;
 `;
 
 const StyledPhotoBooth = styled.img`
@@ -41,16 +39,16 @@ const StyledPhotoBoothWrapper = styled.div`
   }
 `;
 
-const PhotoBooth = () => {
+const PhotoBooth = ({ handleContentSwitch }) => {
+  const handleClick = () => {
+    handleContentSwitch("map", "noticeboard");
+  };
+
   return (
     <StyledPhotoBoothWrapper>
-      <a
-        href="https://www.google.co.uk/maps/place/Niagara/@40.7254568,-73.9841666,17.64z/data=!4m12!1m6!3m5!1s0x89c2599d513be0ab:0x24e2dbea66c7d90b!2sNiagara!8m2!3d40.7259134!4d-73.9834614!3m4!1s0x89c2599d513be0ab:0x24e2dbea66c7d90b!8m2!3d40.7259134!4d-73.9834614"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <StyledButton onClick={handleClick}>
         <StyledPhotoBooth src={photobooth} />
-      </a>
+      </StyledButton>
       <Pin className="pin" />
     </StyledPhotoBoothWrapper>
   );
@@ -144,21 +142,19 @@ const StyledNoteWrapper = styled.div`
 `;
 
 const StyledNote = styled.img`
-  width: 100%;
+  width: 120px;
   transform: rotate(15deg);
 `;
 
-const Note = () => {
+const Note = ({ handleContentSwitch }) => {
+  const handleClick = () => {
+    handleContentSwitch("map", "noticeboard");
+  };
   return (
     <StyledNoteWrapper>
-      {" "}
-      <a
-        href="https://www.google.co.uk/maps/place/Electro+Spin/@40.5739799,-73.9814127,17z/data=!3m1!4b1!4m5!3m4!1s0x89c24435b42a9da1:0x75752824671ec774!8m2!3d40.5739758!4d-73.979224"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <StyledButton onClick={handleClick}>
         <StyledNote src={endlessSummer} />
-      </a>
+      </StyledButton>
       <Pin className="pin" />
     </StyledNoteWrapper>
   );
@@ -166,9 +162,9 @@ const Note = () => {
 
 const ButtonContainer = styled.div`
   position: absolute;
-  bottom: 10px;
-  top: -5px;
-  right: -5px;
+
+  top: -25px;
+  right: 18px;
 `;
 
 const StyledPin = styled.div`
@@ -188,10 +184,10 @@ export const NoticeBoard = ({ handleClick, switchModalContent }) => {
     <div>
       <StyledWrapper>
         <StyledImage src={noticeBoard} />
-        <PhotoBooth />
+        <PhotoBooth handleContentSwitch={switchModalContent} />
         <Polaroid handleContentSwitch={switchModalContent} />
         <Poster />
-        <Note></Note>
+        <Note handleContentSwitch={switchModalContent} />
       </StyledWrapper>
 
       <ButtonContainer>

@@ -6,6 +6,7 @@ import { Television } from "./Television/index";
 import { AI } from "./AI/AI";
 import { NoticeBoard } from "./NoticeBoard/Board";
 import { Game } from "./Game/Game";
+import { Map } from "./Map/Map";
 
 /* Modal size is 440 400 or 367 333 */
 const StyledModal = styled.div`
@@ -49,6 +50,7 @@ export const Modal = ({
             />
           )}
           {item === "game" && <Game handleClick={closeModal} />}
+          {item === "map" && <Map handleClick={closeModal} />}
         </StyledModal>
       )}
     </div>

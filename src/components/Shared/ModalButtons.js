@@ -13,12 +13,11 @@ const StyledSVGButton = styled.button`
   ${StyledButton}
   height: 30px;
   background-color: white;
-  border: 1px solid ${COLORS.pink};
   border-radius: 10%;
+  border: 1px solid white;
 
   :hover {
-    border: 1px solid white;
-    background-color: black;
+    transform: scale(1.2);
   }
 `;
 
