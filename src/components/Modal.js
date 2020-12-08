@@ -23,15 +23,31 @@ const StyledModal = styled.div`
   }
 `;
 
-export const Modal = ({ isOpen, closeModal, item }) => {
+export const Modal = ({
+  isOpen,
+  closeModal,
+  item,
+  switchModalContent,
+  channelChoice,
+}) => {
   return (
     <div>
       {isOpen && (
         <StyledModal>
-          {item === "tv" && <Television handleClick={closeModal} />}
+          {item === "tv" && (
+            <Television
+              handleClick={closeModal}
+              channelChoice={channelChoice}
+            />
+          )}
           {item === "monitor" && <ChatRoom handleClick={closeModal}></ChatRoom>}
           {item === "ai" && <AI handleClick={closeModal} />}
-          {item === "noticeboard" && <NoticeBoard handleClick={closeModal} />}
+          {item === "noticeboard" && (
+            <NoticeBoard
+              switchModalContent={switchModalContent}
+              handleClick={closeModal}
+            />
+          )}
           {item === "game" && <Game handleClick={closeModal} />}
         </StyledModal>
       )}

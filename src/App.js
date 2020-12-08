@@ -80,6 +80,8 @@ export const App = () => {
 
   const [ref, { width, height }] = useDimensions();
   const [zoomWidth, setZoomWidth] = useState(width);
+  const [previousItem, setPreviousItem] = useState();
+  const [modalOptions, setModalOptions] = useState();
 
   useEffect(() => {
     if (width < 500) {
@@ -94,9 +96,22 @@ export const App = () => {
     document.body.style.overflow = "hidden";
   };
 
+  const switchModalContent = (newItem, previousItem, options) => {
+    console.log("switch", newItem);
+
+    setPreviousItem(previousItem);
+    setModalOptions(options);
+    setItem(newItem);
+  };
+
   const closeModal = (e) => {
-    setIsOpen(!isOpen);
-    document.body.style.overflow = "auto";
+    if (!previousItem) {
+      setIsOpen(!isOpen);
+      document.body.style.overflow = "auto";
+    } else {
+      setItem(previousItem);
+      setPreviousItem();
+    }
   };
 
   const showHint = () => {
@@ -188,6 +203,8 @@ export const App = () => {
         item={currentItem}
         width={modalWidth}
         height={modalHeight}
+        switchModalContent={switchModalContent}
+        channelChoice={modalOptions}
       />
       {isOpen && <StyledOverlay onClick={closeModal} />}
 

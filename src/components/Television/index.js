@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Canvas from "./Canvas";
 import {
@@ -83,9 +83,9 @@ const StyledTVWrapper = styled.div`
   }
 `;
 
-export const Television = ({ handleClick, width }) => {
-  const [channel, setChannel] = useState(1);
-  const [isLoading, setLoading] = useState(false);
+export const Television = ({ handleClick, width, channelChoice = 1 }) => {
+  const [channel, setChannel] = useState(channelChoice);
+  const [isLoading, setLoading] = useState(true);
   const changeChannel = (value) => {
     setChannel(value);
     setLoading(true);
@@ -94,6 +94,12 @@ export const Television = ({ handleClick, width }) => {
       setLoading(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <StyledTVWrapper width={width}>
@@ -118,7 +124,7 @@ export const Television = ({ handleClick, width }) => {
             id="ytplayer"
             type="text/html"
             height="308"
-            src="https://www.youtube.com/embed/Xzex-nN2yM0?autoplay=1"
+            src="https://www.youtube.com/embed/eH3giaIzONA?autoplay=1"
             frameborder="0"
             allow="autoplay"
             autoplay="1"

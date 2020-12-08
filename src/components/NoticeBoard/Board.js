@@ -77,17 +77,24 @@ const StyledPolaroid = styled.img`
   border-style: solid;
 `;
 
-const Polaroid = () => {
+const StyledButton = styled.button`
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: 0;
+`;
+
+const Polaroid = ({ handleContentSwitch }) => {
+  const handleClick = () => {
+    handleContentSwitch("tv", "noticeboard", 2);
+  };
   return (
     <PolaroidBorder>
       <Pin className="pin" />
-      <a
-        href="https://www.youtube.com/watch?v=eH3giaIzONA"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <StyledButton onClick={handleClick}>
         <StyledPolaroid src={whitney} />
-      </a>
+      </StyledButton>
     </PolaroidBorder>
   );
 };
@@ -176,13 +183,13 @@ const Pin = () => {
   return <StyledPin />;
 };
 
-export const NoticeBoard = ({ handleClick }) => {
+export const NoticeBoard = ({ handleClick, switchModalContent }) => {
   return (
     <div>
       <StyledWrapper>
         <StyledImage src={noticeBoard} />
         <PhotoBooth />
-        <Polaroid />
+        <Polaroid handleContentSwitch={switchModalContent} />
         <Poster />
         <Note></Note>
       </StyledWrapper>
