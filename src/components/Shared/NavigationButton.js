@@ -38,7 +38,6 @@ const StyledNavigationButton = styled.button`
 `;
 
 export const NavigationButton = ({ handleClick, x, y }) => {
-  console.log(x, y);
   return (
     <StyledNavigationButton
       x={x ? x : 0}

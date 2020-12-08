@@ -21,7 +21,6 @@ const StyledLoading = styled.div`
   }
 `;
 export const Loading = ({ width }) => {
-  console.log("loading", width);
   return (
     <StyledLoading width={width}>
       <Canvas width={width} />

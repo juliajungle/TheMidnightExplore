@@ -14,6 +14,7 @@ import speakerPink from "./images/speaker-pink.png";
 import mute from "./images/mute.png";
 import mutePink from "./images/mute-pink.png";
 import { COLORS } from "./const";
+import bedroom1 from "./images/bedroom1.png";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -62,6 +63,9 @@ const MuteButton = styled.button`
 const StyledVideo = styled.video`
   position: absolute;
   width: ${(props) => props.cssWidth}px;
+  // width: 100%;
+  // height: 100vh;
+  height: ${(props) => props.cssWidth * 0.5625}px;
 `;
 
 export const App = () => {
@@ -78,8 +82,6 @@ export const App = () => {
   const [zoomWidth, setZoomWidth] = useState(width);
 
   useEffect(() => {
-    // get size of screen - should this be updated\/
-    console.log({ width });
     if (width < 500) {
       setModalWidth(350);
       setModalHeight(315);
@@ -152,14 +154,20 @@ export const App = () => {
         autoPlay
         loop
         muted={muted}
+        // height={height}
         cssWidth={zoomWidth || width}
       >
         <source src="./monsters-video.mp4" type="video/mp4" />
+        <img
+          src={bedroom1}
+          title="Your browser does not support the <video> tag"
+        ></img>
       </StyledVideo>
 
       <ImageMap
         handleClick={openModal}
         width={zoomWidth || width}
+        // height={height}
         imageName={`bedroom${area}`}
       />
 
