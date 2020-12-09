@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
 import { MyChatbot } from "./Chatbot";
-import desktop from "../../images/desktop.png";
+import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
-import monitor from "../../images/monitor.png";
+import monitor from "../../images/monitor.jpg";
 
 const StyledImage = styled.img`
   border-radius: 5px;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Video } from "./components/Video/Video";
 import styled from "styled-components";
 import MutedContext from "./Context/MutedContext";
 import "./App.css";
@@ -11,11 +12,9 @@ import { ZoomButton } from "./components/Shared/ZoomButton";
 import { getNavigationCoords } from "./utils/coordinatesCalc";
 import { Hint } from "./components/Hint/Hint";
 import speaker from "./images/speaker.png";
-import speakerPink from "./images/speaker-pink.png";
 import mute from "./images/mute.png";
-import mutePink from "./images/mute-pink.png";
 import { COLORS } from "./const";
-import bedroom1 from "./images/bedroom1.png";
+import bedroom1 from "./images/bedroom1.jpg";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -56,16 +55,13 @@ const MuteButton = styled.button`
 
   :hover {
     transform: scale(1.3);
-    //  background-image: ${(props) =>
-      props.muted ? `url(${mutePink})` : `url(${speakerPink})`};
   }
 `;
 
 const StyledVideo = styled.video`
   position: absolute;
   width: ${(props) => props.cssWidth}px;
-  // width: 100%;
-  // height: 100vh;
+
   height: ${(props) => props.cssWidth * 0.5625}px;
 `;
 
@@ -94,6 +90,7 @@ export const App = () => {
     const currentItem = e.target.alt;
     setItem(currentItem);
     setIsOpen(!isOpen);
+    setModalOptions();
     document.body.style.overflow = "hidden";
   };
 
@@ -166,6 +163,7 @@ export const App = () => {
           onClick={toggleMuted}
           yPosition={width * 0.57 - 30}
         />
+
         <StyledVideo
           playsInline
           autoPlay
@@ -206,7 +204,7 @@ export const App = () => {
           width={modalWidth}
           height={modalHeight}
           switchModalContent={switchModalContent}
-          channelChoice={modalOptions}
+          modalOptions={modalOptions}
         />
         {isOpen && <StyledOverlay onClick={closeModal} />}
 

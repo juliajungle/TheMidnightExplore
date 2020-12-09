@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import { MAP_AREAS } from "../const";
 import { getItemCoords } from "../utils/coordinatesCalc";
-import bedroom2 from "../images/bedroom2.png";
-import bedroom3 from "../images/bedroom3.png";
+import bedroom2 from "../images/bedroom2.jpg";
+import bedroom3 from "../images/bedroom3.jpg";
 import bedroom1 from "../images/pixel.png"; // transparent image to cover video for map
 
 const StyledImage = styled.img`

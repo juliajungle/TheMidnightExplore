@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { CloseButton } from "../Shared/ModalButtons";
 import noticeBoard from "../../images/noticeboard.jpg";
-import photobooth from "../../images/photobooth.png";
-import poster from "../../images/poster.png";
-import endlessSummer from "../../images/endlesssummer.png";
+import photobooth from "../../images/photobooth.jpg";
+import poster from "../../images/poster.jpg";
+import endlessSummer from "../../images/endlesssummer.jpg";
 import whitney from "../../images/whitney.jpg";
 
 const StyledWrapper = styled.div`
@@ -41,7 +41,7 @@ const StyledPhotoBoothWrapper = styled.div`
 
 const PhotoBooth = ({ handleContentSwitch }) => {
   const handleClick = () => {
-    handleContentSwitch("map", "noticeboard");
+    handleContentSwitch("map", "noticeboard", "niagara");
   };
 
   return (
@@ -148,7 +148,7 @@ const StyledNote = styled.img`
 
 const Note = ({ handleContentSwitch }) => {
   const handleClick = () => {
-    handleContentSwitch("map", "noticeboard");
+    handleContentSwitch("map", "noticeboard", "electrospin");
   };
   return (
     <StyledNoteWrapper>

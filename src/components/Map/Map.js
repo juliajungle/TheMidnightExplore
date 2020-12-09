@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import map from "../../images/map.png";
+import map from "../../images/map.jpg";
 import { CloseButton } from "../Shared/ModalButtons";
 
 const StyledWrapper = styled.div`
@@ -70,7 +70,7 @@ const ButtonWrapper = styled.div`
   top: -21px;
 `;
 
-export const Map = ({ handleClick }) => {
+export const Map = ({ handleClick, mapItem }) => {
   return (
     <StyledWrapper>
       <ButtonWrapper>
@@ -78,16 +78,20 @@ export const Map = ({ handleClick }) => {
         <CloseButton handleClick={handleClick} />
       </ButtonWrapper>
 
-      <StyledPin1>
-        <StyledLocation>
-          <StyledInfo>Niagara, Manhattan</StyledInfo>
-        </StyledLocation>
-      </StyledPin1>
-      <StyledPin2>
-        <StyledLocation>
-          <StyledInfo>Electro Spin, Coney Island</StyledInfo>
-        </StyledLocation>
-      </StyledPin2>
+      {mapItem === "niagara" && (
+        <StyledPin1>
+          <StyledLocation>
+            <StyledInfo>Niagara, Manhattan</StyledInfo>
+          </StyledLocation>
+        </StyledPin1>
+      )}
+      {mapItem === "electrospin" && (
+        <StyledPin2>
+          <StyledLocation>
+            <StyledInfo>Electro Spin, Coney Island</StyledInfo>
+          </StyledLocation>
+        </StyledPin2>
+      )}
     </StyledWrapper>
   );
 };

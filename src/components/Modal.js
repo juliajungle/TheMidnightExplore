@@ -29,17 +29,14 @@ export const Modal = ({
   closeModal,
   item,
   switchModalContent,
-  channelChoice,
+  modalOptions,
 }) => {
   return (
     <div>
       {isOpen && (
         <StyledModal>
           {item === "tv" && (
-            <Television
-              handleClick={closeModal}
-              channelChoice={channelChoice}
-            />
+            <Television handleClick={closeModal} channelChoice={modalOptions} />
           )}
           {item === "monitor" && <ChatRoom handleClick={closeModal}></ChatRoom>}
           {item === "ai" && <AI handleClick={closeModal} />}
@@ -50,7 +47,9 @@ export const Modal = ({
             />
           )}
           {item === "game" && <Game handleClick={closeModal} />}
-          {item === "map" && <Map handleClick={closeModal} />}
+          {item === "map" && (
+            <Map handleClick={closeModal} mapItem={modalOptions} />
+          )}
         </StyledModal>
       )}
     </div>
