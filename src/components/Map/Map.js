@@ -38,14 +38,14 @@ const pinStyles = css`
 
 const StyledPin1 = styled.div`
   ${pinStyles}
-  left: 190px;
-  top: 80px;
+  left: 179px;
+  top: 116px;
 `;
 
 const StyledPin2 = styled.div`
   ${pinStyles}
-  left: 200px;
-  top: 360px;
+  left: 182px;
+  top: 377px;
 `;
 
 const StyledLocation = styled.div`

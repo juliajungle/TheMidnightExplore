@@ -1,16 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Video } from "./components/Video/Video";
 import styled from "styled-components";
 import MutedContext from "./Context/MutedContext";
 import "./App.css";
 import useDimensions from "react-use-dimensions";
 import { ImageMap, BedroomImage } from "./components/ImageMap";
 import { Modal } from "./components/Modal";
-import { HintButton } from "./components/Shared/HintButton";
 import { NavigationButton } from "./components/Shared/NavigationButton";
 import { ZoomButton } from "./components/Shared/ZoomButton";
 import { getNavigationCoords } from "./utils/coordinatesCalc";
-import { Hint } from "./components/Hint/Hint";
 import speaker from "./images/speaker.png";
 import mute from "./images/mute.png";
 import { COLORS } from "./const";
@@ -36,7 +33,7 @@ const StyledZoomWrapper = styled.div`
 const MuteButton = styled.button`
   position: fixed;
   z-index: 100;
-  top: ${(props) => props.yPosition}px;
+  top: 10px;
   right: 10px;
   width: 25px;
   height: 25px;
@@ -186,14 +183,6 @@ export const App = () => {
           imageName={`bedroom${area}`}
         />
 
-        {hint && (
-          <Hint
-            width={zoomWidth || width}
-            height={height}
-            imageName={`bedroom${area}`}
-          />
-        )}
-
         <BedroomImage imageName={`bedroom${area}`} width={zoomWidth || width} />
 
         <Modal
@@ -208,7 +197,6 @@ export const App = () => {
         />
         {isOpen && <StyledOverlay onClick={closeModal} />}
 
-        <HintButton handleClick={showHint}>Show hint</HintButton>
         <NavigationButton
           handleClick={goBack}
           x={backX}

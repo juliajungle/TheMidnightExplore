@@ -1,11 +1,20 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { CloseButton } from "../Shared/ModalButtons";
 import noticeBoard from "../../images/noticeboard.jpg";
-import photobooth from "../../images/photobooth.jpg";
-import poster from "../../images/poster.jpg";
-import endlessSummer from "../../images/endlesssummer.jpg";
+import photobooth from "../../images/photobooth.png";
+import poster from "../../images/poster.png";
+import endlessSummer from "../../images/endlesssummer.png";
 import whitney from "../../images/whitney.jpg";
+
+const buttonStyles = css`
+  position: absolute;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: 0;
+`;
 
 const StyledWrapper = styled.div`
   z-index: -100;
@@ -13,30 +22,34 @@ const StyledWrapper = styled.div`
   top: 0;
   left: 0;
   box-sizing: border-box;
-  height: 315px;
+  height: 275px;
   outline: #ec9e6a 10px solid;
   outline-style: ridge;
 `;
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 315px;
+  height: 275px;
 `;
 
 const StyledPhotoBooth = styled.img`
-  position: absolute;
-  top: 7%;
-  left: 4%;
   width: 75px;
   transform: rotate(5deg);
 `;
 
 const StyledPhotoBoothWrapper = styled.div`
+  position: absolute;
+  top: 7%;
+  left: 4%;
   div {
     position: absolute;
-    top: 20px;
-    left: 31px;
+    top: -1px;
+    left: 14px;
   }
+`;
+
+const StyledPhotoBoothButton = styled.button`
+  ${buttonStyles}
 `;
 
 const PhotoBooth = ({ handleContentSwitch }) => {
@@ -46,9 +59,9 @@ const PhotoBooth = ({ handleContentSwitch }) => {
 
   return (
     <StyledPhotoBoothWrapper>
-      <StyledButton onClick={handleClick}>
+      <StyledPhotoBoothButton onClick={handleClick}>
         <StyledPhotoBooth src={photobooth} />
-      </StyledButton>
+      </StyledPhotoBoothButton>
       <Pin className="pin" />
     </StyledPhotoBoothWrapper>
   );
@@ -75,12 +88,8 @@ const StyledPolaroid = styled.img`
   border-style: solid;
 `;
 
-const StyledButton = styled.button`
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  outline: 0;
+const StyledPolaroidButton = styled.button`
+  ${buttonStyles}
 `;
 
 const Polaroid = ({ handleContentSwitch }) => {
@@ -89,10 +98,10 @@ const Polaroid = ({ handleContentSwitch }) => {
   };
   return (
     <PolaroidBorder>
-      <Pin className="pin" />
-      <StyledButton onClick={handleClick}>
+      <StyledPolaroidButton onClick={handleClick}>
         <StyledPolaroid src={whitney} />
-      </StyledButton>
+      </StyledPolaroidButton>
+      <Pin className="pin" />
     </PolaroidBorder>
   );
 };
@@ -146,15 +155,19 @@ const StyledNote = styled.img`
   transform: rotate(15deg);
 `;
 
+const StyledNoteButton = styled.button`
+  ${buttonStyles}
+`;
+
 const Note = ({ handleContentSwitch }) => {
   const handleClick = () => {
     handleContentSwitch("map", "noticeboard", "electrospin");
   };
   return (
     <StyledNoteWrapper>
-      <StyledButton onClick={handleClick}>
+      <StyledNoteButton onClick={handleClick}>
         <StyledNote src={endlessSummer} />
-      </StyledButton>
+      </StyledNoteButton>
       <Pin className="pin" />
     </StyledNoteWrapper>
   );
