@@ -63,9 +63,9 @@ const StyledDesktopWrapper = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1%;
-  left: 45px;
+  left: 30px;
   @media (max-width: 500px) {
-    left: 12px;
+    left: 0;
   }
 
   :after {

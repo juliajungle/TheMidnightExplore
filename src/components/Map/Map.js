@@ -16,7 +16,7 @@ const StyledWrapper = styled.div`
   border: 5px solid white;
 
   @media (max-width: 500px) {
-    height: 341px;
+    width: 360px;
   }
 `;
 
@@ -68,6 +68,10 @@ const ButtonWrapper = styled.div`
   position: absolute;
   right: -18px;
   top: -21px;
+
+  @media (max-width: 500px) {
+    right: -2px;
+  }
 `;
 
 export const Map = ({ handleClick, mapItem }) => {

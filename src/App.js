@@ -57,6 +57,7 @@ const MuteButton = styled.button`
 
 const StyledVideo = styled.video`
   position: absolute;
+  background-color: black;
   width: ${(props) => props.cssWidth}px;
 
   height: ${(props) => props.cssWidth * 0.5625}px;
@@ -64,7 +65,6 @@ const StyledVideo = styled.video`
 
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [hint, setHint] = useState(false);
   const [currentItem, setItem] = useState();
   const [area, setArea] = useState(1);
   const [isZoomed, setZoomed] = useState(false);
@@ -92,8 +92,6 @@ export const App = () => {
   };
 
   const switchModalContent = (newItem, previousItem, options) => {
-    console.log("switch", newItem);
-
     setPreviousItem(previousItem);
     setModalOptions(options);
     setItem(newItem);
@@ -107,13 +105,6 @@ export const App = () => {
       setItem(previousItem);
       setPreviousItem();
     }
-  };
-
-  const showHint = () => {
-    setHint(true);
-    setTimeout(() => {
-      setHint(false);
-    }, 2000);
   };
 
   const goForward = () => {
@@ -155,18 +146,13 @@ export const App = () => {
   return (
     <MutedContext.Provider value={{ muted, toggleMuted }}>
       <div ref={ref}>
-        <MuteButton
-          muted={muted}
-          onClick={toggleMuted}
-          yPosition={width * 0.57 - 30}
-        />
+        <MuteButton muted={muted} onClick={toggleMuted} />
 
         <StyledVideo
           playsInline
           autoPlay
           loop
           muted={muted}
-          // height={height}
           cssWidth={zoomWidth || width}
         >
           <source src="./monsters-video.mp4" type="video/mp4" />
@@ -179,7 +165,6 @@ export const App = () => {
         <ImageMap
           handleClick={openModal}
           width={zoomWidth || width}
-          // height={height}
           imageName={`bedroom${area}`}
         />
 

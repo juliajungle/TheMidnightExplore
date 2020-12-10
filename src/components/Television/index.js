@@ -14,8 +14,8 @@ import horror from "../../images/horror.png";
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 130px;
-  left: 40%;
+  top: 50%;
+  left: 38%;
   height: auto;
   width: 100px;
 
@@ -26,8 +26,8 @@ const StyledImage = styled.img`
 
     100% {
       width: 80%;
-      top: 125px;
-      left: 12%;
+      top: 42%;
+      left: 10%;
     }
   }
 

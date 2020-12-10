@@ -1,45 +1,39 @@
 import React from "react";
 import styled from "styled-components";
-import { COLORS } from "../../const";
 
 const StyledZoomButton = styled.button`
-  opacity: 0.8;
-
-  color: ${(props) => props.backgroundColor};
+  opacity: 1;
+  color: black;
   box-sizing: border-box;
-  border-radius: 10%;
-  width: 25px;
+  border-radius: 5%;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  font-size: 18px;
   background-color: white;
   margin-right: 5px;
   border: transparent;
-  box-shadow: #aa1389 0px 0px 7px 5px;
+
+  :focus {
+    outline: 0;
+  }
 
   :disabled {
-    color: ${(props) => props.disabledColor};
     cursor: auto;
     opacity: 0.5;
-    box-shadow: none;
+
     :hover {
-      color: ${(props) => props.disabledColor};
+      transform: scale(1);
       opacity: 0.5;
     }
   }
   :hover {
-    color: ${(props) => props.hoverColor};
     opacity: 1;
+    transform: scale(1.2);
   }
 `;
 export const ZoomButton = ({ handleClick, text, disabled }) => {
   return (
-    <StyledZoomButton
-      onClick={handleClick}
-      disabled={disabled}
-      backgroundColor={COLORS.pink}
-      disabledColor={COLORS.lightGrey}
-      hoverColor={COLORS.lightPink}
-    >
+    <StyledZoomButton onClick={handleClick} disabled={disabled}>
       {text}{" "}
     </StyledZoomButton>
   );
