@@ -619,10 +619,10 @@ export const GameCanvas = () => {
       {!gameWon && <RescueSprite player={playerName} />}
       {gameWon && (
         <div>
-          <Winner player={playerName} position="170" />
+          <Winner player={playerName} position="200" />
           <Winner
             player={playerName === "Tim" ? "Tyler" : "Tim"}
-            position="130"
+            position="170"
           />
         </div>
       )}

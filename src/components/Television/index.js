@@ -11,6 +11,7 @@ import {
 import { Loading } from "./Loading";
 import tv from "../../images/tv.png";
 import horror from "../../images/horror.png";
+import { GameCanvas } from "../Game/GameCanvas";
 
 const StyledImage = styled.img`
   position: absolute;
@@ -105,6 +106,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
   };
 
   useEffect(() => {
+    console.log({ channel });
     if (channel === 2 && !audioMuted) {
       toggleMuted();
     }
@@ -152,13 +154,25 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
             responsiveWidth={width}
           ></StyledIframe>
         )}
+        {channel === 3 && <GameCanvas />}
       </StyledWrapper>
       <ChannelButtonContainer>
-        <ChannelButton handleClick={changeChannel} text={1}></ChannelButton>
+        <ChannelButton
+          handleClick={changeChannel}
+          text={1}
+          current={channel === 1}
+        ></ChannelButton>
         <ChannelButton
           handleClick={changeChannel}
           position="40px"
           text={2}
+          current={channel === 2}
+        ></ChannelButton>
+        <ChannelButton
+          handleClick={changeChannel}
+          position="83px"
+          text={3}
+          current={channel === 3}
         ></ChannelButton>
       </ChannelButtonContainer>
       <TVButtonContainer>

@@ -7,34 +7,33 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledWrapper = styled.div`
-  position: relative;
-  width: 300px;
-  height: 300px;
+  position: absolute;
+  width: 361px;
+  height: 302px;
+  background-color: black;
   margin: auto;
   .hidden {
     display: none;
   }
 
   @media (max-width: 500px) {
-    width: 285px;
-    height: 285px;
+    width: 313px;
+    height: 256px;
   }
 `;
 
 export const StyledCanvas = styled.canvas`
-  position: relative;
   background-color: black;
-  top: 15%;
   width: 272px;
+  margin: 0 auto;
   border: black solid 10px;
+  display: block;
   :focus {
     outline: none;
   }
 
   @media (max-width: 500px) {
-    top: 12%;
-    width: 232px;
-    padding-left: 15px;
+    width: 238px;
   }
 `;
 
@@ -42,12 +41,13 @@ export const StyledStart = styled.div`
   position: absolute;
   z-index: 1;
   color: white;
-  top: 13%;
+  // top: 13%;
   background-color: black;
   padding: 20px;
-  width: 249px;
-  height: 249px;
-  border: 2px solid #fa068a;
+  width: 317px;
+  height: 259px;
+  border: 2px solid black;
+
   text-align: center;
   @media (max-width: 500px) {
     width: 239px;
@@ -60,7 +60,7 @@ export const StyledEnd = styled.div`
   z-index: 1;
   color: white;
   top: 38%;
-  left: 12%;
+  left: 19%;
   background-color: black;
   padding: 20px;
   width: 180px;
@@ -133,8 +133,8 @@ export const PlayerButton = styled.button`
 `;
 export const MonsterSprite = styled.div`
   position: absolute;
-  top: 102px;
-  left: 16px;
+  top: 58px;
+  left: 49px;
   background-image: url(${monstersprite8bit});
   background-size: 30px;
   width: 30px;
@@ -156,15 +156,15 @@ export const MonsterSprite = styled.div`
     }
   }
   @media (max-width: 500px) {
-    top: 81px;
-    left: 28px;
+    top: 48px;
+    left: 38px;
   }
 `;
 
 export const RescueSprite = styled.div`
   position: absolute;
-  top: 64px;
-  left: 170px;
+  top: 22px;
+  left: 200px;
   background-image:  ${(props) =>
     props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};
   }
@@ -188,15 +188,15 @@ export const RescueSprite = styled.div`
     }
   }
   @media (max-width: 500px) {
-    top: 48px;
-    left: 148px;
+    top: 16px;
+    left: 173px;
   }
 
 `;
 
 export const Winner = styled.div`
   position: absolute;
-  top: 64px;
+  top: 22px;
   left: ${(props) => props.position}px;
   background-image:  ${(props) =>
     props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};
@@ -208,7 +208,7 @@ export const Winner = styled.div`
   background-position: 0 -30px;
 
   @media (max-width: 500px) {
-    top: 48px;
+    top: 16px;
     left: ${(props) => props.position - 20}px;
   }
 `;

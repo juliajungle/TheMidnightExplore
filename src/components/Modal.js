@@ -5,7 +5,6 @@ import { ChatRoom } from "./ChatRoom/index";
 import { Television } from "./Television/index";
 import { AI } from "./AI/AI";
 import { NoticeBoard } from "./NoticeBoard/Board";
-import { Game } from "./Game/Game";
 import { Map } from "./Map/Map";
 
 /* Modal size is 440 400 or 367 333 */
@@ -46,7 +45,9 @@ export const Modal = ({
               handleClick={closeModal}
             />
           )}
-          {item === "game" && <Game handleClick={closeModal} />}
+          {item === "game" && (
+            <Television handleClick={closeModal} channelChoice={3} />
+          )}
           {item === "map" && (
             <Map handleClick={closeModal} mapItem={modalOptions} />
           )}

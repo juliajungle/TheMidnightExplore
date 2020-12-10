@@ -90,7 +90,11 @@ const StyledChannelButton = styled.button`
   width: 30px;
   height: 13px;
   background-color: #1a1a1a;
-  box-shadow: -1px 6px 0px #000000;
+  box-shadow:${(props) =>
+    props.current ? `-1px 3px 0px #000000` : `-1px 6px 0px #000000`};
+  }
+  bottom: ${(props) => (props.current ? -12 : -11)}px;
+  }
   display: inline-block;
   margin-right: 10px;
   color: white;
@@ -108,9 +112,13 @@ const StyledChannelButton = styled.button`
   }
 `;
 
-export const ChannelButton = ({ handleClick, text, position }) => {
+export const ChannelButton = ({ handleClick, text, position, current }) => {
   return (
-    <StyledChannelButton position={position} onClick={() => handleClick(text)}>
+    <StyledChannelButton
+      current={current}
+      position={position}
+      onClick={() => handleClick(text)}
+    >
       {text}
     </StyledChannelButton>
   );
@@ -119,7 +127,12 @@ export const ChannelButton = ({ handleClick, text, position }) => {
 const StyledChannelButtonContainer = styled.div`
   position: absolute;
   bottom: 9%;
-  left: 48%;
+  left: 44%;
+
+  @media (max-width: 500px) {
+    bottom: 32px;
+    left: 39%;
+  }
 `;
 
 export const ChannelButtonContainer = ({ children }) => {
