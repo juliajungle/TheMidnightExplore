@@ -40,12 +40,22 @@ const StyledPin1 = styled.div`
   ${pinStyles}
   left: 179px;
   top: 116px;
+
+  @media (max-width: 500px) {
+    left: 144px;
+    top: 124px;
+  }
 `;
 
 const StyledPin2 = styled.div`
   ${pinStyles}
   left: 182px;
   top: 377px;
+
+  @media (max-width: 500px) {
+    left: 144px;
+    top: 360px;
+  }
 `;
 
 const StyledLocation = styled.div`
@@ -85,7 +95,7 @@ export const Map = ({ handleClick, mapItem }) => {
       {mapItem === "niagara" && (
         <StyledPin1>
           <StyledLocation>
-            <StyledInfo>Niagara, Manhattan</StyledInfo>
+            <StyledInfo>Niagara, East Village</StyledInfo>
           </StyledLocation>
         </StyledPin1>
       )}
