@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import power from "../../images/power-light.png";
+import power from "../../images/power.png";
 
 const StyledMonitorButton = styled.button`
   width: 20px;
   height: 20px;
-  border: 2px #46414c solid;
+  border: 2px transparent solid;
   background: url(${power});
   border-radius: 100%;
   background-size: 11px;

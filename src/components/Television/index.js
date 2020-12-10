@@ -106,7 +106,6 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
   };
 
   useEffect(() => {
-    console.log({ channel });
     if (channel === 2 && !audioMuted) {
       toggleMuted();
     }

@@ -5,14 +5,15 @@ import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
 import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
-import monitor from "../../images/monitor.jpg";
+import monitor from "../../images/monitor.png";
 
 const StyledImage = styled.img`
   border-radius: 5px;
   position: absolute;
   height: 266px;
+
   z-index: -100;
-  top: 18px;
+  top: 41px;
   left: 41px;
   width: 297px;
   background-color: black;
@@ -38,7 +39,7 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 262px;
+  top: 284px;
   left: 201px;
   font-size: 5px;
   color: #535252;
@@ -48,7 +49,7 @@ const StyledChatRoomLink = styled.a`
   box-shadow: #9e9e9e 0px 1px 0px 0px;
   :hover {
     box-shadow: none;
-    top: 263px;
+    top: 285px;
   }
 `;
 
@@ -56,7 +57,7 @@ const StyledDesktopWrapper = styled.div`
   position: absolute;
   z-index: -1;
   width: 380px;
-  height: 345px;
+  height: 365px;
   background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
@@ -72,7 +73,7 @@ const StyledDesktopWrapper = styled.div`
     content: "";
     position: absolute;
     z-index: -1;
-    top: 18px;
+    top: 40px;
     left: 41px;
     height: 266px;
     width: 297px;
@@ -100,8 +101,28 @@ const StyledChatbotButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  :active {
+    outline: 0;
+  }
 `;
 
+const StyledDesktop = styled.div`
+  position: absolute;
+
+  left: 41px;
+  top: 40px;
+  background-image: radial-gradient(#0000000d 60%, #1b5bff 150%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3603816526610645) 30%,
+    rgba(27, 91, 255, 0.5228466386554622) 64%,
+    rgba(0, 0, 0, 0.9066001400560224) 99%
+  );
+  opacity: 0.9;
+  width: 297px;
+  height: 267px;
+  border-radius: 5px;
+`;
 export const ChatRoom = ({ handleClick, width }) => {
   const [showChatbot, setShowChatbot] = useState(false);
 
@@ -116,6 +137,7 @@ export const ChatRoom = ({ handleClick, width }) => {
       {!showChatbot && (
         <div>
           <StyledImage responsiveWidth={width} src={desktop} />
+          <StyledDesktop></StyledDesktop>
           <StyledShopLink
             href="https://merch.ambientinks.com/collections/themidnight"
             target="_blank"
