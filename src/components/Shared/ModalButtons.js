@@ -7,6 +7,7 @@ const StyledButton = css`
   box-sizing: border-box;
   cursor: pointer;
   padding: 0;
+  outline: 0;
 `;
 
 const StyledSVGButton = styled.button`

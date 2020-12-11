@@ -291,7 +291,6 @@ export const GameCanvas = () => {
 
       animateBall(frameCount);
       requestRef.current = window.requestAnimationFrame(render);
-      window.cancelAnimationFrame(requestRef.current - 1);
     };
 
     render();
@@ -454,6 +453,7 @@ export const GameCanvas = () => {
   }, [xPosition, yPosition, facingDirection, giftX, giftY]);
 
   useEffect(() => {
+    let isCancelled = false;
     const canvas = canvasRef.current;
     canvas.focus();
     canvas.onkeydown = choosePlayer;
@@ -462,7 +462,7 @@ export const GameCanvas = () => {
       canvas.onkeydown = move;
       canvas.onkeyup = stop;
 
-      if (startAnimation) {
+      if (startAnimation && !isCancelled) {
         setStartAnimation(false);
         stopAnimationFunction = animate();
       }
@@ -474,6 +474,7 @@ export const GameCanvas = () => {
       }
     }
     return () => {
+      isCancelled = true;
       if (collision || gameWon) {
         if (stopAnimationFunction) stopAnimationFunction();
       }
