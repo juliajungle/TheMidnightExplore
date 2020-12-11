@@ -61,6 +61,7 @@ const StyledWrapper = styled.div`
   width: 361px;
   height: 302px;
   box-shadow: inset 0px 0px 20px 0px #fff;
+  border-radius: 5%;
 
   @media (max-width: 500px) {
     width: 312px;

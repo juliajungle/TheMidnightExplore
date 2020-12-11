@@ -8,6 +8,7 @@ const StyledLoading = styled.div`
   position: absolute;
   top: -1px;
   background-image: url(${logoBackground});
+  background-color: black;
   background-size: cover;
   background-position: center;
   width: 100%;
