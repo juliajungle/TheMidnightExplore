@@ -39,17 +39,19 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 284px;
-  left: 201px;
+  top: 264px;
+  left: 282px;
   font-size: 5px;
-  color: #535252;
+  color: #313848;
   text-decoration: none;
-  border: solid #9e9e9e 1px;
-  padding: 0 3px;
-  box-shadow: #9e9e9e 0px 1px 0px 0px;
+
+  border: solid #24334a4d 1px;
+  padding: 1px 3px;
+  box-shadow: #48577b 0px 1px 0px 0px;
+  font-family: monospace;
   :hover {
     box-shadow: none;
-    top: 285px;
+    top: 265px;
   }
 `;
 
@@ -96,8 +98,8 @@ const StyledShopLink = styled.a`
 const StyledChatbotButton = styled.button`
   position: absolute;
   top: 70px;
-  left: 66px;
-  padding: 32px 41px;
+  left: 44px;
+  padding: 55px 126px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -137,13 +139,8 @@ export const ChatRoom = ({ handleClick, width }) => {
       {!showChatbot && (
         <div>
           <StyledImage responsiveWidth={width} src={desktop} />
+
           <StyledDesktop></StyledDesktop>
-          <StyledShopLink
-            href="https://merch.ambientinks.com/collections/themidnight"
-            target="_blank"
-            rel="noopener noreferrer"
-          />
-          <StyledChatbotButton onClick={openChatbot} />
           <StyledChatRoomLink
             href="http://183010165.com/"
             target="_blank"
@@ -152,6 +149,12 @@ export const ChatRoom = ({ handleClick, width }) => {
           >
             {`Send >`}
           </StyledChatRoomLink>
+          {/* <StyledShopLink
+            href="https://merch.ambientinks.com/collections/themidnight"
+            target="_blank"
+            rel="noopener noreferrer"
+          /> */}
+          <StyledChatbotButton onClick={openChatbot} />
         </div>
       )}
       <StyledTechLink
