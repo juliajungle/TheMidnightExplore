@@ -22,6 +22,7 @@ const StyledWrapper = styled.div`
   top: 0;
   left: 0;
   box-sizing: border-box;
+  width: 400px;
   height: 275px;
   outline: #ec9e6a 10px solid;
   outline-style: ridge;
@@ -74,6 +75,7 @@ const PhotoBooth = ({ handleContentSwitch }) => {
 
 const PolaroidBorder = styled.div`
   position: absolute;
+  background-color: white;
   top: 8%;
   left: 39%;
   width: 75px;
