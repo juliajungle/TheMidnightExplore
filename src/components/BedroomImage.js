@@ -41,15 +41,16 @@ export const BedroomImage = ({ imageName, width }) => {
   const [bedroomImageSrc, setBedroomImageSrc] = useState(bedroom1overlay);
 
   useEffect(() => {
-    setHighResImageLoaded(false);
     if (imageName === "bedroom2") {
+      setHighResImageLoaded(false);
       setBedroomImageSrc(bedroom2overlay);
     } else if (imageName === "bedroom3") {
+      setHighResImageLoaded(false);
       setBedroomImageSrc(bedroom3overlay);
     } else if (imageName === "bedroom1") {
       setBedroomImageSrc(bedroom1overlay);
     }
-  }, [bedroomImageSrc, imageName]);
+  }, [imageName]);
 
   return (
     <Fragment>
