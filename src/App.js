@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MutedContext from "./Context/MutedContext";
+import MutedContext from "./context/MutedContext";
 import "./App.css";
 import useDimensions from "react-use-dimensions";
-import { ImageMap, BedroomImage } from "./components/ImageMap";
+import { ImageMap } from "./components/ImageMap";
+import { BedroomImage } from "./components/BedroomImage";
 import { Modal } from "./components/Modal";
 import { NavigationButton } from "./components/Shared/NavigationButton";
 import { ZoomButton } from "./components/Shared/ZoomButton";
@@ -72,7 +73,7 @@ export const App = () => {
   const [modalWidth, setModalWidth] = useState(440);
   const [modalHeight, setModalHeight] = useState(400);
 
-  const [ref, { width, height }] = useDimensions();
+  const [ref, { width }] = useDimensions();
   const [zoomWidth, setZoomWidth] = useState(width);
   const [previousItem, setPreviousItem] = useState();
   const [modalOptions, setModalOptions] = useState();
@@ -83,6 +84,7 @@ export const App = () => {
       setModalHeight(315);
     }
   }, [width]);
+
   const openModal = (e) => {
     const currentItem = e.target.alt;
     setItem(currentItem);
