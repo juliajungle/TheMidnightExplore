@@ -14,6 +14,8 @@ import mute from "./images/mute.png";
 import { COLORS } from "./const";
 import bedroom1 from "./images/bedroom1.jpg";
 import bedroom1overlay from "./images/bedroom1overlay.jpg";
+import { Fragment } from "react";
+import { MobileWarning } from "./components/MobileWarning";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -73,6 +75,7 @@ export const App = () => {
   const [muted, setMuted] = useState(true);
   const [modalWidth, setModalWidth] = useState(440);
   const [modalHeight, setModalHeight] = useState(400);
+  const [mobileWarning, setMobileWarning] = useState(false);
 
   const [ref, { width }] = useDimensions();
   const [zoomWidth, setZoomWidth] = useState(width);
@@ -80,9 +83,10 @@ export const App = () => {
   const [modalOptions, setModalOptions] = useState();
 
   useEffect(() => {
-    if (width < 500) {
-      setModalWidth(350);
-      setModalHeight(315);
+    if (width < 700) {
+      setMobileWarning(true);
+    } else {
+      setMobileWarning(false);
     }
   }, [width]);
 
@@ -149,58 +153,66 @@ export const App = () => {
   return (
     <MutedContext.Provider value={{ muted, toggleMuted }}>
       <div ref={ref}>
-        <MuteButton muted={muted} onClick={toggleMuted} />
+        {mobileWarning && <MobileWarning />}
+        {!mobileWarning && (
+          <Fragment>
+            <MuteButton muted={muted} onClick={toggleMuted} />
 
-        <StyledVideo
-          playsInline
-          autoPlay
-          loop
-          muted={muted}
-          cssWidth={zoomWidth || width}
-          poster={bedroom1overlay}
-        >
-          <source src="./monsters-video.mp4" type="video/mp4" />
-          <img
-            src={bedroom1}
-            title="Your browser does not support the <video> tag"
-            alt="Monsters wallpaper"
-          ></img>
-        </StyledVideo>
+            <StyledVideo
+              playsInline
+              autoPlay
+              loop
+              muted={muted}
+              cssWidth={zoomWidth || width}
+              poster={bedroom1overlay}
+            >
+              <source src="./monsters-video.mp4" type="video/mp4" />
+              <img
+                src={bedroom1}
+                title="Your browser does not support the <video> tag"
+                alt="Monsters wallpaper"
+              ></img>
+            </StyledVideo>
 
-        <ImageMap
-          handleClick={openModal}
-          width={zoomWidth || width}
-          imageName={`bedroom${area}`}
-        />
+            <ImageMap
+              handleClick={openModal}
+              width={zoomWidth || width}
+              imageName={`bedroom${area}`}
+            />
 
-        <BedroomImage imageName={`bedroom${area}`} width={zoomWidth || width} />
+            <BedroomImage
+              imageName={`bedroom${area}`}
+              width={zoomWidth || width}
+            />
 
-        <Modal
-          isOpen={isOpen}
-          openModal={openModal}
-          closeModal={closeModal}
-          item={currentItem}
-          width={modalWidth}
-          height={modalHeight}
-          switchModalContent={switchModalContent}
-          modalOptions={modalOptions}
-        />
-        {isOpen && <StyledOverlay onClick={closeModal} />}
+            <Modal
+              isOpen={isOpen}
+              openModal={openModal}
+              closeModal={closeModal}
+              item={currentItem}
+              width={modalWidth}
+              height={modalHeight}
+              switchModalContent={switchModalContent}
+              modalOptions={modalOptions}
+            />
+            {isOpen && <StyledOverlay onClick={closeModal} />}
 
-        <NavigationButton
-          handleClick={goBack}
-          x={backX}
-          y={backY}
-        ></NavigationButton>
-        <NavigationButton
-          handleClick={goForward}
-          x={forwardX}
-          y={forwardY}
-        ></NavigationButton>
-        <StyledZoomWrapper>
-          <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
-          <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
-        </StyledZoomWrapper>
+            <NavigationButton
+              handleClick={goBack}
+              x={backX}
+              y={backY}
+            ></NavigationButton>
+            <NavigationButton
+              handleClick={goForward}
+              x={forwardX}
+              y={forwardY}
+            ></NavigationButton>
+            <StyledZoomWrapper>
+              <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
+              <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
+            </StyledZoomWrapper>
+          </Fragment>
+        )}
       </div>
     </MutedContext.Provider>
   );
