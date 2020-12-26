@@ -8,8 +8,10 @@ export const StyledImage = styled.img`
 
 export const StyledWrapper = styled.div`
   position: absolute;
-  width: 361px;
-  height: 302px;
+  top: 58px;
+  left: 50px;
+  width: 341px;
+  height: 280px;
   background-color: black;
   margin: auto;
   .hidden {
@@ -26,7 +28,6 @@ export const StyledCanvas = styled.canvas`
   background-color: black;
   width: 272px;
   margin: 0 auto;
-  border: black solid 10px;
   display: block;
   :focus {
     outline: none;
@@ -41,12 +42,10 @@ export const StyledStart = styled.div`
   position: absolute;
   z-index: 1;
   color: white;
-  // top: 13%;
   background-color: black;
-  padding: 20px;
   width: 317px;
-  height: 259px;
-  border: 2px solid black;
+  width: 317px;
+  height: 272px;
 
   text-align: center;
   @media (max-width: 500px) {
@@ -133,7 +132,7 @@ export const PlayerButton = styled.button`
 `;
 export const MonsterSprite = styled.div`
   position: absolute;
-  top: 58px;
+  top: 48px;
   left: 49px;
   background-image: url(${monstersprite8bit});
   background-size: 30px;
@@ -163,7 +162,7 @@ export const MonsterSprite = styled.div`
 
 export const RescueSprite = styled.div`
   position: absolute;
-  top: 22px;
+  top: 5px;
   left: 200px;
   background-image:  ${(props) =>
     props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};
@@ -196,7 +195,7 @@ export const RescueSprite = styled.div`
 
 export const Winner = styled.div`
   position: absolute;
-  top: 22px;
+  top: 5px;
   left: ${(props) => props.position}px;
   background-image:  ${(props) =>
     props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};

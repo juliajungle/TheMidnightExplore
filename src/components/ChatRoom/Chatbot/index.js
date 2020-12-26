@@ -91,6 +91,7 @@ const inputStyle = {
   textShadow: "#f7f6f2 1px 0 10px",
   fontSize: "12px",
   border: "none",
+  padding: "20px",
 };
 
 const bubbleStyle = {
@@ -109,12 +110,12 @@ const style = {
 const StyledDiv = styled.div`
   background-color: black;
   background-image: radial-gradient(#1b5bff, black 120%);
-  width: 300px;
-  height: 300px;
+  width: 329px;
+  height: 290px;
   position: absolute;
   z-index: -1;
-  left: 41px;
-  top: 24px;
+  left: 53px;
+  top: 47px;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
   :after {
     content: "";
@@ -139,8 +140,8 @@ export const MyChatbot = () => {
       <ChatBot
         inputStyle={inputStyle}
         contentStyle={contentStyle}
-        height="264px"
-        width="281px"
+        height="290px"
+        width="330px"
         steps={steps}
         hideHeader={true}
         className="lostboy"

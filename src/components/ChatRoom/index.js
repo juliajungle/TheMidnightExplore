@@ -9,11 +9,10 @@ import monitor from "../../images/monitor2.png";
 
 const StyledImage = styled.img`
   position: absolute;
-  height: 285px;
   z-index: -100;
-  top: 24px;
-  left: 37px;
-  width: 310px;
+  top: 49px;
+  left: 58px;
+  width: 323px;
 `;
 
 const StyledTechLink = styled.a`
@@ -36,8 +35,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 260px;
-  left: 282px;
+  top: 306px;
+  left: 314px;
   font-size: 5px;
   color: #313848;
   text-decoration: none;
@@ -48,15 +47,15 @@ const StyledChatRoomLink = styled.a`
   font-family: monospace;
   :hover {
     box-shadow: none;
-    top: 261px;
+    top: 307px;
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
   // z-index: -1;
-  width: 380px;
-  height: 365px;
+  width: 440px;
+  height: 400px;
   // background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
@@ -73,9 +72,9 @@ const StyledDesktopWrapper = styled.div`
     position: absolute;
     z-index: -1;
     top: 40px;
-    left: 41px;
-    height: 266px;
-    width: 297px;
+    left: 50px;
+    height: 303px;
+    width: 340px;
     background: repeating-linear-gradient(
       #00000012,
       #00000012 1px,
@@ -98,23 +97,6 @@ const StyledChatbotButton = styled.button`
   }
 `;
 
-const StyledDesktop = styled.div`
-  position: absolute;
-  z-index: -1;
-  left: 37px;
-  top: 23px;
-  background-image: radial-gradient(#0000000d 60%, #1b5bff 150%);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.3603816526610645) 30%,
-    rgba(27, 91, 255, 0.5228466386554622) 64%,
-    rgba(0, 0, 0, 0.9066001400560224) 99%
-  );
-  opacity: 0.9;
-  width: 307px;
-  height: 288px;
-  border-radius: 5px;
-`;
 export const ChatRoom = ({ handleClick, width }) => {
   const [showChatbot, setShowChatbot] = useState(false);
 
@@ -129,8 +111,6 @@ export const ChatRoom = ({ handleClick, width }) => {
       {!showChatbot && (
         <div>
           <StyledImage responsiveWidth={width} src={desktop} />
-
-          <StyledDesktop></StyledDesktop>
           <StyledChatRoomLink
             href="http://183010165.com/"
             target="_blank"

@@ -6,15 +6,16 @@ import Canvas from "./Canvas";
 
 const StyledLoading = styled.div`
   position: absolute;
-  top: -1px;
+  z-index: -1;
+  top: 36px;
+  left: 37px;
   background-image: url(${logoBackground});
   background-color: black;
   background-size: cover;
   background-position: center;
-  width: 100%;
+  width: 366px;
   height: 306px;
   opacity: 0.5;
-  border-radius: 4%;
 
   @media (max-width: 500px) {
     width: 312px;
@@ -24,7 +25,7 @@ const StyledLoading = styled.div`
 export const Loading = ({ width }) => {
   return (
     <StyledLoading width={width}>
-      <Canvas width={width} />
+      {/* <Canvas width={width} /> */}
     </StyledLoading>
   );
 };

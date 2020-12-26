@@ -2,9 +2,12 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const StyledCanvas = styled.canvas`
-  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 40px;
+  left: 30px;
+  width: 380px;
   height: 302px;
-  border-radius: 5%;
   @media (max-width: 500px) {
     width: 312px;
     height: 256px;
