@@ -13,6 +13,7 @@ import speaker from "./images/speaker.png";
 import mute from "./images/mute.png";
 import { COLORS } from "./const";
 import bedroom1 from "./images/bedroom1.jpg";
+import bedroom1overlay from "./images/bedroom1overlay.jpg";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -156,11 +157,13 @@ export const App = () => {
           loop
           muted={muted}
           cssWidth={zoomWidth || width}
+          poster={bedroom1overlay}
         >
           <source src="./monsters-video.mp4" type="video/mp4" />
           <img
             src={bedroom1}
             title="Your browser does not support the <video> tag"
+            alt="Monsters wallpaper"
           ></img>
         </StyledVideo>
 

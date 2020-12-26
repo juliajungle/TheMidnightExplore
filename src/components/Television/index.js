@@ -113,6 +113,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -122,6 +123,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
         toggleMuted();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [muted]);
 
   return (

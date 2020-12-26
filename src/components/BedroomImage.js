@@ -12,14 +12,12 @@ import { Fragment } from "react";
 const StyledImage = styled.img`
   position: absolute;
   width: ${(props) => props.cssWidth};
-
   height: ${(props) => props.cssHeight}px;
 `;
 
 const StyledOverlayImage = styled.img`
   position: absolute;
   width: ${(props) => props.cssWidth};
-
   height: ${(props) => props.cssHeight}px;
   filter: blur(3px);
   transition: opacity ease-in 500ms;
@@ -68,7 +66,7 @@ export const BedroomImage = ({ imageName, width }) => {
       <StyledOverlayImage
         src={bedroomImageSrc}
         useMap="#monsters"
-        alt="Monsters wallpaper"
+        alt="Monsters wallpaper loading"
         cssWidth={() => (width ? `${width}px` : "100%")}
         cssHeight={width * 0.5625}
         hide={highResImageLoaded}

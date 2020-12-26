@@ -1,7 +1,7 @@
 import ChatBot from "react-simple-chatbot";
 import React from "react";
 import "./index.css";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 const clues = [
   'Have you "noticed" anything?',
@@ -102,20 +102,52 @@ const contentStyle = {
   height: "200px",
 };
 
+const style = {
+  boxShadow: "none",
+};
+
+const StyledDiv = styled.div`
+  background-color: black;
+  background-image: radial-gradient(#1b5bff, black 120%);
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  z-index: -1;
+  left: 41px;
+  top: 24px;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
+  :after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 302px;
+    height: 281px;
+    background: repeating-linear-gradient(
+      #00000012,
+      #00000012 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  }
+`;
+
 export const MyChatbot = () => {
   return (
     <ThemeProvider theme={theme}>
+      <StyledDiv></StyledDiv>
       <ChatBot
         inputStyle={inputStyle}
         contentStyle={contentStyle}
-        height="260px"
-        width="295px"
+        height="264px"
+        width="281px"
         steps={steps}
         hideHeader={true}
         className="lostboy"
         hideBotAvatar={true}
         hideUserAvatar={true}
         bubbleStyle={bubbleStyle}
+        style={style}
         botDelay="500"
         hideSubmitButton={true}
         placeholder=""

@@ -5,18 +5,15 @@ import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
 import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
-import monitor from "../../images/monitor.png";
+import monitor from "../../images/monitor2.png";
 
 const StyledImage = styled.img`
-  border-radius: 5px;
   position: absolute;
-  height: 266px;
-
+  height: 285px;
   z-index: -100;
-  top: 41px;
-  left: 41px;
-  width: 297px;
-  background-color: black;
+  top: 24px;
+  left: 37px;
+  width: 310px;
 `;
 
 const StyledTechLink = styled.a`
@@ -39,7 +36,7 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 264px;
+  top: 260px;
   left: 282px;
   font-size: 5px;
   color: #313848;
@@ -51,16 +48,16 @@ const StyledChatRoomLink = styled.a`
   font-family: monospace;
   :hover {
     box-shadow: none;
-    top: 265px;
+    top: 261px;
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
-  z-index: -1;
+  // z-index: -1;
   width: 380px;
   height: 365px;
-  background-color: #4e4954;
+  // background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
   background-size: contain;
@@ -88,13 +85,6 @@ const StyledDesktopWrapper = styled.div`
   }
 `;
 
-const StyledShopLink = styled.a`
-  position: absolute;
-  top: 70px;
-  left: 157px;
-  padding: 52px 95px;
-`;
-
 const StyledChatbotButton = styled.button`
   position: absolute;
   top: 70px;
@@ -110,9 +100,9 @@ const StyledChatbotButton = styled.button`
 
 const StyledDesktop = styled.div`
   position: absolute;
-
-  left: 41px;
-  top: 40px;
+  z-index: -1;
+  left: 37px;
+  top: 23px;
   background-image: radial-gradient(#0000000d 60%, #1b5bff 150%);
   background: radial-gradient(
     circle,
@@ -121,8 +111,8 @@ const StyledDesktop = styled.div`
     rgba(0, 0, 0, 0.9066001400560224) 99%
   );
   opacity: 0.9;
-  width: 297px;
-  height: 267px;
+  width: 307px;
+  height: 288px;
   border-radius: 5px;
 `;
 export const ChatRoom = ({ handleClick, width }) => {

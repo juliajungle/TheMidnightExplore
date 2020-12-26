@@ -522,7 +522,7 @@ export const GameCanvas = () => {
                 `${playerName === "Tim" ? "2px solid #fa0835" : "none"}`
               }
             >
-              <img src={timForward} />
+              <img src={timForward} alt="Tim facing forward" />
             </PlayerButton>
 
             <PlayerButton
@@ -532,7 +532,7 @@ export const GameCanvas = () => {
                 `${playerName === "Tyler" ? "2px solid #32a1ce" : "none"}`
               }
             >
-              <img src={tylerForward} />
+              <img src={tylerForward} alt="Tyler facing forward" />
             </PlayerButton>
           </div>
         </StyledStart>
