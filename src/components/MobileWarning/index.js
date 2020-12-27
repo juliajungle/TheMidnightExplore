@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import styled from "styled-components";
 import bedroom1 from "../../images/bedroom1cropped.jpg";
@@ -102,6 +102,7 @@ export const MobileWarning = () => {
       setCount(0);
       setNextSentence(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sentence1]);
 
   useEffect(() => {
@@ -115,6 +116,7 @@ export const MobileWarning = () => {
       setCount(0);
       setLastSentence(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sentence2, nextSentence]);
 
   useEffect(() => {
@@ -127,6 +129,7 @@ export const MobileWarning = () => {
     if (count === string3.length) {
       setTimeout(() => setShowLinks(true), 50);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sentence3, lastSentence]);
 
   return (
