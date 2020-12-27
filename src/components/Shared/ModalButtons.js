@@ -129,11 +129,6 @@ const StyledChannelButtonContainer = styled.div`
   position: absolute;
   bottom: 9%;
   left: 44%;
-
-  @media (max-width: 500px) {
-    bottom: 32px;
-    left: 39%;
-  }
 `;
 
 export const ChannelButtonContainer = ({ children }) => {

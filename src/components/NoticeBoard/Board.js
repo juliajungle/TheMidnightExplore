@@ -26,11 +26,6 @@ const StyledWrapper = styled.div`
   height: 275px;
   outline: #ec9e6a 10px solid;
   outline-style: ridge;
-
-  @media (max-width: 500px) {
-    width: 336px;
-    left: 5%;
-  }
 `;
 
 const StyledImage = styled.img`
@@ -185,11 +180,6 @@ const ButtonContainer = styled.div`
 
   top: -25px;
   right: 18px;
-
-  @media (max-width: 500px) {
-    top: -16px;
-    right: 9px;
-  }
 `;
 
 const StyledPin = styled.div`

@@ -8,10 +8,6 @@ const StyledCanvas = styled.canvas`
   left: 30px;
   width: 380px;
   height: 302px;
-  @media (max-width: 500px) {
-    width: 312px;
-    height: 256px;
-  }
 `;
 
 const Canvas = ({ width }) => {

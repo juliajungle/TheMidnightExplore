@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Fragment } from "react";
 import styled from "styled-components";
 import bedroom1 from "../../images/bedroom1cropped.jpg";
 
 const StyledWrapper = styled.div`
   position: fixed;
+  width: 90%;
   top: 10%;
   opacity: 0.9;
   background-color: black;
@@ -35,7 +36,7 @@ const StyledParagraph = styled.p`
   color: white;
   font-size: 22px;
   margin-top: 0;
-  padding-top: 40px;
+  padding-top: 20px;
 `;
 
 const StyledLink = styled.a`
@@ -55,33 +56,109 @@ const StyledLink = styled.a`
 const Wrapper = styled.div`
   background-image: url(${bedroom1});
   background-size: cover;
-  //   background-position: center;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
 `;
 
+const StyledSpanBlinker = styled.span`
+  @keyframes blinker {
+    to {
+      visibility: hidden;
+    }
+  }
+  opacity: 1;
+  margin-bottom: -2px;
+  border-left: 15px solid #a73489;
+  animation: blinker 0.9s steps(2, start) infinite;
+`;
+const string1 = `Uh oh, it looks like you might be away from your personal computer.
+We work best with Comtek computers but any IBM PC or Macintosh
+should do.`;
+
+const string2 = `Get connected and we will see you online!`;
+
+const string3 = `In the meantime, here are some cool web pages to check out:`;
+
 export const MobileWarning = () => {
+  const [sentence1, setSentence1] = useState("");
+  const [sentence2, setSentence2] = useState("");
+  const [sentence3, setSentence3] = useState("");
+  const [count, setCount] = useState(0);
+  const [nextSentence, setNextSentence] = useState(false);
+  const [lastSentence, setLastSentence] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
+
+  const typeWriter = (setFunction, sentence, string) => {
+    setFunction(`${sentence}${string.charAt(count)}`);
+  };
+
+  useEffect(() => {
+    if (!nextSentence && count < string1.length) {
+      setCount(count + 1);
+      setTimeout(() => typeWriter(setSentence1, sentence1, string1), 70);
+    }
+    if (count === string1.length) {
+      setCount(0);
+      setNextSentence(true);
+    }
+  }, [sentence1]);
+
+  useEffect(() => {
+    if (nextSentence) {
+      if (count < string2.length) {
+        setCount(count + 1);
+        setTimeout(() => typeWriter(setSentence2, sentence2, string2), 70);
+      }
+    }
+    if (count === string2.length) {
+      setCount(0);
+      setLastSentence(true);
+    }
+  }, [sentence2, nextSentence]);
+
+  useEffect(() => {
+    if (lastSentence) {
+      if (count < string3.length) {
+        setCount(count + 1);
+        setTimeout(() => typeWriter(setSentence3, sentence3, string3), 70);
+      }
+    }
+    if (count === string3.length) {
+      setTimeout(() => setShowLinks(true), 50);
+    }
+  }, [sentence3, lastSentence]);
+
   return (
     <Wrapper>
       <StyledWrapper>
         <StyledParagraph>
-          Uh oh, it looks like you might be away from your desktop computer. We
-          work best with Comtek computers but any PC or Mac should do.{" "}
+          {">"} {sentence1}{" "}
+          {!nextSentence && <StyledSpanBlinker>&#32;</StyledSpanBlinker>}
         </StyledParagraph>
-        <StyledParagraph>
-          Get connected and we will see you online!
-        </StyledParagraph>
+        {nextSentence && (
+          <StyledParagraph>
+            {">"} {sentence2}{" "}
+            {!lastSentence && <StyledSpanBlinker>&#32;</StyledSpanBlinker>}
+          </StyledParagraph>
+        )}
 
-        <StyledParagraph>
-          In the meantime, here are some cool web pages to check out:
-          <StyledLink href="https://www.themidnightofficial.com/#tour">
-            Tour
-          </StyledLink>
-          <StyledLink href="https://merch.ambientinks.com/collections/themidnight/featured">
-            Store
-          </StyledLink>
-        </StyledParagraph>
+        {lastSentence && (
+          <StyledParagraph>
+            {">"} {sentence3}{" "}
+            {!showLinks && <StyledSpanBlinker>&#32;</StyledSpanBlinker>}
+            {showLinks && (
+              <Fragment>
+                <StyledLink href="https://www.themidnightofficial.com/#tour">
+                  Tour
+                </StyledLink>
+                <StyledLink href="https://merch.ambientinks.com/collections/themidnight/featured">
+                  Store
+                </StyledLink>
+              </Fragment>
+            )}
+          </StyledParagraph>
+        )}
       </StyledWrapper>
     </Wrapper>
   );

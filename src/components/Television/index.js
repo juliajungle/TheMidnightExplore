@@ -42,11 +42,6 @@ const StyledIframe = styled.iframe`
   top: 34px;
   left: 35px;
   width: 370px;
-
-  @media (max-width: 500px) {
-    width: 312px;
-    height: 256px;
-  }
 `;
 
 const StyledWrapper = styled.div`
@@ -58,11 +53,6 @@ const StyledWrapper = styled.div`
   width: 361px;
   height: 302px;
   box-shadow: inset 0px 0px 10px 0px #fff;
-
-  @media (max-width: 500px) {
-    width: 312px;
-    height: 256px;
-  }
 `;
 
 const StyledTVWrapper = styled.div`
@@ -74,11 +64,6 @@ const StyledTVWrapper = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1%;
-
-  @media (max-width: 500px) {
-    width: 375px;
-    height: 341px;
-  }
 `;
 
 export const Television = ({ handleClick, width, channelChoice = 1 }) => {

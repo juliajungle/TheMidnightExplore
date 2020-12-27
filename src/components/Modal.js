@@ -17,10 +17,6 @@ const StyledModal = styled.div`
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  @media (max-width: 500px) {
-    width: 375px;
-  }
 `;
 
 export const Modal = ({

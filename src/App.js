@@ -73,8 +73,6 @@ export const App = () => {
   const [area, setArea] = useState(1);
   const [isZoomed, setZoomed] = useState(false);
   const [muted, setMuted] = useState(true);
-  const [modalWidth, setModalWidth] = useState(440);
-  const [modalHeight, setModalHeight] = useState(400);
   const [mobileWarning, setMobileWarning] = useState(false);
 
   const [ref, { width }] = useDimensions();
@@ -190,8 +188,6 @@ export const App = () => {
               openModal={openModal}
               closeModal={closeModal}
               item={currentItem}
-              width={modalWidth}
-              height={modalHeight}
               switchModalContent={switchModalContent}
               modalOptions={modalOptions}
             />

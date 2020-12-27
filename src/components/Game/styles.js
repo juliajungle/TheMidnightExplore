@@ -17,11 +17,6 @@ export const StyledWrapper = styled.div`
   .hidden {
     display: none;
   }
-
-  @media (max-width: 500px) {
-    width: 313px;
-    height: 256px;
-  }
 `;
 
 export const StyledCanvas = styled.canvas`
@@ -31,10 +26,6 @@ export const StyledCanvas = styled.canvas`
   display: block;
   :focus {
     outline: none;
-  }
-
-  @media (max-width: 500px) {
-    width: 238px;
   }
 `;
 
@@ -48,10 +39,6 @@ export const StyledStart = styled.div`
   height: 272px;
 
   text-align: center;
-  @media (max-width: 500px) {
-    width: 239px;
-    height: 207px;
-  }
 `;
 
 export const StyledEnd = styled.div`
@@ -69,11 +56,6 @@ export const StyledEnd = styled.div`
   span {
     font-family: "Press Start 2P";
     text-shadow: #f7f6f2 1px 0 10px;
-  }
-
-  @media (max-width: 500px) {
-    left: 6%;
-    width: 203px;
   }
 `;
 
@@ -154,10 +136,6 @@ export const MonsterSprite = styled.div`
       background-position: 0 30px;
     }
   }
-  @media (max-width: 500px) {
-    top: 48px;
-    left: 38px;
-  }
 `;
 
 export const RescueSprite = styled.div`
@@ -186,11 +164,6 @@ export const RescueSprite = styled.div`
       background-position: 0 -30px;
     }
   }
-  @media (max-width: 500px) {
-    top: 16px;
-    left: 173px;
-  }
-
 `;
 
 export const Winner = styled.div`
@@ -205,11 +178,6 @@ export const Winner = styled.div`
   height: 30px;
   background-repeat: no-repeat;
   background-position: 0 -30px;
-
-  @media (max-width: 500px) {
-    top: 16px;
-    left: ${(props) => props.position - 20}px;
-  }
 `;
 
 export const StyledTitle = styled.p`

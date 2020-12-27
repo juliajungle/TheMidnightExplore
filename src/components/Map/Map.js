@@ -14,10 +14,6 @@ const StyledWrapper = styled.div`
   background-repeat: no-repeat;
   border-radius: 1%;
   border: 5px solid white;
-
-  @media (max-width: 500px) {
-    width: 360px;
-  }
 `;
 
 const pinStyles = css`
@@ -40,22 +36,12 @@ const StyledPin1 = styled.div`
   ${pinStyles}
   left: 179px;
   top: 116px;
-
-  @media (max-width: 500px) {
-    left: 144px;
-    top: 124px;
-  }
 `;
 
 const StyledPin2 = styled.div`
   ${pinStyles}
   left: 182px;
   top: 377px;
-
-  @media (max-width: 500px) {
-    left: 144px;
-    top: 360px;
-  }
 `;
 
 const StyledLocation = styled.div`
@@ -78,10 +64,6 @@ const ButtonWrapper = styled.div`
   position: absolute;
   right: -18px;
   top: -21px;
-
-  @media (max-width: 500px) {
-    right: -2px;
-  }
 `;
 
 export const Map = ({ handleClick, mapItem }) => {
