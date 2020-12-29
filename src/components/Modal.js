@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ChatRoom } from "./ChatRoom/index";
 
 import { Television } from "./Television/index";
-import { AI } from "./AI/AI";
+import { Book } from "./Book";
 import { NoticeBoard } from "./NoticeBoard/Board";
 import { Map } from "./Map/Map";
 
@@ -34,7 +34,7 @@ export const Modal = ({
             <Television handleClick={closeModal} channelChoice={modalOptions} />
           )}
           {item === "monitor" && <ChatRoom handleClick={closeModal}></ChatRoom>}
-          {item === "ai" && <AI handleClick={closeModal} />}
+          {item === "ai" && <Book handleClick={closeModal} />}
           {item === "noticeboard" && (
             <NoticeBoard
               switchModalContent={switchModalContent}

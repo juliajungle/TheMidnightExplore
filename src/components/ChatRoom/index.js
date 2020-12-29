@@ -62,7 +62,7 @@ const StyledDesktopWrapper = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1%;
-  left: 30px;
+  // left: 30px;
 
   :after {
     content: "";
