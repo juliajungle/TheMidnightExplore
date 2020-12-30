@@ -29,12 +29,12 @@ const StyledNavigationButton = styled.button`
     outline: none;
   }
 
-  @keyframes blinker {
+  @keyframes nav-blinker {
     50% {
       opacity: 0;
     }
   }
-  animation: blinker 1s linear infinite;
+  animation: nav-blinker 1s linear infinite;
 `;
 
 export const NavigationButton = ({ handleClick, x, y }) => {

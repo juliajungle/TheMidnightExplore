@@ -62,7 +62,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledSpanBlinker = styled.span`
-  @keyframes blinker {
+  @keyframes typing-blinker {
     to {
       visibility: hidden;
     }
@@ -70,7 +70,7 @@ const StyledSpanBlinker = styled.span`
   opacity: 1;
   margin-bottom: -2px;
   border-left: 15px solid #a73489;
-  animation: blinker 0.9s steps(2, start) infinite;
+  animation: typing-blinker 0.9s steps(2, start) infinite;
 `;
 const string1 = `Uh oh, it looks like you might be away from your personal computer.
 We work best with Comtek computers but any IBM PC or Macintosh
