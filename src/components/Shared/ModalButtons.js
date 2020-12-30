@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import power from "../../images/power-light.png";
-import { COLORS } from "../../const";
 
 const StyledButton = css`
   box-sizing: border-box;
@@ -12,9 +11,9 @@ const StyledButton = css`
 
 const StyledSVGButton = styled.button`
   ${StyledButton}
-  height: 30px;
+  height: 26px;
   background-color: white;
-  border-radius: 10%;
+  border-radius: 1%;
   border: 1px solid white;
 
   :hover {
@@ -52,8 +51,8 @@ const CloseSVG = ({ fillColor }) => (
   <svg
     id="Close"
     version="1.1"
-    width="28px"
-    height="28px"
+    width="24px"
+    height="24px"
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -67,7 +66,7 @@ const CloseSVG = ({ fillColor }) => (
 export const CloseButton = ({ handleClick }) => {
   return (
     <StyledSVGButton onClick={handleClick}>
-      <CloseSVG fillColor={COLORS.pink} />
+      <CloseSVG fillColor={"black"} />
     </StyledSVGButton>
   );
 };

@@ -24,7 +24,7 @@ const StyledWrapper = styled.div`
   box-sizing: border-box;
   width: 400px;
   height: 275px;
-  outline: #ec9e6a 10px solid;
+  outline: #ca9869 10px solid;
   outline-style: ridge;
 `;
 
@@ -178,8 +178,8 @@ const Note = ({ handleContentSwitch }) => {
 const ButtonContainer = styled.div`
   position: absolute;
 
-  top: -25px;
-  right: 18px;
+  top: -21px;
+  right: 20px;
 `;
 
 const StyledPin = styled.div`

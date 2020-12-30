@@ -59,7 +59,6 @@ export const StyledWrapper = styled.div`
   position: relative;
   height: 300px;
   cursor: pointer;
-  backface-visibility: visible;
 
   > * {
     transform-style: preserve-3d;
@@ -70,7 +69,6 @@ export const StyledWrapper = styled.div`
     left: 0;
     transform-origin: left center;
     transition: transform 0.5s ease-in-out, box-shadow 0.35s ease-in-out;
-
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 1px;
@@ -81,7 +79,6 @@ export const StyledWrapper = styled.div`
 
 export const StyledFront = styled.div`
   background: #404666;
-  //   box-shadow: white 0 0 4px 1px;
   transform: ${(props) =>
     props.isOpen ? `rotateY(-160deg) scale(1.1)` : `none`};
   box-shadow: ${(props) =>
@@ -222,4 +219,12 @@ export const StyledPage6 = styled.div`
   box-shadow: ${(props) =>
     props.isOpen ? `0 1em 3em 0 rgba(0, 0, 0, .2)` : `none`};
   background: ${(props) => (props.isRight ? `#f5f5f5` : `#efefef`)};
+`;
+
+export const ButtonContainer = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: ${(props) => (props.isOpen ? `-37px` : `-21px`)};
+  right: ${(props) => (props.isOpen ? `4px` : `12px`)};
+  transition: all 0.5s ease-in-out;
 `;
