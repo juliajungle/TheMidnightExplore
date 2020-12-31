@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Fragment } from "react";
 import { CloseButton } from "../Shared/ModalButtons";
 import {
@@ -46,18 +46,19 @@ export const Book = ({ handleClick }) => {
   const [turnPage5, setTurnPage5] = useState(false);
   const [turnPage6, setTurnPage6] = useState(false);
 
-  const handleBookClick = (e) => {
-    setIsOpen(false);
-    setTurnPage1(false);
-    setTurnPage2(false);
-    setTurnPage3(false);
-    setTurnPage4(false);
-    setTurnPage5(false);
-    setTurnPage6(false);
-  };
+  const bookRef = useRef();
+  const frontRef = useRef();
 
-  const handleBackClick = (e) => {
-    setIsOpen(true);
+  const handleBookClick = (e) => {
+    if (
+      (isOpen && e.target === bookRef.current) ||
+      (isOpen && e.target === frontRef.current) ||
+      (isOpen && e.target.localName === "h1")
+    ) {
+      setIsOpen(false);
+    } else if (!isOpen) {
+      setIsOpen(true);
+    }
   };
 
   const handlePage1Click = (e) => {
@@ -127,8 +128,8 @@ export const Book = ({ handleClick }) => {
   return (
     <Fragment>
       <StyledBook>
-        <StyledWrapper>
-          <StyledFront isOpen={isOpen} onClick={handleBookClick}>
+        <StyledWrapper ref={bookRef} onClick={handleBookClick}>
+          <StyledFront ref={frontRef} isOpen={isOpen}>
             {" "}
             <StyledHeading>The Age of Intelligent Machines</StyledHeading>
             <StyledHeading>Ray Kurzweil</StyledHeading>
@@ -328,7 +329,7 @@ export const Book = ({ handleClick }) => {
           >
             <p>page 6 back</p>
           </StyledPage6>
-          <StyledBack onClick={handleBackClick} isOpen={isOpen}>
+          <StyledBack isOpen={isOpen}>
             <StyledHeading>The Age of Intelligent Machines</StyledHeading>
             <StyledHeading>Ray Kurzweil</StyledHeading>
           </StyledBack>

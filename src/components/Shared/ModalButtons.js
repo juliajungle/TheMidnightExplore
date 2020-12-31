@@ -15,6 +15,7 @@ const StyledSVGButton = styled.button`
   background-color: white;
   border-radius: 1%;
   border: 1px solid white;
+  border-radius: 5%;
 
   :hover {
     transform: scale(1.2);
