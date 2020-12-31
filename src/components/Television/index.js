@@ -126,7 +126,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
         <div>
           {!isLoading && (
             <a
-              href="https://store-uk.themidnightofficial.com"
+              href="https://merch.ambientinks.com/collections/themidnight/featured"
               target="_blank"
               rel="noopener noreferrer"
             >

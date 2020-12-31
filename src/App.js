@@ -16,6 +16,7 @@ import bedroom1 from "./images/bedroom1.jpg";
 import bedroom1overlay from "./images/bedroom1overlay.jpg";
 import { Fragment } from "react";
 import { MobileWarning } from "./components/MobileWarning";
+import { Banner } from "./components/Banner";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -154,6 +155,7 @@ export const App = () => {
         {mobileWarning && <MobileWarning />}
         {!mobileWarning && (
           <Fragment>
+            <Banner />
             <MuteButton muted={muted} onClick={toggleMuted} />
 
             <StyledVideo
