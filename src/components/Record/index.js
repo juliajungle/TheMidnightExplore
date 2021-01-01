@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import record from "../../images/record.png";
+import record2 from "../../images/record2.png";
 
 const lightColor = "#c88cc1";
 const darkColor = "#b474bd";
@@ -11,10 +12,12 @@ const StyledWrapper = styled.div`
   right: 150px;
 `;
 
-const StyledRecord = styled.div`
+const recordStyles = css`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 150px;
   height: 150px;
-  background-image: url(${record});
   background-size: 150px;
   background-position: center;
   background-repeat: no-repeat;
@@ -44,47 +47,85 @@ const StyledRecord = styled.div`
     0 0 0 73px ${lightColor};
   border-radius: 50%;
 
-  animation: play 10s 0s infinite;
-  transform: rotate(0deg);
-  animation-timing-function: linear;
-
   @keyframes play {
     0% {
-      transform: rotate(0deg);
-    }
-    100% {
       transform: rotate(360deg);
     }
+    100% {
+      transform: rotate(1deg);
+    }
   }
+`;
+
+const StyledRecordFront = styled.div`
+ ${recordStyles}
+  background-image: url(${record});
+  z-index: ${(props) => (props.isFlipped ? 0 : 2)};
+  transition: z-index 0.5s ease;
+  animation: ${(props) =>
+    props.isWaiting ? `none` : `play 10s 0s infinite linear`};
+  animation-direction: reverse;
+
+`;
+
+const StyledRecordBack = styled.div`
+  ${recordStyles}
+  background-image: url(${record2});
+  animation: ${(props) =>
+    props.isWaiting ? `none` : `play 10s 0s infinite linear`};
+ 
+`;
+
+const StyledFlipper = styled.div`
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transition: 0.6s;
+  transform: ${(props) => (props.isFlipped ? `scaleX(-1)` : `scaleX(1)`)};
+  cursor: pointer;
+`;
+
+const StyledFlipContainer = styled.div`
+  perspective: 1000px;
 `;
 
 const StyledLink = styled.a`
-  width: 130px;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-
-  :hover {
-    background-color: white;
-  }
+  position: absolute;
+  top: -70px;
+  left: -70px;
+  width: 295px;
+  height: 295px;
+  display: block;
+  border-radius: 100%;
 `;
 
 export const Record = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setIsWaiting(true);
+    setIsFlipped(!isFlipped);
+    setTimeout(() => {
+      setIsWaiting(false);
+    }, 1000);
   };
   return (
     <StyledWrapper>
       <StyledLink
         href="https://merch.ambientinks.com/collections/themidnight/products/preorder-monsters-lp"
-        isOpen={isOpen}
         target="_blank"
         rel="noopener noreferrer"
-      >
-        <StyledRecord />
-      </StyledLink>
+      ></StyledLink>
+      <StyledFlipContainer>
+        <StyledFlipper isFlipped={isFlipped}>
+          <StyledRecordFront
+            isWaiting={isWaiting}
+            isFlipped={isFlipped}
+            onClick={handleClick}
+          />
+          <StyledRecordBack isWaiting={isWaiting} onClick={handleClick} />
+        </StyledFlipper>
+      </StyledFlipContainer>
     </StyledWrapper>
   );
 };
