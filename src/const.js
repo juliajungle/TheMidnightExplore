@@ -1,6 +1,6 @@
 export const MAP_AREAS = {
   bedroom3: [],
-  bedroom2: ["ai", "noticeboard"],
+  bedroom2: ["ai", "noticeboard", "record"],
   bedroom1: ["tv", "monitor", "ai", "noticeboard", "game", "map"],
 };
 

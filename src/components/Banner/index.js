@@ -42,7 +42,7 @@ const StyledLink = styled.a`
 `;
 
 const StyledButton = styled.button`
-  width: 20px;
+  width: 21px;
   height: 20px;
   margin-left: 140px;
   background-color: white;
