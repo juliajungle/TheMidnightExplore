@@ -17,6 +17,7 @@ import bedroom1overlay from "./images/bedroom1overlay.jpg";
 import { Fragment } from "react";
 import { MobileWarning } from "./components/MobileWarning";
 import { Banner } from "./components/Banner";
+import { Light } from "./components/Light";
 
 const StyledOverlay = styled.div`
   display: block;
@@ -209,6 +210,7 @@ export const App = () => {
               <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
+            {area === 3 && <Light width={width} />}
           </Fragment>
         )}
       </div>

@@ -7,6 +7,12 @@ const itemConfig = {
     game: {},
     map: {},
     record: {},
+    light: {
+      topXRatio: 0.58,
+      topYRatio: 0.27,
+      bottomXRatio: 0.74,
+      bottomYRatio: 0.4,
+    },
   },
   bedroom2: {
     noticeboard: {
@@ -35,6 +41,7 @@ const itemConfig = {
       bottomXRatio: 0.68,
       bottomYRatio: 0.82,
     },
+    light: {},
   },
   bedroom1: {
     noticeboard: {
@@ -78,6 +85,7 @@ const itemConfig = {
       bottomYRatio: 0.8,
     },
     map: {},
+    light: {},
   },
 };
 
