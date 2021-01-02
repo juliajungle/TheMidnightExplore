@@ -88,49 +88,67 @@ export const MobileWarning = () => {
   const [nextSentence, setNextSentence] = useState(false);
   const [lastSentence, setLastSentence] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const typeWriter = (setFunction, sentence, string) => {
     setFunction(`${sentence}${string.charAt(count)}`);
   };
 
   useEffect(() => {
-    if (!nextSentence && count < string1.length) {
-      setCount(count + 1);
-      setTimeout(() => typeWriter(setSentence1, sentence1, string1), 70);
-    }
-    if (count === string1.length) {
-      setCount(0);
-      setNextSentence(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sentence1]);
+    setIsMounted(true);
+
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
 
   useEffect(() => {
-    if (nextSentence) {
-      if (count < string2.length) {
+    if (isMounted) {
+      if (!nextSentence && count < string1.length) {
         setCount(count + 1);
-        setTimeout(() => typeWriter(setSentence2, sentence2, string2), 70);
+        setTimeout(() => typeWriter(setSentence1, sentence1, string1), 70);
+      }
+      if (count === string1.length) {
+        setCount(0);
+        setNextSentence(true);
       }
     }
-    if (count === string2.length) {
-      setCount(0);
-      setLastSentence(true);
-    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sentence2, nextSentence]);
+  }, [sentence1, isMounted]);
 
   useEffect(() => {
-    if (lastSentence) {
-      if (count < string3.length) {
-        setCount(count + 1);
-        setTimeout(() => typeWriter(setSentence3, sentence3, string3), 70);
+    if (isMounted) {
+      if (nextSentence) {
+        if (count < string2.length) {
+          setCount(count + 1);
+          setTimeout(() => typeWriter(setSentence2, sentence2, string2), 70);
+        }
+      }
+      if (count === string2.length) {
+        setCount(0);
+        setLastSentence(true);
       }
     }
-    if (count === string3.length) {
-      setTimeout(() => setShowLinks(true), 50);
-    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sentence3, lastSentence]);
+  }, [sentence2, nextSentence, isMounted]);
+
+  useEffect(() => {
+    if (isMounted) {
+      if (lastSentence) {
+        if (count < string3.length) {
+          setCount(count + 1);
+          setTimeout(() => typeWriter(setSentence3, sentence3, string3), 70);
+        }
+      }
+      if (count === string3.length) {
+        setTimeout(() => setShowLinks(true), 50);
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sentence3, lastSentence, isMounted]);
 
   return (
     <Wrapper>

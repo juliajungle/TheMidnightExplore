@@ -142,7 +142,7 @@ export const App = () => {
   };
 
   const zoomOut = () => {
-    setZoomWidth(width);
+    setZoomWidth();
     setZoomed(false);
   };
 
@@ -210,7 +210,7 @@ export const App = () => {
               <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
-            {area === 3 && <Light width={width} />}
+            {area === 3 && <Light width={zoomWidth || width} />}
           </Fragment>
         )}
       </div>
