@@ -185,13 +185,6 @@ const Note = ({ handleContentSwitch }) => {
   );
 };
 
-const ButtonContainer = styled.div`
-  position: absolute;
-
-  top: -21px;
-  right: 20px;
-`;
-
 const StyledPin = styled.div`
   width: 10px;
   height: 10px;
@@ -214,10 +207,6 @@ export const NoticeBoard = ({ handleClick, switchModalContent }) => {
         <Poster />
         <Note handleContentSwitch={switchModalContent} />
       </StyledWrapper>
-
-      <ButtonContainer>
-        <CloseButton handleClick={handleClick} />
-      </ButtonContainer>
     </div>
   );
 };

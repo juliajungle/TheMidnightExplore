@@ -17,7 +17,6 @@ import {
   StyledHeading,
   StyledParagraphReversed,
   StyledListReversed,
-  ButtonContainer,
 } from "./styles";
 
 const transforms = {
@@ -335,9 +334,6 @@ export const Book = ({ handleClick }) => {
           </StyledBack>
         </StyledWrapper>
       </StyledBook>
-      <ButtonContainer isOpen={isOpen}>
-        <CloseButton handleClick={handleClick} />
-      </ButtonContainer>
     </Fragment>
   );
 };
