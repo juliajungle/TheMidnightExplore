@@ -13,6 +13,7 @@ const itemConfig = {
       bottomXRatio: 0.74,
       bottomYRatio: 0.4,
     },
+    skateboard: {},
   },
   bedroom2: {
     noticeboard: {
@@ -42,6 +43,7 @@ const itemConfig = {
       bottomYRatio: 0.82,
     },
     light: {},
+    skateboard: {},
   },
   bedroom1: {
     noticeboard: {
@@ -86,6 +88,12 @@ const itemConfig = {
     },
     map: {},
     light: {},
+    skateboard: {
+      topXRatio: 0.61,
+      topYRatio: 0.78,
+      bottomXRatio: 0.76,
+      bottomYRatio: 0.87,
+    },
   },
 };
 

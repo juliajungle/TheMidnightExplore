@@ -7,6 +7,7 @@ import { Book } from "./Book";
 import { NoticeBoard } from "./NoticeBoard/Board";
 import { Map } from "./Map/Map";
 import { Record } from "./Record";
+import { Skateboard } from "./Skateboard";
 
 /* Modal size is 440 400 or 367 333 */
 const StyledModal = styled.div`
@@ -49,6 +50,7 @@ export const Modal = ({
             <Map handleClick={closeModal} mapItem={modalOptions} />
           )}
           {item === "record" && <Record handleClick={closeModal} />}
+          {item === "skateboard" && <Skateboard />}
         </StyledModal>
       )}
     </div>
