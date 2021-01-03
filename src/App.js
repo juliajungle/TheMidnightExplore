@@ -20,10 +20,9 @@ import { Banner } from "./components/Banner";
 import { Light } from "./components/Light";
 
 const StyledOverlay = styled.div`
-  display: block;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: ${(props) => props.cssWidth}px;
+  height: ${(props) => props.cssWidth * 0.5625}px;
   background: ${COLORS.darkPink};
   opacity: 0.2;
   top: 0;
@@ -65,7 +64,6 @@ const StyledVideo = styled.video`
   position: absolute;
   background-color: black;
   width: ${(props) => props.cssWidth}px;
-
   height: ${(props) => props.cssWidth * 0.5625}px;
 `;
 
@@ -194,7 +192,12 @@ export const App = () => {
               switchModalContent={switchModalContent}
               modalOptions={modalOptions}
             />
-            {isOpen && <StyledOverlay onClick={closeModal} />}
+            {isOpen && (
+              <StyledOverlay
+                onClick={closeModal}
+                cssWidth={zoomWidth || width}
+              />
+            )}
 
             <NavigationButton
               handleClick={goBack}

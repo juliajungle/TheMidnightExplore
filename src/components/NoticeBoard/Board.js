@@ -94,6 +94,15 @@ const StyledPolaroidButton = styled.button`
   ${buttonStyles}
 `;
 
+const StyledPolaroidText = styled.p`
+  position: absolute;
+  top: 70px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 7px;
+  line-height: 7px;
+  color: #434242;
+`;
+
 const Polaroid = ({ handleContentSwitch }) => {
   const handleClick = () => {
     handleContentSwitch("tv", "noticeboard", 2);
@@ -102,6 +111,7 @@ const Polaroid = ({ handleContentSwitch }) => {
     <PolaroidBorder>
       <StyledPolaroidButton onClick={handleClick}>
         <StyledPolaroid src={whitney} />
+        <StyledPolaroidText>I Wanna Dance With Somebody!</StyledPolaroidText>
       </StyledPolaroidButton>
       <Pin className="pin" />
     </PolaroidBorder>

@@ -59,7 +59,7 @@ const StyledFlipContainer = styled.div`
 const StyledLink = styled.a`
   position: absolute;
   z-index: 10;
-  top: 21px;
+  top: 20px;
   left: 205px;
   display: block;
   text-decoration: none;
