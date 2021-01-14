@@ -18,6 +18,7 @@ import { Fragment } from "react";
 import { MobileWarning } from "./components/MobileWarning";
 import { Banner } from "./components/Banner";
 import { Light } from "./components/Light";
+import { Links } from "./components/Links";
 
 const StyledOverlay = styled.div`
   position: absolute;
@@ -214,6 +215,7 @@ export const App = () => {
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
             {area === 3 && <Light width={zoomWidth || width} />}
+            <Links area={area} width={zoomWidth || width} />
           </Fragment>
         )}
       </div>
