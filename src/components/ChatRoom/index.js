@@ -5,19 +5,19 @@ import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
 import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
-import monitor from "../../images/monitor2.png";
+import monitor from "../../images/monitor-big2.png";
 
 const StyledImage = styled.img`
   position: absolute;
   z-index: -100;
-  top: 49px;
-  left: 58px;
-  width: 323px;
+  top: 40px;
+  left: 67px;
+  width: 373px;
 `;
 
 const StyledTechLink = styled.a`
   position: absolute;
-  bottom: 19px;
+  bottom: 31px;
   left: 10%;
   font-size: 4px;
 
@@ -35,8 +35,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 306px;
-  left: 314px;
+  top: 337px;
+  left: 366px;
   font-size: 5px;
   color: #313848;
   text-decoration: none;
@@ -47,15 +47,15 @@ const StyledChatRoomLink = styled.a`
   font-family: monospace;
   :hover {
     box-shadow: none;
-    top: 307px;
+    top: 338px;
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
   // z-index: -1;
-  width: 440px;
-  height: 400px;
+  width: 500px;
+  height: 460px;
   // background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
@@ -68,10 +68,10 @@ const StyledDesktopWrapper = styled.div`
     content: "";
     position: absolute;
     z-index: -1;
-    top: 40px;
+    top: 38px;
     left: 50px;
-    height: 303px;
-    width: 340px;
+    height: 340px;
+    width: 400px;
     background: repeating-linear-gradient(
       #00000012,
       #00000012 1px,
@@ -109,7 +109,7 @@ export const ChatRoom = ({ handleClick, width }) => {
         <div>
           <StyledImage responsiveWidth={width} src={desktop} />
           <StyledChatRoomLink
-            href="http://183010165.com/"
+            href="https://www.twitch.tv/themidnightofficial"
             target="_blank"
             rel="noopener noreferrer"
             responsiveWidth={width}

@@ -165,7 +165,7 @@ export const App = () => {
               cssWidth={zoomWidth || width}
               poster={bedroom1overlay}
             >
-              <source src="./monsters-video.mp4" type="video/mp4" />
+              <source src="./monsters-video.mp4#t=25" type="video/mp4" />
               <img
                 src={bedroom1}
                 title="Your browser does not support the <video> tag"

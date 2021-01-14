@@ -25,8 +25,8 @@ const StyledMonitorButton = styled.button`
 
 const StyledMonitorButtonContainer = styled.div`
   position: absolute;
-  bottom: 13px;
-  left: 332px;
+  bottom: 22px;
+  left: 383px;
 `;
 
 export const MonitorButton = ({ handleClick }) => {

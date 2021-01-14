@@ -110,12 +110,12 @@ const style = {
 const StyledDiv = styled.div`
   background-color: black;
   background-image: radial-gradient(#1b5bff, black 120%);
-  width: 329px;
-  height: 290px;
+  width: 380px;
+  height: 343px;
   position: absolute;
   z-index: -1;
-  left: 53px;
-  top: 47px;
+  left: 68px;
+  top: 34px;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
   :after {
     content: "";

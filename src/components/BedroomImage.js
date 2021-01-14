@@ -24,47 +24,48 @@ const StyledOverlayImage = styled.img`
   opacity: ${(props) => (props.hide ? 0 : 1)};
 `;
 
-const getBedroomImage = (imageName) => {
-  if (imageName === "bedroom2") {
-    return bedroom2;
-  } else if (imageName === "bedroom3") {
-    return bedroom3;
-  } else if (imageName === "bedroom1") {
-    return bedroom1;
-  }
-};
-
 export const BedroomImage = ({ imageName, width }) => {
   const [highResImageLoaded, setHighResImageLoaded] = useState(false);
-  const [bedroomImageSrc, setBedroomImageSrc] = useState(bedroom1overlay);
+  const [bedroomImageOverlaySrc, setBedroomImageOverlaySrc] = useState(
+    bedroom1overlay
+  );
+  const [bedroomImageSrc, setBedroomImageSrc] = useState(bedroom1);
 
   useEffect(() => {
+    console.log("useeffect", highResImageLoaded);
     if (imageName === "bedroom2") {
-      setHighResImageLoaded(false);
-      setBedroomImageSrc(bedroom2overlay);
+      setBedroomImageOverlaySrc(bedroom2overlay);
+      setBedroomImageSrc(bedroom2);
     } else if (imageName === "bedroom3") {
-      setHighResImageLoaded(false);
-      setBedroomImageSrc(bedroom3overlay);
+      setBedroomImageOverlaySrc(bedroom3overlay);
+      setBedroomImageSrc(bedroom3);
     } else if (imageName === "bedroom1") {
-      setBedroomImageSrc(bedroom1overlay);
+      setBedroomImageOverlaySrc(bedroom1overlay);
+      setBedroomImageSrc(bedroom1);
     }
+
+    return () => {
+      console.log("return");
+      setHighResImageLoaded(false);
+    };
   }, [imageName]);
 
   return (
     <Fragment>
       <StyledImage
-        src={getBedroomImage(imageName)}
+        src={bedroomImageSrc}
         alt="Monsters wallpaper"
         useMap="#monsters"
         cssWidth={() => (width ? `${width}px` : "100%")}
         cssHeight={width * 0.5625}
         onLoad={() => {
+          console.log("On load: image loaded", highResImageLoaded);
           setHighResImageLoaded(true);
         }}
       />
 
       <StyledOverlayImage
-        src={bedroomImageSrc}
+        src={bedroomImageOverlaySrc}
         useMap="#monsters"
         alt="Monsters wallpaper loading"
         cssWidth={() => (width ? `${width}px` : "100%")}
