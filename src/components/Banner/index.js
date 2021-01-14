@@ -56,10 +56,6 @@ const StyledSocialLink = styled.a`
   border: solid #ff5edb 0;
   box-shadow: 0px 0px 30px #ff5edb;
   margin-top: 2px;
-
-  :hover {
-    background-color: white;
-  }
 `;
 
 const StyledSocialWrapper = styled.div`

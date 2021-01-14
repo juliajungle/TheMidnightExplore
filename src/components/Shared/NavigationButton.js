@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import arrow from "../../images/arrow.png";
 
 const StyledNavigationButton = styled.button`
   position: absolute;
@@ -37,6 +38,45 @@ const StyledNavigationButton = styled.button`
   animation: nav-blinker 1s linear infinite;
 `;
 
+const StyledArrowButton = styled.button`
+  position: absolute;
+  top: ${(props) => props.cssWidth * 0.5635 * 0.5}px;
+  left: ${(props) => (props.direction ? `none` : `10px`)};
+  right: ${(props) => (props.direction ? `10px` : `10px`)};
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  transform: ${(props) =>
+    props.direction ? `rotate(90deg)` : `rotate(-90deg)`};
+  background-color: transparent;
+
+  background-image: url(${arrow});
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  opacity: 0.8;
+
+  :hover {
+    opacity: 1;
+  }
+
+  :active {
+    outline: none;
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  @keyframes arrow-blinker {
+    50% {
+      opacity: 0.3;
+ ,   }
+  }
+  animation: arrow-blinker 2s linear infinite;
+`;
+
 export const NavigationButton = ({ handleClick, x, y }) => {
   return (
     <StyledNavigationButton
@@ -44,5 +84,15 @@ export const NavigationButton = ({ handleClick, x, y }) => {
       y={y ? y : 0}
       onClick={handleClick}
     ></StyledNavigationButton>
+  );
+};
+
+export const ArrowButton = ({ handleClick, direction, width }) => {
+  return (
+    <StyledArrowButton
+      onClick={handleClick}
+      direction={direction}
+      cssWidth={width}
+    ></StyledArrowButton>
   );
 };

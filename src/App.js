@@ -6,7 +6,10 @@ import useDimensions from "react-use-dimensions";
 import { ImageMap } from "./components/ImageMap";
 import { BedroomImage } from "./components/BedroomImage";
 import { Modal } from "./components/Modal";
-import { NavigationButton } from "./components/Shared/NavigationButton";
+import {
+  NavigationButton,
+  ArrowButton,
+} from "./components/Shared/NavigationButton";
 import { ZoomButton } from "./components/Shared/ZoomButton";
 import { getNavigationCoords } from "./utils/coordinatesCalc";
 import speaker from "./images/speaker.png";
@@ -200,16 +203,12 @@ export const App = () => {
               />
             )}
 
-            <NavigationButton
-              handleClick={goBack}
-              x={backX}
-              y={backY}
-            ></NavigationButton>
-            <NavigationButton
+            <ArrowButton handleClick={goBack} width={zoomWidth || width} />
+            <ArrowButton
               handleClick={goForward}
-              x={forwardX}
-              y={forwardY}
-            ></NavigationButton>
+              direction="forward"
+              width={zoomWidth || width}
+            />
             <StyledZoomWrapper>
               <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
