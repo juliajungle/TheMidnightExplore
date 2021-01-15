@@ -22,6 +22,7 @@ import { MobileWarning } from "./components/MobileWarning";
 import { Banner } from "./components/Banner";
 import { Light } from "./components/Light";
 import { Links } from "./components/Links";
+import { LavaLamp } from "./components/Lavalamp";
 
 const StyledOverlay = styled.div`
   position: absolute;
@@ -169,7 +170,7 @@ export const App = () => {
               cssWidth={zoomWidth || width}
               poster={bedroom1overlay}
             >
-              <source src="./monsters-video.mp4#t=25" type="video/mp4" />
+              <source src="./monsters-video.mp4#t=28" type="video/mp4" />
               <img
                 src={bedroom1}
                 title="Your browser does not support the <video> tag"
@@ -214,6 +215,7 @@ export const App = () => {
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
             {area === 3 && <Light width={zoomWidth || width} />}
+            {area === 3 && <LavaLamp width={zoomWidth || width} />}
             <Links area={area} width={zoomWidth || width} />
           </Fragment>
         )}
