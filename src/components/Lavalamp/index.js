@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import lavaLamp from "../../images/lavalamp.png";
 import lavaLamp2 from "../../images/lavalamp2.png";
+import lavaLampPurple from "../../images/lavalamp-purple.png";
+import lavaLamp2Purple from "../../images/lavalamp2-purple.png";
 
 const StyledWrapper = styled.div`
   position: absolute;
@@ -35,7 +37,6 @@ const StyledLava = styled.div`
 
 const blobStyles = css`
   border-radius: 50%;
-  background: linear-gradient(-45deg, #fc69c1, #c9408a);
   position: absolute;
 `;
 
@@ -45,16 +46,19 @@ const StyledBlob1 = styled.div`
   height: 15%;
   left: 45%;
   bottom: -15%;
-
+  background: ${(props) =>
+    props.changeColor
+      ? `linear-gradient(-45deg,#c34bf0, #7106d3)`
+      : `linear-gradient(-45deg, #fc69c1, #c9408a)`};
   animation: blob-one ease-in-out 14s infinite;
 
   @keyframes blob-one {
     0%,
     100% {
-      transform: translatey(0);
+      transform: translateY(0);
     }
     50% {
-      transform: translatey(-700%);
+      transform: translateY(-700%);
     }
   }
 `;
@@ -65,15 +69,19 @@ const StyledBlob2 = styled.div`
   height: 22%;
   right: 14%;
   bottom: -15%;
+  background: ${(props) =>
+    props.changeColor
+      ? `linear-gradient(-45deg, #c34bf0, #7106d3)`
+      : `linear-gradient(-45deg, #fc69c1, #c9408a)`};
 
   animation: blob-two ease-in-out 16s infinite;
   @keyframes blob-two {
     0%,
     100% {
-      transform: translatey(0);
+      transform: translateY(0);
     }
     50% {
-      transform: translatey(-420%);
+      transform: translateY(-420%);
     }
   }
 `;
@@ -84,37 +92,65 @@ const StyledBlob3 = styled.div`
   height: 32%;
   bottom: -15%;
   left: 14%;
+  background: ${(props) =>
+    props.changeColor
+      ? `linear-gradient(-45deg, #c34bf0, #7106d3)`
+      : `linear-gradient(-45deg, #fc69c1, #c9408a)`};
 
   animation: blob-three ease-in-out 20s infinite;
   @keyframes blob-three {
     0%,
     100% {
-      transform: translatey(0);
+      transform: translateY(0);
     }
     50% {
-      transform: translatey(-305%);
+      transform: translateY(-305%);
     }
   }
 `;
 
 export const LavaLamp = ({ width, areaName }) => {
-  const [show, setShow] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  // const [show, setShow] = useState(false);
   const [image, setImage] = useState(lavaLamp);
+  // const [changeColor, setChangeColor] = useState(false);
   const [clip, setClip] = useState("polygon(34% 0, 66% 0, 99% 97%, 1% 97%)");
 
   useEffect(() => {
     if (areaName === "area2") {
       setImage(lavaLamp2);
-      setClip("polygon(34% 0, 60% 0, 99% 97%, 1% 97%);");
+      setClip("polygon(34% 0, 65% 0, 99% 97%, 1% 97%);");
     }
   }, []);
-  console.log(areaName);
+
+  useEffect(() => {
+    console.log("click", clickCount);
+    if (clickCount === 1) {
+      if (areaName === "area2") {
+        setImage(lavaLamp2);
+      } else {
+        setImage(lavaLamp);
+      }
+    }
+    if (clickCount === 2) {
+      // setChangeColor(true);
+      if (areaName === "area2") {
+        setImage(lavaLamp2Purple);
+      } else {
+        setImage(lavaLampPurple);
+      }
+    }
+    if (clickCount === 3) {
+      setClickCount(0);
+    }
+  }, [clickCount]);
+
   const positions = {
     area2: {
-      x: width * 0.279,
-      y: width * 0.141 * 0.5625,
+      x: width * 0.2785,
+      y: width * 0.14 * 0.5625,
       width: width * 0.029,
-      height: width * 0.112 * 0.5625,
+      height: width * 0.114 * 0.5625,
     },
     area3: {
       x: width * 0.064,
@@ -125,7 +161,14 @@ export const LavaLamp = ({ width, areaName }) => {
   };
 
   const handleClick = () => {
-    setShow(!show);
+    setClickCount(clickCount + 1);
+    // console.log({ changeColor });
+    // if (click) {
+    //   setShow(false);
+    //   setChangeColor(false);
+    // } else {
+    //   setShow(true);
+    // }
   };
   return (
     <StyledWrapper
@@ -135,16 +178,16 @@ export const LavaLamp = ({ width, areaName }) => {
       cssWidth={positions[areaName].width}
       cssHeight={positions[areaName].height}
     >
-      {show && (
+      {clickCount > 0 && (
         <StyledLamp
           lampImage={image}
           cssWidth={positions[areaName].width}
           cssHeight={positions[areaName].height}
         >
           <StyledLava clip={clip}>
-            <StyledBlob1 />
-            <StyledBlob2 />
-            <StyledBlob3 />
+            <StyledBlob1 changeColor={clickCount === 2} />
+            <StyledBlob2 changeColor={clickCount === 2} />
+            <StyledBlob3 changeColor={clickCount === 2} />
           </StyledLava>
         </StyledLamp>
       )}
