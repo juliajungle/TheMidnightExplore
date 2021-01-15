@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import lavaLamp from "../../images/lavalamp.png";
+import lavaLamp2 from "../../images/lavalamp2.png";
 
 const StyledWrapper = styled.div`
   position: absolute;
-  top: ${(props) => props.cssTop}px; //30%; //70px;
+  top: ${(props) => props.cssTop}px;
   left: ${(props) => props.cssLeft}px;
   z-index: 100;
   width: ${(props) => props.cssWidth}px;
@@ -14,7 +15,7 @@ const StyledWrapper = styled.div`
 
 const StyledLamp = styled.div`
   position: absolute;
-  background-image: url(${lavaLamp});
+  background-image: url(${(props) => props.lampImage});
   background-size: contain;
   background-repeat: no-repeat;
   width: ${(props) => props.cssWidth}px;
@@ -29,13 +30,12 @@ const StyledLava = styled.div`
   top: 0;
   left: 0;
 
-  // clip-path: polygon(27% 2%, 51% 0%, 78% 1%, 98% 99%, 51% 98%, 0% 99%);
-  clip-path: polygon(34% 0, 70% 0, 99% 97%, 1% 97%);
+  clip-path: ${(props) => props.clip};
 `;
 
 const blobStyles = css`
   border-radius: 50%;
-  background: #ef4392;
+  background: linear-gradient(-45deg, #fc69c1, #c9408a);
   position: absolute;
 `;
 
@@ -46,7 +46,7 @@ const StyledBlob1 = styled.div`
   left: 45%;
   bottom: -15%;
 
-  animation: blob-one ease-in-out 11s infinite;
+  animation: blob-one ease-in-out 14s infinite;
 
   @keyframes blob-one {
     0%,
@@ -66,7 +66,7 @@ const StyledBlob2 = styled.div`
   right: 14%;
   bottom: -15%;
 
-  animation: blob-two ease-in-out 13s infinite;
+  animation: blob-two ease-in-out 16s infinite;
   @keyframes blob-two {
     0%,
     100% {
@@ -85,7 +85,7 @@ const StyledBlob3 = styled.div`
   bottom: -15%;
   left: 14%;
 
-  animation: blob-three ease-in-out 18s infinite;
+  animation: blob-three ease-in-out 20s infinite;
   @keyframes blob-three {
     0%,
     100% {
@@ -97,23 +97,51 @@ const StyledBlob3 = styled.div`
   }
 `;
 
-export const LavaLamp = ({ width }) => {
+export const LavaLamp = ({ width, areaName }) => {
   const [show, setShow] = useState(false);
+  const [image, setImage] = useState(lavaLamp);
+  const [clip, setClip] = useState("polygon(34% 0, 66% 0, 99% 97%, 1% 97%)");
+
+  useEffect(() => {
+    if (areaName === "area2") {
+      setImage(lavaLamp2);
+      setClip("polygon(34% 0, 60% 0, 99% 97%, 1% 97%);");
+    }
+  }, []);
+  console.log(areaName);
+  const positions = {
+    area2: {
+      x: width * 0.279,
+      y: width * 0.141 * 0.5625,
+      width: width * 0.029,
+      height: width * 0.112 * 0.5625,
+    },
+    area3: {
+      x: width * 0.064,
+      y: width * 0.2 * 0.5625,
+      width: width * 0.026,
+      height: width * 0.099 * 0.5625,
+    },
+  };
+
   const handleClick = () => {
-    console.log("click");
     setShow(!show);
   };
   return (
     <StyledWrapper
-      cssTop={width * 0.2 * 0.5625}
-      cssLeft={width * 0.064}
+      cssTop={positions[areaName].y}
+      cssLeft={positions[areaName].x}
       onClick={handleClick}
-      cssWidth={width * 0.026}
-      cssHeight={width * 0.099 * 0.5625}
+      cssWidth={positions[areaName].width}
+      cssHeight={positions[areaName].height}
     >
       {show && (
-        <StyledLamp cssWidth={width * 0.026} cssHeight={width * 0.099 * 0.5625}>
-          <StyledLava>
+        <StyledLamp
+          lampImage={image}
+          cssWidth={positions[areaName].width}
+          cssHeight={positions[areaName].height}
+        >
+          <StyledLava clip={clip}>
             <StyledBlob1 />
             <StyledBlob2 />
             <StyledBlob3 />
@@ -121,7 +149,11 @@ export const LavaLamp = ({ width }) => {
         </StyledLamp>
       )}
 
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <svg
+        width={positions[areaName].width}
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+      >
         <defs>
           <filter id="goo">
             <feGaussianBlur

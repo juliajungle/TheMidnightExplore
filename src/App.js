@@ -215,8 +215,13 @@ export const App = () => {
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
             {area === 3 && <Light width={zoomWidth || width} />}
-            {area === 3 && <LavaLamp width={zoomWidth || width} />}
-            <Links area={area} width={zoomWidth || width} />
+            {area === 3 && (
+              <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />
+            )}
+            {area === 2 && (
+              <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />
+            )}
+            <Links width={zoomWidth || width} />
           </Fragment>
         )}
       </div>
