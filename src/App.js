@@ -16,6 +16,7 @@ import speaker from "./images/speaker.png";
 import mute from "./images/mute.png";
 import { COLORS } from "./const";
 import bedroom1 from "./images/bedroom1.jpg";
+import bedroom3 from "./images/bedroom3.jpg";
 import bedroom1overlay from "./images/bedroom1overlay.jpg";
 import { Fragment } from "react";
 import { MobileWarning } from "./components/MobileWarning";
@@ -23,6 +24,7 @@ import { Banner } from "./components/Banner";
 import { Light } from "./components/Light";
 import { Links } from "./components/Links";
 import { LavaLamp } from "./components/Lavalamp";
+import { Lamp } from "./components/Lamp";
 
 const StyledOverlay = styled.div`
   position: absolute;
@@ -203,7 +205,9 @@ export const App = () => {
                 cssWidth={zoomWidth || width}
               />
             )}
-
+            {area === 3 && (
+              <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
+            )}
             <ArrowButton handleClick={goBack} width={zoomWidth || width} />
             <ArrowButton
               handleClick={goForward}
@@ -221,7 +225,7 @@ export const App = () => {
             {area === 2 && (
               <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />
             )}
-            <Links width={zoomWidth || width} />
+            <Links area={area} width={zoomWidth || width} />
           </Fragment>
         )}
       </div>
