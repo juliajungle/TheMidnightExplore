@@ -114,7 +114,7 @@ const StyledDiv = styled.div`
   height: 343px;
   position: absolute;
   z-index: -1;
-  left: 68px;
+  left: 51px;
   top: 34px;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
   :after {

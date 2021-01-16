@@ -199,12 +199,7 @@ export const App = () => {
               switchModalContent={switchModalContent}
               modalOptions={modalOptions}
             />
-            {isOpen && (
-              <StyledOverlay
-                onClick={closeModal}
-                cssWidth={zoomWidth || width}
-              />
-            )}
+
             {area === 3 && (
               <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
             )}
@@ -226,6 +221,12 @@ export const App = () => {
               <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />
             )}
             <Links area={area} width={zoomWidth || width} />
+            {isOpen && (
+              <StyledOverlay
+                onClick={closeModal}
+                cssWidth={zoomWidth || width}
+              />
+            )}
           </Fragment>
         )}
       </div>

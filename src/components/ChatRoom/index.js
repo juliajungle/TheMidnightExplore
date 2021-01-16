@@ -5,13 +5,13 @@ import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
 import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
-import monitor from "../../images/monitor-big2.png";
+import monitor from "../../images/monitor2-bigger.png";
 
 const StyledImage = styled.img`
   position: absolute;
   z-index: -100;
-  top: 40px;
-  left: 67px;
+  top: 45px;
+  left: 55px;
   width: 373px;
 `;
 
@@ -35,8 +35,8 @@ const StyledPlanetImage = styled.img`
 
 const StyledChatRoomLink = styled.a`
   position: absolute;
-  top: 337px;
-  left: 366px;
+  top: 343px;
+  left: 358px;
   font-size: 5px;
   color: #313848;
   text-decoration: none;
@@ -47,15 +47,15 @@ const StyledChatRoomLink = styled.a`
   font-family: monospace;
   :hover {
     box-shadow: none;
-    top: 338px;
+    top: 344px;
   }
 `;
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
   // z-index: -1;
-  width: 500px;
-  height: 460px;
+  width: 480px;
+  height: 458px;
   // background-color: #4e4954;
   background-image: url(${monitor});
   background-position: center;
@@ -83,8 +83,8 @@ const StyledDesktopWrapper = styled.div`
 
 const StyledChatbotButton = styled.button`
   position: absolute;
-  top: 70px;
-  left: 44px;
+  top: 105px;
+  left: 95px;
   padding: 55px 126px;
   background: transparent;
   border: none;
