@@ -5,7 +5,7 @@ import { MonitorButton, MonitorButtonContainer } from "./MonitorButtons";
 import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
-import monitor from "../../images/monitor2-bigger.png";
+import monitor from "../../images/monitor.png";
 
 const StyledImage = styled.img`
   position: absolute;
