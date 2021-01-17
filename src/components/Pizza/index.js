@@ -7,8 +7,8 @@ const pizzaStyles = css`
   position: absolute;
   top: 0;
   left: 0;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 410px;
   background-position: center;
   background-repeat: no-repeat;
   transition: opacity 0.5s ease-in-out;

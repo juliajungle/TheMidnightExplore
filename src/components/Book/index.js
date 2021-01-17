@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Fragment } from "react";
-import { CloseButton } from "../Shared/ModalButtons";
 import {
   StyledWrapper,
   StyledParagraph,
@@ -93,36 +92,6 @@ export const Book = ({ handleClick }) => {
       setTurnPage3(!turnPage3);
     }
   };
-
-  //   const handlePage4Click = (e) => {
-  //     if (turnPage3) {
-  //       setTurnPage4(!turnPage4);
-  //     }
-  //   };
-
-  //   const handlePage4BackClick = (e) => {
-  //     if (turnPage3 && !turnPage5) {
-  //       setTurnPage4(!turnPage4);
-  //     }
-  //   };
-
-  //   const handlePage5Click = (e) => {
-  //     if (turnPage4) {
-  //       setTurnPage5(!turnPage5);
-  //     }
-  //   };
-
-  //   const handlePage5BackClick = (e) => {
-  //     if (turnPage4 && !turnPage6) {
-  //       setTurnPage5(!turnPage5);
-  //     }
-  //   };
-
-  //   const handlePage6Click = (e) => {
-  //     if (turnPage5) {
-  //       setTurnPage6(!turnPage6);
-  //     }
-  //   };
 
   return (
     <Fragment>

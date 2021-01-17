@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Fragment } from "react";
 import styled from "styled-components";
 import lampLight from "../../images/lampon.jpg";
 
@@ -9,7 +8,7 @@ const StyledWrapper = styled.div`
 
 const StyledImage = styled.img`
   position: absolute;
-  left: 0; //${(props) => props.x}px;
+  left: 0;
   top: ${(props) => props.y}px;
 `;
 
@@ -25,7 +24,7 @@ const StyledButton = styled.button`
   background-color: transparent;
 `;
 
-export const Lamp = ({ image, width }) => {
+export const Lamp = ({ width }) => {
   const [lampOn, setLampOn] = useState(false);
 
   const handleClick = () => {

@@ -111,9 +111,7 @@ const StyledBlob3 = styled.div`
 
 export const LavaLamp = ({ width, areaName }) => {
   const [clickCount, setClickCount] = useState(0);
-  // const [show, setShow] = useState(false);
   const [image, setImage] = useState(lavaLamp);
-  // const [changeColor, setChangeColor] = useState(false);
   const [clip, setClip] = useState("polygon(34% 0, 66% 0, 99% 97%, 1% 97%)");
 
   useEffect(() => {
@@ -121,10 +119,9 @@ export const LavaLamp = ({ width, areaName }) => {
       setImage(lavaLamp2);
       setClip("polygon(34% 0, 65% 0, 99% 97%, 1% 97%);");
     }
-  }, []);
+  }, [areaName]);
 
   useEffect(() => {
-    console.log("click", clickCount);
     if (clickCount === 1) {
       if (areaName === "area2") {
         setImage(lavaLamp2);
@@ -133,7 +130,6 @@ export const LavaLamp = ({ width, areaName }) => {
       }
     }
     if (clickCount === 2) {
-      // setChangeColor(true);
       if (areaName === "area2") {
         setImage(lavaLamp2Purple);
       } else {
@@ -143,6 +139,7 @@ export const LavaLamp = ({ width, areaName }) => {
     if (clickCount === 3) {
       setClickCount(0);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickCount]);
 
   const positions = {
@@ -162,13 +159,6 @@ export const LavaLamp = ({ width, areaName }) => {
 
   const handleClick = () => {
     setClickCount(clickCount + 1);
-    // console.log({ changeColor });
-    // if (click) {
-    //   setShow(false);
-    //   setChangeColor(false);
-    // } else {
-    //   setShow(true);
-    // }
   };
   return (
     <StyledWrapper

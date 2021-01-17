@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { CloseButton } from "../Shared/ModalButtons";
 import noticeBoard from "../../images/noticeboard.jpg";
 import photobooth from "../../images/photobooth.png";
 import poster from "../../images/poster.png";

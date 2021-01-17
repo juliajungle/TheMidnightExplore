@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import chevronDown from "../../images/chevron-down.jpg";
-import chevronUp from "../../images/chevron-up.jpg";
 import { Facebook, Instagram, Twitter } from "./icons";
 
 const StyledWrapper = styled.div`
@@ -64,50 +62,9 @@ const StyledSocialWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const StyledButton = styled.button`
-  width: 21px;
-  height: 20px;
-  margin-left: 140px;
-  background-color: white;
-  border: 0;
-  padding: 0 4px;
-  cursor: pointer;
-  border-radius: 5%;
-
-  :active {
-    outline: none;
-    border: none;
-  }
-  :focus {
-    outline: none;
-    border: none;
-  }
-  :hover {
-    transform: scale(1.1);
-  }
-`;
-
-const StyledImage = styled.img`
-  width: 13px;
-`;
-
-const StyledBackground = styled.div`
-  position: absolute;
-  z-index: -1;
-  width: 600px;
-  height: ${(props) => (props.isOpen ? `25px` : `0`)};
-
-  background-color: rgb(255 93 219 / 0.4);
-
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-`;
 export const Banner = () => {
   const [isOpen, setIsOpen] = useState(true);
 
-  //   const handleClick = () => {
-  //     setIsOpen(!isOpen);
-  //   };
   return (
     <StyledWrapper>
       <StyledLinksWrapper isOpen={isOpen}>
@@ -163,11 +120,6 @@ export const Banner = () => {
           </StyledSocialLink>
         </StyledSocialWrapper>
       </StyledLinksWrapper>
-
-      {/* <StyledButton onClick={handleClick}>
-        {isOpen && <StyledImage src={chevronUp} />}
-        {!isOpen && <StyledImage src={chevronDown} />}
-      </StyledButton> */}
     </StyledWrapper>
   );
 };

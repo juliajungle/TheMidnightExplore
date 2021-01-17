@@ -25,6 +25,7 @@ import { Light } from "./components/Light";
 import { Links } from "./components/Links";
 import { LavaLamp } from "./components/Lavalamp";
 import { Lamp } from "./components/Lamp";
+import { Balloon } from "./components/Balloon";
 
 const StyledOverlay = styled.div`
   position: absolute;
@@ -219,6 +220,9 @@ export const App = () => {
             )}
             {area === 2 && (
               <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />
+            )}
+            {area === 3 && (
+              <Balloon areaName={`area${area}`} width={zoomWidth || width} />
             )}
             <Links area={area} width={zoomWidth || width} />
             {isOpen && (

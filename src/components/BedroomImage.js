@@ -48,6 +48,7 @@ export const BedroomImage = ({ imageName, width }) => {
       console.log("return");
       setHighResImageLoaded(false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageName]);
 
   return (
