@@ -12,7 +12,6 @@ import { Loading } from "./Loading";
 import tv from "../../images/tv.png";
 import horror from "../../images/horror.png";
 import { GameCanvas } from "../Game/GameCanvas";
-import ghost from "./ghost.wav";
 
 const StyledImage = styled.img`
   position: absolute;
@@ -138,7 +137,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
               <StyledImage alt="Horror Show" src={horror} />
             </a>
           )}
-          <audio src={ghost} autoPlay>
+          <audio src="./ghost.wav" autoPlay>
             Your browser does not support the
             <code>audio</code> element.
           </audio>
