@@ -12,6 +12,7 @@ import { Loading } from "./Loading";
 import tv from "../../images/tv.png";
 import horror from "../../images/horror.png";
 import { GameCanvas } from "../Game/GameCanvas";
+import ghost from "./ghost.wav";
 
 const StyledImage = styled.img`
   position: absolute;
@@ -70,11 +71,15 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
   const { muted, toggleMuted } = useContext(MutedContext);
   const [backgroundColor, setBackgroundColor] = useState("black");
   const [channel, setChannel] = useState(channelChoice);
-  const [audioMuted] = useState(muted);
+  const [videoMuted] = useState(muted);
   const [isLoading, setLoading] = useState(true);
   const changeChannel = (value) => {
-    // mute video if channel is YT
-    if (value === 2 && !audioMuted) {
+    // mute video if channel is YT or Horror Show
+    if ((value === 2 || value === 1) && !videoMuted && !muted) {
+      toggleMuted();
+    }
+
+    if (value === 3 && !videoMuted && muted) {
       toggleMuted();
     }
 
@@ -99,7 +104,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
       setBackgroundColor("black");
     }
 
-    if (channel === 2 && !audioMuted) {
+    if ((channel === 2 || channel === 1) && !videoMuted) {
       toggleMuted();
     }
     setTimeout(() => {
@@ -111,7 +116,7 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
   useEffect(() => {
     return () => {
       // unmute video if it mute state changed using tv
-      if (!audioMuted && muted) {
+      if (!videoMuted && muted) {
         toggleMuted();
       }
     };
@@ -133,6 +138,10 @@ export const Television = ({ handleClick, width, channelChoice = 1 }) => {
               <StyledImage alt="Horror Show" src={horror} />
             </a>
           )}
+          <audio src={ghost} autoPlay>
+            Your browser does not support the
+            <code>audio</code> element.
+          </audio>
           <Canvas width={width} />
         </div>
       )}

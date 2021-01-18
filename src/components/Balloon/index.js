@@ -10,7 +10,18 @@ const StyledWrapper = styled.div`
   left: ${(props) => props.x}px;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
+`;
+
+const StyledButton = styled.button`
+  position: absolute;
+  left: ${(props) => props.x}px;
+  top: ${(props) => props.y}px;
+  width: 40px;
+  height: 60px;
+  outline: none;
+  border: none;
   cursor: pointer;
+  background-color: transparent;
 `;
 
 const StyledSVG = styled.svg`
@@ -51,10 +62,9 @@ export const Balloon = ({ width }) => {
 
   return (
     <StyledWrapper
-      onClick={handleClick}
       width={width * 0.153}
       height={width * 0.153 * 1.3194}
-      x={width * 0.3647}
+      x={width * 0.3649}
       y={width * 0.5625 * 0.2565}
     >
       {popped && (
@@ -119,6 +129,11 @@ export const Balloon = ({ width }) => {
           ></StyledAnimatedImage>
         </Fragment>
       )}
+      <StyledButton
+        x={width * 0.05}
+        y={width * 0.5625 * 0.05}
+        onClick={handleClick}
+      ></StyledButton>
     </StyledWrapper>
   );
 };
