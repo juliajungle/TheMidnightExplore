@@ -173,8 +173,8 @@ export const MobileWarning = () => {
                 <StyledLink href="https://www.themidnightofficial.com/#tour">
                   Tour
                 </StyledLink>
-                <StyledLink href="https://merch.ambientinks.com/collections/themidnight/featured">
-                  Store
+                <StyledLink href="https://merch.ambientinks.com/collections/themidnight">
+                  Merch
                 </StyledLink>
               </Fragment>
             )}

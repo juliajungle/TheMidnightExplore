@@ -80,7 +80,7 @@ export const Links = ({ area, width }) => {
       )}
       {area === 2 && (
         <InteractiveLink
-          href="https://merch.ambientinks.com/collections/themidnight/"
+          href="https://themidnight.lnk.to/monsters"
           target="_blank"
           rel="noopener noreferrer"
           top={sleeve.topYRatio * width}

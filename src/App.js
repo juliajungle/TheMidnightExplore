@@ -6,18 +6,14 @@ import useDimensions from "react-use-dimensions";
 import { ImageMap } from "./components/ImageMap";
 import { BedroomImage } from "./components/BedroomImage";
 import { Modal } from "./components/Modal";
-import {
-  NavigationButton,
-  ArrowButton,
-} from "./components/Shared/NavigationButton";
+import { ArrowButton } from "./components/Shared/NavigationButton";
 import { ZoomButton } from "./components/Shared/ZoomButton";
-import { getNavigationCoords } from "./utils/coordinatesCalc";
 import speaker from "./images/speaker.png";
 import mute from "./images/mute.png";
 import { COLORS } from "./const";
 import bedroom1 from "./images/bedroom1.jpg";
 import bedroom3 from "./images/bedroom3.jpg";
-import bedroom1overlay from "./images/bedroom1overlay.jpg";
+import bedroom1overlay from "./images/bedroom1overlay-dark.jpg";
 import { Fragment } from "react";
 import { MobileWarning } from "./components/MobileWarning";
 import { Banner } from "./components/Banner";
@@ -136,12 +132,6 @@ export const App = () => {
     }
   };
 
-  const { forwardX, forwardY, backX, backY } = getNavigationCoords(
-    width,
-    zoomWidth,
-    `bedroom${area}`
-  );
-
   const zoomIn = () => {
     setZoomWidth(Math.min(1920, width * 1.5));
     setZoomed(true);
@@ -159,10 +149,10 @@ export const App = () => {
   return (
     <MutedContext.Provider value={{ muted, toggleMuted }}>
       <div ref={ref}>
+        <Banner />
         {mobileWarning && <MobileWarning />}
         {!mobileWarning && (
           <Fragment>
-            <Banner />
             <MuteButton muted={muted} onClick={toggleMuted} />
 
             <StyledVideo
@@ -173,7 +163,7 @@ export const App = () => {
               cssWidth={zoomWidth || width}
               poster={bedroom1overlay}
             >
-              <source src="./monsters-video.mp4#t=28" type="video/mp4" />
+              <source src="./monsters-video.mp4#t=20" type="video/mp4" />
               <img
                 src={bedroom1}
                 title="Your browser does not support the <video> tag"
@@ -214,6 +204,7 @@ export const App = () => {
               <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
+
             {area === 3 && <Light width={zoomWidth || width} />}
             {area === 3 && (
               <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />

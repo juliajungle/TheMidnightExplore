@@ -4,9 +4,9 @@ import "./index.css";
 import styled, { ThemeProvider } from "styled-components";
 
 const clues = [
-  'Have you "noticed" anything?',
-  "Maybe play a game?",
-  "The TV looks interesting...",
+  "Let's play some video games!",
+  "Let's listen to the new record!",
+  "Let's have a slice of pizza!",
 ];
 
 const clue = clues[Math.floor(Math.random() * clues.length)];
@@ -24,7 +24,7 @@ const steps = [
   },
   {
     id: "3",
-    message: "Hi {previousValue}, nice to meet you! Did you get lost?",
+    message: "Hi {previousValue}! Did you get lost?",
     trigger: "4",
   },
 
@@ -37,7 +37,7 @@ const steps = [
     id: "4",
     user: true,
     trigger: ({ value, steps }) => {
-      if (value === "yes") {
+      if (value.toLowerCase() === "yes" || value.toLowerCase() === "y") {
         return "5";
       } else {
         return "end-message";
@@ -46,17 +46,18 @@ const steps = [
   },
   {
     id: "5",
-    message: "Cool! Do you need a clue?",
+    message:
+      "Cool! Well I can help; you're in my room! The Midnight must have sent you here. Want to hang out?",
     trigger: "tip",
   },
   {
     id: "tip",
     user: true,
     trigger: ({ value, steps }) => {
-      if (value === "yes") {
+      if (value.toLowerCase() === "yes" || value.toLowerCase() === "y") {
         return "clue";
       } else {
-        return "end-message";
+        return "alternative-message";
       }
     },
   },
@@ -67,7 +68,13 @@ const steps = [
   },
   {
     id: "end-message",
-    message: "Come back if you need help!",
+    message:
+      "Huh... you're in my room! How did you get here? Must have been The Midnight. Well, you're welcome to hang out anytime!",
+    end: true,
+  },
+  {
+    id: "alternative-message",
+    message: "Well, you're welcome anytime!",
     end: true,
   },
 ];
