@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import styled, { css } from "styled-components";
 import pizza from "../../images/pizza.png";
 import pizzaOpen from "../../images/pizza-open.png";
+import pizzaZone from "../../images/pizza-zone.png";
 
 const pizzaStyles = css`
   position: absolute;
@@ -40,6 +41,12 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledPizzaZoneImage = styled.img`
+  position: absolute;
+  left: -122px;
+  top: 74px;
+`;
+
 export const Pizza = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,10 +60,13 @@ export const Pizza = () => {
         <StyledPizzaOpen isOpen={isOpen} onClick={handleClick}>
           {" "}
           <StyledLink
-            href="https://merch.ambientinks.com/collections/themidnight/products/preorder-horror-show-skateboard-deck"
+            href="https://pizza-zone.net"
             target="_blank"
             rel="noopener noreferrer"
-          ></StyledLink>
+          >
+            {" "}
+            <StyledPizzaZoneImage src={pizzaZone} alt="Pizza Zone" />
+          </StyledLink>
         </StyledPizzaOpen>
       </Fragment>
 

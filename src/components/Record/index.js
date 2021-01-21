@@ -3,13 +3,12 @@ import styled, { css } from "styled-components";
 import record from "../../images/record.png";
 import record2 from "../../images/record2.png";
 
-const lightColor = "#c88cc1";
-const darkColor = "#b474bd";
+const lightColor = "#191919";
+const darkColor = "black";
 
 const StyledWrapper = styled.div`
   position: absolute;
   top: 100px;
-  right: 150px;
 `;
 
 const recordStyles = css`
@@ -99,6 +98,14 @@ const StyledLink = styled.a`
   border-radius: 100%;
 `;
 
+const StyledIframe = styled.iframe`
+  position: absolute;
+  top: -100px;
+  left: 300px;
+  border-color: transparent; //none;
+  border-radius: 5px;
+`;
+
 export const Record = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
@@ -126,6 +133,14 @@ export const Record = () => {
           <StyledRecordBack isWaiting={isWaiting} onClick={handleClick} />
         </StyledFlipper>
       </StyledFlipContainer>
+      <StyledIframe
+        src="https://open.spotify.com/embed/playlist/7hSeJtbd3urlrbJDsO1BWA"
+        width="300"
+        height="380"
+        frameborder="0"
+        allowtransparency="true"
+        allow="encrypted-media"
+      ></StyledIframe>
     </StyledWrapper>
   );
 };

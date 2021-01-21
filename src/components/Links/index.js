@@ -26,6 +26,12 @@ const linksConfig = {
     widthRatio: 0.14,
     heightRatio: 0.15,
   },
+  poster: {
+    topXRatio: 0.37,
+    topYRatio: 0.05,
+    widthRatio: 0.16,
+    heightRatio: 0.35,
+  },
 };
 
 const InteractiveLink = styled.a`
@@ -39,7 +45,7 @@ const InteractiveLink = styled.a`
 `;
 
 export const Links = ({ area, width }) => {
-  const { tux, sash, headphones, sleeve } = linksConfig;
+  const { tux, sash, headphones, sleeve, poster } = linksConfig;
   return (
     <Fragment>
       {area === 3 && (
@@ -69,7 +75,7 @@ export const Links = ({ area, width }) => {
 
       {area === 2 && (
         <InteractiveLink
-          href="https://merch.ambientinks.com/collections/themidnight/"
+          href="https://themidnight.bandcamp.com/"
           target="_blank"
           rel="noopener noreferrer"
           top={headphones.topYRatio * width}
@@ -87,6 +93,17 @@ export const Links = ({ area, width }) => {
           left={sleeve.topXRatio * width}
           cssWidth={width * sleeve.widthRatio}
           cssHeight={width * sleeve.heightRatio * 0.5625}
+        />
+      )}
+      {area === 2 && (
+        <InteractiveLink
+          href="https://www.youtube.com/watch?v=ZNAqwJ7pXmY"
+          target="_blank"
+          rel="noopener noreferrer"
+          top={poster.topYRatio * width}
+          left={poster.topXRatio * width}
+          cssWidth={width * poster.widthRatio}
+          cssHeight={width * poster.heightRatio * 0.5625}
         />
       )}
     </Fragment>
