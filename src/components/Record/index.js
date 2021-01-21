@@ -15,9 +15,9 @@ const recordStyles = css`
   position: absolute;
   top: 0;
   left: 0;
-  width: 150px;
-  height: 150px;
-  background-size: 150px;
+  width: 110px;
+  height: 110px;
+  background-size: 110px;
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0 0 0 5px ${lightColor}, 0 0 0 6px ${darkColor},
@@ -31,9 +31,9 @@ const recordStyles = css`
     0 0 0 28px ${darkColor}, 0 0 0 29px ${lightColor}, 0 0 0 30px ${darkColor},
     0 0 0 31px ${lightColor}, 0 0 0 32px ${darkColor}, 0 0 0 33px ${lightColor},
     0 0 0 34px ${darkColor}, 0 0 0 35px ${lightColor}, 0 0 0 36px ${darkColor},
-    0 0 0 37px ${lightColor}, 0 0 38px ${darkColor}, 0 0 0 39px ${lightColor},
+    0 0 0 37px ${lightColor}, 0 0 0 38px ${darkColor}, 0 0 0 39px ${lightColor},
     0 0 0 40px ${darkColor}, 0 0 0 41px ${lightColor}, 0 0 0 42px ${darkColor},
-    0 0 0 43px ${lightColor}, 0 0 0 44px ${darkColor}, 0 0 0 45px ${lightColor},
+    0 0 0 43px ${lightColor}, 0 0 44px ${darkColor}, 0 0 0 45px ${lightColor},
     0 0 0 46px ${darkColor}, 0 0 0 47px ${lightColor}, 0 0 0 48px ${darkColor},
     0 0 0 49px ${lightColor}, 0 0 0 50px ${darkColor}, 0 0 0 51px ${lightColor},
     0 0 0 52px ${darkColor}, 0 0 0 53px ${lightColor}, 0 0 0 54px ${darkColor},
@@ -42,8 +42,11 @@ const recordStyles = css`
     0 0 0 61px ${lightColor}, 0 0 0 62px ${darkColor}, 0 0 0 63px ${lightColor},
     0 0 0 64px ${darkColor}, 0 0 0 65px ${lightColor}, 0 0 0 66px ${darkColor},
     0 0 0 67px ${lightColor}, 0 0 0 68px ${darkColor}, 0 0 0 69px ${lightColor},
-    0 0 0 70px ${darkColor}, 0 0 0 71px ${lightColor}, 0 0 72px ${darkColor},
-    0 0 0 73px ${lightColor};
+    0 0 0 70px ${darkColor}, 0 0 0 71px ${lightColor}, 0 0 0 72px ${darkColor},
+    0 0 0 73px ${lightColor}, 0 0 0 74px ${darkColor}, 0 0 0 75px ${lightColor},
+    0 0 0 76px ${darkColor}, 0 0 0 77px ${lightColor}, 0 0 0 78px ${darkColor},
+    0 0 0 79px ${lightColor}, 0 0 0 80px ${darkColor}, 0 0 0 81px ${lightColor},
+    0 0 82px ${darkColor}, 0 0 0 83px ${lightColor}, 0 0 84px ${darkColor};
   border-radius: 50%;
 
   @keyframes play {
@@ -77,8 +80,8 @@ const StyledRecordBack = styled.div`
 
 const StyledFlipper = styled.div`
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   transition: 0.6s;
   transform: ${(props) => (props.isFlipped ? `scaleX(-1)` : `scaleX(1)`)};
   cursor: pointer;

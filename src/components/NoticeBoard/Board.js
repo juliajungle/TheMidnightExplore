@@ -137,13 +137,7 @@ const StyledPoster = styled.img`
 const Poster = () => {
   return (
     <StyledPosterWrapper>
-      <a
-        href="https://merch.ambientinks.com/collections/themidnight/products/copy-of-preorder-the-midnight-online-tee"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <StyledPoster src={poster} />
-      </a>
+      <StyledPoster src={poster} />
       <Pin className="pin" />
     </StyledPosterWrapper>
   );
