@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Facebook, Instagram, Twitter } from "./icons";
+import { Facebook, Instagram, Twitter, Spotify } from "./icons";
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -8,7 +8,6 @@ const StyledWrapper = styled.div`
   left: 50%;
   margin-left: -300px;
   background: transparent;
-  transition: height 0.5s ease-in;
 
   @media all and (max-width: 699px) {
     left: 0;
@@ -22,8 +21,7 @@ const StyledLinksWrapper = styled.div`
   width: 600px;
   justify-content: space-around;
   border-radius: 5%;
-  transition: height 0.5s ease-in;
-  background-color: rgb(255 93 219 / 0.4);
+  background-color: rgb(255 93 219 / 0.6);
 
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -61,6 +59,15 @@ const StyledLink = styled.a`
 
 const StyledSocialLink = styled.a`
   width: 20px;
+  border-radius: 10%;
+  transition: line-height 0.5s ease-in, font-size 0.5s ease;
+  border: solid #ff5edb 0;
+  box-shadow: 0px 0px 30px #ff5edb;
+  margin-top: 2px;
+`;
+
+const StyledSpotifyLink = styled.a`
+  width: 22px;
   border-radius: 10%;
   transition: line-height 0.5s ease-in, font-size 0.5s ease;
   border: solid #ff5edb 0;
@@ -125,6 +132,13 @@ export const Banner = () => {
           >
             <Twitter />
           </StyledSocialLink>
+          <StyledSpotifyLink
+            href="https://twitter.com/TheMidnightLA"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Spotify />
+          </StyledSpotifyLink>
         </StyledSocialWrapper>
       </StyledLinksWrapper>
     </StyledWrapper>

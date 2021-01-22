@@ -182,15 +182,6 @@ export const App = () => {
               width={zoomWidth || width}
             />
 
-            <Modal
-              isOpen={isOpen}
-              openModal={openModal}
-              closeModal={closeModal}
-              item={currentItem}
-              switchModalContent={switchModalContent}
-              modalOptions={modalOptions}
-            />
-
             {area === 3 && (
               <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
             )}
@@ -216,6 +207,14 @@ export const App = () => {
               <Balloon areaName={`area${area}`} width={zoomWidth || width} />
             )}
             <Links area={area} width={zoomWidth || width} />
+            <Modal
+              isOpen={isOpen}
+              openModal={openModal}
+              closeModal={closeModal}
+              item={currentItem}
+              switchModalContent={switchModalContent}
+              modalOptions={modalOptions}
+            />
             {isOpen && (
               <StyledOverlay
                 onClick={closeModal}

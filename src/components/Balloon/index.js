@@ -32,6 +32,7 @@ const StyledSVG = styled.svg`
 
 const StyledImage = styled.img`
   position: absolute;
+  opacity: ${(props) => (props.popped ? 0 : 1)};
 `;
 
 const StyledAnimatedImage = styled.img`
@@ -67,9 +68,15 @@ export const Balloon = ({ width }) => {
       x={width * 0.3649}
       y={width * 0.5625 * 0.2565}
     >
+      <StyledImage
+        x="0"
+        y="0"
+        src={balloon}
+        width={width * 0.153}
+        popped={popped}
+      />
       {popped && (
         <Fragment>
-          <StyledImage x="0" y="0" src={balloon} width={width * 0.153} />
           <StyledSVG
             xmlns="http://www.w3.org/2000/svg"
             width="60%"
