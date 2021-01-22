@@ -186,11 +186,7 @@ export const App = () => {
               <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
             )}
             <ArrowButton handleClick={goBack} width={zoomWidth || width} />
-            <ArrowButton
-              handleClick={goForward}
-              direction="forward"
-              width={zoomWidth || width}
-            />
+            <ArrowButton handleClick={goForward} direction="forward" />
             <StyledZoomWrapper>
               <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />

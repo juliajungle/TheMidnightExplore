@@ -16,8 +16,9 @@ const StyledButton = styled.button`
   position: absolute;
   left: ${(props) => props.x}px;
   top: ${(props) => props.y}px;
-  width: 20px;
-  height: 20px;
+  width: ${(props) => props.width}px;
+
+  height: ${(props) => props.height}px;
   outline: none;
   border: none;
   cursor: pointer;
@@ -39,6 +40,8 @@ export const Lamp = ({ width }) => {
       <StyledButton
         x={width * 0.5625 * 0.21}
         y={width * 0.5625 * 0.9}
+        width={width * 0.025}
+        height={width * 0.025}
         onClick={handleClick}
       ></StyledButton>
     </StyledWrapper>

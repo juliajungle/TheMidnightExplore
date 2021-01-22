@@ -39,8 +39,8 @@ const StyledNavigationButton = styled.button`
 `;
 
 const StyledArrowButton = styled.button`
-  position: absolute;
-  top: ${(props) => props.cssWidth * 0.5635 * 0.5}px;
+  position: fixed;
+  top: 50vh;
   left: ${(props) => (props.direction ? `none` : `10px`)};
   right: ${(props) => (props.direction ? `10px` : `10px`)};
   width: 30px;
@@ -87,12 +87,11 @@ export const NavigationButton = ({ handleClick, x, y }) => {
   );
 };
 
-export const ArrowButton = ({ handleClick, direction, width }) => {
+export const ArrowButton = ({ handleClick, direction }) => {
   return (
     <StyledArrowButton
       onClick={handleClick}
       direction={direction}
-      cssWidth={width}
     ></StyledArrowButton>
   );
 };

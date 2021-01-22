@@ -52,6 +52,14 @@ const StyledChatRoomLink = styled.a`
   }
 `;
 
+const StyledDiscordLink = styled.a`
+  position: absolute;
+  top: 270px;
+  left: 75px;
+  width: 40px;
+  height: 40px;
+`;
+
 const StyledDesktopWrapper = styled.div`
   position: absolute;
   // z-index: -1;
@@ -202,6 +210,11 @@ export const ChatRoom = ({ handleClick, width }) => {
                 {`Send >`}
               </StyledChatRoomLink>
               <StyledChatbotButton onClick={openChatbot} />
+              <StyledDiscordLink
+                href="https://discord.gg/GxGfN4rm75"
+                target="_blank"
+                rel="noopener noreferrer"
+              />
             </div>
           )}
         </Fragment>

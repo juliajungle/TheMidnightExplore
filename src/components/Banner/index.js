@@ -133,7 +133,7 @@ export const Banner = () => {
             <Twitter />
           </StyledSocialLink>
           <StyledSpotifyLink
-            href="https://twitter.com/TheMidnightLA"
+            href="https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
             target="_blank"
             rel="noopener noreferrer"
           >

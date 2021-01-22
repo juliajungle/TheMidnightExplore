@@ -32,7 +32,7 @@ const StyledSVG = styled.svg`
 
 const StyledImage = styled.img`
   position: absolute;
-  opacity: ${(props) => (props.popped ? 0 : 1)};
+  opacity: ${(props) => (props.popped ? 1 : 0)};
 `;
 
 const StyledAnimatedImage = styled.img`
@@ -63,16 +63,16 @@ export const Balloon = ({ width }) => {
 
   return (
     <StyledWrapper
-      width={width * 0.153}
+      width={width * 0.152}
       height={width * 0.153 * 1.3194}
       x={width * 0.3649}
-      y={width * 0.5625 * 0.2565}
+      y={width * 0.5625 * 0.2574}
     >
       <StyledImage
         x="0"
         y="0"
         src={balloon}
-        width={width * 0.153}
+        width={width * 0.152}
         popped={popped}
       />
       {popped && (
