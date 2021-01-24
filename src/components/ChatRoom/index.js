@@ -56,8 +56,8 @@ const StyledDiscordLink = styled.a`
   position: absolute;
   top: 270px;
   left: 75px;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 `;
 
 const StyledDesktopWrapper = styled.div`

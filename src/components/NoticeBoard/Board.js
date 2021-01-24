@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import noticeBoard from "../../images/noticeboard.jpg";
 import photobooth from "../../images/photobooth.png";
@@ -25,6 +25,7 @@ const StyledWrapper = styled.div`
   height: 275px;
   outline: #ca9869 10px solid;
   outline-style: ridge;
+  opacity: ${(props) => (props.isLoading ? 0 : 1)};
 `;
 
 const StyledImage = styled.img`
@@ -191,10 +192,15 @@ const Pin = () => {
 };
 
 export const NoticeBoard = ({ handleClick, switchModalContent }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const setLoaded = () => {
+    setIsLoading(false);
+  };
   return (
     <div>
-      <StyledWrapper>
-        <StyledImage src={noticeBoard} />
+      <StyledWrapper isLoading={isLoading}>
+        <StyledImage src={noticeBoard} onLoad={setLoaded} />
         <PhotoBooth handleContentSwitch={switchModalContent} />
         <Polaroid handleContentSwitch={switchModalContent} />
         <Poster />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import record from "../../images/record.png";
 import record2 from "../../images/record2.png";
+import { Loading } from "../Shared/Loading";
 
 const lightColor = "#191919";
 const darkColor = "black";
@@ -102,22 +103,41 @@ const StyledLink = styled.a`
 `;
 
 const StyledIframe = styled.iframe`
+  border-color: transparent; //none;
+  border-radius: 5px;
+  // opacity: 0;
+  opacity: ${(props) => (props.isLoading ? 0 : 1)};
+  transition: opacity 2s ease-in 0.5s;
+`;
+
+const StyledIframeContainer = styled.div`
   position: absolute;
   top: -100px;
   left: 300px;
-  border-color: transparent; //none;
+  width: 300px;
+  // height: 380px;
+  height: ${(props) => (props.isLoading ? 140 : 380)}px;
+
+  background-color: ${(props) =>
+    props.isLoading ? `black` : `transparent`}; //#9c083cb8;
   border-radius: 5px;
+  transition: all 1s ease-in;
 `;
 
 export const Record = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const handleClick = () => {
     setIsWaiting(true);
     setIsFlipped(!isFlipped);
     setTimeout(() => {
       setIsWaiting(false);
     }, 1000);
+  };
+
+  const hideLoader = () => {
+    setIsLoading(false);
   };
   return (
     <StyledWrapper>
@@ -136,14 +156,19 @@ export const Record = () => {
           <StyledRecordBack isWaiting={isWaiting} onClick={handleClick} />
         </StyledFlipper>
       </StyledFlipContainer>
-      <StyledIframe
-        src="https://open.spotify.com/embed/playlist/7hSeJtbd3urlrbJDsO1BWA"
-        width="300"
-        height="380"
-        frameborder="0"
-        allowtransparency="true"
-        allow="encrypted-media"
-      ></StyledIframe>
+      <StyledIframeContainer isLoading={isLoading}>
+        <Loading width="175" height="110" isLoading={isLoading} />
+        <StyledIframe
+          src="https://open.spotify.com/embed/playlist/7hSeJtbd3urlrbJDsO1BWA"
+          width="300"
+          height="380"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+          isLoading={isLoading}
+          onLoad={hideLoader}
+        ></StyledIframe>
+      </StyledIframeContainer>
     </StyledWrapper>
   );
 };
