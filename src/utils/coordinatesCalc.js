@@ -9,6 +9,7 @@ const itemConfig = {
     record: {},
     skateboard: {},
     pizza: {},
+    disks: {},
   },
   bedroom2: {
     noticeboard: {
@@ -39,6 +40,7 @@ const itemConfig = {
     },
     pizza: {},
     skateboard: {},
+    disks: {},
   },
   bedroom1: {
     noticeboard: {
@@ -60,8 +62,6 @@ const itemConfig = {
     monitor: {
       xRatio: 0.42,
       yRatio: 0.49,
-      topXRatio: 0.4,
-      topYRatio: 0.4444,
       bottomXRatio: 0.46,
       bottomYRatio: 0.56,
     },
@@ -93,6 +93,12 @@ const itemConfig = {
       topYRatio: 0.78,
       bottomXRatio: 0.76,
       bottomYRatio: 0.87,
+    },
+    disks: {
+      topXRatio: 0.4,
+      topYRatio: 0.6,
+      bottomXRatio: 0.44,
+      bottomYRatio: 0.67,
     },
   },
 };

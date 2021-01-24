@@ -10,6 +10,7 @@ export const MAP_AREAS = {
     "map",
     "skateboard",
     "pizza",
+    "disks",
   ],
 };
 
