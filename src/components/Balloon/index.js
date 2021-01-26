@@ -63,16 +63,16 @@ export const Balloon = ({ width }) => {
 
   return (
     <StyledWrapper
-      width={width * 0.152}
-      height={width * 0.153 * 1.3194}
-      x={width * 0.3649}
-      y={width * 0.5625 * 0.2574}
+      width={width * 0.15208333333}
+      height={width * 0.20052083333}
+      x={width * 0.3651741099}
+      y={width * 0.5625 * 0.2573797532}
     >
       <StyledImage
         x="0"
         y="0"
         src={balloon}
-        width={width * 0.152}
+        width={width * 0.15208333333}
         popped={popped}
       />
       {popped && (

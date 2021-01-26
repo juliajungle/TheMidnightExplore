@@ -53,6 +53,7 @@ const MuteButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  background-repeat: no-repeat;
 
   :focus {
     outline: none;

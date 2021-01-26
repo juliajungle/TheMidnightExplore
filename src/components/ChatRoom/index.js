@@ -98,7 +98,7 @@ const StyledChatbotButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  :active {
+  :focus {
     outline: 0;
   }
 `;
@@ -136,6 +136,10 @@ const StyledSpanBlinker = styled.span`
   margin-bottom: -2px;
   border-left: 5px solid white;
   animation: typing-blinker 0.3s steps(2, start) infinite;
+`;
+
+const StyledContainer = styled.div`
+  opacity: ${(props) => (props.showDesktop ? 1 : 0)};
 `;
 
 const string = `COMTEK (C) 1991 Motherboard, Inc. 
@@ -186,39 +190,30 @@ export const ChatRoom = ({ handleClick, width }) => {
         <code>audio</code> element.
       </audio>
       {isLoading && (
-        <Fragment>
-          <StyledBootup>
-            <StyledParagraph>
-              {text} <StyledSpanBlinker>&#32;</StyledSpanBlinker>
-            </StyledParagraph>
-          </StyledBootup>
-        </Fragment>
+        <StyledBootup>
+          <StyledParagraph>
+            {text} <StyledSpanBlinker>&#32;</StyledSpanBlinker>
+          </StyledParagraph>
+        </StyledBootup>
       )}
-      {!isLoading && (
-        <Fragment>
-          {showChatbot && <MyChatbot />}
-
-          {!showChatbot && (
-            <div>
-              <StyledImage src={desktop} />
-              <StyledChatRoomLink
-                href="https://www.twitch.tv/themidnightofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-                responsiveWidth={width}
-              >
-                {`Send >`}
-              </StyledChatRoomLink>
-              <StyledChatbotButton onClick={openChatbot} />
-              <StyledDiscordLink
-                href="https://discord.gg/GxGfN4rm75"
-                target="_blank"
-                rel="noopener noreferrer"
-              />
-            </div>
-          )}
-        </Fragment>
-      )}
+      <StyledContainer showDesktop={!isLoading && !showChatbot}>
+        <StyledImage src={desktop} />
+        <StyledChatRoomLink
+          href="https://www.twitch.tv/themidnightofficial"
+          target="_blank"
+          rel="noopener noreferrer"
+          responsiveWidth={width}
+        >
+          {`Send >`}
+        </StyledChatRoomLink>
+        <StyledChatbotButton onClick={openChatbot} />
+        <StyledDiscordLink
+          href="https://discord.gg/GxGfN4rm75"
+          target="_blank"
+          rel="noopener noreferrer"
+        />
+      </StyledContainer>
+      {showChatbot && <MyChatbot />}
       <StyledTechLink
         href="http://183010165.com/"
         target="_blank"
