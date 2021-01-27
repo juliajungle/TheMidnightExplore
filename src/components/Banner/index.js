@@ -31,15 +31,16 @@ const StyledLinksWrapper = styled.div`
   }
 
   @media all and (max-width: 699px) {
-    width: 95%;
-    margin: 0 10px;
+    width: 100%;
+    margin: 0;
     background-color: rgb(255 93 219);
+    border-radius: 0;
   }
 `;
 
 const StyledLink = styled.a`
   width: 130px;
-  line-height: 25px;
+  line-height: 28px;
   border: solid #ff5edb 0;
   color: black;
   font-family: "Press Start 2P";
@@ -53,7 +54,15 @@ const StyledLink = styled.a`
   }
 
   @media all and (max-width: 699px) {
-    font-size: 12px;
+    font-size: 10px;
+    flex: 2;
+    text-align: left;
+  }
+
+  :first-child {
+    @media all and (max-width: 699px) {
+      margin-left: 5px;
+    }
   }
 `;
 
@@ -63,7 +72,7 @@ const StyledSocialLink = styled.a`
   transition: line-height 0.5s ease-in, font-size 0.5s ease;
   border: solid #ff5edb 0;
   box-shadow: 0px 0px 30px #ff5edb;
-  margin-top: 2px;
+  // margin-top: 2px;
 `;
 
 const StyledSpotifyLink = styled.a`
@@ -80,7 +89,7 @@ const StyledSocialWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   @media all and (max-width: 699px) {
-    width: 100px;
+    flex: 3;
   }
 `;
 
