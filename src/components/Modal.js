@@ -10,8 +10,9 @@ import { Record } from "./Record";
 import { Skateboard } from "./Skateboard";
 import { Pizza } from "./Pizza";
 import { Disks } from "./Disks";
+import { Prom } from "./Prom";
 
-/* Modal size is 440 400 or 367 333 */
+/* Modal size is 440 400 */
 const StyledModal = styled.div`
   position: fixed;
   z-index: 100;
@@ -55,6 +56,7 @@ export const Modal = ({
           {item === "skateboard" && <Skateboard />}
           {item === "pizza" && <Pizza />}
           {item === "disks" && <Disks />}
+          {item === "prom" && <Prom />}
         </StyledModal>
       )}
     </div>

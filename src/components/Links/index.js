@@ -60,7 +60,7 @@ export const Links = ({ area, width }) => {
         />
       )}
 
-      {area === 3 && (
+      {/* {area === 3 && (
         <InteractiveLink
           href="https://promnight.themidnightofficial.com/"
           target="_blank"
@@ -71,7 +71,7 @@ export const Links = ({ area, width }) => {
           cssHeight={width * sash.heightRatio * 0.5625}
           skew={true}
         />
-      )}
+      )} */}
 
       {area === 2 && (
         <InteractiveLink

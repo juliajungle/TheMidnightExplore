@@ -10,6 +10,16 @@ const itemConfig = {
     skateboard: {},
     pizza: {},
     disks: {},
+    prom: {
+      topXRatio: 0.56,
+      topYRatio: 0.5,
+      topX2Ratio: 0.594,
+      topY2Ratio: 0.5,
+      bottomX2Ratio: 0.52,
+      bottomY2Ratio: 0.75,
+      bottomXRatio: 0.48,
+      bottomYRatio: 0.75,
+    },
   },
   bedroom2: {
     noticeboard: {
@@ -41,6 +51,7 @@ const itemConfig = {
     pizza: {},
     skateboard: {},
     disks: {},
+    prom: {},
   },
   bedroom1: {
     noticeboard: {
@@ -100,27 +111,7 @@ const itemConfig = {
       bottomXRatio: 0.44,
       bottomYRatio: 0.67,
     },
-  },
-};
-
-const navigationConfig = {
-  bedroom3: {
-    backXRatio: 0.78,
-    backYRatio: 0.76,
-    forwardXRatio: 0.97,
-    forwardYRatio: 0.4444,
-  },
-  bedroom2: {
-    backXRatio: 0.97,
-    backYRatio: 0.8,
-    forwardXRatio: 0.05,
-    forwardYRatio: 0.5,
-  },
-  bedroom1: {
-    backXRatio: 0.35,
-    backYRatio: 0.47,
-    forwardXRatio: 0.58,
-    forwardYRatio: 0.85,
+    prom: {},
   },
 };
 
@@ -140,33 +131,36 @@ export const getItemCoords = (width, item, imageName) => {
   return coordinates;
 };
 
-export const getHintCoords = (width, item, imageName) => {
-  const height = width * HEIGHT_RATIO;
-  const { xRatio, yRatio } = itemConfig[imageName][item];
-  const x = width * xRatio;
-  const y = height * yRatio;
-
-  const coordinates = { x, y };
-  return coordinates;
-};
-
-export const getNavigationCoords = (width, zoomWidth, area) => {
-  const height = zoomWidth ? zoomWidth * HEIGHT_RATIO : width * HEIGHT_RATIO;
+export const getPolyItemCoords = (width, item, imageName) => {
   const {
-    forwardXRatio,
-    forwardYRatio,
-    backXRatio,
-    backYRatio,
-  } = navigationConfig[area];
+    topXRatio,
+    topYRatio,
+    bottomXRatio,
+    bottomYRatio,
+    topX2Ratio,
+    topY2Ratio,
+    bottomX2Ratio,
+    bottomY2Ratio,
+  } = itemConfig[imageName][item];
+  const height = width * HEIGHT_RATIO;
+  const topX = width * topXRatio;
+  const topY = height * topYRatio;
+  const bottomX = width * bottomXRatio;
+  const bottomY = height * bottomYRatio;
+  const topX2 = width * topX2Ratio;
+  const topY2 = height * topY2Ratio;
+  const bottomX2 = width * bottomX2Ratio;
+  const bottomY2 = height * bottomY2Ratio;
 
-  const forwardX = zoomWidth
-    ? zoomWidth * forwardXRatio
-    : width * forwardXRatio;
-  const forwardY = height * forwardYRatio;
-  const backX = zoomWidth ? zoomWidth * backXRatio : width * backXRatio;
-  const backY = height * backYRatio;
-
-  const coordinates = { forwardX, forwardY, backX, backY };
-
+  const coordinates = {
+    topX,
+    topY,
+    bottomX,
+    bottomY,
+    topX2,
+    topY2,
+    bottomX2,
+    bottomY2,
+  };
   return coordinates;
 };
