@@ -60,8 +60,8 @@ const itemConfig = {
       bottomYRatio: 0.5555,
     },
     monitor: {
-      xRatio: 0.42,
-      yRatio: 0.49,
+      topXRatio: 0.4,
+      topYRatio: 0.4444,
       bottomXRatio: 0.46,
       bottomYRatio: 0.56,
     },

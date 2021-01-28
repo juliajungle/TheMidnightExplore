@@ -92,20 +92,9 @@ const StyledFlipContainer = styled.div`
   perspective: 1000px;
 `;
 
-const StyledLink = styled.a`
-  position: absolute;
-  top: -70px;
-  left: -70px;
-  width: 295px;
-  height: 295px;
-  display: block;
-  border-radius: 100%;
-`;
-
 const StyledIframe = styled.iframe`
   border-color: transparent; //none;
   border-radius: 5px;
-  // opacity: 0;
   opacity: ${(props) => (props.isLoading ? 0 : 1)};
   transition: opacity 2s ease-in 0.5s;
 `;
@@ -115,7 +104,6 @@ const StyledIframeContainer = styled.div`
   top: -100px;
   left: 300px;
   width: 300px;
-  // height: 380px;
   height: ${(props) => (props.isLoading ? 140 : 380)}px;
 
   background-color: ${(props) =>
@@ -141,11 +129,6 @@ export const Record = () => {
   };
   return (
     <StyledWrapper>
-      <StyledLink
-        href="https://merch.ambientinks.com/collections/themidnight/products/preorder-monsters-lp"
-        target="_blank"
-        rel="noopener noreferrer"
-      ></StyledLink>
       <StyledFlipContainer>
         <StyledFlipper isFlipped={isFlipped}>
           <StyledRecordFront

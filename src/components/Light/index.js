@@ -9,7 +9,6 @@ const StyledWrapper = styled.div`
   z-index: 100;
   width: ${(props) => props.cssWidth}px;
   height: ${(props) => props.cssHeight}px;
-  cursor: pointer;
 `;
 
 const StyledBlinkingImage = styled.img`
@@ -24,6 +23,20 @@ const StyledBlinkingImage = styled.img`
     }
   }
 `;
+
+const StyledButton = styled.button`
+  position: absolute;
+  left: ${(props) => props.x}px;
+  top: ${(props) => props.y}px;
+  width: ${(props) => props.width}px;
+
+  height: ${(props) => props.height}px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+`;
+
 export const Light = ({ width }) => {
   const [show, setShow] = useState(false);
   const handleClick = () => {
@@ -33,11 +46,17 @@ export const Light = ({ width }) => {
     <StyledWrapper
       cssTop={width * 0.253 * 0.5625}
       cssLeft={width * 0.5624}
-      onClick={handleClick}
       cssWidth={width * 0.21}
       cssHeight={width * 0.16 * 0.5625}
     >
       {show && <StyledBlinkingImage src={light} cssWidth={width * 0.21} />}
+      <StyledButton
+        x={width * 0.01}
+        y={width * 0.02 * 0.5625}
+        width={width * 0.17}
+        height={width * 0.13 * 0.5625}
+        onClick={handleClick}
+      ></StyledButton>
     </StyledWrapper>
   );
 };
