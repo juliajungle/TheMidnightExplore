@@ -9,7 +9,7 @@ const StyledWrapper = styled.div`
   position: absolute;
   top: ${(props) => props.cssTop}px;
   left: ${(props) => props.cssLeft}px;
-  z-index: 100;
+  z-index: 10;
   width: ${(props) => props.cssWidth}px;
   height: ${(props) => props.cssHeight}px;
   cursor: pointer;
