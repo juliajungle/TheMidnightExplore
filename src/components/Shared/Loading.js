@@ -108,11 +108,11 @@ const StyledLoading = styled.div`
   height: 110px;
   border-radius: 5px;
   opacity: ${(props) => (props.isLoading ? 1 : 0)};
+  z-index: ${(props) => (props.isLoading ? 1 : -1)};
   transition: opacity 2s ease-out;
   margin: auto;
 `;
 export const Loading = ({ width, height, isLoading }) => {
-  console.log({ width });
   return (
     <Fragment>
       <StyledLoadingAnimation isLoading={isLoading}>

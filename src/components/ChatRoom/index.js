@@ -6,14 +6,19 @@ import { MyChatbot } from "./Chatbot";
 import desktop from "../../images/desktop.jpg";
 import planet from "../../images/planet.png";
 import monitor from "../../images/monitor.png";
-import { Fragment } from "react";
 
 const StyledImage = styled.img`
   position: absolute;
   z-index: -100;
   top: 45px;
-  left: 55px;
+  left: 54px;
   width: 373px;
+`;
+
+const StyledMonitorImage = styled.img`
+  position: absolute;
+  width: 480px;
+  height: 458px;
 `;
 
 const StyledTechLink = styled.a`
@@ -62,17 +67,10 @@ const StyledDiscordLink = styled.a`
 
 const StyledDesktopWrapper = styled.div`
   position: absolute;
-  // z-index: -1;
   width: 480px;
   height: 458px;
-  // background-color: #4e4954;
-  background-image: url(${monitor});
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 1%;
-  // left: 30px;
 
+  opacity: ${(props) => (props.imageLoaded ? 1 : 0)};
   :after {
     content: "";
     position: absolute;
@@ -161,6 +159,7 @@ export const ChatRoom = ({ handleClick, width }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [text, setText] = useState("");
   const [count, setCount] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const typeWriter = () => {
     setText(`${text}${string.charAt(count)}`);
@@ -184,7 +183,8 @@ export const ChatRoom = ({ handleClick, width }) => {
   };
 
   return (
-    <StyledDesktopWrapper responsiveWidth={width}>
+    <StyledDesktopWrapper responsiveWidth={width} imageLoaded={imageLoaded}>
+      <StyledMonitorImage src={monitor} onLoad={setImageLoaded} />
       <audio src="./1991_Comtek_Bootup.wav" autoPlay>
         Your browser does not support the
         <code>audio</code> element.

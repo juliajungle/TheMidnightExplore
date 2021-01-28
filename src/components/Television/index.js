@@ -77,7 +77,6 @@ const StyledLoaderWrapper = styled.div`
 `;
 
 export const Television = ({ handleClick, width, channelChoice = 1 }) => {
-  console.log("width", width);
   const { muted, toggleMuted } = useContext(MutedContext);
   const [backgroundColor, setBackgroundColor] = useState("black");
   const [channel, setChannel] = useState(channelChoice);
