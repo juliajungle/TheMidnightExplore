@@ -11,7 +11,7 @@ const itemConfig = {
     pizza: {},
     disks: {},
     prom: {
-      topXRatio: 0.56,
+      topXRatio: 0.55,
       topYRatio: 0.5,
       topX2Ratio: 0.594,
       topY2Ratio: 0.5,

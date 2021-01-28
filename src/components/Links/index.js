@@ -5,8 +5,8 @@ const linksConfig = {
   tux: {
     topXRatio: 0.49,
     topYRatio: 0.2,
-    widthRatio: 0.05,
-    heightRatio: 0.17,
+    widthRatio: 0.047,
+    heightRatio: 0.16,
   },
   sash: {
     topXRatio: 0.515,
@@ -59,19 +59,6 @@ export const Links = ({ area, width }) => {
           cssHeight={width * tux.heightRatio * 0.5625}
         />
       )}
-
-      {/* {area === 3 && (
-        <InteractiveLink
-          href="https://promnight.themidnightofficial.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          top={sash.topYRatio * width}
-          left={sash.topXRatio * width}
-          cssWidth={width * sash.widthRatio}
-          cssHeight={width * sash.heightRatio * 0.5625}
-          skew={true}
-        />
-      )} */}
 
       {area === 2 && (
         <InteractiveLink
