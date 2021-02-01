@@ -5,14 +5,14 @@ import bedroom1 from "../../images/bedroom1cropped.jpg";
 
 const StyledWrapper = styled.div`
   position: fixed;
-  width: 90%;
+  width: 92%;
   top: 10%;
   opacity: 0.9;
   background-color: black;
   background-image: radial-gradient(#f906f18f, black 120%);
   box-shadow: 0px 0px 30px #ff5edb;
-  padding: 10px;
-  margin: 10px;
+  padding: 2%;
+  margin: 2%;
   border-radius: 10px;
 
   :after {

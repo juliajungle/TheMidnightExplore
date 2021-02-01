@@ -19,7 +19,6 @@ const skateboardStyles = css`
   left: 0;
   width: 500px;
   height: 150px;
-  //   background-size: 150px;
   background-position: center;
   background-repeat: no-repeat;
 `;
@@ -34,8 +33,7 @@ ${skateboardStyles}
 
 const StyledSkateboard = styled.div`
   ${skateboardStyles}
-  transform: ${(props) =>
-    props.isFlipped ? `rotateX(0deg)` : `rotateX(180deg)`};
+  transform: rotateX(180deg);
   background-image: url(${skateboard});
 `;
 
@@ -43,8 +41,7 @@ const StyledFlipper = styled.div`
   position: relative;
   transition: 0.6s;
   transform-origin: 100% 75px;
-	transform-style: preserve-3d;
-//   transform: ${(props) => (props.isFlipped ? `scaleX(-1)` : `scaleX(1)`)};
+  transform-style: preserve-3d;
   transform: ${(props) =>
     props.isFlipped ? `rotateX(180deg)` : `rotateX(0deg)`};
   cursor: pointer;
@@ -79,24 +76,15 @@ const StyledLink = styled.a`
 
 export const Skateboard = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isWaiting, setIsWaiting] = useState(false);
   const handleClick = () => {
-    setIsWaiting(true);
     setIsFlipped(!isFlipped);
-    setTimeout(() => {
-      setIsWaiting(false);
-    }, 1000);
   };
   return (
     <StyledWrapper>
       <StyledFlipContainer>
         <StyledFlipper isFlipped={isFlipped}>
-          <StyledSkateboardBack
-            isWaiting={isWaiting}
-            isFlipped={isFlipped}
-            onClick={handleClick}
-          />
-          <StyledSkateboard isWaiting={isWaiting} onClick={handleClick}>
+          <StyledSkateboardBack isFlipped={isFlipped} onClick={handleClick} />
+          <StyledSkateboard onClick={handleClick}>
             <StyledLink
               href="https://merch.ambientinks.com/collections/themidnight/products/preorder-horror-show-skateboard-deck"
               target="_blank"

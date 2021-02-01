@@ -160,23 +160,39 @@ export const ChatRoom = ({ handleClick, width }) => {
   const [text, setText] = useState("");
   const [count, setCount] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const typeWriter = () => {
     setText(`${text}${string.charAt(count)}`);
   };
 
-  useEffect(() => {
-    if (count < string.length) {
-      setCount(count + 1);
-      setTimeout(() => typeWriter(), 7);
-    }
-  }, [text]);
+  const hideLoader = () => {
+    setImageLoaded(true);
+  };
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 6500);
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
   }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      if (count < string.length) {
+        setCount(count + 1);
+        setTimeout(() => typeWriter(), 7);
+      }
+    }
+  }, [text, isMounted]);
+
+  useEffect(() => {
+    if (imageLoaded) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 6500);
+    }
+  }, [imageLoaded]);
 
   const openChatbot = () => {
     setShowChatbot(true);
@@ -184,7 +200,7 @@ export const ChatRoom = ({ handleClick, width }) => {
 
   return (
     <StyledDesktopWrapper responsiveWidth={width} imageLoaded={imageLoaded}>
-      <StyledMonitorImage src={monitor} onLoad={setImageLoaded} />
+      <StyledMonitorImage src={monitor} onLoad={hideLoader} />
       <audio src="./1991_Comtek_Bootup.wav" autoPlay>
         Your browser does not support the
         <code>audio</code> element.

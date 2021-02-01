@@ -13,6 +13,8 @@ const StyledWrapper = styled.div`
     left: 0;
     margin: 0;
     width: 100%;
+    background-color: rgb(255 93 219);
+    padding: 5px 10px;
   }
 `;
 
@@ -31,7 +33,7 @@ const StyledLinksWrapper = styled.div`
   }
 
   @media all and (max-width: 699px) {
-    width: 100%;
+    width: 95%;
     margin: 0;
     background-color: rgb(255 93 219);
     border-radius: 0;
@@ -58,38 +60,30 @@ const StyledLink = styled.a`
     flex: 2;
     text-align: left;
   }
-
-  :first-child {
-    @media all and (max-width: 699px) {
-      margin-left: 5px;
-    }
-  }
 `;
 
 const StyledSocialLink = styled.a`
   width: 20px;
   border-radius: 10%;
-  transition: line-height 0.5s ease-in, font-size 0.5s ease;
   border: solid #ff5edb 0;
   box-shadow: 0px 0px 30px #ff5edb;
-  // margin-top: 2px;
 `;
 
 const StyledSpotifyLink = styled.a`
   width: 22px;
   border-radius: 10%;
-  transition: line-height 0.5s ease-in, font-size 0.5s ease;
   border: solid #ff5edb 0;
   box-shadow: 0px 0px 30px #ff5edb;
-  margin-top: 2px;
 `;
 
 const StyledSocialWrapper = styled.div`
   width: 130px;
   display: flex;
   justify-content: space-around;
+
   @media all and (max-width: 699px) {
     flex: 3;
+    align-items: flex-end;
   }
 `;
 
@@ -113,7 +107,7 @@ export const Banner = () => {
           Merch
         </StyledLink>
         <StyledLink
-          href="hhttps://www.themidnightofficial.com/contact.php"
+          href="https://www.themidnightofficial.com/contact.php"
           target="_blank"
           rel="noopener noreferrer"
         >

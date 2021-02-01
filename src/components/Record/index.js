@@ -66,7 +66,7 @@ const StyledRecordFront = styled.div`
   z-index: ${(props) => (props.isFlipped ? 0 : 2)};
   transition: z-index 0.5s ease;
   animation: ${(props) =>
-    props.isWaiting ? `none` : `play 10s 0s infinite linear`};
+    props.isFlipped ? `none` : `play 10s 1s infinite linear`};
   animation-direction: reverse;
 
 `;
@@ -75,7 +75,7 @@ const StyledRecordBack = styled.div`
   ${recordStyles}
   background-image: url(${record2});
   animation: ${(props) =>
-    props.isWaiting ? `none` : `play 10s 0s infinite linear`};
+    props.isFlipped ? `play 10s 1s infinite linear` : `none`};
  
 `;
 
@@ -114,14 +114,9 @@ const StyledIframeContainer = styled.div`
 
 export const Record = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isWaiting, setIsWaiting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const handleClick = () => {
-    setIsWaiting(true);
     setIsFlipped(!isFlipped);
-    setTimeout(() => {
-      setIsWaiting(false);
-    }, 1000);
   };
 
   const hideLoader = () => {
@@ -131,12 +126,8 @@ export const Record = () => {
     <StyledWrapper>
       <StyledFlipContainer>
         <StyledFlipper isFlipped={isFlipped}>
-          <StyledRecordFront
-            isWaiting={isWaiting}
-            isFlipped={isFlipped}
-            onClick={handleClick}
-          />
-          <StyledRecordBack isWaiting={isWaiting} onClick={handleClick} />
+          <StyledRecordFront isFlipped={isFlipped} onClick={handleClick} />
+          <StyledRecordBack isFlipped={isFlipped} onClick={handleClick} />
         </StyledFlipper>
       </StyledFlipContainer>
       <StyledIframeContainer isLoading={isLoading}>
