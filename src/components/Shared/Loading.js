@@ -2,6 +2,9 @@ import React from "react";
 import { Fragment } from "react";
 import styled from "styled-components";
 import logoBackground from "../../images/loading.png";
+import { COLORS } from "../../const";
+
+const loadingParts = 9;
 
 const StyledLoadingAnimation = styled.div`
   position: absolute;
@@ -11,14 +14,17 @@ const StyledLoadingAnimation = styled.div`
   padding: 0 5px 2px 7px;
 
   opacity: ${(props) => (props.isLoading ? 1 : 0)};
-  transition: opacity 2s ease-out;
+  transition: ${(props) =>
+    props.showTransition ? "opacity 2s ease-out 2s" : "opacity 0.5s ease-out"};
 
   :after,
   :before {
     content: "";
     position: absolute;
     pointer-events: none;
-    border: solid 2px #f71276;
+    border: solid 2px ${COLORS.mainPink};
+    border-color: ${(props) =>
+      props.theme === "spotify" ? COLORS.midPink : COLORS.mainPink};
   }
 
   :after {
@@ -44,7 +50,8 @@ const StyledLoadingPart = styled.div`
   width: 8px;
   height: 8px;
   margin-right: 2px;
-  background-color: #f71276;
+  background-color: ${(props) =>
+    props.theme === "spotify" ? COLORS.midPink : COLORS.mainPink};
   display:inline-block;
   opacity: 0;
   animation: loading-blinker 1.5s linear infinite;
@@ -93,17 +100,21 @@ const StyledLoadingPart = styled.div`
 
 `;
 
+const StyledLoadedPart = styled.div`
+  width: 8px;
+  height: 8px;
+  margin-right: 2px;
+  background-color: ${(props) =>
+    props.theme === "spotify" ? COLORS.midPink : COLORS.mainPink};
+  display: inline-block;
+`;
+
 const StyledLoading = styled.div`
   position: absolute;
-  // z-index: -1;
-  // top: 36px;
-  // left: 37px;
   background-image: url(${logoBackground});
-  // background-color: black;
   background-size: contain;
   background-position: top center;
   background-repeat: no-repeat;
-  // width: ${(props) => props.width}px;
   width: 100%;
   height: 110px;
   border-radius: 5px;
@@ -115,17 +126,14 @@ const StyledLoading = styled.div`
 export const Loading = ({ width, height, isLoading }) => {
   return (
     <Fragment>
-      <StyledLoadingAnimation isLoading={isLoading}>
-        <StyledLoadingPart />
-        <StyledLoadingPart />
-        <StyledLoadingPart />
-        <StyledLoadingPart />
-
-        <StyledLoadingPart />
-        <StyledLoadingPart />
-        <StyledLoadingPart />
-        <StyledLoadingPart />
-        <StyledLoadingPart />
+      <StyledLoadingAnimation
+        isLoading={isLoading}
+        showTransition={true}
+        theme="spotify"
+      >
+        {[...Array(loadingParts)].map((value, index) => (
+          <StyledLoadingPart id={index + 1} key={index} theme="spotify" />
+        ))}
       </StyledLoadingAnimation>
       <StyledLoading
         width={width}
@@ -133,5 +141,28 @@ export const Loading = ({ width, height, isLoading }) => {
         isLoading={isLoading}
       ></StyledLoading>
     </Fragment>
+  );
+};
+
+export const Loader = ({ isLoading }) => {
+  return (
+    <StyledLoadingAnimation isLoading={isLoading}>
+      {[...Array(loadingParts)].map((value, index) => (
+        <StyledLoadingPart id={index + 1} key={index} />
+      ))}
+    </StyledLoadingAnimation>
+  );
+};
+
+export const RealTimeLoader = ({ isLoading, loadedParts, theme }) => {
+  return (
+    <StyledLoading isLoading={isLoading}>
+      {" "}
+      <StyledLoadingAnimation isLoading={isLoading} theme={theme}>
+        {[...Array(loadedParts)].map((value, index) => (
+          <StyledLoadedPart id={index + 1} key={index} theme={theme} />
+        ))}
+      </StyledLoadingAnimation>
+    </StyledLoading>
   );
 };

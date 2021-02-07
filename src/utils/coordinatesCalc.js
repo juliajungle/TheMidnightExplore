@@ -112,6 +112,12 @@ const itemConfig = {
       bottomYRatio: 0.67,
     },
     prom: {},
+    clock: {
+      topXRatio: 0.365,
+      topYRatio: 0.13,
+      bottomXRatio: 0.4,
+      bottomYRatio: 0.2,
+    },
   },
 };
 
