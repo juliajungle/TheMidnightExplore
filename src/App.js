@@ -27,8 +27,8 @@ const StyledOverlay = styled.div`
   position: absolute;
   width: ${(props) => props.cssWidth}px;
   height: ${(props) => props.cssWidth * 0.5625}px;
-  background: ${COLORS.darkPink};
-  opacity: 0.2;
+  background: black;
+  opacity: 0.3;
   top: 0;
   left: 0;
 `;
