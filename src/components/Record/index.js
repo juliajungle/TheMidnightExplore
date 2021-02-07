@@ -93,7 +93,7 @@ const StyledFlipContainer = styled.div`
 `;
 
 const StyledIframe = styled.iframe`
-  border-color: transparent; //none;
+  border-color: transparent;
   border-radius: 5px;
   opacity: ${(props) => (props.isLoading ? 0 : 1)};
   transition: opacity 2s ease-in 0.5s;
@@ -106,8 +106,7 @@ const StyledIframeContainer = styled.div`
   width: 300px;
   height: ${(props) => (props.isLoading ? 140 : 380)}px;
 
-  background-color: ${(props) =>
-    props.isLoading ? `black` : `transparent`}; //#9c083cb8;
+  background-color: ${(props) => (props.isLoading ? `black` : `transparent`)};
   border-radius: 5px;
   transition: all 1s ease-in;
 `;

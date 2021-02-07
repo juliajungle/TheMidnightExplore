@@ -15,7 +15,7 @@ const StyledLoadingAnimation = styled.div`
 
   opacity: ${(props) => (props.isLoading ? 1 : 0)};
   transition: ${(props) =>
-    props.showTransition ? "opacity 2s ease-out 2s" : "opacity 0.5s ease-out"};
+    props.showTransition ? "opacity 2s ease-out" : "opacity 0.5s ease-out"};
 
   :after,
   :before {
