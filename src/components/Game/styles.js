@@ -34,8 +34,7 @@ export const StyledStart = styled.div`
   z-index: 1;
   color: white;
   background-color: black;
-  width: 317px;
-  width: 317px;
+  width: 341px;
   height: 272px;
 
   text-align: center;
@@ -45,8 +44,8 @@ export const StyledEnd = styled.div`
   position: absolute;
   z-index: 1;
   color: white;
-  top: 38%;
-  left: 19%;
+  top: 76px;
+  left: 58px;
   background-color: black;
   padding: 20px;
   width: 180px;
@@ -56,6 +55,25 @@ export const StyledEnd = styled.div`
   span {
     font-family: "Press Start 2P";
     text-shadow: #f7f6f2 1px 0 10px;
+  }
+`;
+
+export const StyledBonus = styled.div`
+  position: absolute;
+  z-index: 1;
+  color: white;
+  top: 4px;
+  left: 40px;
+  background-color: transparent;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-family: "Press Start 2P";
+    text-shadow: #f7f6f2 1px 0 10px;
+    font-size: 6px;
+    margin-top: 2px;
   }
 `;
 
@@ -114,7 +132,7 @@ export const PlayerButton = styled.button`
 `;
 export const MonsterSprite = styled.div`
   position: absolute;
-  top: 48px;
+  top: 42px;
   left: 49px;
   background-image: url(${monstersprite8bit});
   background-size: 30px;
@@ -140,7 +158,7 @@ export const MonsterSprite = styled.div`
 
 export const RescueSprite = styled.div`
   position: absolute;
-  top: 5px;
+  top: 3px;
   left: 200px;
   background-image:  ${(props) =>
     props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};
@@ -168,7 +186,7 @@ export const RescueSprite = styled.div`
 
 export const Winner = styled.div`
   position: absolute;
-  top: 5px;
+  top: 3px;
   left: ${(props) => props.position}px;
   background-image:  ${(props) =>
     props.player === "Tyler" ? `url(${timForward})` : `url(${tylerForward})`};

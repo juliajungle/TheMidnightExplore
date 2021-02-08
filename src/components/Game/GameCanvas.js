@@ -33,6 +33,10 @@ import timLeft from "./images/tim-left.png";
 import timLeft2 from "./images/tim-left2.png";
 import timLeftStill from "./images/tim-left-still.png";
 
+import guitar from "./images/sprite-bonus.png";
+import keyboard from "./images/bonus-keyboard.png";
+import sax from "./images/bonus-sax.png";
+
 import {
   StyledImage,
   StyledWrapper,
@@ -46,6 +50,7 @@ import {
   StyledTitle,
   StyledParagraph,
   PlayerButton,
+  StyledBonus,
 } from "./styles";
 
 export const GameCanvas = () => {
@@ -53,11 +58,11 @@ export const GameCanvas = () => {
   const timForwardWaitingRef = useRef();
 
   const [xPosition, setxPosition] = useState(10);
-  const [yPosition, setyPosition] = useState(263); //useState(58);
+  const [yPosition, setyPosition] = useState(252); //useState(58);
   const [facingDirection, setFacingDirection] = useState("SOUTH");
   const [gameStart, setGameStart] = useState(true);
   const [giftX, setGiftX] = useState(10);
-  const [giftY, setGiftY] = useState(78);
+  const [giftY, setGiftY] = useState(70);
   const [collision, setCollision] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [playerName, setPlayerName] = useState("Tim");
@@ -68,6 +73,12 @@ export const GameCanvas = () => {
   const [playerImageForward, setPlayerImageForward] = useState(
     tylerForwardWaitingRef.current
   );
+  const [item1Collision, setItem1Collision] = useState(false);
+  const [item2Collision, setItem2Collision] = useState(false);
+  const [item3Collision, setItem3Collision] = useState(false);
+
+  const [score, setScore] = useState(0);
+  const [bonus, setBonus] = useState(0);
 
   const canvasRef = useRef(null);
   const reset = useRef();
@@ -102,7 +113,12 @@ export const GameCanvas = () => {
 
   const playerTim = useRef();
   const playerTyler = useRef();
-
+  const bonusGuitar = useRef();
+  const bonusKeyboard = useRef();
+  const bonusSax = useRef();
+  const [bonusImage1, setBonusImage1] = useState();
+  const [bonusImage2, setBonusImage2] = useState();
+  const [bonusImage3, setBonusImage3] = useState();
   let floorPaths = [];
   // let animationTurn = 5;
 
@@ -121,6 +137,16 @@ export const GameCanvas = () => {
     }
   };
 
+  const getBonusImage1 = () => {
+    return bonusImage1;
+  };
+  const getBonusImage2 = () => {
+    return bonusImage2;
+  };
+  const getBonusImage3 = () => {
+    return bonusImage3;
+  };
+
   const drawPlayer = (ctx) => {
     const img = getPlayerImage(facingDirection);
 
@@ -130,29 +156,84 @@ export const GameCanvas = () => {
   };
 
   const isFloor = (x, y, context) => {
+    if (x > 265) {
+      return true;
+    }
     return (
       floorPaths.filter((path, index) => {
-        return context.isPointInPath(path, x + 5, y + 30);
+        return context.isPointInPath(path, x + 5, y + 39);
       }).length > 0
     );
   };
 
   const isLadder = (x, y) => {
-    const isLadder1 = x >= 192 && x <= 210 && y >= 189 && y <= 238;
-    const isLadder2 = x >= 59 && x <= 157 && y >= 134 && y <= 182;
-    const isLadder3 = x >= 192 && x <= 210 && y >= 68 && y <= 117;
-    const isLadder4 = x >= 138 && x <= 153 && y >= 12 && y <= 67;
+    const isLadder1 = x >= 192 && x <= 210 && y >= 180 && y <= 230;
+    const isLadder2 = x >= 50 && x <= 60 && y >= 123 && y <= 170;
+    const isLadder3 = x >= 192 && x <= 210 && y >= 60 && y <= 108;
+    const isLadder4 = x >= 132 && x <= 143 && y >= 6 && y <= 54;
     // ladder 1
     return isLadder1 || isLadder2 || isLadder3 || isLadder4;
   };
 
-  const setNewPosition = (ctx, xSpeed, ySpeed, direction) => {
+  const setNewPosition = (ctx, xSpeed, ySpeed, direction, jump) => {
+    if (jump) {
+      setyPosition(yPosition + ySpeed);
+      setFacingDirection(direction);
+    }
     if (isFloor(xPosition + xSpeed, yPosition + ySpeed, ctx)) {
+      console.log("setpos");
       setxPosition(xPosition + xSpeed);
       setyPosition(yPosition + ySpeed);
       setFacingDirection(direction);
     }
   };
+
+  function drawItem1(ctx) {
+    const item = new Path2D();
+    ctx.beginPath();
+    item.arc(30, 235, 5, 0, Math.PI * 2);
+    ctx.closePath();
+
+    const img = getBonusImage1();
+
+    if (img) {
+      ctx.drawImage(img, 24, 225, 11, 20);
+    }
+    if (ctx.isPointInPath(item, xPosition + 10, yPosition + 20)) {
+      setItem1Collision(true);
+    }
+  }
+
+  function drawItem2(ctx) {
+    ctx.rect(240, 160, 20, 30);
+    const img = getBonusImage2();
+
+    if (img) {
+      ctx.drawImage(img, 240, 170, 20, 11);
+    }
+
+    if (ctx.isPointInPath(xPosition + 10, yPosition + 20)) {
+      setItem2Collision(true);
+    }
+  }
+
+  function drawItem3(ctx) {
+    const item = new Path2D();
+    ctx.beginPath();
+    item.arc(265, 50, 10, 0, Math.PI * 2);
+    ctx.closePath();
+
+    // ctx.fillStyle = "red";
+    // ctx.fill(item);
+    const img = getBonusImage3();
+
+    if (img) {
+      ctx.drawImage(img, 260, 40, 10, 20);
+    }
+    if (ctx.isPointInPath(item, xPosition + 10, yPosition + 20)) {
+      setItem3Collision(true);
+    }
+  }
 
   function drawBall(ctx) {
     const gradient = ctx.createRadialGradient(
@@ -173,7 +254,13 @@ export const GameCanvas = () => {
     ctx.fill(ball);
     ctx.closePath();
     ctx.shadowBlur = 0;
-    if (ctx.isPointInPath(ball, xPosition, yPosition + 20)) {
+    const collisionBall = new Path2D();
+    ctx.beginPath();
+    collisionBall.arc(giftX, giftY, 15, 0, Math.PI * 2);
+
+    ctx.closePath();
+
+    if (ctx.isPointInPath(collisionBall, xPosition, yPosition + 17)) {
       setCollision(true);
     }
   }
@@ -249,13 +336,13 @@ export const GameCanvas = () => {
     }
     // drop to floor 3
     if (frameCount >= 300 && frameCount < 320) {
-      setGiftY(giftY + frameCount * 0.154);
+      setGiftY(giftY + frameCount * 0.16);
     }
 
     // move along floor 3 x from 280 to 10
     if (frameCount >= 320 && frameCount < 620) {
       setGiftX(280 - (frameCount - 319) * 0.9);
-      setGiftY(giftY + (frameCount + 20) * 0.14);
+      setGiftY(120 + (frameCount - 319) * 0.13);
     }
 
     // drop to floor 2
@@ -265,7 +352,7 @@ export const GameCanvas = () => {
     // move along floor 2
     if (frameCount >= 640 && frameCount < 940) {
       setGiftX(giftX + (frameCount - 639) * 0.93);
-      setGiftY(200 + (frameCount - 639) * 0.07);
+      setGiftY(192 + (frameCount - 639) * 0.07);
     }
     // drop to floor 1
     if (frameCount >= 940 && frameCount < 945) {
@@ -274,7 +361,7 @@ export const GameCanvas = () => {
     // move along floor 1
     if (frameCount >= 945) {
       setGiftX(280 - (frameCount - 944) * 0.9);
-      setGiftY(248 + (frameCount - 944) * 0.13);
+      setGiftY(242 + (frameCount - 944) * 0.13);
     }
   };
 
@@ -309,37 +396,25 @@ export const GameCanvas = () => {
     floorPaths = drawGrid(ctx);
     drawPlayer(ctx);
     drawBall(ctx);
-  };
-
-  const drawJump = (frameCount) => {
-    if (frameCount < 30) {
-      setyPosition(yPosition - frameCount);
+    if (!item1Collision) {
+      drawItem1(ctx);
     }
-
-    if (frameCount >= 30) {
-      setyPosition(yPosition);
+    if (!item2Collision) {
+      drawItem2(ctx);
     }
-  };
-
-  const jump = () => {
-    let frameCount = 0;
-    const frame = () => {
-      if (frameCount > 60) {
-        clearInterval(id);
-      } else {
-        frameCount++;
-        drawJump(frameCount);
-      }
-    };
-
-    let id = setInterval(frame, 1);
+    if (!item3Collision) {
+      drawItem3(ctx);
+    }
   };
 
   const move = (e) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     if (e.code === "Space") {
-      jump();
+      setNewPosition(ctx, 0, -40, "SOUTH", true);
+      setTimeout(() => {
+        setNewPosition(ctx, 0, 0, "SOUTH", true);
+      }, 200);
     }
     if (e.key === "ArrowRight") {
       // floor 1
@@ -347,21 +422,25 @@ export const GameCanvas = () => {
         setNewPosition(ctx, 8, -1, "EAST");
       }
       // floor 2
-      if (yPosition < 220 && yPosition > 175) {
+      if (yPosition < 220 && yPosition > 165 && xPosition < 266) {
         setNewPosition(ctx, 13, 1, "EAST");
+        setScore(20 + bonus);
       }
       // floor 3
-      if (yPosition <= 175 && yPosition > 100) {
+      if (yPosition <= 165 && yPosition > 95 && xPosition < 266) {
         setNewPosition(ctx, 8, -1, "EAST");
+        setScore(40 + bonus);
       }
       // floor 4
-      if (yPosition <= 100 && yPosition > 20) {
+      if (yPosition <= 95 && yPosition > 20 && xPosition < 267) {
         setNewPosition(ctx, 13, 1, "EAST");
+        setScore(60 + bonus);
       }
       // floor 5
       if (yPosition <= 20) {
         setNewPosition(ctx, 5, 0, "EAST");
         setGameWon(true);
+        setScore(100);
       }
     }
     if (e.key === "ArrowDown") {
@@ -378,19 +457,19 @@ export const GameCanvas = () => {
     }
     if (e.key === "ArrowLeft") {
       // floor 1
-      if (yPosition > 220) {
+      if (yPosition >= 220) {
         setNewPosition(ctx, -8, 1, "WEST");
       }
       // floor 2
-      if (yPosition < 220 && yPosition > 175) {
+      if (yPosition < 220 && yPosition > 165) {
         setNewPosition(ctx, -13, -1, "WEST");
       }
       // floor 3
-      if (yPosition <= 175 && yPosition > 100) {
+      if (yPosition <= 165 && yPosition > 95) {
         setNewPosition(ctx, -8, 1, "WEST");
       }
       // floor 4
-      if (yPosition <= 100 && yPosition > 20) {
+      if (yPosition <= 95 && yPosition > 20) {
         setNewPosition(ctx, -13, -1, "WEST");
       }
       // floor 5
@@ -402,20 +481,24 @@ export const GameCanvas = () => {
 
   const restart = () => {
     setxPosition(10);
-    setyPosition(263);
+    setyPosition(252);
     setGiftX(10);
-    setGiftY(78);
+    setGiftY(70);
     setCollision(false);
     setGameWon(false);
     setFacingDirection("SOUTH");
     setStartAnimation(true);
+    setItem1Collision(false);
+    setItem2Collision(false);
+    setItem3Collision(false);
+    setScore(0);
   };
 
   const resetPositions = () => {
     setxPosition(10);
     setyPosition(263);
     setGiftX(10);
-    setGiftY(78);
+    setGiftY(70);
   };
 
   const stop = () => {
@@ -439,6 +522,9 @@ export const GameCanvas = () => {
     canvas.onkeyup = stop;
     setGameStart(false);
     setStartAnimation(true);
+    setBonusImage1(bonusGuitar.current);
+    setBonusImage2(bonusKeyboard.current);
+    setBonusImage3(bonusSax.current);
   };
 
   useEffect(() => {
@@ -508,6 +594,14 @@ export const GameCanvas = () => {
     }
   }, [collision, gameWon]);
 
+  useEffect(() => {
+    const bonus1 = item1Collision ? 50 : 0;
+    const bonus2 = item2Collision ? 50 : 0;
+    const bonus3 = item3Collision ? 50 : 0;
+
+    setBonus(bonus1 + bonus2 + bonus3);
+  }, [item1Collision, item2Collision, item3Collision]);
+
   return (
     <StyledWrapper>
       {gameStart && (
@@ -541,7 +635,7 @@ export const GameCanvas = () => {
         <StyledEnd>
           <StyledParagraph>GAME OVER!</StyledParagraph>
           <StyledButton ref={reset} onClick={restart}>
-            {`>`}Play again
+            {`>`}PLAY AGAIN
           </StyledButton>
         </StyledEnd>
       )}
@@ -549,9 +643,16 @@ export const GameCanvas = () => {
         <StyledEnd>
           <StyledParagraph>YOU WIN!</StyledParagraph>
           <StyledButton ref={resetRef} onClick={restart}>
-            {`>`} Play again
+            {`>`} PLAY AGAIN
           </StyledButton>
         </StyledEnd>
+      )}
+
+      {!gameStart && (
+        <StyledBonus>
+          <span>SCORE {bonus + score}</span>
+          <span>BONUS {bonus}</span>
+        </StyledBonus>
       )}
 
       <StyledCanvas tabIndex="0" ref={canvasRef} width={300} height={300} />
@@ -627,6 +728,10 @@ export const GameCanvas = () => {
           />
         </div>
       )}
+
+      <StyledImage ref={bonusGuitar} src={guitar} className="hidden" />
+      <StyledImage ref={bonusKeyboard} src={keyboard} className="hidden" />
+      <StyledImage ref={bonusSax} src={sax} className="hidden" />
     </StyledWrapper>
   );
 };

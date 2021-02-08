@@ -82,48 +82,52 @@ export const drawGrid = (context) => {
 
   // Floor 1 ladder
   context.beginPath();
-  context.moveTo(210, 270);
-  context.lineTo(210, 212);
-  context.moveTo(197, 274);
-  context.lineTo(197, 212);
+  context.moveTo(210, 260);
+  context.lineTo(210, 204);
+  context.moveTo(197, 262);
+  context.lineTo(197, 204);
   // rungs
-  context.moveTo(197, 260);
-  context.lineTo(210, 260);
-  context.moveTo(197, 250);
-  context.lineTo(210, 250);
-  context.moveTo(197, 240);
-  context.lineTo(210, 240);
-  context.moveTo(197, 230);
-  context.lineTo(210, 230);
+  context.moveTo(197, 256);
+  context.lineTo(210, 256);
+  context.moveTo(197, 246);
+  context.lineTo(210, 246);
+  context.moveTo(197, 236);
+  context.lineTo(210, 236);
+  context.moveTo(197, 226);
+  context.lineTo(210, 226);
+  context.moveTo(197, 216);
+  context.lineTo(210, 216);
   context.lineWidth = 2;
   context.strokeStyle = "grey";
   context.stroke();
 
   // Floor 2 ladder
   context.beginPath();
-  context.moveTo(60, 209);
-  context.lineTo(60, 157);
-  context.moveTo(73, 210);
-  context.lineTo(73, 155);
+  context.moveTo(58, 202);
+  context.lineTo(58, 150);
+  context.moveTo(75, 203);
+  context.lineTo(75, 148);
   // rungs
-  context.moveTo(60, 200);
-  context.lineTo(73, 200);
-  context.moveTo(60, 190);
-  context.lineTo(73, 190);
-  context.moveTo(60, 180);
-  context.lineTo(73, 180);
-  context.moveTo(60, 170);
-  context.lineTo(73, 170);
+  context.moveTo(58, 200);
+  context.lineTo(75, 200);
+  context.moveTo(58, 190);
+  context.lineTo(75, 190);
+  context.moveTo(58, 180);
+  context.lineTo(75, 180);
+  context.moveTo(58, 170);
+  context.lineTo(75, 170);
+  context.moveTo(58, 160);
+  context.lineTo(75, 160);
   context.lineWidth = 2;
   context.strokeStyle = "grey";
   context.stroke();
 
   // Floor 3 ladder
   context.beginPath();
-  context.moveTo(210, 147);
-  context.lineTo(210, 98);
-  context.moveTo(197, 147);
-  context.lineTo(197, 98);
+  context.moveTo(210, 140);
+  context.lineTo(210, 85);
+  context.moveTo(197, 142);
+  context.lineTo(197, 85);
   // rungs
   context.moveTo(210, 137);
   context.lineTo(197, 137);
@@ -133,25 +137,29 @@ export const drawGrid = (context) => {
   context.lineTo(197, 117);
   context.moveTo(210, 107);
   context.lineTo(197, 107);
+  context.moveTo(210, 97);
+  context.lineTo(197, 97);
   context.lineWidth = 2;
   context.strokeStyle = "grey";
   context.stroke();
 
   // Floor 4 ladder
   context.beginPath();
-  context.moveTo(140, 42);
-  context.lineTo(140, 96);
-  context.moveTo(153, 42);
-  context.lineTo(153, 96);
+  context.moveTo(146, 30);
+  context.lineTo(146, 88);
+  context.moveTo(159, 30);
+  context.lineTo(159, 90);
   // rungs
-  context.moveTo(153, 52);
-  context.lineTo(140, 52);
-  context.moveTo(153, 62);
-  context.lineTo(140, 62);
-  context.moveTo(153, 72);
-  context.lineTo(140, 72);
-  context.moveTo(153, 82);
-  context.lineTo(140, 82);
+  context.moveTo(159, 52);
+  context.lineTo(146, 52);
+  context.moveTo(159, 62);
+  context.lineTo(146, 62);
+  context.moveTo(159, 72);
+  context.lineTo(146, 72);
+  context.moveTo(159, 82);
+  context.lineTo(146, 82);
+  context.moveTo(159, 42);
+  context.lineTo(146, 42);
   context.lineWidth = 2;
   context.strokeStyle = "grey";
   context.stroke();
