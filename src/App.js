@@ -3,6 +3,8 @@ import styled from "styled-components";
 import MutedContext from "./context/MutedContext";
 import "./App.css";
 import useDimensions from "react-use-dimensions";
+
+import { HEIGHT_RATIO } from "./const";
 import { ImageMap } from "./components/ImageMap";
 import { BedroomImage } from "./components/BedroomImage";
 import { Modal } from "./components/Modal";
@@ -10,7 +12,6 @@ import { ArrowButton } from "./components/Shared/NavigationButton";
 import { ZoomButton } from "./components/Shared/ZoomButton";
 import speaker from "./images/speaker.png";
 import mute from "./images/mute.png";
-import { COLORS } from "./const";
 import bedroom1 from "./images/bedroom1.jpg";
 import bedroom3 from "./images/bedroom3.jpg";
 import bedroom1overlay from "./images/bedroom1overlay-dark.jpg";
@@ -26,7 +27,7 @@ import { Balloon } from "./components/Balloon";
 const StyledOverlay = styled.div`
   position: absolute;
   width: ${(props) => props.cssWidth}px;
-  height: ${(props) => props.cssWidth * 0.5625}px;
+  height: ${(props) => props.cssWidth * HEIGHT_RATIO}px;
   background: black;
   opacity: 0.3;
   top: 0;
@@ -69,7 +70,7 @@ const StyledVideo = styled.video`
   position: absolute;
   background-color: black;
   width: ${(props) => props.cssWidth}px;
-  height: ${(props) => props.cssWidth * 0.5625}px;
+  height: ${(props) => props.cssWidth * HEIGHT_RATIO}px;
 `;
 
 export const App = () => {
@@ -155,7 +156,6 @@ export const App = () => {
         {!mobileWarning && (
           <Fragment>
             <MuteButton muted={muted} onClick={toggleMuted} />
-
             <StyledVideo
               playsInline
               autoPlay
@@ -183,16 +183,15 @@ export const App = () => {
               width={zoomWidth || width}
             />
 
-            {area === 3 && (
-              <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
-            )}
             <ArrowButton handleClick={goBack} width={zoomWidth || width} />
             <ArrowButton handleClick={goForward} direction="forward" />
             <StyledZoomWrapper>
               <ZoomButton handleClick={zoomIn} text="+" disabled={isZoomed} />
               <ZoomButton handleClick={zoomOut} text="-" disabled={!isZoomed} />
             </StyledZoomWrapper>
-
+            {area === 3 && (
+              <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
+            )}
             {area === 3 && <Light width={zoomWidth || width} />}
             {area === 3 && (
               <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />

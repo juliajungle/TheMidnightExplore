@@ -1,38 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-
-const linksConfig = {
-  tux: {
-    topXRatio: 0.49,
-    topYRatio: 0.2,
-    widthRatio: 0.047,
-    heightRatio: 0.16,
-  },
-  sash: {
-    topXRatio: 0.515,
-    topYRatio: 0.29,
-    widthRatio: 0.03,
-    heightRatio: 0.25,
-  },
-  headphones: {
-    topXRatio: 0.49,
-    topYRatio: 0.465,
-    widthRatio: 0.08,
-    heightRatio: 0.1,
-  },
-  sleeve: {
-    topXRatio: 0.537,
-    topYRatio: 0.286,
-    widthRatio: 0.14,
-    heightRatio: 0.15,
-  },
-  poster: {
-    topXRatio: 0.37,
-    topYRatio: 0.05,
-    widthRatio: 0.16,
-    heightRatio: 0.35,
-  },
-};
+import { HEIGHT_RATIO, LINKS_CONFIG } from "../../const";
 
 const InteractiveLink = styled.a`
   position: absolute;
@@ -45,7 +13,7 @@ const InteractiveLink = styled.a`
 `;
 
 export const Links = ({ area, width }) => {
-  const { tux, sash, headphones, sleeve, poster } = linksConfig;
+  const { tux, sash, headphones, sleeve, poster } = LINKS_CONFIG;
   return (
     <Fragment>
       {area === 3 && (
@@ -56,7 +24,7 @@ export const Links = ({ area, width }) => {
           top={tux.topYRatio * width}
           left={tux.topXRatio * width}
           cssWidth={width * tux.widthRatio}
-          cssHeight={width * tux.heightRatio * 0.5625}
+          cssHeight={width * tux.heightRatio * HEIGHT_RATIO}
         />
       )}
 
@@ -68,7 +36,7 @@ export const Links = ({ area, width }) => {
           top={headphones.topYRatio * width}
           left={headphones.topXRatio * width}
           cssWidth={width * headphones.widthRatio}
-          cssHeight={width * headphones.heightRatio * 0.5625}
+          cssHeight={width * headphones.heightRatio * HEIGHT_RATIO}
         />
       )}
       {area === 2 && (
@@ -79,7 +47,7 @@ export const Links = ({ area, width }) => {
           top={sleeve.topYRatio * width}
           left={sleeve.topXRatio * width}
           cssWidth={width * sleeve.widthRatio}
-          cssHeight={width * sleeve.heightRatio * 0.5625}
+          cssHeight={width * sleeve.heightRatio * HEIGHT_RATIO}
         />
       )}
       {area === 2 && (
@@ -90,7 +58,7 @@ export const Links = ({ area, width }) => {
           top={poster.topYRatio * width}
           left={poster.topXRatio * width}
           cssWidth={width * poster.widthRatio}
-          cssHeight={width * poster.heightRatio * 0.5625}
+          cssHeight={width * poster.heightRatio * HEIGHT_RATIO}
         />
       )}
     </Fragment>

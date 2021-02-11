@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { HEIGHT_RATIO } from "../../const";
 import light from "../../images/light.png";
 
 const StyledWrapper = styled.div`
@@ -44,17 +45,17 @@ export const Light = ({ width }) => {
   };
   return (
     <StyledWrapper
-      cssTop={width * 0.253 * 0.5625}
+      cssTop={width * 0.253 * HEIGHT_RATIO}
       cssLeft={width * 0.5624}
       cssWidth={width * 0.21}
-      cssHeight={width * 0.16 * 0.5625}
+      cssHeight={width * 0.16 * HEIGHT_RATIO}
     >
       {show && <StyledBlinkingImage src={light} cssWidth={width * 0.21} />}
       <StyledButton
         x={width * 0.01}
-        y={width * 0.02 * 0.5625}
+        y={width * 0.02 * HEIGHT_RATIO}
         width={width * 0.17}
-        height={width * 0.13 * 0.5625}
+        height={width * 0.13 * HEIGHT_RATIO}
         onClick={handleClick}
       ></StyledButton>
     </StyledWrapper>

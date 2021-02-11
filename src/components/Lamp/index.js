@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { HEIGHT_RATIO } from "../../const";
 import lampLight from "../../images/lampon.jpg";
 
 const StyledWrapper = styled.div`
@@ -35,11 +36,15 @@ export const Lamp = ({ width }) => {
   return (
     <StyledWrapper>
       {lampOn && (
-        <StyledImage src={lampLight} y={width * 0.5625 * 0.444} width={width} />
+        <StyledImage
+          src={lampLight}
+          y={width * HEIGHT_RATIO * 0.444}
+          width={width}
+        />
       )}
       <StyledButton
-        x={width * 0.5625 * 0.21}
-        y={width * 0.5625 * 0.9}
+        x={width * HEIGHT_RATIO * 0.21}
+        y={width * HEIGHT_RATIO * 0.9}
         width={width * 0.025}
         height={width * 0.025}
         onClick={handleClick}

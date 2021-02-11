@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import { HEIGHT_RATIO } from "../const";
+import bedroom1 from "../images/pixel.png"; // transparent image to cover video for map
 import bedroom2 from "../images/bedroom2.jpg";
 import bedroom3 from "../images/bedroom3.jpg";
-import bedroom1 from "../images/pixel.png"; // transparent image to cover video for map
 import bedroom1overlay from "../images/bedroom1overlay.jpg";
 import bedroom2overlay from "../images/bedroom2overlay.jpg";
 import bedroom3overlay from "../images/bedroom3overlay.jpg";
@@ -58,7 +59,7 @@ export const BedroomImage = ({ imageName, width }) => {
         alt="Monsters wallpaper"
         useMap="#monsters"
         cssWidth={() => (width ? `${width}px` : "100%")}
-        cssHeight={width * 0.5625}
+        cssHeight={width * HEIGHT_RATIO}
         onLoad={() => {
           console.log("On load: image loaded", highResImageLoaded);
           setHighResImageLoaded(true);
@@ -70,7 +71,7 @@ export const BedroomImage = ({ imageName, width }) => {
         useMap="#monsters"
         alt="Monsters wallpaper loading"
         cssWidth={() => (width ? `${width}px` : "100%")}
-        cssHeight={width * 0.5625}
+        cssHeight={width * HEIGHT_RATIO}
         hide={highResImageLoaded}
       />
     </Fragment>

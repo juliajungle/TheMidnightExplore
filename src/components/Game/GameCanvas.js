@@ -73,6 +73,7 @@ export const GameCanvas = () => {
   const [playerImageForward, setPlayerImageForward] = useState(
     tylerForwardWaitingRef.current
   );
+  const [isMounted, setIsMounted] = useState(false);
   const [item1Collision, setItem1Collision] = useState(false);
   const [item2Collision, setItem2Collision] = useState(false);
   const [item3Collision, setItem3Collision] = useState(false);
@@ -181,7 +182,6 @@ export const GameCanvas = () => {
       setFacingDirection(direction);
     }
     if (isFloor(xPosition + xSpeed, yPosition + ySpeed, ctx)) {
-      console.log("setpos");
       setxPosition(xPosition + xSpeed);
       setyPosition(yPosition + ySpeed);
       setFacingDirection(direction);
@@ -528,17 +528,28 @@ export const GameCanvas = () => {
   };
 
   useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     canvas.onkeydown = move;
     canvas.onkeyup = stop;
 
+    // if (isMounted) {
     if (!collision && !gameWon) {
       drawCanvas();
     }
+    // }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [xPosition, yPosition, facingDirection, giftX, giftY]);
+  }, [xPosition, yPosition, facingDirection, giftX, giftY, isMounted]);
 
   useEffect(() => {
+    console.log("?");
     let isCancelled = false;
     const canvas = canvasRef.current;
     canvas.focus();
@@ -566,7 +577,7 @@ export const GameCanvas = () => {
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameStart, collision, gameWon, startAnimation]);
+  }, [gameStart, collision, gameWon, startAnimation, isMounted]);
 
   useEffect(() => {
     const canvas = canvasRef.current;

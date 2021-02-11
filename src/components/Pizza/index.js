@@ -60,7 +60,7 @@ export const Pizza = () => {
         <StyledPizzaOpen isOpen={isOpen} onClick={handleClick}>
           {" "}
           <StyledLink
-            href="https://pizza-zone.net"
+            href="http://pizza-zone.net"
             target="_blank"
             rel="noopener noreferrer"
           >

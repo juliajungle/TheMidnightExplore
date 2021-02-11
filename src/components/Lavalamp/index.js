@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
+import { HEIGHT_RATIO } from "../../const";
 import lavaLamp from "../../images/lavalamp.png";
 import lavaLamp2 from "../../images/lavalamp2.png";
 import lavaLampPurple from "../../images/lavalamp-purple.png";
@@ -145,15 +146,15 @@ export const LavaLamp = ({ width, areaName }) => {
   const positions = {
     area2: {
       x: width * 0.2785,
-      y: width * 0.14 * 0.5625,
+      y: width * 0.14 * HEIGHT_RATIO,
       width: width * 0.029,
-      height: width * 0.114 * 0.5625,
+      height: width * 0.114 * HEIGHT_RATIO,
     },
     area3: {
       x: width * 0.064,
-      y: width * 0.2 * 0.5625,
+      y: width * 0.2 * HEIGHT_RATIO,
       width: width * 0.026,
-      height: width * 0.099 * 0.5625,
+      height: width * 0.099 * HEIGHT_RATIO,
     },
   };
 
@@ -184,6 +185,7 @@ export const LavaLamp = ({ width, areaName }) => {
 
       <svg
         width={positions[areaName].width}
+        height={positions[areaName].height}
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
       >
