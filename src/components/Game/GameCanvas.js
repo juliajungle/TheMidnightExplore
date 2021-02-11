@@ -61,8 +61,8 @@ export const GameCanvas = () => {
   const [yPosition, setyPosition] = useState(252); //useState(58);
   const [facingDirection, setFacingDirection] = useState("SOUTH");
   const [gameStart, setGameStart] = useState(true);
-  const [giftX, setGiftX] = useState(10);
-  const [giftY, setGiftY] = useState(70);
+  const [ballX, setBallX] = useState(10);
+  const [ballY, setBallY] = useState(70);
   const [collision, setCollision] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [playerName, setPlayerName] = useState("Tim");
@@ -237,11 +237,11 @@ export const GameCanvas = () => {
 
   function drawBall(ctx) {
     const gradient = ctx.createRadialGradient(
-      giftX,
-      giftY,
+      ballX,
+      ballY,
       0.5,
-      giftX,
-      giftY,
+      ballX,
+      ballY,
       7
     );
     gradient.addColorStop(0, "white");
@@ -249,14 +249,14 @@ export const GameCanvas = () => {
 
     const ball = new Path2D();
     ctx.beginPath();
-    ball.arc(giftX, giftY, 7, 0, Math.PI * 2);
+    ball.arc(ballX, ballY, 7, 0, Math.PI * 2);
     ctx.fillStyle = gradient;
     ctx.fill(ball);
     ctx.closePath();
     ctx.shadowBlur = 0;
     const collisionBall = new Path2D();
     ctx.beginPath();
-    collisionBall.arc(giftX, giftY, 15, 0, Math.PI * 2);
+    collisionBall.arc(ballX, ballY, 15, 0, Math.PI * 2);
 
     ctx.closePath();
 
@@ -331,37 +331,37 @@ export const GameCanvas = () => {
 
     // move along floor 4
     if (frameCount < 300) {
-      setGiftX(giftX + frameCount * 0.93); // 280 = 300 * 0.93
-      setGiftY(giftY + frameCount * 0.07); // 100 = 300 * 0.337
+      setBallX(ballX + frameCount * 0.93); // 280 = 300 * 0.93
+      setBallY(ballY + frameCount * 0.07); // 100 = 300 * 0.337
     }
     // drop to floor 3
     if (frameCount >= 300 && frameCount < 320) {
-      setGiftY(giftY + frameCount * 0.16);
+      setBallY(ballY + frameCount * 0.16);
     }
 
     // move along floor 3 x from 280 to 10
     if (frameCount >= 320 && frameCount < 620) {
-      setGiftX(280 - (frameCount - 319) * 0.9);
-      setGiftY(120 + (frameCount - 319) * 0.13);
+      setBallX(280 - (frameCount - 319) * 0.9);
+      setBallY(120 + (frameCount - 319) * 0.13);
     }
 
     // drop to floor 2
     if (frameCount >= 620 && frameCount < 640) {
-      setGiftY(giftY + frameCount * 0.19);
+      setBallY(ballY + frameCount * 0.19);
     }
     // move along floor 2
     if (frameCount >= 640 && frameCount < 940) {
-      setGiftX(giftX + (frameCount - 639) * 0.93);
-      setGiftY(192 + (frameCount - 639) * 0.07);
+      setBallX(ballX + (frameCount - 639) * 0.93);
+      setBallY(192 + (frameCount - 639) * 0.07);
     }
     // drop to floor 1
     if (frameCount >= 940 && frameCount < 945) {
-      setGiftY(giftY + frameCount * 0.18);
+      setBallY(ballY + frameCount * 0.18);
     }
     // move along floor 1
     if (frameCount >= 945) {
-      setGiftX(280 - (frameCount - 944) * 0.9);
-      setGiftY(242 + (frameCount - 944) * 0.13);
+      setBallX(280 - (frameCount - 944) * 0.9);
+      setBallY(242 + (frameCount - 944) * 0.13);
     }
   };
 
@@ -482,8 +482,8 @@ export const GameCanvas = () => {
   const restart = () => {
     setxPosition(10);
     setyPosition(252);
-    setGiftX(10);
-    setGiftY(70);
+    setBallX(10);
+    setBallY(70);
     setCollision(false);
     setGameWon(false);
     setFacingDirection("SOUTH");
@@ -497,8 +497,8 @@ export const GameCanvas = () => {
   const resetPositions = () => {
     setxPosition(10);
     setyPosition(263);
-    setGiftX(10);
-    setGiftY(70);
+    setBallX(10);
+    setBallY(70);
   };
 
   const stop = () => {
@@ -546,7 +546,7 @@ export const GameCanvas = () => {
     // }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [xPosition, yPosition, facingDirection, giftX, giftY, isMounted]);
+  }, [xPosition, yPosition, facingDirection, ballX, ballY, isMounted]);
 
   useEffect(() => {
     console.log("?");

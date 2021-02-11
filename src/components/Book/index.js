@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { Fragment } from "react";
+import React, { useState, useRef, Fragment } from "react";
+
 import {
   StyledWrapper,
   StyledParagraph,
@@ -37,16 +37,17 @@ const getTransform = (page, isOpen, isTurned) => {
 
 export const Book = ({ handleClick }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [turnPage1, setTurnPage1] = useState(false);
-  const [turnPage2, setTurnPage2] = useState(false);
-  const [turnPage3, setTurnPage3] = useState(false);
-  const [turnPage4, setTurnPage4] = useState(false);
-  const [turnPage5, setTurnPage5] = useState(false);
-  const [turnPage6, setTurnPage6] = useState(false);
+  const [turnedPage1, setTurnedPage1] = useState(false);
+  const [turnedPage2, setTurnedPage2] = useState(false);
+  const [turnedPage3, setTurnedPage3] = useState(false);
+  const [turnedPage4, setTurnedPage4] = useState(false);
+  const [turnedPage5, setTurnedPage5] = useState(false);
+  const [turnedPage6, setTurnedPage6] = useState(false);
 
   const bookRef = useRef();
   const frontRef = useRef();
 
+  // TODO: tidy this up
   const handleBookClick = (e) => {
     if (
       (isOpen && e.target === bookRef.current) ||
@@ -60,36 +61,36 @@ export const Book = ({ handleClick }) => {
   };
 
   const handlePage1Click = (e) => {
-    setTurnPage1(!turnPage1);
+    setTurnedPage1(!turnedPage1);
   };
 
   const handlePage1BackClick = (e) => {
-    if (!turnPage2) {
-      setTurnPage1(!turnPage1);
+    if (!turnedPage2) {
+      setTurnedPage1(!turnedPage1);
     }
   };
 
   const handlePage2Click = (e) => {
-    if (turnPage1) {
-      setTurnPage2(!turnPage2);
+    if (turnedPage1) {
+      setTurnedPage2(!turnedPage2);
     }
   };
 
   const handlePage2BackClick = (e) => {
-    if (turnPage1 && !turnPage3) {
-      setTurnPage2(!turnPage2);
+    if (turnedPage1 && !turnedPage3) {
+      setTurnedPage2(!turnedPage2);
     }
   };
 
   const handlePage3Click = (e) => {
-    if (turnPage2) {
-      setTurnPage3(!turnPage3);
+    if (turnedPage2) {
+      setTurnedPage3(!turnedPage3);
     }
   };
 
   const handlePage3BackClick = (e) => {
-    if (turnPage2 && !turnPage4) {
-      setTurnPage3(!turnPage3);
+    if (turnedPage2 && !turnedPage4) {
+      setTurnedPage3(!turnedPage3);
     }
   };
 
@@ -103,17 +104,17 @@ export const Book = ({ handleClick }) => {
             <StyledHeading>Ray Kurzweil</StyledHeading>
           </StyledFront>
           <StyledPage1
-            transformDegrees={getTransform("page1", isOpen, turnPage1)}
+            transformDegrees={getTransform("page1", isOpen, turnedPage1)}
             onClick={handlePage1Click}
             isOpen={isOpen}
           ></StyledPage1>
           <StyledPage1
             onClick={handlePage1BackClick}
-            transformDegrees={getTransform("page1", isOpen, turnPage1)}
+            transformDegrees={getTransform("page1", isOpen, turnedPage1)}
             isOpen={isOpen}
-            isRight={!turnPage1}
+            isRight={!turnedPage1}
           >
-            {!turnPage1 && (
+            {!turnedPage1 && (
               <Fragment>
                 <StyledParagraph>
                   Raymond Kurzweil is an American author, inventor and futurist.
@@ -121,16 +122,16 @@ export const Book = ({ handleClick }) => {
                   published in 1990
                 </StyledParagraph>
 
-                <StyledParagraph show={!turnPage1}>
+                <StyledParagraph show={!turnedPage1}>
                   Kurzweil famously made (and often correctly) predictions about
                   AI.
                 </StyledParagraph>
               </Fragment>
             )}
 
-            {turnPage1 && (
+            {turnedPage1 && (
               <Fragment>
-                <StyledListReversed show={turnPage1}>
+                <StyledListReversed show={turnedPage1}>
                   These are some of those predictions for the early 2000s:
                   <li>
                     Translating telephones allow people to speak to each other
@@ -146,16 +147,16 @@ export const Book = ({ handleClick }) => {
           </StyledPage1>
           <StyledPage2
             onClick={handlePage2Click}
-            transformDegrees={getTransform("page2", isOpen, turnPage2)}
+            transformDegrees={getTransform("page2", isOpen, turnedPage2)}
             isOpen={isOpen}
           ></StyledPage2>
           <StyledPage2
             onClick={handlePage2BackClick}
-            transformDegrees={getTransform("page2", isOpen, turnPage2)}
+            transformDegrees={getTransform("page2", isOpen, turnedPage2)}
             isOpen={isOpen}
-            isRight={!turnPage2}
+            isRight={!turnedPage2}
           >
-            {!turnPage2 && (
+            {!turnedPage2 && (
               <Fragment>
                 <StyledList>
                   Kurweil's next book about AI was The Age of Spiritual Machines
@@ -173,7 +174,7 @@ export const Book = ({ handleClick }) => {
               </Fragment>
             )}
 
-            {turnPage2 && (
+            {turnedPage2 && (
               <Fragment>
                 <StyledListReversed>
                   {" "}
@@ -197,18 +198,18 @@ export const Book = ({ handleClick }) => {
           </StyledPage2>
           <StyledPage3
             onClick={handlePage3Click}
-            transformDegrees={getTransform("page3", isOpen, turnPage3)}
+            transformDegrees={getTransform("page3", isOpen, turnedPage3)}
             isOpen={isOpen}
           >
             {" "}
           </StyledPage3>
           <StyledPage3
             onClick={handlePage3BackClick}
-            transformDegrees={getTransform("page3", isOpen, turnPage3)}
+            transformDegrees={getTransform("page3", isOpen, turnedPage3)}
             isOpen={isOpen}
-            isRight={!turnPage3}
+            isRight={!turnedPage3}
           >
-            {!turnPage3 && (
+            {!turnedPage3 && (
               <Fragment>
                 <StyledList>
                   <li> Reverse engineering of the human brain completed</li>
@@ -231,7 +232,7 @@ export const Book = ({ handleClick }) => {
                 <StyledParagraph>Pretty crazy stuff!</StyledParagraph>
               </Fragment>
             )}
-            {turnPage3 && (
+            {turnedPage3 && (
               <Fragment>
                 <StyledParagraphReversed>
                   He also wrote The Singularity Is Near about his view on the
@@ -246,18 +247,16 @@ export const Book = ({ handleClick }) => {
             )}
           </StyledPage3>
           <StyledPage4
-            //   onClick={handlePage4Click}
-            transformDegrees={getTransform("page4", isOpen, turnPage4)}
+            transformDegrees={getTransform("page4", isOpen, turnedPage4)}
             isOpen={isOpen}
           ></StyledPage4>
           <StyledPage4
-            //   onClick={handlePage4BackClick}
-            transformDegrees={getTransform("page4", isOpen, turnPage4)}
+            transformDegrees={getTransform("page4", isOpen, turnedPage4)}
             isOpen={isOpen}
-            isRight={!turnPage4}
+            isRight={!turnedPage4}
           >
             {" "}
-            {!turnPage4 && (
+            {!turnedPage4 && (
               <Fragment>
                 <StyledParagraph>
                   We hope that you've enjoyed this little insight into the world
@@ -270,29 +269,25 @@ export const Book = ({ handleClick }) => {
             )}
           </StyledPage4>
           <StyledPage5
-            //   onClick={handlePage5Click}
-            transformDegrees={getTransform("page5", isOpen, turnPage5)}
+            transformDegrees={getTransform("page5", isOpen, turnedPage5)}
             isOpen={isOpen}
           >
             <p>page 5</p>
           </StyledPage5>
           <StyledPage5
-            //   onClick={handlePage5BackClick}
-            transformDegrees={getTransform("page5", isOpen, turnPage5)}
+            transformDegrees={getTransform("page5", isOpen, turnedPage5)}
             isOpen={isOpen}
           >
             <p>page 5 back</p>
           </StyledPage5>
           <StyledPage6
-            //   onClick={handlePage6Click}
-            transformDegrees={getTransform("page6", isOpen, turnPage6)}
+            transformDegrees={getTransform("page6", isOpen, turnedPage6)}
             isOpen={isOpen}
           >
             <p>page 6</p>
           </StyledPage6>
           <StyledPage6
-            //   onClick={handlePage6Click}
-            transformDegrees={getTransform("page6", isOpen, turnPage6)}
+            transformDegrees={getTransform("page6", isOpen, turnedPage6)}
             isOpen={isOpen}
           >
             <p>page 6 back</p>

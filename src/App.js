@@ -20,7 +20,7 @@ import { MobileWarning } from "./components/MobileWarning";
 import { Banner } from "./components/Banner";
 import { Light } from "./components/Light";
 import { Links } from "./components/Links";
-import { LavaLamp } from "./components/Lavalamp";
+import { LavaLamp } from "./components/LavaLamp";
 import { Lamp } from "./components/Lamp";
 import { Balloon } from "./components/Balloon";
 

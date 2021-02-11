@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ChatRoom } from "./ChatRoom/index";
+import { ChatRoom } from "./Monitor/index";
 import { Television } from "./Television/index";
 import { Book } from "./Book";
 import { NoticeBoard } from "./NoticeBoard/Board";
