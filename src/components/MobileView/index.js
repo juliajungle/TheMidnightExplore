@@ -80,7 +80,7 @@ const string2 = `Get connected and we will see you online!`;
 
 const string3 = `In the meantime, here are some cool web pages to check out:`;
 
-export const MobileWarning = () => {
+export const MobileView = () => {
   const [sentence1, setSentence1] = useState("");
   const [sentence2, setSentence2] = useState("");
   const [sentence3, setSentence3] = useState("");

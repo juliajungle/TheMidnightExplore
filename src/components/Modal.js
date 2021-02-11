@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ChatRoom } from "./Monitor/index";
-import { Television } from "./Television/index";
+import { ChatRoom } from "./Monitor";
+import { Television } from "./Television";
 import { Book } from "./Book";
-import { NoticeBoard } from "./NoticeBoard/Board";
-import { Map } from "./Map/Map";
+import { NoticeBoard } from "./NoticeBoard";
+import { Map } from "./Map";
 import { Record } from "./Record";
 import { Skateboard } from "./Skateboard";
 import { Pizza } from "./Pizza";

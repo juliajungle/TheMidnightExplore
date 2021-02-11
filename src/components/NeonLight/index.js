@@ -38,7 +38,7 @@ const StyledButton = styled.button`
   background-color: transparent;
 `;
 
-export const Light = ({ width }) => {
+export const NeonLight = ({ width }) => {
   const [show, setShow] = useState(false);
   const handleClick = () => {
     setShow(!show);

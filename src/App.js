@@ -16,9 +16,9 @@ import bedroom1 from "./images/bedroom1.jpg";
 import bedroom3 from "./images/bedroom3.jpg";
 import bedroom1overlay from "./images/bedroom1overlay-dark.jpg";
 import { Fragment } from "react";
-import { MobileWarning } from "./components/MobileWarning";
+import { MobileView } from "./components/MobileView";
 import { Banner } from "./components/Banner";
-import { Light } from "./components/Light";
+import { NeonLight } from "./components/NeonLight";
 import { Links } from "./components/Links";
 import { LavaLamp } from "./components/LavaLamp";
 import { Lamp } from "./components/Lamp";
@@ -79,7 +79,7 @@ export const App = () => {
   const [area, setArea] = useState(1);
   const [isZoomed, setZoomed] = useState(false);
   const [muted, setMuted] = useState(true);
-  const [mobileWarning, setMobileWarning] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
 
   const [ref, { width }] = useDimensions();
   const [zoomWidth, setZoomWidth] = useState(width);
@@ -88,9 +88,9 @@ export const App = () => {
 
   useEffect(() => {
     if (width < 700) {
-      setMobileWarning(true);
+      setMobileView(true);
     } else {
-      setMobileWarning(false);
+      setMobileView(false);
     }
   }, [width]);
 
@@ -152,8 +152,8 @@ export const App = () => {
     <MutedContext.Provider value={{ muted, toggleMuted }}>
       <div ref={ref}>
         <Banner />
-        {mobileWarning && <MobileWarning />}
-        {!mobileWarning && (
+        {mobileView && <MobileView />}
+        {!mobileView && (
           <Fragment>
             <MuteButton muted={muted} onClick={toggleMuted} />
             <StyledVideo
@@ -192,7 +192,7 @@ export const App = () => {
             {area === 3 && (
               <Lamp area={area} width={zoomWidth || width} image={bedroom3} />
             )}
-            {area === 3 && <Light width={zoomWidth || width} />}
+            {area === 3 && <NeonLight width={zoomWidth || width} />}
             {area === 3 && (
               <LavaLamp areaName={`area${area}`} width={zoomWidth || width} />
             )}
