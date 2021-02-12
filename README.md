@@ -1,6 +1,4 @@
-# The Midnight Point and Click
-
-This project is sort of in the style of a point click game. The main inspiration came from the ARG and the way it brought the _Midnightverse_ alive.
+# Monsters Interactive
 
 ## Tech details
 
@@ -39,7 +37,7 @@ These are clickable areas on an image map and are all listed in the const MAP_AR
 
 2. Overlay
 
-- Light
+- NeonLight
 - LavaLamp
 - Lamp
 - Balloon
@@ -48,9 +46,17 @@ These are imported directly into App.js
 
 3. Links
 
+#### Public folder
+
 Public folder contains any assets that are not imported into the JS files. They are the bigger sized assets which I have separated from the build.
 
-The app also uses React Context to handle when the sound is muted - this is to avoid a clash between Youtube and Horror Show and the Monsters video music.
+#### Context
+
+The app also uses React Context to handle when the sound is muted - this is to avoid a clash between YouTube and Horror Show and the Monsters video music.
+
+#### Bedroom Views
+
+There are 3 views. View 1 is the video. To help keep the transitions between views flow, there's also small versions of the images. Once the main image has loaded the blurred one fades out.
 
 ## Components
 
@@ -62,17 +68,18 @@ Image overlay without pink balloon along with 2 animated images for the pop. Cou
 ### Book
 
 Click on book on bookshelf.
-Currently just using 4 of the 6 pages. Content needs checking/updating.
+Currently just using 4 of the 6 pages.
+_Content needs reviewing_
 
 ### Monitor
 
-Click on Monitor.
-Chatbot content needs checking and updating.
+Click on Monitor. Links to Discord and Twitch.
+Chatbot - _Content needs reviewing_
 
 ### Clock
 
 Click on the wall clock.
-The date in the countdown needs to be updated. Just has a test date in there for now.
+_The date in the countdown needs to be updated. Just has a test date in there for now._
 
 ### Disks
 
@@ -86,12 +93,13 @@ This is the most complex area and isn't perfect! It's built with Canvas with win
 
 ### Lamp
 
-Click on desk lamp switch. Simple overlay image
+Click on desk lamp switch.
+Overlay image
 
 ### LavaLamp
 
 Click on lava lamp in view 2 or 3.
-Overly image with animated blobs
+Overly image with animated blobs.
 
 ### NeonLight
 
@@ -104,11 +112,12 @@ Opened from Noticeboard items
 ### MobileView
 
 Set to show at screens under 700px wide
-Content needs reviewing.
+_Content needs reviewing_
 
 ### NoticeBoard
 
-Contains other clickable items
+Contains other clickable items.
+_Note that the Whitney pic links to the TV channel 2 which will need to be updated when it's a Horror Show embed instead._
 
 ### Pizza
 
@@ -124,11 +133,11 @@ Click on record to load Spotify embed and a spinning record which is also clicka
 
 ### Skateboard
 
-Click to see the board and click again to rotate with a link to the shop (link is no longer available)
+Click to see the board and click again to rotate with a link to the shop - _link is no longer valid_
 
 ### Television
 
-There are 3 channels: 1) Horror Show 2) Youtube 3) Game
+There are 3 channels: 1) Horror Show 2) YouTube 3) Game
 
 # Create React App
 
