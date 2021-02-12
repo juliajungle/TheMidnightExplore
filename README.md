@@ -16,9 +16,11 @@ To get started run `npm install`
 
 ## Overview
 
+#### Interactions
+
 There are 3 types of interactions.
 
-1. Modal
+##### 1. Modal
 
 The majority of interactions make use of the modal component
 
@@ -35,7 +37,7 @@ The majority of interactions make use of the modal component
 
 These are clickable areas on an image map and are all listed in the const MAP_AREAS.
 
-2. Overlay
+##### 2. Overlay
 
 - NeonLight
 - LavaLamp
@@ -44,7 +46,7 @@ These are clickable areas on an image map and are all listed in the const MAP_AR
 
 These are imported directly into App.js
 
-3. Links
+##### 3. Links
 
 #### Public folder
 
