@@ -69,17 +69,17 @@ Image overlay without pink balloon along with 2 animated images for the pop. Cou
 
 Click on book on bookshelf.
 Currently just using 4 of the 6 pages.
-_Content needs reviewing_
+**Content needs reviewing**
 
 ### Monitor
 
 Click on Monitor. Links to Discord and Twitch.
-Chatbot - _Content needs reviewing_
+Chatbot - **Content needs reviewing**
 
 ### Clock
 
 Click on the wall clock.
-_The date in the countdown needs to be updated. Just has a test date in there for now._
+**The date in the countdown needs to be updated. Just has a test date in there for now.**
 
 ### Disks
 
@@ -112,12 +112,12 @@ Opened from Noticeboard items
 ### MobileView
 
 Set to show at screens under 700px wide
-_Content needs reviewing_
+**Content needs reviewing**
 
 ### NoticeBoard
 
 Contains other clickable items.
-_Note that the Whitney pic links to the TV channel 2 which will need to be updated when it's a Horror Show embed instead._
+**Note that the Whitney pic links to the TV channel 2 which will need to be updated when it's a Horror Show embed instead.**
 
 ### Pizza
 
@@ -133,7 +133,7 @@ Click on record to load Spotify embed and a spinning record which is also clicka
 
 ### Skateboard
 
-Click to see the board and click again to rotate with a link to the shop - _link is no longer valid_
+Click to see the board and click again to rotate with a link to the shop - **link is no longer valid**
 
 ### Television
 
