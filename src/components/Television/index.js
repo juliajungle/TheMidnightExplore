@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-import MutedContext from "../../context/MutedContext";
+import MutedContext from "../../Context/MutedContext";
 import Canvas from "./Canvas";
 import {
   TVButton,

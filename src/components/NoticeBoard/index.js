@@ -83,6 +83,42 @@ const PolaroidBorder = styled.div`
   }
 `;
 
+const StyledPostIt = styled.div`
+  position: absolute;
+  top: 46%;
+  left: 43%;
+  width: 75px;
+  height: 80px;
+  background-color: #f7f794;
+  box-shadow: black 2px 2px 3px 0px;
+  transform: rotate( 
+-4deg
+);
+`;
+
+
+const StyledPostItText = styled.p`
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  font-family: "Permanent Marker",cursive;
+  font-size: 12px;
+  line-height: 18px;
+  color: #434242;
+`;
+
+const PostIt = () => {
+
+  return (
+
+      <StyledPostIt>
+        <StyledPostItText>Moving day! Sept 25</StyledPostItText>
+      
+      </StyledPostIt>
+
+  );
+};
+
 const StyledPolaroid = styled.img`
   width: 100%;
   border-color: white;
@@ -205,6 +241,7 @@ export const NoticeBoard = ({ handleClick, switchModalContent }) => {
         <Polaroid handleContentSwitch={switchModalContent} />
         <Poster />
         <Note handleContentSwitch={switchModalContent} />
+        <PostIt/>
       </StyledWrapper>
     </div>
   );
