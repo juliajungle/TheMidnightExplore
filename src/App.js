@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MutedContext from "./context/MutedContext";
+import MutedContext from "./Context/MutedContext";
 import "./App.css";
 import useDimensions from "react-use-dimensions";
 
@@ -20,9 +20,10 @@ import { MobileView } from "./components/MobileView";
 import { Banner } from "./components/Banner";
 import { NeonLight } from "./components/NeonLight";
 import { Links } from "./components/Links";
-import { LavaLamp } from "./components/LavaLamp";
+import { LavaLamp } from "./components/Lavalamp";
 import { Lamp } from "./components/Lamp";
 import { Balloon } from "./components/Balloon";
+import { checkForMovingDate } from "./utils/dateCheck";
 
 const StyledOverlay = styled.div`
   position: absolute;
@@ -85,6 +86,8 @@ export const App = () => {
   const [zoomWidth, setZoomWidth] = useState(width);
   const [previousItem, setPreviousItem] = useState();
   const [modalOptions, setModalOptions] = useState();
+
+  const [isMovingDay] = useState(checkForMovingDate())
 
   useEffect(() => {
     if (width < 700) {
@@ -153,7 +156,11 @@ export const App = () => {
       <div ref={ref}>
         <Banner />
         {mobileView && <MobileView />}
-        {!mobileView && (
+        {!mobileView && isMovingDay &&  <BedroomImage
+              imageName={"bedroom4"}
+              width={zoomWidth || width}
+            />}
+        {!mobileView && !isMovingDay && (
           <Fragment>
             <MuteButton muted={muted} onClick={toggleMuted} />
             <StyledVideo

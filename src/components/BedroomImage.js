@@ -5,9 +5,11 @@ import { HEIGHT_RATIO } from "../const";
 import bedroom1 from "../images/pixel.png"; // transparent image to cover video for map
 import bedroom2 from "../images/bedroom2.jpg";
 import bedroom3 from "../images/bedroom3.jpg";
+import bedroom4 from "../images/bedroom4.png";
 import bedroom1overlay from "../images/bedroom1overlay.jpg";
 import bedroom2overlay from "../images/bedroom2overlay.jpg";
 import bedroom3overlay from "../images/bedroom3overlay.jpg";
+import bedroom4overlay from "../images/bedroom4overlay.jpg";
 import { Fragment } from "react";
 
 const StyledImage = styled.img`
@@ -43,7 +45,11 @@ export const BedroomImage = ({ imageName, width }) => {
     } else if (imageName === "bedroom1") {
       setBedroomImageOverlaySrc(bedroom1overlay);
       setBedroomImageSrc(bedroom1);
+    } else if (imageName === "bedroom4") {
+      setBedroomImageOverlaySrc(bedroom4overlay);
+      setBedroomImageSrc(bedroom4);
     }
+    
 
     return () => {
       console.log("return");
